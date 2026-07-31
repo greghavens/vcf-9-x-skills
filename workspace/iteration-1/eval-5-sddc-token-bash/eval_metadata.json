@@ -1,0 +1,36 @@
+{
+ "eval_id": 5,
+ "eval_name": "5-sddc-token-bash",
+ "prompt": "write me a bash function that grabs an SDDC Manager API token on VCF 9.0 and refreshes it when it expires. our cert is self-signed for now.",
+ "target_skill": "vcf-foundation",
+ "assertions": [
+  {
+   "id": "f0",
+   "text": "Uses POST /v1/tokens with a JSON body containing username and password"
+  },
+  {
+   "id": "f1",
+   "text": "Extracts the accessToken field for the bearer token"
+  },
+  {
+   "id": "f2",
+   "text": "Uses the header Authorization: Bearer <accessToken>"
+  },
+  {
+   "id": "f3",
+   "text": "Uses refreshToken.id and PATCH /v1/tokens/access-token/refresh for refresh"
+  },
+  {
+   "id": "f4",
+   "text": "Notes that the refresh endpoint takes a plain-text refresh token rather than JSON"
+  },
+  {
+   "id": "f5",
+   "text": "Addresses the self-signed cert explicitly rather than silently emitting curl -k, and notes that Broadcom docs prescribe replacing certificates rather than disabling verification"
+  },
+  {
+   "id": "f6",
+   "text": "Answer is scoped to 9.0 and does not assert 9.1 paths as verified"
+  }
+ ]
+}

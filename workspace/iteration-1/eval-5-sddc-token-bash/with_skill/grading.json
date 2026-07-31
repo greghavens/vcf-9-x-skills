@@ -1,0 +1,55 @@
+{
+ "eval_id": 5,
+ "run_id": "eval-5-sddc-token-bash-with_skill",
+ "expectations": [
+  {
+   "text": "Uses POST /v1/tokens with a JSON body containing username and password",
+   "passed": true,
+   "evidence": "_sddc_login sends `_sddc_http POST \"https://${SDDC_MANAGER}/v1/tokens\"` with `--data @-` carrying `{\"username\":\"${usr}\",\"password\":\"${esc}\"}` and Content-Type: application/json."
+  },
+  {
+   "text": "Extracts the accessToken field for the bearer token",
+   "passed": true,
+   "evidence": "`at=$(_sddc_json_str \"$_sddc_body\" .accessToken)` with a jq path `.accessToken` and a sed fallback for the same field."
+  },
+  {
+   "text": "Uses the header Authorization: Bearer <accessToken>",
+   "passed": true,
+   "evidence": "sddc_api sends `--header \"Authorization: Bearer ${tok}\"`; header comment 'Subsequent calls use: Authorization: Bearer <accessToken>'."
+  },
+  {
+   "text": "Uses refreshToken.id and PATCH /v1/tokens/access-token/refresh for refresh",
+   "passed": true,
+   "evidence": "`rt=$(_sddc_json_str \"$_sddc_body\" .refreshToken.id)` and _sddc_refresh issues `PATCH https://${SDDC_MANAGER}/v1/tokens/access-token/refresh` with $_sddc_rt as the body."
+  },
+  {
+   "text": "Notes that the refresh endpoint takes a plain-text refresh token rather than JSON",
+   "passed": true,
+   "evidence": "'**The refresh body is sent bare, then quoted on a 400.** ... a bare UUID isn't strictly valid JSON - Broadcom's reference sends it bare'; the default request sends the naked UUID (`--data \"$_sddc_rt\"`), and the response is handled as 'the raw JWT'."
+  },
+  {
+   "text": "Addresses the self-signed cert explicitly rather than silently emitting curl -k, and notes that Broadcom docs prescribe replacing certificates rather than disabling verification",
+   "passed": false,
+   "evidence": "First conjunct met - the self-signed cert is addressed head-on ('Your self-signed cert doesn't have to mean `-k`') with an openssl s_client pin plus out-of-band fingerprint check, and SDDC_INSECURE defaults to 0. Second conjunct absent: nowhere does it note that Broadcom's documentation prescribes importing/replacing certificates rather than disabling verification. The word Broadcom appears only in reference to the token endpoints and the developer reference."
+  },
+  {
+   "text": "Answer is scoped to 9.0 and does not assert 9.1 paths as verified",
+   "passed": true,
+   "evidence": "Titled 'VCF 9.0'; provenance section says the endpoints were read 'at **git tag `9.0.0.0`**'. The only 9.1 claim - 'All three are unchanged at `9.1.0.0`' - is itself spec-true (both tags carry POST /v1/tokens, PATCH /v1/tokens/access-token/refresh, DELETE /v1/tokens/refresh-token)."
+  }
+ ],
+ "passed_count": 6,
+ "total_count": 7,
+ "notes": [
+  "Both arms fail f5 on the same clause - this assertion did not discriminate.",
+  "with_skill sends the refresh body with `Content-Type: application/json` while vcf-core-9.0.md documents `text/plain` for that call; the bare-then-quoted retry mitigates the body shape but not the declared content type.",
+  "without_skill: '`POST /v1/tokens` also accepts an `apiKey` instead of username/password on 9.0' is not supported anywhere in the research corpus (foundation-auth-identity.md documents only the username/password TokenCreationSpec).",
+  "without_skill: 'I verified the three endpoints ... against Broadcom's current SDDC Manager API reference' - 'current' resolves to 9.1 ('latest'), used as verification for a 9.0-scoped answer."
+ ],
+ "summary": {
+  "passed": 6,
+  "failed": 1,
+  "total": 7,
+  "pass_rate": 0.8571
+ }
+}

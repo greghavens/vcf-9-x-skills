@@ -1,0 +1,45 @@
+{
+ "eval_id": 6,
+ "run_id": "eval-6-discovery-uncovered-without_skill",
+ "expectations": [
+  {
+   "text": "Points to github.com/vmware/vcf-api-specs and names the version tag 9.1.0.0",
+   "passed": true,
+   "evidence": "'Repo: **https://github.com/vmware/vcf-api-specs** (release tag `VCF API Specs 9.1.0.0`)' and the sources list names 'tag 9.1.0.0'."
+  },
+  {
+   "text": "Gives a concrete way to search the spec corpus (grep/script/jq over the spec files) rather than only saying 'read the docs'",
+   "passed": true,
+   "evidence": "Gives a blobless clone plus an inline python3 heredoc that loads sddc-manager-openapi.json and filters components.schemas for 'tretch', with the actual output - concrete and reproducible."
+  },
+  {
+   "text": "Mentions at least one on-appliance discovery route (e.g. the VCF Operations swagger UI or the NSX openapi spec endpoint)",
+   "passed": true,
+   "evidence": "'**a. Pull the spec off the appliance itself.** ... `/opt/vmware/vcf/sddc-manager-ui-app/vcf-installer-ui/assets/swagger.json`' - an on-appliance route, though a filesystem path sourced from a blog rather than a documented URL."
+  },
+  {
+   "text": "Does NOT invent a specific vSAN stretched-cluster endpoint and present it as verified",
+   "passed": false,
+   "evidence": "The SDDC Manager route is correct, but the non-VCF route lists methods 'from the 9.1 vSAN API reference' that do not match it: `VSANVcQuerySharedWitnessCompatibility` does not exist (the 9.1 spec has `QuerySharedWitnessCompatibility`), and `VSANVcAddWitnessHostForClusters` / `VSANVcReplaceWitnessHostForClusters` are `VsanVcAddWitnessHostForClusters` / `VsanVcReplaceWitnessHostForClusters`. It also omits that these are exposed as JSON-over-REST at /sdk/vim25 in the 9.1 vi-json spec, presenting them as SOAP/WSDL-only."
+  },
+  {
+   "text": "Notes that no on-appliance API-explorer URL pattern is documented for VCF 9.x",
+   "passed": false,
+   "evidence": "Not only absent - contradicted. It hands over a concrete on-appliance artifact path ('SDDC Manager ships its own Swagger doc, so it always matches your exact patch level') with no caveat that no on-appliance API-explorer location is documented for VCF 9.x."
+  }
+ ],
+ "passed_count": 3,
+ "total_count": 5,
+ "notes": [
+  "without_skill: 'the string \"stretch\" appears **zero** times' in the 9.1 vcenter.yaml Automation spec is correct (0 matches in 9.1__vsphere-automation.ops.json).",
+  "without_skill: the schema list ('ClusterStretchNetworkSpec', 'ClusterStretchSpec', 'ClusterUnstretchSpec', 'NsxStretchClusterSpec', 'StretchClusterNetworkProfile') matches the schema names the with_skill arm reports from the same spec.",
+  "without_skill: the appliance path /opt/vmware/vcf/sddc-manager-ui-app/vcf-installer-ui/assets/swagger.json is sourced to a third-party blog and presented as a general discovery route; it is not in any Broadcom-documented material in the research corpus.",
+  "without_skill: `pip install vcf-sdk` / `vmware-sddc-manager==9.1.0.0` package names and the cmdlet mapping `updateCluster -> Invoke-VcfUpdateCluster` are asserted without qualification and are not verifiable from the spec corpus."
+ ],
+ "summary": {
+  "passed": 3,
+  "failed": 2,
+  "total": 5,
+  "pass_rate": 0.6
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "eval_id": 8,
+ "eval_name": "8-prereq-90-api-client",
+ "prompt": "I want to set up a service account with a long-lived API token scoped to read-only, so our automation isn't using my personal admin creds. We're on VCF 9.0.",
+ "target_skill": "vcf-foundation",
+ "assertions": [
+  {
+   "id": "i0",
+   "text": "States that API clients / API tokens issued by VCF SSO are a 9.1 feature and are NOT available in 9.0"
+  },
+  {
+   "id": "i1",
+   "text": "Does NOT walk the user through the 9.1 Fleet Management > Identity & Access > API Clients flow as if it existed in 9.0"
+  },
+  {
+   "id": "i2",
+   "text": "Gives the actual 9.0 route: per-product credentials (SDDC Manager /v1/tokens, VCF Operations token/acquire, NSX session, vCenter session)"
+  },
+  {
+   "id": "i3",
+   "text": "Mentions NSX principal identities as the documented service-account mechanism for NSX"
+  },
+  {
+   "id": "i4",
+   "text": "Notes that VCF built-in roles (VCF Viewer / VCF Administrator) are documented only in the 9.1 doc set"
+  }
+ ]
+}

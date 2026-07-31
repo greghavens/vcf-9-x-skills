@@ -1,0 +1,32 @@
+{
+ "eval_id": 2,
+ "eval_name": "2-sddc-gone-trap",
+ "prompt": "In VCF 9.1 SDDC Manager is gone and replaced by VCF Fleet Manager, right? What should I be calling for lifecycle management now?",
+ "target_skill": "vcf-lifecycle-upgrade",
+ "assertions": [
+  {
+   "id": "c0",
+   "text": "States that SDDC Manager still exists in VCF 9.1 and is in the 9.1 BOM"
+  },
+  {
+   "id": "c1",
+   "text": "States that the deprecation is scoped to the SDDC Manager UI, not the API"
+  },
+  {
+   "id": "c2",
+   "text": "Does NOT use the name 'VCF Fleet Manager' as a real 9.1 product"
+  },
+  {
+   "id": "c3",
+   "text": "Names fleet lifecycle and SDDC lifecycle as the services that replaced the 9.0 standalone Fleet Management Appliance"
+  },
+  {
+   "id": "c4",
+   "text": "Notes that the SDDC Manager API surface grew rather than shrank between 9.0 and 9.1"
+  },
+  {
+   "id": "c5",
+   "text": "Does not fabricate an endpoint for a 'Fleet Manager' API"
+  }
+ ]
+}

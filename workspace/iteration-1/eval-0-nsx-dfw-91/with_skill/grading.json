@@ -1,0 +1,63 @@
+{
+ "eval_id": 0,
+ "run_id": "eval-0-nsx-dfw-91-with_skill",
+ "expectations": [
+  {
+   "text": "Uses the Policy API base path /policy/api/v1 for the security policy and rule calls",
+   "passed": true,
+   "evidence": "Step 1-6 all use `$NSX/policy/api/v1/infra/domains/...`; header states 'Everything goes through the Policy API (`/policy/api/v1`)'."
+  },
+  {
+   "text": "Does NOT present the Manager API /api/v1 as a valid surface for creating policy objects",
+   "passed": true,
+   "evidence": "'The Manager API (`/api/v1`) from NSX 4.x and earlier is no longer supported for policy objects; it survives only for node/cluster/fabric admin, session lifecycle and OpenAPI spec retrieval.'"
+  },
+  {
+   "text": "Auth uses POST /api/session/create with form fields j_username and j_password",
+   "passed": true,
+   "evidence": "'POST https://<nsx-manager>/api/session/create ... j_username=<user>&j_password=<password>' with Content-Type application/x-www-form-urlencoded."
+  },
+  {
+   "text": "States that BOTH the JSESSIONID cookie AND the X-XSRF-TOKEN header must be sent on subsequent calls",
+   "passed": true,
+   "evidence": "'**Both must be sent on every subsequent call.**' followed by the literal `Cookie: JSESSIONID=<value>` / `X-XSRF-TOKEN: <value>` block; no later qualification."
+  },
+  {
+   "text": "Creates or references a security policy under a domain before creating the rule (correct nesting, not a bare rule POST)",
+   "passed": true,
+   "evidence": "Step 3 PATCHes `/infra/domains/$DOMAIN/security-policies/$POLICY` before Step 4 PATCHes `.../security-policies/$POLICY/rules/$RULE`; opens with 'There is no `POST /policy/api/v1/rules`'."
+  },
+  {
+   "text": "States the prerequisite that both source and destination groups must already exist and be referenced by path",
+   "passed": true,
+   "evidence": "Prereq P5: 'Both groups exist, and you use their **server-returned `path`**' plus 'Rules reference groups by **policy path string** ... not by name and not by UUID.'"
+  },
+  {
+   "text": "Explicitly labels the answer as applying to VCF 9.1 / NSX 9.1",
+   "passed": true,
+   "evidence": "'Version pinned to **VCF 9.1 / NSX 9.1.0.0** (build 25318225) ... scoped to 9.1 only.'"
+  },
+  {
+   "text": "Includes the caveat that the skill was built from documentation and not validated against a live environment",
+   "passed": true,
+   "evidence": "Provenance: 'Every endpoint and operationId cited above was confirmed against the NSX OpenAPI specification at the `9.1.0.0` tag ... **None of it has been executed against a live NSX.**'"
+  },
+  {
+   "text": "Contains no endpoint that is absent from the 9.1 nsx_policy_api spec",
+   "passed": true,
+   "evidence": "Verified against 9.1__nsx-policy.ops.json: ReadDomainForInfra, ReadGroupForDomain, PatchSecurityPolicyForDomain, PatchSecurityRule, ReadSecurityRule, GetRuleStatistics, ReviseSecurityRule, GetFilteredRules, ListDrafts/PublishDraft/GetPreviewOfConfigurationAfterPublishOfDraft all present; /api/session/create, /cluster/api-service, /aaa/role-bindings present in 9.1__nsx-manager.ops.json as claimed."
+  }
+ ],
+ "passed_count": 9,
+ "total_count": 9,
+ "notes": [
+  "without_skill: 'when you supply `service_entries`, you set `services` to `[\"ANY\"]`' is asserted as a requirement; no spec or dossier source establishes this coupling. The with_skill answer omits `services` entirely, which matches the Rule schema.",
+  "without_skill claims XSRF is 'only required for state-changing verbs' \u2014 not supported by any source in the research corpus."
+ ],
+ "summary": {
+  "passed": 9,
+  "failed": 0,
+  "total": 9,
+  "pass_rate": 1.0
+ }
+}

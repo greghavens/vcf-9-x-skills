@@ -1,0 +1,549 @@
+{
+ "meta": {
+  "present": true,
+  "spec_file": "specifications/fleet-lcm/fleet-lcm-openapi.yaml",
+  "spec_version": "9.1.0.0",
+  "title": "VCF Fleet LCM Service APIs",
+  "openapi": "3.0.4",
+  "base_path": "https://vcf.broadcom.com/fleet-lcm",
+  "operation_count": 51,
+  "security_schemes": {
+   "basicAuth": {
+    "scheme": "basic",
+    "type": "http"
+   },
+   "bearerToken": {
+    "description": "Bearer token using a JWT",
+    "scheme": "Bearer",
+    "type": "http"
+   }
+  },
+  "tags": [
+   "Components",
+   "Config",
+   "Depot Metadata",
+   "Fleet LCM System",
+   "Health",
+   "Network",
+   "Release Version",
+   "Resources",
+   "SDDC LCM",
+   "SupportBundles",
+   "SupportedComponents",
+   "Task",
+   "Upgrade Plan"
+  ]
+ },
+ "operations": [
+  {
+   "method": "POST",
+   "path": "/v1/address-attributes",
+   "operationId": "addressAttributes",
+   "summary": "",
+   "tags": [
+    "Network"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/components",
+   "operationId": "getComponents",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/components",
+   "operationId": "createComponents",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/components/generated-passwords",
+   "operationId": "generatePassword",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/components/resource-requirements",
+   "operationId": "getResourceRequirements",
+   "summary": "",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/components/resource-sizes",
+   "operationId": "getResourceSizes",
+   "summary": "",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/components/status",
+   "operationId": "fetchComponentStatuses",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/components/supported-types",
+   "operationId": "getSupportedComponentTypes",
+   "summary": "",
+   "tags": [
+    "SupportedComponents"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/components/validations",
+   "operationId": "validateCreateComponents",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/components/{componentId}",
+   "operationId": "getComponent",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/components/{componentId}",
+   "operationId": "updateComponent",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/components/{componentId}",
+   "operationId": "performComponentAction",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/components/{componentId}/config",
+   "operationId": "getComponentConfig",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/components/{componentId}/config",
+   "operationId": "updateComponentConfig",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/components/{componentId}/config/validations",
+   "operationId": "validateUpdateComponentConfig",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/components/{componentId}/nodes",
+   "operationId": "getComponentNodes",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/components/{componentId}/status",
+   "operationId": "getComponentStatus",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/components/{componentId}/support-bundles",
+   "operationId": "getComponentSupportBundles",
+   "summary": "",
+   "tags": [
+    "SupportBundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/components/{componentId}/support-bundles",
+   "operationId": "generateComponentSupportBundle",
+   "summary": "",
+   "tags": [
+    "SupportBundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/components/{componentId}/support-bundles/{supportBundleId}",
+   "operationId": "deleteComponentSupportBundle",
+   "summary": "",
+   "tags": [
+    "SupportBundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/components/{componentId}/validations",
+   "operationId": "validateUpdateComponent",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/config",
+   "operationId": "getConfig",
+   "summary": "",
+   "tags": [
+    "Config"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/config",
+   "operationId": "setConfig",
+   "summary": "",
+   "tags": [
+    "Config"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/depot-metadata?action=sync",
+   "operationId": "syncDepotMetadata",
+   "summary": "",
+   "tags": [
+    "Depot Metadata"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/health",
+   "operationId": "getHealth",
+   "summary": "",
+   "tags": [
+    "Health"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/release-versions",
+   "operationId": "getReleaseVersions",
+   "summary": "",
+   "tags": [
+    "Release Version"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/release-versions/target-versions",
+   "operationId": "getTargetReleaseVersions",
+   "summary": "",
+   "tags": [
+    "Release Version"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddc-lcms",
+   "operationId": "getSddcLcms",
+   "summary": "",
+   "tags": [
+    "SDDC LCM"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/sddc-lcms",
+   "operationId": "updateSddcLcms",
+   "summary": "",
+   "tags": [
+    "SDDC LCM"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/sddc-lcms",
+   "operationId": "registerSddcLcm",
+   "summary": "",
+   "tags": [
+    "SDDC LCM"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddc-lcms/{sddcLcmId}",
+   "operationId": "getSddcLcm",
+   "summary": "",
+   "tags": [
+    "SDDC LCM"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/sddc-lcms/{sddcLcmId}",
+   "operationId": "updateSddcLcm",
+   "summary": "",
+   "tags": [
+    "SDDC LCM"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddc-lcms/{sddcLcmId}/backups",
+   "operationId": "getSddcLcmBackups",
+   "summary": "",
+   "tags": [
+    "SDDC LCM"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/sddc-lcms/{sddcLcmId}/backups",
+   "operationId": "backupRestoreSddcLcmAction",
+   "summary": "",
+   "tags": [
+    "SDDC LCM"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddc-lcms/{sddcLcmId}/inventory/datastores",
+   "operationId": "getSddcLcmInventoryDatastores",
+   "summary": "",
+   "tags": [
+    "SDDC LCM"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/sddc-lcms/{sddcLcmId}/refresh",
+   "operationId": "refreshSddcLcm",
+   "summary": "",
+   "tags": [
+    "SDDC LCM"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system",
+   "operationId": "getSystem",
+   "summary": "",
+   "tags": [
+    "Fleet LCM System"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/system",
+   "operationId": "performSystemUpgrade",
+   "summary": "",
+   "tags": [
+    "Fleet LCM System"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/tasks",
+   "operationId": "getTasks",
+   "summary": "Get all tasks",
+   "tags": [
+    "Task"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/tasks/{taskId}",
+   "operationId": "getTask",
+   "summary": "Get a task",
+   "tags": [
+    "Task"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/tasks/{taskId}?action=cancel",
+   "operationId": "cancelTask",
+   "summary": "Cancel a task",
+   "tags": [
+    "Task"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/tasks/{taskId}?action=retry",
+   "operationId": "retryTask",
+   "summary": "Retry a failed task",
+   "tags": [
+    "Task"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/upgrade-plans",
+   "operationId": "getUpgradePlans",
+   "summary": "",
+   "tags": [
+    "Upgrade Plan"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/upgrade-plans",
+   "operationId": "createUpgradePlan",
+   "summary": "",
+   "tags": [
+    "Upgrade Plan"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/upgrade-plans/validations",
+   "operationId": "validateUpgradePlan",
+   "summary": "",
+   "tags": [
+    "Upgrade Plan"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/upgrade-plans/{planId}",
+   "operationId": "getUpgradePlan",
+   "summary": "",
+   "tags": [
+    "Upgrade Plan"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/upgrade-plans/{planId}",
+   "operationId": "updateUpgradePlan",
+   "summary": "",
+   "tags": [
+    "Upgrade Plan"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/upgrade-plans/{planId}/bundles",
+   "operationId": "getUpgradePlanBundles",
+   "summary": "",
+   "tags": [
+    "Upgrade Plan"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/upgrade-plans/{planId}?action=apply",
+   "operationId": "applyUpgradePlan",
+   "summary": "",
+   "tags": [
+    "Upgrade Plan"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/upgrade-plans/{planId}?action=configure",
+   "operationId": "configureUpgradePlan",
+   "summary": "",
+   "tags": [
+    "Upgrade Plan"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/upgrade-plans/{planId}?action=precheck",
+   "operationId": "precheckUpgradePlan",
+   "summary": "",
+   "tags": [
+    "Upgrade Plan"
+   ],
+   "deprecated": false
+  }
+ ]
+}

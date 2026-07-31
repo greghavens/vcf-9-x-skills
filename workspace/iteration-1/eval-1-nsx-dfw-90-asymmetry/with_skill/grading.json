@@ -1,0 +1,42 @@
+{
+ "eval_id": 1,
+ "run_id": "eval-1-nsx-dfw-90-asymmetry-with_skill",
+ "expectations": [
+  {
+   "text": "Explicitly labels the answer as VCF 9.0 / NSX 9.0",
+   "passed": true,
+   "evidence": "Title 'Blocking tcp/3389 between two existing NSX groups - on VCF 9.0'; prereq 5: 'this is pinned to NSX **9.0.0.0 (build 24733065)** from the VCF 9.0 BOM.'"
+  },
+  {
+   "text": "States that no NSX OpenAPI spec is published at the 9.0.0.0 tag of vmware/vcf-api-specs, so 9.0 endpoints are sourced from prose documentation",
+   "passed": true,
+   "evidence": "'**Broadcom publishes no NSX OpenAPI specification at the `9.0.0.0` tag** of `github.com/vmware/vcf-api-specs`. `nsx-policy`, `nsx-manager` and `nsx-global-policy` all first appear at `9.1.0.0` ... For 9.0 the best available evidence is version-pinned prose.' Matches spec-inventory (nsx-* present:no at 9.0)."
+  },
+  {
+   "text": "Does NOT present a 9.1-spec-derived endpoint as verified for 9.0",
+   "passed": true,
+   "evidence": "Per-line evidence tags with an explicit rule: 'a path being confirmed in the 9.1 spec is not evidence about 9.0.' Items known only from 9.1 (domain list, /infra/services, drafts list//complete, revise parameters, 403-on-expiry) are tagged [9.1-ONLY], and all body field names are tagged [INFERRED]."
+  },
+  {
+   "text": "Still uses the Policy API /policy/api/v1 surface (correct for 9.0 as well)",
+   "passed": true,
+   "evidence": "Steps 1-6 all issue `$NSX/policy/api/v1/infra/...`; closing note: 'everything here is Policy API (`/policy/api/v1`).'"
+  },
+  {
+   "text": "Answers the confidence question directly rather than deflecting",
+   "passed": true,
+   "evidence": "Opens with the answer ('The paths and verbs are solid. The request bodies are not.'), gives a per-endpoint confidence table, and closes with a 'Bottom line on your question' section splitting high/low/not-confident."
+  }
+ ],
+ "passed_count": 5,
+ "total_count": 5,
+ "notes": [
+  "without_skill cites https://developer.broadcom.com/xapis/nsx-vmc-policy/latest/... as the source for the 9.0 PATCH security-policy endpoint. 'latest' resolves to 9.1 and the nsx-vmc-policy tree is a different product line; this is exactly the 9.1->9.0 sourcing leak assertion b2 targets, though it stops short of claiming spec verification."
+ ],
+ "summary": {
+  "passed": 5,
+  "failed": 0,
+  "total": 5,
+  "pass_rate": 1.0
+ }
+}

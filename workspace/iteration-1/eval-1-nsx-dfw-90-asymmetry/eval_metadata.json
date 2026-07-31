@@ -1,0 +1,28 @@
+{
+ "eval_id": 1,
+ "eval_name": "1-nsx-dfw-90-asymmetry",
+ "prompt": "Same thing but we're still on VCF 9.0 \u2014 block tcp/3389 between two existing NSX groups. How confident are you in the exact endpoints?",
+ "target_skill": "nsx-security-policy",
+ "assertions": [
+  {
+   "id": "b0",
+   "text": "Explicitly labels the answer as VCF 9.0 / NSX 9.0"
+  },
+  {
+   "id": "b1",
+   "text": "States that no NSX OpenAPI spec is published at the 9.0.0.0 tag of vmware/vcf-api-specs, so 9.0 endpoints are sourced from prose documentation"
+  },
+  {
+   "id": "b2",
+   "text": "Does NOT present a 9.1-spec-derived endpoint as verified for 9.0"
+  },
+  {
+   "id": "b3",
+   "text": "Still uses the Policy API /policy/api/v1 surface (correct for 9.0 as well)"
+  },
+  {
+   "id": "b4",
+   "text": "Answers the confidence question directly rather than deflecting"
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "eval_id": 1,
+ "run_id": "eval-1-nsx-dfw-90-asymmetry-without_skill",
+ "expectations": [
+  {
+   "text": "Explicitly labels the answer as VCF 9.0 / NSX 9.0",
+   "passed": true,
+   "evidence": "Title 'Blocking TCP/3389 between two existing NSX groups (VCF 9.0)'; section 2 'UI path (verified against the 9.0 documentation)'."
+  },
+  {
+   "text": "States that no NSX OpenAPI spec is published at the 9.0.0.0 tag of vmware/vcf-api-specs, so 9.0 endpoints are sourced from prose documentation",
+   "passed": false,
+   "evidence": "No mention of vmware/vcf-api-specs, of the 9.0.0.0 tag, or of the absence of an NSX spec at that tag. Sourcing is attributed to prose pages and to a `nsx-vmc-policy/latest` reference page without noting that 'latest' is not 9.0."
+  },
+  {
+   "text": "Does NOT present a 9.1-spec-derived endpoint as verified for 9.0",
+   "passed": true,
+   "evidence": "No claim is traced to the 9.1 spec. Endpoint confidence is framed as 'This shape has been stable across NSX 3.x, 4.x and 9.x' and the literal paths are given ~75%."
+  },
+  {
+   "text": "Still uses the Policy API /policy/api/v1 surface (correct for 9.0 as well)",
+   "passed": true,
+   "evidence": "'Use the Policy API (`/policy/api/v1/...`) only'; all calls use that base."
+  },
+  {
+   "text": "Answers the confidence question directly rather than deflecting",
+   "passed": true,
+   "evidence": "Section 5 'How confident am I in the exact endpoints?' with High/Medium/Low tiers and 'roughly 90%+ on the method and the API shape, ~75% on the literal paths as written.'"
+  }
+ ],
+ "passed_count": 4,
+ "total_count": 5,
+ "notes": [
+  "without_skill cites https://developer.broadcom.com/xapis/nsx-vmc-policy/latest/... as the source for the 9.0 PATCH security-policy endpoint. 'latest' resolves to 9.1 and the nsx-vmc-policy tree is a different product line; this is exactly the 9.1->9.0 sourcing leak assertion b2 targets, though it stops short of claiming spec verification."
+ ],
+ "summary": {
+  "passed": 4,
+  "failed": 1,
+  "total": 5,
+  "pass_rate": 0.8
+ }
+}

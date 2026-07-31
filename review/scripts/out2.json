@@ -1,0 +1,2926 @@
+{
+ "rows": [
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+   "line": 342,
+   "meth": "PATCH",
+   "path": "/v1/hosts",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "foundpath": "/v1/hosts",
+   "opid": "updateHosts",
+   "ctx": "**9.1 difference:** `PATCH /v1/hosts` (`updateHosts`, body `HostsUpdateSpec`) and"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+   "line": 343,
+   "meth": "GET",
+   "path": "/v1/hosts/{id}/software",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "foundpath": "/v1/hosts/{id}/software",
+   "opid": "getSoftwareInfoForHost",
+   "ctx": "`GET /v1/hosts/{id}/software` (`getSoftwareInfoForHost`) are **9.1-only**. Do not call them"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+   "line": 439,
+   "meth": "PATCH",
+   "path": "/v1/domains",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "foundpath": "/v1/domains",
+   "opid": "updateDomains",
+   "ctx": "**9.1 difference:** `PATCH /v1/domains` (`updateDomains`, bulk refresh via `DomainsUpdateSpec`),"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+   "line": 503,
+   "meth": "POST",
+   "path": "/v1/clusters/{id}/datastores/criteria",
+   "ver": "9.0",
+   "verdict": "WRONG-METHOD",
+   "ev": "",
+   "found": [
+    "GET /v1/clusters/{id}/datastores/criteria (getDatastoresCriteria_1)"
+   ],
+   "ctx": "GET|POST /v1/clusters/{id}/datastores/criteria|queries getDatastoresCriteria_1 / postDatastoreQuery_1"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+   "line": 536,
+   "meth": "PATCH",
+   "path": "/v1/clusters",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "foundpath": "/v1/clusters",
+   "opid": "updateClusters",
+   "ctx": "**9.1 difference:** `PATCH /v1/clusters` (`updateClusters`, bulk refresh),"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+   "line": 537,
+   "meth": "GET",
+   "path": "/v1/clusters/{clusterId}/remediations",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": true,
+   "suffix_of_real": true,
+   "ctx": "`POST|GET /v1/clusters/{clusterId}/remediations` (out-of-band drift remediation), and"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+   "line": 538,
+   "meth": "GET",
+   "path": "/v1/clusters/{id}/datastores/validations/{validationId}",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "foundpath": "/v1/clusters/{id}/datastores/validations/{validationId}",
+   "opid": "getDatastoreMountValidation",
+   "ctx": "`GET /v1/clusters/{id}/datastores/validations/{validationId}` are **9.1-only**. 9.1 also adds"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+   "line": 552,
+   "meth": "PATCH",
+   "path": "/v1/vcenters/{vcenterId}/fqdn",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "foundpath": "/v1/vcenters/{vcenterId}/fqdn",
+   "opid": "updateVcenterFqdn",
+   "ctx": "> `PATCH /v1/vcenters/{vcenterId}/fqdn` (`updateVcenterFqdn`) is **9.1-only** \u2014 there is no way to"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.1/domains-clusters.md",
+   "line": 223,
+   "meth": "GET",
+   "path": "/v1/domains/{domainId}/clusters/queries",
+   "ver": "9.1",
+   "verdict": "WRONG-METHOD",
+   "ev": "",
+   "found": [
+    "POST /v1/domains/{domainId}/clusters/queries (postClustersQuery)"
+   ],
+   "ctx": "**How to verify:** `GET /v1/domains/{domainId}/clusters/queries` (post a `ClusterCriterion`, then"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.1/domains-clusters.md",
+   "line": 533,
+   "meth": "POST",
+   "path": "/v1/clusters/{id}/datastores/criteria",
+   "ver": "9.1",
+   "verdict": "WRONG-METHOD",
+   "ev": "",
+   "found": [
+    "GET /v1/clusters/{id}/datastores/criteria (getDatastoresCriteria_1)"
+   ],
+   "ctx": "GET|POST /v1/clusters/{id}/datastores/criteria|queries getDatastoresCriteria_1 / postDatastoreQuery_1"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/deltas.md",
+   "line": 55,
+   "meth": "GET",
+   "path": "/v1/clusters/{clusterId}/remediations",
+   "ver": "9.0,9.1",
+   "verdict": "WRONG-METHOD",
+   "ev": "",
+   "found": [
+    "POST /v1/clusters/{clusterId}/remediations (triggerRemediation)"
+   ],
+   "ctx": "| **Out-of-band change handling** | Out-of-band vCenter/NSX changes are disruptive to SDDC Manager; only the config-drift reconciler exists (`/v1/config-drifts`, `/v1/config-drift-reconciliations`, un"
+  },
+  {
+   "skill": "vcf-installer-bringup",
+   "file": "vcf-installer-bringup/references/9.0/bringup.md",
+   "line": 342,
+   "meth": "GET",
+   "path": "/v1/system/settings/depot/machine-details",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/sddc-manager",
+    "9.1/vcf-installer"
+   ],
+   "foundpath": "/v1/system/settings/depot/machine-details",
+   "opid": "getMachineDetails",
+   "ctx": "**9.1 difference:** identical set **plus** `GET /v1/system/settings/depot/machine-details`"
+  },
+  {
+   "skill": "vcf-installer-bringup",
+   "file": "vcf-installer-bringup/references/9.0/bringup.md",
+   "line": 414,
+   "meth": "POST",
+   "path": "/v1/sddcs/resources-calculation",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/vcf-installer"
+   ],
+   "foundpath": "/v1/sddcs/resources-calculation",
+   "opid": "resourcesCalculation",
+   "ctx": "API (it is a 9.1 addition, `POST /v1/sddcs/resources-calculation`) and the Design and"
+  },
+  {
+   "skill": "vcf-installer-bringup",
+   "file": "vcf-installer-bringup/references/9.0/bringup.md",
+   "line": 554,
+   "meth": "POST",
+   "path": "/v1/sddcs/sddcm-discovery",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/vcf-installer"
+   ],
+   "foundpath": "/v1/sddcs/sddcm-discovery",
+   "opid": "discoverSddcManager",
+   "ctx": "`SddcSpec`. There is **no SDDC Manager discovery endpoint in 9.0** \u2014 `POST /v1/sddcs/sddcm-discovery`"
+  },
+  {
+   "skill": "vcf-certificates-credentials",
+   "file": "vcf-certificates-credentials/references/9.0/certs-and-credentials.md",
+   "line": 377,
+   "meth": "POST",
+   "path": "/v1/vcf-management-components/passwords",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "foundpath": "/v1/vcf-management-components/passwords",
+   "opid": "generatePassword",
+   "ctx": "- **No `POST /v1/vcf-management-components/passwords`** in SDDC Manager 9.0."
+  },
+  {
+   "skill": "vcf-certificates-credentials",
+   "file": "vcf-certificates-credentials/references/9.0/certs-and-credentials.md",
+   "line": 379,
+   "meth": "GET",
+   "path": "/api/workflows/requests/{requestId}",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/vcf-operations"
+   ],
+   "foundpath": "/api/workflows/requests/{requestId}",
+   "opid": "getRequestById",
+   "ctx": "- **No `GET /api/workflows/requests/{requestId}`** in VCF Operations 9.0 \u2014 there is no"
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.0/networking.md",
+   "line": 107,
+   "meth": "GET",
+   "path": "/api/v1/aaa/role-bindings",
+   "ver": "9.0",
+   "verdict": "NSX-9.0-SPEC-GRADED (no NSX spec at 9.0 tag)",
+   "ev": "",
+   "ctx": "machine-confirmed here. `GET /api/v1/aaa/role-bindings` (`GetAllRoleBindings`) is spec-confirmed for"
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.0/networking.md",
+   "line": 356,
+   "meth": "ANY",
+   "path": "/api/v1/logical-ports",
+   "ver": "9.0",
+   "verdict": "NOT-IN-ANY-SPEC (incl. 9.1 NSX)",
+   "ev": "",
+   "ctx": "targets `/api/v1/logical-ports` \u2014 but is unsupported for logical networking. A concrete Manager-API"
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.0/networking.md",
+   "line": 358,
+   "meth": "GET",
+   "path": "/api/v1/logical-routers/{logical-router-id}/nat/rules/{rule-id}",
+   "ver": "9.0",
+   "verdict": "NOT-IN-ANY-SPEC (incl. 9.1 NSX)",
+   "ev": "",
+   "ctx": "`GET /api/v1/logical-routers/{logical-router-id}/nat/rules/{rule-id}` \u2014 *\"This endpoint is deprecated"
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.0/networking.md",
+   "line": 370,
+   "meth": "GET",
+   "path": "/api/v1/spec/openapi/nsx_policy_api.{yaml,json}",
+   "ver": "9.0",
+   "verdict": "NOT-IN-ANY-SPEC (incl. 9.1 NSX)",
+   "ev": "",
+   "ctx": "(`GET /api/v1/spec/openapi/nsx_policy_api.{yaml,json}`, `nsx_api.{yaml,json}`)."
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.1/networking.md",
+   "line": 318,
+   "meth": "GET",
+   "path": "/api/v1/spec/openapi/nsx_policy_api.{json,yaml}",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "OpenAPI spec retrieval (`GET /api/v1/spec/openapi/nsx_policy_api.{json,yaml}` **[DOC]**)."
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/deltas.md",
+   "line": 321,
+   "meth": "ANY",
+   "path": "/xapis/nsx-t-data-center-rest-api/9.0.0",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| Developer portal root | `https://developer.broadcom.com/xapis/nsx-t-data-center-rest-api/9.0.0/` (also `9.0.1`, `9.0.2`) | `.../9.1.0/` |"
+  },
+  {
+   "skill": "nsx-network-services",
+   "file": "nsx-network-services/SKILL.md",
+   "line": 66,
+   "meth": "ANY",
+   "path": "/api/v1/logical-routers/{id}/nat/rules/{id}",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "Manager-API NAT rule endpoint (`/api/v1/logical-routers/{id}/nat/rules/{id}` \u2014 *\"deprecated as of"
+  },
+  {
+   "skill": "nsx-network-services",
+   "file": "nsx-network-services/references/9.0/services.md",
+   "line": 102,
+   "meth": "GET",
+   "path": "/api/v1/aaa/role-bindings",
+   "ver": "9.0",
+   "verdict": "NSX-9.0-SPEC-GRADED (no NSX spec at 9.0 tag)",
+   "ev": "",
+   "ctx": "`GET /api/v1/aaa/role-bindings` (`GetAllRoleBindings`) is spec-confirmed for **9.1 only** \u2014"
+  },
+  {
+   "skill": "nsx-network-services",
+   "file": "nsx-network-services/references/9.0/services.md",
+   "line": 338,
+   "meth": "GET",
+   "path": "/api/v1/logical-routers/{logical-router-id}/nat/rules/{rule-id}",
+   "ver": "9.0",
+   "verdict": "NOT-IN-ANY-SPEC (incl. 9.1 NSX)",
+   "ev": "DOC-9.0",
+   "ctx": "| `GET /api/v1/logical-routers/{logical-router-id}/nat/rules/{rule-id}` | **[DOC-9.0]** \u2014 and carries an explicit deprecation notice in the 9.0.0 doc set: *\"This endpoint is deprecated as of version 9"
+  },
+  {
+   "skill": "nsx-network-services",
+   "file": "nsx-network-services/references/9.1/services.md",
+   "line": 661,
+   "meth": "POST",
+   "path": "/policy/api/v1/infra/nat-rules",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "needs an edge.** There is no `POST /policy/api/v1/infra/nat-rules`. `{nat-id}` is a system-created"
+  },
+  {
+   "skill": "nsx-network-services",
+   "file": "nsx-network-services/references/9.1/services.md",
+   "line": 853,
+   "meth": "GET",
+   "path": "/infra/tier-{0,1}s/{id}/nat/{nat-id}",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": true,
+   "suffix_of_real": false,
+   "ctx": "- **`GET /infra/tier-{0,1}s/{id}/nat/{nat-id}`** (single-section read) does not exist on `/infra`"
+  },
+  {
+   "skill": "nsx-network-services",
+   "file": "nsx-network-services/references/deltas.md",
+   "line": 48,
+   "meth": "GET",
+   "path": "/api/v1/logical-routers/{id}/nat/rules/{rule-id}",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| Manager-API NAT rule | `GET /api/v1/logical-routers/{id}/nat/rules/{rule-id}` \u2014 *\"This endpoint is deprecated as of version 9.0.\"* | (unsupported surface) | **[DOC \u2014 9.0.0 developer portal]** |"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/SKILL.md",
+   "line": 50,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "A second surface, **VI-JSON**, sits at `/sdk/vim25/{release}` \u2014 the JSON front end for what"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/SKILL.md",
+   "line": 66,
+   "meth": "POST",
+   "path": "/api/cis/session",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "**`POST /api/session`, not `POST /api/cis/session`.** Some Broadcom prose renders a `cis`"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.0/inventory-and-vms.md",
+   "line": 41,
+   "meth": "ANY",
+   "path": "/api/cis/session",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "- [Session](#session) \u2014 **`/api/session`, not `/api/cis/session`**"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.0/inventory-and-vms.md",
+   "line": 266,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "SPEC",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| **VI-JSON** | `https://{host}/sdk/vim25/{release}` | `9.0__vsphere-vi-json.ops.json`, **2,195 ops**, spec `9.0.0.0`, security scheme `Session` = header `vmware-api-session-id` **[SPEC]** | Only when"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.0/inventory-and-vms.md",
+   "line": 270,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}/{managedObjectType}/{moId}/{operation}",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": true,
+   "ctx": "`/sdk/vim25/{release}/{managedObjectType}/{moId}/{operation}`, e.g."
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.0/inventory-and-vms.md",
+   "line": 271,
+   "meth": "GET",
+   "path": "/sdk/vim25/9.0.0.0/VirtualMachine/vm-495/config",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "`GET /sdk/vim25/9.0.0.0/VirtualMachine/vm-495/config`,"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.0/inventory-and-vms.md",
+   "line": 291,
+   "meth": "ANY",
+   "path": "/api/cis/session",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> ### Path conflict: `/api/session` vs `/api/cis/session` \u2014 resolved in favour of the spec"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.0/inventory-and-vms.md",
+   "line": 293,
+   "meth": "POST",
+   "path": "/api/cis/session",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> The research dossier records the session endpoint as `POST /api/cis/session`, read off"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.0/inventory-and-vms.md",
+   "line": 302,
+   "meth": "ANY",
+   "path": "/api/cis/session",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> this file can assert. `UNVERIFIED` whether `/api/cis/session` also resolves."
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.0/inventory-and-vms.md",
+   "line": 419,
+   "meth": "GET",
+   "path": "/vcenter/network/{network}",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| GET | `/vcenter/network` | `Vcenter.Network_list` | Filters: `networks`, `names`, `types`, `folders`, `datacenters`. **There is no `GET /vcenter/network/{network}`.** |"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.0/inventory-and-vms.md",
+   "line": 913,
+   "meth": "ANY",
+   "path": "/api/esx-settings",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> whether vLCM lives at `/api/esx/settings/...` or `/api/esx-settings/...`. The 9.0 ops"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.0/inventory-and-vms.md",
+   "line": 924,
+   "meth": "ANY",
+   "path": "/api/cis/session",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "- **Whether `/api/cis/session` also resolves.** The spec declares only `/session`. The"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 41,
+   "meth": "ANY",
+   "path": "/api/cis/session",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "- [Session](#session) \u2014 **`/api/session`, not `/api/cis/session`**"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 289,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "SPEC",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| **VI-JSON** | `https://{host}/sdk/vim25/{release}` | `9.1__vsphere-vi-json.ops.json`, **2,243 ops**, spec `9.1.0.0`, security scheme `Session` = header `vmware-api-session-id` **[SPEC]** | Only when"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 293,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}/{managedObjectType}/{moId}/{operation}",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": true,
+   "ctx": "`/sdk/vim25/{release}/{managedObjectType}/{moId}/{operation}`, e.g."
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 294,
+   "meth": "GET",
+   "path": "/sdk/vim25/9.1.0.0/VirtualMachine/vm-495/config",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "`GET /sdk/vim25/9.1.0.0/VirtualMachine/vm-495/config`,"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 314,
+   "meth": "ANY",
+   "path": "/api/cis/session",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> ### Path conflict: `/api/session` vs `/api/cis/session` \u2014 resolved in favour of the spec"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 316,
+   "meth": "POST",
+   "path": "/api/cis/session",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> The research dossier records the session endpoint as `POST /api/cis/session`, read off"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 325,
+   "meth": "ANY",
+   "path": "/api/cis/session",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> this file can assert. `UNVERIFIED` whether `/api/cis/session` also resolves."
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 442,
+   "meth": "GET",
+   "path": "/vcenter/network/{network}",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| GET | `/vcenter/network` | `Vcenter.Network_list` | Filters: `networks`, `names`, `types`, `folders`, `datacenters`. **There is no `GET /vcenter/network/{network}`.** |"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 969,
+   "meth": "DELETE",
+   "path": "/hvc/links/{link}",
+   "ver": "9.1",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.0/vsphere-automation"
+   ],
+   "foundpath": "/hvc/links/{link}",
+   "opid": "Vcenter.Hvc.Links_delete",
+   "ctx": "DELETE /hvc/links/{link}                            Vcenter.Hvc.Links_delete"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 970,
+   "meth": "GET",
+   "path": "/hvc/links",
+   "ver": "9.1",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.0/vsphere-automation"
+   ],
+   "foundpath": "/hvc/links",
+   "opid": "Vcenter.Hvc.Links_list",
+   "ctx": "GET    /hvc/links                                   Vcenter.Hvc.Links_list"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 971,
+   "meth": "GET",
+   "path": "/hvc/links/{link}",
+   "ver": "9.1",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.0/vsphere-automation"
+   ],
+   "foundpath": "/hvc/links/{link}",
+   "opid": "Vcenter.Hvc.Links_get",
+   "ctx": "GET    /hvc/links/{link}                            Vcenter.Hvc.Links_get"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 972,
+   "meth": "GET",
+   "path": "/hvc/management/administrators",
+   "ver": "9.1",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.0/vsphere-automation"
+   ],
+   "foundpath": "/hvc/management/administrators",
+   "opid": "Vcenter.Hvc.Management.Administrators_get",
+   "ctx": "GET    /hvc/management/administrators               Vcenter.Hvc.Management.Administrators_get"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 973,
+   "meth": "POST",
+   "path": "/hvc/links",
+   "ver": "9.1",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.0/vsphere-automation"
+   ],
+   "foundpath": "/hvc/links",
+   "opid": "Vcenter.Hvc.Links_create",
+   "ctx": "POST   /hvc/links                                   Vcenter.Hvc.Links_create"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 974,
+   "meth": "POST",
+   "path": "/hvc/links/{link}",
+   "ver": "9.1",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.0/vsphere-automation"
+   ],
+   "foundpath": "/hvc/links/{link}?action=delete",
+   "opid": "Vcenter.Hvc.Links_deleteWithCredentials",
+   "ctx": "POST   /hvc/links/{link}?action=delete              Vcenter.Hvc.Links_deleteWithCredentials"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 975,
+   "meth": "POST",
+   "path": "/hvc/management/administrators",
+   "ver": "9.1",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.0/vsphere-automation"
+   ],
+   "foundpath": "/hvc/management/administrators?action=add",
+   "opid": "Vcenter.Hvc.Management.Administrators_add",
+   "ctx": "POST   /hvc/management/administrators?action=add    Vcenter.Hvc.Management.Administrators_add"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 976,
+   "meth": "POST",
+   "path": "/hvc/management/administrators",
+   "ver": "9.1",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.0/vsphere-automation"
+   ],
+   "foundpath": "/hvc/management/administrators?action=add",
+   "opid": "Vcenter.Hvc.Management.Administrators_add",
+   "ctx": "POST   /hvc/management/administrators?action=remove Vcenter.Hvc.Management.Administrators_remove"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 977,
+   "meth": "PUT",
+   "path": "/hvc/management/administrators",
+   "ver": "9.1",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.0/vsphere-automation"
+   ],
+   "foundpath": "/hvc/management/administrators",
+   "opid": "Vcenter.Hvc.Management.Administrators_set",
+   "ctx": "PUT    /hvc/management/administrators               Vcenter.Hvc.Management.Administrators_set"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 1019,
+   "meth": "ANY",
+   "path": "/api/esx-settings",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> whether vLCM lives at `/api/esx/settings/...` or `/api/esx-settings/...`. The 9.1 ops"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/9.1/inventory-and-vms.md",
+   "line": 1030,
+   "meth": "ANY",
+   "path": "/api/cis/session",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "- **Whether `/api/cis/session` also resolves.** The spec declares only `/session`. The"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/deltas.md",
+   "line": 24,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| VI-JSON operations (`/sdk/vim25/{release}`) | 2,195 | 2,243 |"
+  },
+  {
+   "skill": "vsphere-inventory-vm-lifecycle",
+   "file": "vsphere-inventory-vm-lifecycle/references/deltas.md",
+   "line": 100,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| **VI-JSON** | 2,195 ops, base `/sdk/vim25/{release}`, `Session` apiKey = `vmware-api-session-id` | 2,243 ops, same base, same scheme | VIJSON9.0; VIJSON9.1 |"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/SKILL.md",
+   "line": 48,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| Storage policy **authoring** | **VI-JSON** | `https://{host}/sdk/vim25/{release}` + `/pbm/*` | 33 | 33 |"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/SKILL.md",
+   "line": 55,
+   "meth": "ANY",
+   "path": "/api/cis-tagging",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "**1. `/api/cis/tagging`, not `/api/cis-tagging`.** The Broadcom developer portal renders the"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/SKILL.md",
+   "line": 56,
+   "meth": "ANY",
+   "path": "/api/cis-tagging/category",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "tagging group as `/api/cis-tagging/category`, `/api/cis-tagging/tag`,"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/SKILL.md",
+   "line": 56,
+   "meth": "ANY",
+   "path": "/api/cis-tagging/tag",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "tagging group as `/api/cis-tagging/category`, `/api/cis-tagging/tag`,"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/SKILL.md",
+   "line": 57,
+   "meth": "ANY",
+   "path": "/api/cis-tagging/tag-association",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "`/api/cis-tagging/tag-association`, and the research dossier recorded those paths while"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/SKILL.md",
+   "line": 71,
+   "meth": "POST",
+   "path": "/api/vcenter/storage/policies",
+   "ver": "9.0,9.1",
+   "verdict": "WRONG-METHOD",
+   "ev": "",
+   "found": [
+    "GET /vcenter/storage/policies (Vcenter.Storage.Policies_list)"
+   ],
+   "ctx": "`POST /api/vcenter/storage/policies`, that is why they cannot find it."
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 12,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "SPEC-V",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| **[SPEC-V]** | Same, but for the **VI-JSON** surface: `9.0__vsphere-vi-json.ops.json`, from `specifications/vsphere/openapi/vi-json/vi-json.yaml` at the same tag (`info.version: 9.0.0.0`, `servers[0"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 149,
+   "meth": "PATCH",
+   "path": "/vcenter/tagging/associations",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/vsphere-automation"
+   ],
+   "foundpath": "/vcenter/tagging/associations",
+   "opid": "Vcenter.Tagging.Associations_update",
+   "ctx": "- **9.1 difference:** none for create. 9.1 adds `PATCH /vcenter/tagging/associations`, which"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 247,
+   "meth": "POST",
+   "path": "/sdk/vim25/{release}/pbm/{ManagedObjectType}/{moId}/{Operation}",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "- **Must be true:** every `/pbm` operation is `POST /sdk/vim25/{release}/pbm/{ManagedObjectType}/{moId}/{Operation}`"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 323,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "SPEC-V",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| **VI-JSON (PBM)** | `https://{vcenter-host}/sdk/vim25/{release}` | `9.0__vsphere-vi-json.ops.json`, 2,195 ops, security scheme `Session` = header `vmware-api-session-id` **[SPEC-V]** | `/pbm/*` (33,"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 377,
+   "meth": "DELETE",
+   "path": "/content/library/{libraryId}",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/vsphere-automation"
+   ],
+   "foundpath": "/content/library/{libraryId}",
+   "opid": "Content.Library_delete",
+   "ctx": "> **There is no `DELETE /content/library/{libraryId}` at 9.0**, and no `force-delete` on any"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 490,
+   "meth": "ANY",
+   "path": "/api/cis-tagging",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> ### Path conflict: `/api/cis/tagging` vs `/api/cis-tagging` \u2014 resolved in favour of the spec"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 492,
+   "meth": "ANY",
+   "path": "/api/cis-tagging/category",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> The research dossier records the tagging group as `/api/cis-tagging/category`,"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 493,
+   "meth": "ANY",
+   "path": "/api/cis-tagging/tag",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> `/api/cis-tagging/tag`, `/api/cis-tagging/tag-association`, read off the Broadcom developer"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 493,
+   "meth": "ANY",
+   "path": "/api/cis-tagging/tag-association",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> `/api/cis-tagging/tag`, `/api/cis-tagging/tag-association`, read off the Broadcom developer"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 506,
+   "meth": "ANY",
+   "path": "/api/cis-tagging",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> Whether `/api/cis-tagging/...` *also* resolves on a live appliance is a separate question"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 568,
+   "meth": "PATCH",
+   "path": "/vcenter/tagging/associations",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/vsphere-automation"
+   ],
+   "foundpath": "/vcenter/tagging/associations",
+   "opid": "Vcenter.Tagging.Associations_update",
+   "ctx": "`PATCH /vcenter/tagging/associations`."
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 638,
+   "meth": "ANY",
+   "path": "/api/vcenter/storage/policies/vm",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "`/api/vcenter/storage/policies/compliance` and `/api/vcenter/storage/policies/vm` \u2014 neither of"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 639,
+   "meth": "ANY",
+   "path": "/api/vcenter/datastore-default-policy",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "those paths exists in the spec, and neither does `/api/vcenter/datastore-default-policy`"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 682,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "SPEC-V",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "All **[SPEC-V]**. Base `https://{vcenter-host}/sdk/vim25/{release}`, so a full URL looks like"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 913,
+   "meth": "PATCH",
+   "path": "/vcenter/tagging/associations",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/vsphere-automation"
+   ],
+   "foundpath": "/vcenter/tagging/associations",
+   "opid": "Vcenter.Tagging.Associations_update",
+   "ctx": "`PATCH /vcenter/tagging/associations` is the atomic, roll-back-on-failure alternative and"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 939,
+   "meth": "ANY",
+   "path": "/api/cis-tagging",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| 404 on step 2 or 3 with the path itself | You used `/api/cis-tagging/...`. The spec path is `/api/cis/tagging/...` (slash). |"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.0/content-tags-policies.md",
+   "line": 989,
+   "meth": "ANY",
+   "path": "/api/cis-tagging",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "- **Whether `/api/cis-tagging/...` also resolves on a live appliance.** The spec declares only"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.1/content-tags-policies.md",
+   "line": 12,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "SPEC-V",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| **[SPEC-V]** | Same, but for the **VI-JSON** surface: `9.1__vsphere-vi-json.ops.json`, from `specifications/vsphere/openapi/vi-json/vi-json.yaml` at the same tag (`info.version: 9.1.0.0`, `servers[0"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.1/content-tags-policies.md",
+   "line": 221,
+   "meth": "POST",
+   "path": "/sdk/vim25/{release}/pbm/{ManagedObjectType}/{moId}/{Operation}",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "SPEC-V",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "`POST /sdk/vim25/{release}/pbm/{ManagedObjectType}/{moId}/{Operation}` **[SPEC-V]**, and"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.1/content-tags-policies.md",
+   "line": 331,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "SPEC-V",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| **VI-JSON (PBM)** | `https://{vcenter-host}/sdk/vim25/{release}` | `9.1__vsphere-vi-json.ops.json`, 2,243 ops, security scheme `Session` = header `vmware-api-session-id` **[SPEC-V]** | `/pbm/*` (33,"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.1/content-tags-policies.md",
+   "line": 517,
+   "meth": "ANY",
+   "path": "/api/cis-tagging",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> ### Path conflict: `/api/cis/tagging` vs `/api/cis-tagging` \u2014 resolved in favour of the spec"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.1/content-tags-policies.md",
+   "line": 519,
+   "meth": "ANY",
+   "path": "/api/cis-tagging/category",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> The research dossier records the tagging group as `/api/cis-tagging/category`,"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.1/content-tags-policies.md",
+   "line": 520,
+   "meth": "ANY",
+   "path": "/api/cis-tagging/tag",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> `/api/cis-tagging/tag`, `/api/cis-tagging/tag-association`, read off the Broadcom developer"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.1/content-tags-policies.md",
+   "line": 520,
+   "meth": "ANY",
+   "path": "/api/cis-tagging/tag-association",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> `/api/cis-tagging/tag`, `/api/cis-tagging/tag-association`, read off the Broadcom developer"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.1/content-tags-policies.md",
+   "line": 532,
+   "meth": "ANY",
+   "path": "/api/cis-tagging",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> at this tag. Whether `/api/cis-tagging/...` *also* resolves on a live appliance remains"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.1/content-tags-policies.md",
+   "line": 700,
+   "meth": "ANY",
+   "path": "/api/vcenter/storage/policies/vm",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "`/api/vcenter/storage/policies/compliance` and `/api/vcenter/storage/policies/vm` \u2014 neither"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.1/content-tags-policies.md",
+   "line": 701,
+   "meth": "ANY",
+   "path": "/api/vcenter/datastore-default-policy",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "exists in the spec, and neither does `/api/vcenter/datastore-default-policy` (it is"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.1/content-tags-policies.md",
+   "line": 752,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "SPEC-V",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "All **[SPEC-V]**. Base `https://{vcenter-host}/sdk/vim25/{release}`, so a full URL is"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.1/content-tags-policies.md",
+   "line": 1000,
+   "meth": "ANY",
+   "path": "/api/cis-tagging",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| 404 on step 2 or 3 with the path itself | You used `/api/cis-tagging/...`. The spec path is `/api/cis/tagging/...` (slash). |"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/9.1/content-tags-policies.md",
+   "line": 1054,
+   "meth": "ANY",
+   "path": "/api/cis-tagging",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "- **Whether `/api/cis-tagging/...` also resolves on a live appliance.** The spec declares only"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/deltas.md",
+   "line": 76,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| **Base paths** | `/api` for content, tagging, policy read; `/sdk/vim25/{release}` for `/pbm` | **Unchanged** on both surfaces | SPECA both; SPECV both |"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/deltas.md",
+   "line": 183,
+   "meth": "ANY",
+   "path": "/api/cis-tagging/category",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| `/api/cis-tagging/category`, `/tag`, `/tag-association`; **operation tables `UNVERIFIED \u2014 could not retrieve`** | `/cis/tagging/category`, `/cis/tagging/tag`, `/cis/tagging/tag-association` \u2014 **30 o"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/deltas.md",
+   "line": 184,
+   "meth": "GET",
+   "path": "/api/vcenter/storage/policies/compliance",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": true,
+   "suffix_of_real": false,
+   "ctx": "| `GET /api/vcenter/storage/policies/compliance` | **No such path.** It is `/vcenter/storage/policies/entities/compliance` | 404 as written |"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/deltas.md",
+   "line": 185,
+   "meth": "GET",
+   "path": "/api/vcenter/storage/policies/vm",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| `GET /api/vcenter/storage/policies/vm` | **No such path.** It is `/vcenter/storage/policies/{policy}/vm` | 404 as written |"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/deltas.md",
+   "line": 186,
+   "meth": "GET",
+   "path": "/api/vcenter/datastore-default-policy",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| `GET /api/vcenter/datastore-default-policy` | **No such path.** It is `/vcenter/datastore/{datastore}/default-policy` | 404 as written |"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/deltas.md",
+   "line": 187,
+   "meth": "POST",
+   "path": "/api/vcenter/storage/policies",
+   "ver": "9.0,9.1",
+   "verdict": "WRONG-METHOD",
+   "ev": "",
+   "found": [
+    "GET /vcenter/storage/policies (Vcenter.Storage.Policies_list)"
+   ],
+   "ctx": "| `POST /api/vcenter/storage/policies?action=check-compatibility` | It is per-policy: `/vcenter/storage/policies/{policy}?action=check-compatibility` | 404 as written |"
+  },
+  {
+   "skill": "vsphere-content-tags-policies",
+   "file": "vsphere-content-tags-policies/references/deltas.md",
+   "line": 234,
+   "meth": "ANY",
+   "path": "/api/cis-tagging",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "- **Whether `/api/cis-tagging/...` resolves on a live appliance** at either version."
+  },
+  {
+   "skill": "vsphere-lifecycle-vlcm",
+   "file": "vsphere-lifecycle-vlcm/SKILL.md",
+   "line": 27,
+   "meth": "ANY",
+   "path": "/api/esx-settings",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "`/api/esx/settings/...` (slash) versus `/api/esx-settings/...` (hyphen). **The"
+  },
+  {
+   "skill": "vsphere-lifecycle-vlcm",
+   "file": "vsphere-lifecycle-vlcm/references/9.0/vlcm.md",
+   "line": 18,
+   "meth": "ANY",
+   "path": "/api/esx-settings",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "form `/api/esx-settings/...` does **not** exist: zero operations in `SPEC9.0` contain the"
+  },
+  {
+   "skill": "vsphere-lifecycle-vlcm",
+   "file": "vsphere-lifecycle-vlcm/references/9.0/vlcm.md",
+   "line": 324,
+   "meth": "POST",
+   "path": "/esx/settings/clusters/{cluster}/depot-overrides[",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "`GET|POST /esx/settings/clusters/{cluster}/depot-overrides[?action=add|remove]`"
+  },
+  {
+   "skill": "vsphere-lifecycle-vlcm",
+   "file": "vsphere-lifecycle-vlcm/references/9.0/vlcm.md",
+   "line": 335,
+   "meth": "ANY",
+   "path": "/vmw-depot/index.xml",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "\"location\": \"https://depot.example.com/vmw-depot/index.xml\","
+  },
+  {
+   "skill": "vsphere-lifecycle-vlcm",
+   "file": "vsphere-lifecycle-vlcm/references/9.0/vlcm.md",
+   "line": 608,
+   "meth": "ANY",
+   "path": "/api/esx/settings/clusters/$CL/software/drafts/draft-3/software/base-image",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "PUT https://$VC/api/esx/settings/clusters/$CL/software/drafts/draft-3/software/base-image"
+  },
+  {
+   "skill": "vsphere-lifecycle-vlcm",
+   "file": "vsphere-lifecycle-vlcm/references/9.0/vlcm.md",
+   "line": 621,
+   "meth": "ANY",
+   "path": "/api/esx/settings/clusters/$CL/software/drafts/draft-3?action=validate&vmw-task=true",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "POST https://$VC/api/esx/settings/clusters/$CL/software/drafts/draft-3?action=validate&vmw-task=true"
+  },
+  {
+   "skill": "vsphere-lifecycle-vlcm",
+   "file": "vsphere-lifecycle-vlcm/references/9.0/vlcm.md",
+   "line": 623,
+   "meth": "ANY",
+   "path": "/api/cis/tasks/52a1b0c4-",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "GET  https://$VC/api/cis/tasks/52a1b0c4-..."
+  },
+  {
+   "skill": "vsphere-lifecycle-vlcm",
+   "file": "vsphere-lifecycle-vlcm/references/9.0/vlcm.md",
+   "line": 629,
+   "meth": "ANY",
+   "path": "/api/esx/settings/clusters/$CL/software/drafts/draft-3?action=commit&vmw-task=true",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "POST https://$VC/api/esx/settings/clusters/$CL/software/drafts/draft-3?action=commit&vmw-task=true"
+  },
+  {
+   "skill": "vsphere-lifecycle-vlcm",
+   "file": "vsphere-lifecycle-vlcm/references/9.1/vlcm.md",
+   "line": 19,
+   "meth": "ANY",
+   "path": "/api/esx-settings",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "`/api/esx-settings/...` does **not** exist \u2014 zero operations in `SPEC9.1` contain the string"
+  },
+  {
+   "skill": "vsphere-lifecycle-vlcm",
+   "file": "vsphere-lifecycle-vlcm/references/9.1/vlcm.md",
+   "line": 333,
+   "meth": "POST",
+   "path": "/esx/settings/clusters/{cluster}/depot-overrides[",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "**Overrides:** `GET|POST /esx/settings/clusters/{cluster}/depot-overrides[?action=add|remove]`"
+  },
+  {
+   "skill": "vsphere-lifecycle-vlcm",
+   "file": "vsphere-lifecycle-vlcm/references/9.1/vlcm.md",
+   "line": 344,
+   "meth": "ANY",
+   "path": "/vmw-depot/index.xml",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "\"location\": \"https://depot.example.com/vmw-depot/index.xml\","
+  },
+  {
+   "skill": "vsphere-lifecycle-vlcm",
+   "file": "vsphere-lifecycle-vlcm/references/9.1/vlcm.md",
+   "line": 639,
+   "meth": "ANY",
+   "path": "/api/esx/settings/clusters/$CL/software/drafts/draft-3/software/base-image",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "PUT https://$VC/api/esx/settings/clusters/$CL/software/drafts/draft-3/software/base-image"
+  },
+  {
+   "skill": "vsphere-lifecycle-vlcm",
+   "file": "vsphere-lifecycle-vlcm/references/9.1/vlcm.md",
+   "line": 651,
+   "meth": "ANY",
+   "path": "/api/esx/settings/clusters/$CL/software/drafts/draft-3?action=validate&vmw-task=true",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "POST https://$VC/api/esx/settings/clusters/$CL/software/drafts/draft-3?action=validate&vmw-task=true"
+  },
+  {
+   "skill": "vsphere-lifecycle-vlcm",
+   "file": "vsphere-lifecycle-vlcm/references/9.1/vlcm.md",
+   "line": 653,
+   "meth": "ANY",
+   "path": "/api/cis/tasks/52a1b0c4-",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "GET  https://$VC/api/cis/tasks/52a1b0c4-..."
+  },
+  {
+   "skill": "vsphere-lifecycle-vlcm",
+   "file": "vsphere-lifecycle-vlcm/references/9.1/vlcm.md",
+   "line": 659,
+   "meth": "ANY",
+   "path": "/api/esx/settings/clusters/$CL/software/drafts/draft-3?action=commit&vmw-task=true",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "POST https://$VC/api/esx/settings/clusters/$CL/software/drafts/draft-3?action=commit&vmw-task=true"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/SKILL.md",
+   "line": 32,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}/vsan/{ManagedObject}/{moId}/{Operation}",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "`/sdk/vim25/{release}/vsan/{ManagedObject}/{moId}/{Operation}` \u2014 301 vSAN operations in"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/SKILL.md",
+   "line": 53,
+   "meth": "POST",
+   "path": "/sdk/vim25/{release}/vsan/{MO}/{moId}/{Op}",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| Configure vSAN on a cluster, disks and storage pools, fault domains, witness hosts, site maintenance, health, performance, space reporting, file services, iSCSI, CNS | **VI-JSON** | `POST /sdk/vim25"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.0/vsan.md",
+   "line": 55,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}/vsan/{MO}/{moId}/{Operation}",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "VI-JSON       https://<vcenter>/sdk/vim25/{release}/vsan/{MO}/{moId}/{Operation}"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.0/vsan.md",
+   "line": 349,
+   "meth": "GET",
+   "path": "/v1/clusters/{id}/datastores/validations/{validationId}",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "foundpath": "/v1/clusters/{id}/datastores/validations/{validationId}",
+   "opid": "getDatastoreMountValidation",
+   "ctx": "There is **no** `GET /v1/clusters/{id}/datastores/validations/{validationId}` in 9.0; that"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.0/vsan.md",
+   "line": 375,
+   "meth": "PATCH",
+   "path": "/v1/clusters",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "foundpath": "/v1/clusters",
+   "opid": "updateClusters",
+   "ctx": "**Not available in 9.0** (all 9.1 additions [DELTA]): `PATCH /v1/clusters`"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.0/vsan.md",
+   "line": 379,
+   "meth": "POST",
+   "path": "/v1/clusters/{clusterId}/remediations",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "foundpath": "/v1/clusters/{clusterId}/remediations",
+   "opid": "triggerRemediation",
+   "ctx": "`VsanDatastoreSpec.encryptionConfig`, `POST /v1/clusters/{clusterId}/remediations`."
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.0/vsan.md",
+   "line": 418,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "Base: `https://<vcenter-host>/sdk/vim25/{release}`. Nearly every vSAN operation is a **POST**"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.0/vsan.md",
+   "line": 643,
+   "meth": "ANY",
+   "path": "/api/vcenter/namespace-management/supervisors/{supervisor}/{control-plane,workloads}/storage/policies",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/vsphere-automation"
+   ],
+   "foundpath": "/vcenter/namespace-management/supervisors/{supervisor}/control-plane/storage/policies",
+   "opid": "Vcenter.NamespaceManagement.Supervisors.ControlPlane.Storage.Policies_get",
+   "ctx": "`/api/vcenter/namespace-management/supervisors/{supervisor}/{control-plane,workloads}/storage/policies`"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.0/vsan.md",
+   "line": 710,
+   "meth": "ANY",
+   "path": "/api/snapservice/protection-groups",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/vsan-data-protection"
+   ],
+   "foundpath": "/snapservice/protection-groups?action=compute-members",
+   "opid": "Snapservice.ProtectionGroups_computeMembers",
+   "ctx": "The top-level `/api/snapservice/protection-groups/...` family \u2014 `computeMembers`,"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.0/vsan.md",
+   "line": 733,
+   "meth": "ANY",
+   "path": "/api/snapservice/virtual-machines/snapshots",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/vsan-data-protection"
+   ],
+   "foundpath": "/snapservice/virtual-machines/snapshots",
+   "opid": "Snapservice.VirtualMachines.Snapshots_list",
+   "ctx": "The global `/api/snapservice/virtual-machines/snapshots` family with labels"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.0/vsan.md",
+   "line": 735,
+   "meth": "ANY",
+   "path": "/api/snapservice/virtual-machines/{vm}/protection-configuration",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/vsan-data-protection"
+   ],
+   "foundpath": "/snapservice/virtual-machines/{vm}/protection-configuration",
+   "opid": "Snapservice.VirtualMachines.ProtectionConfiguration_get",
+   "ctx": "`/api/snapservice/virtual-machines/{vm}/protection-configuration` are **9.1-only**."
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.1/vsan.md",
+   "line": 56,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}/vsan/{MO}/{moId}/{Operation}",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "VI-JSON       https://<vcenter>/sdk/vim25/{release}/vsan/{MO}/{moId}/{Operation}"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.1/vsan.md",
+   "line": 497,
+   "meth": "POST",
+   "path": "/sdk/vim25/9.1.0.0/vsan/VimClusterVsanVcStretchedClusterSystem/vsan-stretched-cluster-system/VSANVcGetWitnessHosts",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "POST /sdk/vim25/9.1.0.0/vsan/VimClusterVsanVcStretchedClusterSystem/vsan-stretched-cluster-system/VSANVcGetWitnessHosts"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.1/vsan.md",
+   "line": 498,
+   "meth": "POST",
+   "path": "/sdk/vim25/9.1.0.0/vsan/VsanObjectSystem/vsan-cluster-object-system/QuerySyncingVsanObjectsSummary",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "POST /sdk/vim25/9.1.0.0/vsan/VsanObjectSystem/vsan-cluster-object-system/QuerySyncingVsanObjectsSummary"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.1/vsan.md",
+   "line": 516,
+   "meth": "ANY",
+   "path": "/sdk/vim25/{release}",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "Base: `https://<vcenter-host>/sdk/vim25/{release}`, where `{release}` is an enum whose 9.1"
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/SKILL.md",
+   "line": 3,
+   "meth": "ANY",
+   "path": "/suite-api/api/dashboards",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "description: Query and configure VMware Cloud Foundation Operations monitoring in 9.0 and 9.1 through the /suite-api REST API \u2014 resources and inventory, stat/metric queries, alerts and alert definitio"
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/SKILL.md",
+   "line": 89,
+   "meth": "ANY",
+   "path": "/suite-api/api/dashboards",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "content-management import/export payloads. Legacy vROps had `/suite-api/api/dashboards`."
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/SKILL.md",
+   "line": 93,
+   "meth": "ANY",
+   "path": "/suite-api/doc/swagger-ui.html",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "point at the on-appliance Swagger UI \u2014 `https://<ops-fqdn>/suite-api/doc/swagger-ui.html`, note"
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/references/9.0/monitoring.md",
+   "line": 28,
+   "meth": "ANY",
+   "path": "/suite-api/doc/swagger-ui.html",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> `https://<ops-fqdn>/suite-api/doc/swagger-ui.html` (singular `doc`) [DOPS \u00a7\"On-appliance API"
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/references/9.0/monitoring.md",
+   "line": 90,
+   "meth": "POST",
+   "path": "/api/auth/token/exchange",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/vcf-operations"
+   ],
+   "foundpath": "/api/auth/token/exchange",
+   "opid": "exchangeOpsTokenWithJwtToken",
+   "ctx": "**9.1 difference:** none for acquisition. 9.1 *adds* `POST /api/auth/token/exchange`"
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/references/9.0/monitoring.md",
+   "line": 147,
+   "meth": "GET",
+   "path": "/api/auth/sources/vidb/well-known-url",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/vcf-operations"
+   ],
+   "foundpath": "/api/auth/sources/vidb/well-known-url",
+   "opid": "getVIDBWellKnownURL",
+   "ctx": "`SPEC9.1` contains **59** \u2014 the same 57 plus `GET /api/auth/sources/vidb/well-known-url` and"
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/references/9.0/monitoring.md",
+   "line": 148,
+   "meth": "POST",
+   "path": "/api/auth/token/exchange",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/vcf-operations"
+   ],
+   "foundpath": "/api/auth/token/exchange",
+   "opid": "exchangeOpsTokenWithJwtToken",
+   "ctx": "`POST /api/auth/token/exchange`. An earlier prose pass claimed `/auth/roles` and"
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/references/9.0/monitoring.md",
+   "line": 252,
+   "meth": "GET",
+   "path": "/api/adapterkinds/{adapterKindKey}/resourcekinds/{resourceKindKey}/identifiers",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/vcf-operations"
+   ],
+   "foundpath": "/api/adapterkinds/{adapterKindKey}/resourcekinds/{resourceKindKey}/identifiers",
+   "opid": "getResourceIdentifiersDetails",
+   "ctx": "`GET /api/adapterkinds/{adapterKindKey}/resourcekinds/{resourceKindKey}/identifiers`"
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/references/9.0/monitoring.md",
+   "line": 863,
+   "meth": "ANY",
+   "path": "/suite-api/api/dashboards",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "content-management import/export **examples**. Legacy vROps exposed `/suite-api/api/dashboards`."
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/references/9.0/monitoring.md",
+   "line": 866,
+   "meth": "ANY",
+   "path": "/suite-api/api/dashboards",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> Do not construct a `/suite-api/api/dashboards` call. If a user needs one, tell them it is not"
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/references/9.0/monitoring.md",
+   "line": 868,
+   "meth": "ANY",
+   "path": "/suite-api/doc/swagger-ui.html",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> `https://<ops-fqdn>/suite-api/doc/swagger-ui.html` \u2014 note the singular `doc`, which is how it"
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/references/9.1/monitoring.md",
+   "line": 743,
+   "meth": "ANY",
+   "path": "/api/salt",
+   "ver": "9.1",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.0/vcf-operations-for-logs"
+   ],
+   "foundpath": "/salt",
+   "opid": "DELETE_salt",
+   "ctx": "**5 operations. `/api/salt` has zero operations at 9.0.** Tag `Salt Management`. The Salt master"
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/references/9.1/monitoring.md",
+   "line": 1111,
+   "meth": "ANY",
+   "path": "/suite-api/api/dashboards",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "content-management import/export **examples**. Legacy vROps exposed `/suite-api/api/dashboards`."
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/references/9.1/monitoring.md",
+   "line": 1114,
+   "meth": "ANY",
+   "path": "/suite-api/api/dashboards",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> Do not construct a `/suite-api/api/dashboards` call. If a user needs one, tell them it is not"
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/references/9.1/monitoring.md",
+   "line": 1116,
+   "meth": "ANY",
+   "path": "/suite-api/doc/swagger-ui.html",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> `https://<ops-fqdn>/suite-api/doc/swagger-ui.html` \u2014 note the singular `doc`, as printed in"
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/references/deltas.md",
+   "line": 170,
+   "meth": "ANY",
+   "path": "/suite-api/api/dashboards",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| A `/suite-api/api/dashboards` path exists (legacy vROps habit) | assumption | Absent from all three sources | **UNVERIFIED / do not use.** Check the on-appliance Swagger UI. |"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/SKILL.md",
+   "line": 34,
+   "meth": "GET",
+   "path": "/events/text/CONTAINS%20foo/timestamp/LAST%20360000",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| Query | `GET /events/text/CONTAINS%20foo/timestamp/LAST%20360000` | `POST /api/v2/logs/search` with an Elasticsearch-style JSON DSL |"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.0/logs-and-networks.md",
+   "line": 161,
+   "meth": "GET",
+   "path": "/api/v2/events/constraint1/constraint2",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> Pass constraints within the URL, similar to `GET /api/v2/events/constraint1/constraint2/`"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.0/logs-and-networks.md",
+   "line": 166,
+   "meth": "GET",
+   "path": "/api/v2/events/text/CONTAINS%20Test/timestamp/LAST%20360000",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "GET /api/v2/events/text/CONTAINS%20Test/timestamp/LAST%20360000"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.0/logs-and-networks.md",
+   "line": 175,
+   "meth": "POST",
+   "path": "/api/v2/logs/search",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/log-management"
+   ],
+   "foundpath": "/api/v2/logs/search",
+   "opid": "executeLogSearchQuery_1",
+   "ctx": "9.1 replaces this with `POST /api/v2/logs/search` taking an Elasticsearch-style JSON query"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.0/logs-and-networks.md",
+   "line": 332,
+   "meth": "GET",
+   "path": "/events/{",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "`GET /events/{+path}` \u2014 **spec-confirmed (9.0)**, `GET_events-+path`."
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.0/logs-and-networks.md",
+   "line": 363,
+   "meth": "GET",
+   "path": "/aggregated-events/{",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "`GET /aggregated-events/{+path}` \u2014 **spec-confirmed (9.0)**,"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.0/logs-and-networks.md",
+   "line": 424,
+   "meth": "GET",
+   "path": "/api/v2/fields/extractedFields",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/log-management"
+   ],
+   "foundpath": "/api/v2/fields/extractedFields",
+   "opid": "getExtractedFields",
+   "ctx": "`GET /api/v2/fields/extractedFields` (list) and drops get-by-name, patch and delete."
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.0/logs-and-networks.md",
+   "line": 456,
+   "meth": "ANY",
+   "path": "/api/v2/logs/forwarders",
+   "ver": "9.0",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.1/log-management"
+   ],
+   "foundpath": "/api/v2/logs/forwarders",
+   "opid": "getAllLogForwarders",
+   "ctx": "At 9.1 the family moves to `/api/v2/logs/forwarders` and loses `/batch` \u2014 8 \u2192 7."
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.0/logs-and-networks.md",
+   "line": 552,
+   "meth": "POST",
+   "path": "/deployment/*",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "**Destructive.** `POST /upgrades`, `POST /deployment/*`, `DELETE /cluster/vips/{uuid}` and"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.0/logs-and-networks.md",
+   "line": 578,
+   "meth": "ANY",
+   "path": "/api/v2/events/text/CONTAINS%20error/timestamp/LAST%20360000",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "curl -sk -G \"https://$LOGS:9543/api/v2/events/text/CONTAINS%20error/timestamp/LAST%20360000\" \\"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.0/logs-and-networks.md",
+   "line": 587,
+   "meth": "GET",
+   "path": "/api/v2/aggregated-events",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": true,
+   "suffix_of_real": false,
+   "ctx": "`GET /api/v2/aggregated-events/...` with `aggregation-function=COUNT`, `bin-width=60000` and a"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.0/logs-and-networks.md",
+   "line": 616,
+   "meth": "GET",
+   "path": "/entities/<kind>",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "114 operations, overwhelmingly `GET /entities/<kind>` + `GET /entities/<kind>/{id}` pairs, all"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.0/logs-and-networks.md",
+   "line": 616,
+   "meth": "GET",
+   "path": "/entities/<kind>/{id}",
+   "ver": "9.0",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "114 operations, overwhelmingly `GET /entities/<kind>` + `GET /entities/<kind>/{id}` pairs, all"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.1/logs-and-networks.md",
+   "line": 39,
+   "meth": "ANY",
+   "path": "/api/v2/events/query",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "> (`/api/v2/events/query`) was tried and **not** confirmed [S26]. **The OpenAPI specs are the"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.1/logs-and-networks.md",
+   "line": 212,
+   "meth": "POST",
+   "path": "/api/v2/sessions",
+   "ver": "9.1",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.0/vcf-operations-for-logs"
+   ],
+   "foundpath": "/sessions",
+   "opid": "POST_sessions",
+   "ctx": "came from `POST /api/v2/sessions` on the log appliance itself."
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.1/logs-and-networks.md",
+   "line": 371,
+   "meth": "POST",
+   "path": "/api/v2/sessions",
+   "ver": "9.1",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.0/vcf-operations-for-logs"
+   ],
+   "foundpath": "/sessions",
+   "opid": "POST_sessions",
+   "ctx": "| **Log Management** | `X-JWT-Token: <jwt>` | `POST /suite-api/api/auth/token/exchange`, `{\"serviceKeys\":[\"ops-li\"]}`, authenticated with an OpsToken | Yes \u2014 replaces 9.0's `Authorization: Bearer <ses"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.1/logs-and-networks.md",
+   "line": 483,
+   "meth": "GET",
+   "path": "/aggregated-events/{",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "This replaces 9.0's entire `GET /aggregated-events/{+path}` operation with its"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.1/logs-and-networks.md",
+   "line": 611,
+   "meth": "POST",
+   "path": "/log-forwarder/batch",
+   "ver": "9.1",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.0/vcf-operations-for-logs"
+   ],
+   "foundpath": "/log-forwarder/batch",
+   "opid": "POST_log-forwarder-batch",
+   "ctx": "`POST /log-forwarder/batch` (`POST_log-forwarder-batch`) has **no 9.1 counterpart** \u2014 8 \u2192 7."
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.1/logs-and-networks.md",
+   "line": 641,
+   "meth": "GET",
+   "path": "/events/{",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| `GET /events/{+path}` and `GET /aggregated-events/{+path}` | 2 | Replaced by `POST /api/v2/logs/search` with a different language |"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.1/logs-and-networks.md",
+   "line": 641,
+   "meth": "GET",
+   "path": "/aggregated-events/{",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| `GET /events/{+path}` and `GET /aggregated-events/{+path}` | 2 | Replaced by `POST /api/v2/logs/search` with a different language |"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.1/logs-and-networks.md",
+   "line": 758,
+   "meth": "ANY",
+   "path": "/api/v1/series",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "a full Prometheus API \u2014 there is no `/api/v1/series`, `/labels`, `/label/*/values`, `/targets`"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.1/logs-and-networks.md",
+   "line": 829,
+   "meth": "GET",
+   "path": "/entities/<kind>",
+   "ver": "9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "Identical to 9.0, operation for operation. `GET /entities/<kind>` list operations still default"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.1/logs-and-networks.md",
+   "line": 876,
+   "meth": "GET",
+   "path": "/migration/{groupType}",
+   "ver": "9.1",
+   "verdict": "WRONG-VERSION",
+   "ev": "",
+   "found": [
+    "9.0/vcf-operations-for-networks"
+   ],
+   "foundpath": "/migration/{groupType}",
+   "opid": "getMigrationWave",
+   "ctx": "is `GET /migration/{groupType}`, replaced by `GET /migration/wave/{groupType}` (same"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/deltas.md",
+   "line": 100,
+   "meth": "GET",
+   "path": "/events/{",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| `events` \u2014 1 query (`GET /events/{+path}`) | folded into `POST /api/v2/logs/search` | **Replaced**, different language |"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/deltas.md",
+   "line": 101,
+   "meth": "GET",
+   "path": "/aggregated-events/{",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| `aggregated-events` \u2014 1 (`GET /aggregated-events/{+path}`) | folded into the `aggregations` block of the same operation | **Replaced**, and arguably more capable (nesting, `top_hits`, `composite`) |"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/deltas.md",
+   "line": 142,
+   "meth": "GET",
+   "path": "/api/v2/events/text/CONTAINS%20Test/timestamp/LAST%20360000",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| **How you query** | `GET /api/v2/events/text/CONTAINS%20Test/timestamp/LAST%20360000` + `limit`, `timeout`, `view`, `order-by-direction`. Defaults: 100 events, 30 s, **events from one minute ago or "
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/deltas.md",
+   "line": 311,
+   "meth": "ANY",
+   "path": "/api/v2/events/query",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| Log Management concrete endpoints unknown; portal returned \"Object Not Found\" | `DOPS` \u00a7Gaps item 4 [S25][S26] | `SPECLM9.1` + `RAWLM9.1` give all 23 paths, schemas and enums | **Resolved from the s"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/deltas.md",
+   "line": 312,
+   "meth": "GET",
+   "path": "/events/{",
+   "ver": "9.0,9.1",
+   "verdict": "NOT-FOUND",
+   "ev": "",
+   "prefix_of_real": false,
+   "suffix_of_real": false,
+   "ctx": "| Legacy Log Insight `/api/v2/events/{constraints}` might not carry over | `DOPS` \u00a7Gaps item 4 | Present at 9.0 (`GET /events/{+path}`), **absent at 9.1** | **Resolved.** The warning was right for 9.1"
+  }
+ ],
+ "opid": [
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+   "line": 342,
+   "opid": "updateHosts",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "ctx": "**9.1 difference:** `PATCH /v1/hosts` (`updateHosts`, body `HostsUpdateSpec`) and"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+   "line": 343,
+   "opid": "getSoftwareInfoForHost",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "ctx": "`GET /v1/hosts/{id}/software` (`getSoftwareInfoForHost`) are **9.1-only**. Do not call them"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+   "line": 439,
+   "opid": "updateDomains",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "ctx": "**9.1 difference:** `PATCH /v1/domains` (`updateDomains`, bulk refresh via `DomainsUpdateSpec`),"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+   "line": 536,
+   "opid": "updateClusters",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "ctx": "**9.1 difference:** `PATCH /v1/clusters` (`updateClusters`, bulk refresh),"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+   "line": 552,
+   "opid": "updateVcenterFqdn",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "ctx": "> `PATCH /v1/vcenters/{vcenterId}/fqdn` (`updateVcenterFqdn`) is **9.1-only** \u2014 there is no way to"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+   "line": 633,
+   "opid": "syncSshKnownHosts",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "ctx": "**9.1 difference:** 9.1 adds four brownfield operations (`syncSshKnownHosts`,"
+  },
+  {
+   "skill": "vcf-domains-clusters",
+   "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+   "line": 634,
+   "opid": "exportValidationsAsCsv",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "ctx": "`exportValidationsAsCsv`, and the validation-group pair) and the cluster `remediations` pair for"
+  },
+  {
+   "skill": "vcf-installer-bringup",
+   "file": "vcf-installer-bringup/references/9.0/bringup.md",
+   "line": 343,
+   "opid": "getMachineDetails",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/sddc-manager",
+    "9.1/vcf-installer"
+   ],
+   "ctx": "(`getMachineDetails`) \u2014 one of the five 9.1 additions [DELTA]."
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.0/networking.md",
+   "line": 107,
+   "opid": "GetAllRoleBindings",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-global-policy",
+    "9.1/nsx-manager",
+    "9.1/nsx-policy"
+   ],
+   "ctx": "machine-confirmed here. `GET /api/v1/aaa/role-bindings` (`GetAllRoleBindings`) is spec-confirmed for"
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.0/networking.md",
+   "line": 141,
+   "opid": "ListSites",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-policy"
+   ],
+   "ctx": "`GET /policy/api/v1/infra/sites` (`ListSites`) and"
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.0/networking.md",
+   "line": 142,
+   "opid": "ListEnforcementPointForSite",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-policy"
+   ],
+   "ctx": "`GET /policy/api/v1/infra/sites/{site-id}/enforcement-points` (`ListEnforcementPointForSite`) are"
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.0/networking.md",
+   "line": 165,
+   "opid": "ListTransportZonesForEnforcementPoint",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-policy"
+   ],
+   "ctx": "**[9.1-ONLY \u2014 NOT VERIFIED FOR 9.0]** for `ListTransportZonesForEnforcementPoint`,"
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.0/networking.md",
+   "line": 166,
+   "opid": "PatchTransportZoneForEnforcementPoint",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-policy"
+   ],
+   "ctx": "`PatchTransportZoneForEnforcementPoint`, `CreateOrUpdateTransportZoneForEnforcementPoint`,"
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.0/networking.md",
+   "line": 166,
+   "opid": "CreateOrUpdateTransportZoneForEnforcementPoint",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-policy"
+   ],
+   "ctx": "`PatchTransportZoneForEnforcementPoint`, `CreateOrUpdateTransportZoneForEnforcementPoint`,"
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.0/networking.md",
+   "line": 167,
+   "opid": "DeleteTransportZoneForEnforcementPoint",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-policy"
+   ],
+   "ctx": "`DeleteTransportZoneForEnforcementPoint`."
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.0/networking.md",
+   "line": 185,
+   "opid": "ListTier0s",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-policy"
+   ],
+   "ctx": "- **9.1 difference:** the gateway **list** endpoints (`ListTier0s`, `ListTier1`) are spec-confirmed"
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.0/networking.md",
+   "line": 185,
+   "opid": "ListTier1",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-policy"
+   ],
+   "ctx": "- **9.1 difference:** the gateway **list** endpoints (`ListTier0s`, `ListTier1`) are spec-confirmed"
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.0/networking.md",
+   "line": 242,
+   "opid": "GetPartialPatchConfiguration",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-global-policy",
+    "9.1/nsx-policy"
+   ],
+   "ctx": "(`GetPartialPatchConfiguration`) is spec-confirmed for **9.1 only** \u2014"
+  },
+  {
+   "skill": "nsx-segments-routing",
+   "file": "nsx-segments-routing/references/9.0/networking.md",
+   "line": 419,
+   "opid": "CreateOrReplaceInfraSegment",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-policy"
+   ],
+   "ctx": "**[DOC-9.0]**. Its operationId is `CreateOrReplaceInfraSegment` \u2014 and that name is **also** 9.0-verified,"
+  },
+  {
+   "skill": "nsx-network-services",
+   "file": "nsx-network-services/references/9.0/services.md",
+   "line": 102,
+   "opid": "GetAllRoleBindings",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-global-policy",
+    "9.1/nsx-manager",
+    "9.1/nsx-policy"
+   ],
+   "ctx": "`GET /api/v1/aaa/role-bindings` (`GetAllRoleBindings`) is spec-confirmed for **9.1 only** \u2014"
+  },
+  {
+   "skill": "nsx-network-services",
+   "file": "nsx-network-services/references/9.0/services.md",
+   "line": 160,
+   "opid": "ListTier1LocaleServices",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-policy"
+   ],
+   "ctx": "- **9.1 difference:** `ListTier1LocaleServices`, `ReadTier1`, `ReadTier0` and"
+  },
+  {
+   "skill": "nsx-network-services",
+   "file": "nsx-network-services/references/9.0/services.md",
+   "line": 160,
+   "opid": "ReadTier1",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-policy"
+   ],
+   "ctx": "- **9.1 difference:** `ListTier1LocaleServices`, `ReadTier1`, `ReadTier0` and"
+  },
+  {
+   "skill": "nsx-network-services",
+   "file": "nsx-network-services/references/9.0/services.md",
+   "line": 160,
+   "opid": "ReadTier0",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-policy"
+   ],
+   "ctx": "- **9.1 difference:** `ListTier1LocaleServices`, `ReadTier1`, `ReadTier0` and"
+  },
+  {
+   "skill": "nsx-network-services",
+   "file": "nsx-network-services/references/9.0/services.md",
+   "line": 161,
+   "opid": "ReadEdgeClusterForEnforcementPoint",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/nsx-policy"
+   ],
+   "ctx": "`ReadEdgeClusterForEnforcementPoint` are all spec-confirmed in 9.1, along with the `Tier1` schema"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.0/vsan.md",
+   "line": 350,
+   "opid": "getDatastoreMountValidation",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "ctx": "retrieval operation (`getDatastoreMountValidation`) is **9.1-only** [DELTA], so in 9.0 the"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.0/vsan.md",
+   "line": 376,
+   "opid": "updateClusters",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "ctx": "(`updateClusters`), `ClusterUpdateSpec.clusterPrimaryDatastoreUpdateSpec`,"
+  },
+  {
+   "skill": "vsan-storage",
+   "file": "vsan-storage/references/9.0/vsan.md",
+   "line": 378,
+   "opid": "getDatastoreMountValidation",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/sddc-manager"
+   ],
+   "ctx": "`getDatastoreMountValidation`, `ClusterUnstretchSpec.azToRemove`,"
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/references/9.0/monitoring.md",
+   "line": 91,
+   "opid": "exchangeOpsTokenWithJwtToken",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/vcf-operations"
+   ],
+   "ctx": "(`exchangeOpsTokenWithJwtToken`) for obtaining downstream-service JWTs \u2014 absent at 9.0."
+  },
+  {
+   "skill": "vcf-operations-monitoring",
+   "file": "vcf-operations-monitoring/references/9.0/monitoring.md",
+   "line": 253,
+   "opid": "getResourceIdentifiersDetails",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/vcf-operations"
+   ],
+   "ctx": "(`getResourceIdentifiersDetails`), which is about resource *identifiers*, not stat keys."
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.0/logs-and-networks.md",
+   "line": 813,
+   "opid": "getLicensesV2",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/vcf-operations-for-networks"
+   ],
+   "ctx": "| Licensing | **4** | `getLicenses`, `activateSerialNumber`, `deactivateSerialNumber`, `validateSerialNumber` \u2014 the last three already deprecated at 9.0. **`getLicensesV2` does not"
+  },
+  {
+   "skill": "vcf-operations-logs-and-networks",
+   "file": "vcf-operations-logs-and-networks/references/9.0/logs-and-networks.md",
+   "line": 835,
+   "opid": "getLicensesV2",
+   "ver": "9.0",
+   "verdict": "OPID-WRONG-VERSION",
+   "found": [
+    "9.1/vcf-operations-for-networks"
+   ],
+   "ctx": "| Licensing v1 (`activateSerialNumber`, `deactivateSerialNumber`, `validateSerialNumber`) | 3 | Not stated. `getLicensesV2` is 9.1-only and covers reads only |"
+  }
+ ],
+ "stats": {
+  "vcf-domains-clusters": {
+   "claims": 404,
+   "ok": 393,
+   "wrongver": 6,
+   "wrongmethod": 4,
+   "miss": 1,
+   "opid": 205,
+   "opid_wrongver": 7
+  },
+  "vcf-installer-bringup": {
+   "claims": 171,
+   "ok": 168,
+   "wrongver": 3,
+   "opid": 57,
+   "opid_wrongver": 1
+  },
+  "vcf-certificates-credentials": {
+   "claims": 168,
+   "ok": 165,
+   "opid": 186,
+   "wrongver": 2,
+   "prefix": 1
+  },
+  "nsx-segments-routing": {
+   "claims": 116,
+   "ok": 67,
+   "nsx90": 47,
+   "miss": 5,
+   "opid": 569,
+   "opid_wrongver": 11
+  },
+  "nsx-network-services": {
+   "claims": 80,
+   "ok": 46,
+   "miss": 5,
+   "nsx90": 30,
+   "opid": 395,
+   "opid_wrongver": 5
+  },
+  "vsphere-inventory-vm-lifecycle": {
+   "claims": 220,
+   "miss": 24,
+   "ok": 169,
+   "prefix": 18,
+   "opid": 268,
+   "wrongver": 9
+  },
+  "vsphere-content-tags-policies": {
+   "claims": 194,
+   "ok": 138,
+   "prefix": 13,
+   "miss": 37,
+   "wrongmethod": 2,
+   "wrongver": 4,
+   "opid": 212
+  },
+  "vsphere-lifecycle-vlcm": {
+   "claims": 162,
+   "prefix": 11,
+   "miss": 15,
+   "ok": 136,
+   "opid": 212
+  },
+  "vsan-storage": {
+   "claims": 202,
+   "prefix": 12,
+   "miss": 8,
+   "ok": 175,
+   "opid": 89,
+   "wrongver": 7,
+   "opid_wrongver": 3
+  },
+  "vcf-operations-monitoring": {
+   "claims": 475,
+   "miss": 11,
+   "ok": 424,
+   "prefix": 35,
+   "opid": 603,
+   "wrongver": 5,
+   "opid_wrongver": 2
+  },
+  "vcf-operations-logs-and-networks": {
+   "claims": 329,
+   "ok": 295,
+   "miss": 21,
+   "opid": 270,
+   "wrongver": 7,
+   "prefix": 6,
+   "opid_wrongver": 2
+  },
+  "vcf-automation-vmapps": {
+   "claims": 35,
+   "nospec": 35
+  },
+  "vcf-automation-allapps-k8s": {
+   "claims": 15,
+   "nospec": 15
+  },
+  "powercli-vcf": {
+   "claims": 26,
+   "nospec": 26
+  }
+ }
+}

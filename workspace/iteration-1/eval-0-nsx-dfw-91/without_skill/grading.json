@@ -1,0 +1,63 @@
+{
+ "eval_id": 0,
+ "run_id": "eval-0-nsx-dfw-91-without_skill",
+ "expectations": [
+  {
+   "text": "Uses the Policy API base path /policy/api/v1 for the security policy and rule calls",
+   "passed": true,
+   "evidence": "All calls use `$NSX/policy/api/v1/infra/domains/default/...`; section titled '3. API path (Policy API)'."
+  },
+  {
+   "text": "Does NOT present the Manager API /api/v1 as a valid surface for creating policy objects",
+   "passed": true,
+   "evidence": "Manager API is never offered for policy object creation; only `/api/session/*` is used outside `/policy/api/v1`."
+  },
+  {
+   "text": "Auth uses POST /api/session/create with form fields j_username and j_password",
+   "passed": true,
+   "evidence": "'curl ... -X POST \"$NSX/api/session/create\" ... --data-urlencode \"j_username=$NSX_USER\" --data-urlencode \"j_password=$NSX_PASS\"'."
+  },
+  {
+   "text": "States that BOTH the JSESSIONID cookie AND the X-XSRF-TOKEN header must be sent on subsequent calls",
+   "passed": false,
+   "evidence": "Contradicts itself: 'Every subsequent call then needs **both** the cookie and the token' is undercut ~15 lines later by 'The XSRF token is only required for state-changing verbs (POST/PUT/PATCH/DELETE), but sending it on GETs too is harmless.' The cookie is also never named JSESSIONID; only a cookie jar (-c/-b /tmp/nsx-cookies.txt) is used."
+  },
+  {
+   "text": "Creates or references a security policy under a domain before creating the rule (correct nesting, not a bare rule POST)",
+   "passed": true,
+   "evidence": "Section 4 PATCHes `/infra/domains/default/security-policies/block-rdp-app-to-db` with the rule nested in a `rules` array \u2014 'A `PATCH` against the security policy path creates the section and its rule together.'"
+  },
+  {
+   "text": "States the prerequisite that both source and destination groups must already exist and be referenced by path",
+   "passed": true,
+   "evidence": "Section 2 'Find the exact paths of your two groups' \u2014 'Don't guess the group IDs ... You're looking for the `path` field', plus a warning that groups absent from the listing are VPC-scoped."
+  },
+  {
+   "text": "Explicitly labels the answer as applying to VCF 9.1 / NSX 9.1",
+   "passed": true,
+   "evidence": "Title: 'Blocking RDP (tcp/3389) app-tier -> db-tier with the NSX Policy API (VCF 9.1)'."
+  },
+  {
+   "text": "Includes the caveat that the skill was built from documentation and not validated against a live environment",
+   "passed": false,
+   "evidence": "No caveat that the answer is documentation-derived and unvalidated. The closest statement is the opposite in tone: 'has been stable across NSX 3.x through the NSX bundled with VCF 9.x, so these calls should work as written on 9.1.'"
+  },
+  {
+   "text": "Contains no endpoint that is absent from the 9.1 nsx_policy_api spec",
+   "passed": true,
+   "evidence": "All cited paths present in 9.1__nsx-policy.ops.json: ReadIntentStatus (/infra/realized-state/status), GetGroupVMMembers (/infra/domains/{d}/groups/{g}/members/virtual-machines), ListServicesForTenant, PatchSecurityRule, DeleteSecurityPolicyForDomain."
+  }
+ ],
+ "passed_count": 7,
+ "total_count": 9,
+ "notes": [
+  "without_skill: 'when you supply `service_entries`, you set `services` to `[\"ANY\"]`' is asserted as a requirement; no spec or dossier source establishes this coupling. The with_skill answer omits `services` entirely, which matches the Rule schema.",
+  "without_skill claims XSRF is 'only required for state-changing verbs' \u2014 not supported by any source in the research corpus."
+ ],
+ "summary": {
+  "passed": 7,
+  "failed": 2,
+  "total": 9,
+  "pass_rate": 0.7778
+ }
+}

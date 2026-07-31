@@ -1,0 +1,46 @@
+{
+ "eval_id": 4,
+ "run_id": "eval-4-router-no-version-without_skill",
+ "expectations": [
+  {
+   "text": "Establishes or asks for the target VCF version (9.0 vs 9.1) before committing to an auth flow",
+   "passed": true,
+   "evidence": "'**1. What VCF version are you on?**' asked before the paths, and answers are split into 'Path A - VCF 9.1 and later' and 'Path B - VCF 5.x through 9.0'."
+  },
+  {
+   "text": "Does NOT silently default to 9.1 / 'latest'",
+   "passed": true,
+   "evidence": "Does not default to 9.1; Path B is given in equal depth and the closing section repeats 'Tell me your **VCF version**.'"
+  },
+  {
+   "text": "Establishes or asks which product the token is for, rather than assuming one API covers VCF",
+   "passed": true,
+   "evidence": "'\"VCF\" isn't one API - SDDC Manager, VCF Operations, VCF Automation, vCenter, and NSX each have their own auth' and '**2. What are you automating against?**'"
+  },
+  {
+   "text": "States that SDDC Manager is excluded from VCF SSO and uses its own token flow",
+   "passed": false,
+   "evidence": "Never states that SDDC Manager is excluded from VCF SSO. SDDC Manager is presented as the pre-9.1 token source and as one row of the 9.x component table; the 9.1 Path A implies the SSO token is the general answer with no carve-out."
+  },
+  {
+   "text": "If 9.1 is selected, describes the VCF Identity Broker / API client + API token route",
+   "passed": true,
+   "evidence": "Path A describes generating the token, then 'Your script passes it to VIDB, which validates it and returns a **short-lived bearer access token**' used as `Authorization: Bearer <token>`."
+  }
+ ],
+ "passed_count": 4,
+ "total_count": 5,
+ "notes": [
+  "without_skill: `GET /v1/system/version` is offered as the version check. No such operation exists in 9.0__sddc-manager.ops.json or 9.1__sddc-manager.ops.json (only GET /v1/system, GET /v1/system/appliance-info, GET /v1/releases/system).",
+  "without_skill: 'VCF Services Runtime | POST /v1/identity/token | grant_type=password | .access_token' appears in no spec at either tag \u2014 an unverifiable/likely fabricated endpoint presented in a table of concrete endpoints.",
+  "without_skill: SDDC Manager roles given as 'ADMIN, OPERATOR, or VIEWER'; no source in the research corpus publishes SDDC Manager role strings.",
+  "without_skill: VCF Operations header given as `Authorization: vRealizeOpsToken <token>` and called 'non-standard'; the documented 9.x form is `Authorization: OpsToken <token>`, with vRealizeOpsToken as the legacy alias.",
+  "without_skill: the refresh call is sent as `-H 'Content-Type: application/json' -d '\"<refresh-token-id>\"'`; vcf-core-9.0.md documents the body as text/plain refresh-token UUID."
+ ],
+ "summary": {
+  "passed": 4,
+  "failed": 1,
+  "total": 5,
+  "pass_rate": 0.8
+ }
+}

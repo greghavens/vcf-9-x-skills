@@ -1,0 +1,741 @@
+{
+  "metadata": {
+    "skill_name": "vcf-9x-skills",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-07-31T03:02:38Z",
+    "evals_run": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      8
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 9,
+        "failed": 0,
+        "total": 9,
+        "time_seconds": 130.7,
+        "tokens": 84224,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses the Policy API base path /policy/api/v1 for the security policy and rule calls",
+          "passed": true,
+          "evidence": "Step 1-6 all use `$NSX/policy/api/v1/infra/domains/...`; header states 'Everything goes through the Policy API (`/policy/api/v1`)'."
+        },
+        {
+          "text": "Does NOT present the Manager API /api/v1 as a valid surface for creating policy objects",
+          "passed": true,
+          "evidence": "'The Manager API (`/api/v1`) from NSX 4.x and earlier is no longer supported for policy objects; it survives only for node/cluster/fabric admin, session lifecycle and OpenAPI spec retrieval.'"
+        },
+        {
+          "text": "Auth uses POST /api/session/create with form fields j_username and j_password",
+          "passed": true,
+          "evidence": "'POST https://<nsx-manager>/api/session/create ... j_username=<user>&j_password=<password>' with Content-Type application/x-www-form-urlencoded."
+        },
+        {
+          "text": "States that BOTH the JSESSIONID cookie AND the X-XSRF-TOKEN header must be sent on subsequent calls",
+          "passed": true,
+          "evidence": "'**Both must be sent on every subsequent call.**' followed by the literal `Cookie: JSESSIONID=<value>` / `X-XSRF-TOKEN: <value>` block; no later qualification."
+        },
+        {
+          "text": "Creates or references a security policy under a domain before creating the rule (correct nesting, not a bare rule POST)",
+          "passed": true,
+          "evidence": "Step 3 PATCHes `/infra/domains/$DOMAIN/security-policies/$POLICY` before Step 4 PATCHes `.../security-policies/$POLICY/rules/$RULE`; opens with 'There is no `POST /policy/api/v1/rules`'."
+        },
+        {
+          "text": "States the prerequisite that both source and destination groups must already exist and be referenced by path",
+          "passed": true,
+          "evidence": "Prereq P5: 'Both groups exist, and you use their **server-returned `path`**' plus 'Rules reference groups by **policy path string** ... not by name and not by UUID.'"
+        },
+        {
+          "text": "Explicitly labels the answer as applying to VCF 9.1 / NSX 9.1",
+          "passed": true,
+          "evidence": "'Version pinned to **VCF 9.1 / NSX 9.1.0.0** (build 25318225) ... scoped to 9.1 only.'"
+        },
+        {
+          "text": "Includes the caveat that the skill was built from documentation and not validated against a live environment",
+          "passed": true,
+          "evidence": "Provenance: 'Every endpoint and operationId cited above was confirmed against the NSX OpenAPI specification at the `9.1.0.0` tag ... **None of it has been executed against a live NSX.**'"
+        },
+        {
+          "text": "Contains no endpoint that is absent from the 9.1 nsx_policy_api spec",
+          "passed": true,
+          "evidence": "Verified against 9.1__nsx-policy.ops.json: ReadDomainForInfra, ReadGroupForDomain, PatchSecurityPolicyForDomain, PatchSecurityRule, ReadSecurityRule, GetRuleStatistics, ReviseSecurityRule, GetFilteredRules, ListDrafts/PublishDraft/GetPreviewOfConfigurationAfterPublishOfDraft all present; /api/session/create, /cluster/api-service, /aaa/role-bindings present in 9.1__nsx-manager.ops.json as claimed."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 161.6,
+        "tokens": 86184,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Explicitly labels the answer as VCF 9.0 / NSX 9.0",
+          "passed": true,
+          "evidence": "Title 'Blocking tcp/3389 between two existing NSX groups - on VCF 9.0'; prereq 5: 'this is pinned to NSX **9.0.0.0 (build 24733065)** from the VCF 9.0 BOM.'"
+        },
+        {
+          "text": "States that no NSX OpenAPI spec is published at the 9.0.0.0 tag of vmware/vcf-api-specs, so 9.0 endpoints are sourced from prose documentation",
+          "passed": true,
+          "evidence": "'**Broadcom publishes no NSX OpenAPI specification at the `9.0.0.0` tag** of `github.com/vmware/vcf-api-specs`. `nsx-policy`, `nsx-manager` and `nsx-global-policy` all first appear at `9.1.0.0` ... For 9.0 the best available evidence is version-pinned prose.' Matches spec-inventory (nsx-* present:no at 9.0)."
+        },
+        {
+          "text": "Does NOT present a 9.1-spec-derived endpoint as verified for 9.0",
+          "passed": true,
+          "evidence": "Per-line evidence tags with an explicit rule: 'a path being confirmed in the 9.1 spec is not evidence about 9.0.' Items known only from 9.1 (domain list, /infra/services, drafts list//complete, revise parameters, 403-on-expiry) are tagged [9.1-ONLY], and all body field names are tagged [INFERRED]."
+        },
+        {
+          "text": "Still uses the Policy API /policy/api/v1 surface (correct for 9.0 as well)",
+          "passed": true,
+          "evidence": "Steps 1-6 all issue `$NSX/policy/api/v1/infra/...`; closing note: 'everything here is Policy API (`/policy/api/v1`).'"
+        },
+        {
+          "text": "Answers the confidence question directly rather than deflecting",
+          "passed": true,
+          "evidence": "Opens with the answer ('The paths and verbs are solid. The request bodies are not.'), gives a per-endpoint confidence table, and closes with a 'Bottom line on your question' section splitting high/low/not-confident."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 145.8,
+        "tokens": 67210,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "States that SDDC Manager still exists in VCF 9.1 and is in the 9.1 BOM",
+          "passed": true,
+          "evidence": "'SDDC Manager was not removed in 9.1' and 'It is in the 9.1 BOM, merged with VCF Installer into a single row: `VCF Installer/SDDC Manager 9.1.0.0 (25371088)`.'"
+        },
+        {
+          "text": "States that the deprecation is scoped to the SDDC Manager UI, not the API",
+          "passed": true,
+          "evidence": "'That sentence scopes the deprecation to the **UI**. No 9.1 page states the SDDC Manager **API** is deprecated' \u2014 quoting the upgrade-guide sentence verbatim."
+        },
+        {
+          "text": "Does NOT use the name 'VCF Fleet Manager' as a real 9.1 product",
+          "passed": true,
+          "evidence": "'**There is no product called \"VCF Fleet Manager.\"** It does not appear anywhere in the 9.1 documentation, and it never existed as a product name.'"
+        },
+        {
+          "text": "Names fleet lifecycle and SDDC lifecycle as the services that replaced the 9.0 standalone Fleet Management Appliance",
+          "passed": true,
+          "evidence": "'It is replaced with two new services - Fleet Lifecycle and SDDC Lifecycle - which run natively within VCF Management Services' (KB 440630 quote) and 'The 9.1 nouns you want are **fleet lifecycle** and **SDDC lifecycle**.'"
+        },
+        {
+          "text": "Notes that the SDDC Manager API surface grew rather than shrank between 9.0 and 9.1",
+          "passed": true,
+          "evidence": "Table: sddc-manager 375 -> 423 ops, 48 added, 0 removed; 'Zero operations removed. Forty-eight added.' Matches spec-inventory/SUMMARY.md exactly."
+        },
+        {
+          "text": "Does not fabricate an endpoint for a 'Fleet Manager' API",
+          "passed": true,
+          "evidence": "No 'Fleet Manager' API is offered. All quoted /fleet-lcm/v1 and /sddc-lcm/v1 operations verified present in 9.1__fleet-lcm.ops.json (51 ops) and 9.1__sddc-lcm.ops.json (26 ops), including ?action=configure/precheck/apply and the absence of an upgrade-plan resource on sddc-lcm."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 156.5,
+        "tokens": 105116,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Establishes or asks for the target VCF version (9.0 vs 9.1) before committing to an auth flow",
+          "passed": true,
+          "evidence": "Section '## First: which version are you on?' with the explicit question '**Is this a 9.0 or a 9.1 fleet?**' plus a self-service check (POST /v1/tokens then GET /v1/system/appliance-info) before either flow is given."
+        },
+        {
+          "text": "Does NOT silently default to 9.1 / 'latest'",
+          "passed": true,
+          "evidence": "'Below I've given **both** answers, clearly labelled. Take the one that matches your estate; don't blend them.' Separate '# If you are on VCF 9.1' and '# If you are on VCF 9.0' sections."
+        },
+        {
+          "text": "Establishes or asks which product the token is for, rather than assuming one API covers VCF",
+          "passed": true,
+          "evidence": "'**there is no single \"VCF API token.\"** Each product has its own auth flow'; closing ask #3: '**Tell me which products you're actually hitting.**'"
+        },
+        {
+          "text": "States that SDDC Manager is excluded from VCF SSO and uses its own token flow",
+          "passed": true,
+          "evidence": "'### SDDC Manager is not behind SSO. Ever. **SDDC Manager and ESX are excluded from VCF SSO in both 9.0 and 9.1** ... SDDC Manager still needs its own `POST /v1/tokens`.'"
+        },
+        {
+          "text": "If 9.1 is selected, describes the VCF Identity Broker / API client + API token route",
+          "passed": true,
+          "evidence": "9.1 section walks API client creation, Generate API Token, then the identity-broker exchange POST https://<identity-broker-fqdn>/acs/t/<tenant>/token with grant_type=refresh_token&api_token=..., plus the scripted /suite-api/api/fleet-management/iam/ssorealms/... routes (70 ops in 9.1, 0 in 9.0 \u2014 confirmed against the ops inventory)."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8571,
+        "passed": 6,
+        "failed": 1,
+        "total": 7,
+        "time_seconds": 561.4,
+        "tokens": 104970,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses POST /v1/tokens with a JSON body containing username and password",
+          "passed": true,
+          "evidence": "_sddc_login sends `_sddc_http POST \"https://${SDDC_MANAGER}/v1/tokens\"` with `--data @-` carrying `{\"username\":\"${usr}\",\"password\":\"${esc}\"}` and Content-Type: application/json."
+        },
+        {
+          "text": "Extracts the accessToken field for the bearer token",
+          "passed": true,
+          "evidence": "`at=$(_sddc_json_str \"$_sddc_body\" .accessToken)` with a jq path `.accessToken` and a sed fallback for the same field."
+        },
+        {
+          "text": "Uses the header Authorization: Bearer <accessToken>",
+          "passed": true,
+          "evidence": "sddc_api sends `--header \"Authorization: Bearer ${tok}\"`; header comment 'Subsequent calls use: Authorization: Bearer <accessToken>'."
+        },
+        {
+          "text": "Uses refreshToken.id and PATCH /v1/tokens/access-token/refresh for refresh",
+          "passed": true,
+          "evidence": "`rt=$(_sddc_json_str \"$_sddc_body\" .refreshToken.id)` and _sddc_refresh issues `PATCH https://${SDDC_MANAGER}/v1/tokens/access-token/refresh` with $_sddc_rt as the body."
+        },
+        {
+          "text": "Notes that the refresh endpoint takes a plain-text refresh token rather than JSON",
+          "passed": true,
+          "evidence": "'**The refresh body is sent bare, then quoted on a 400.** ... a bare UUID isn't strictly valid JSON - Broadcom's reference sends it bare'; the default request sends the naked UUID (`--data \"$_sddc_rt\"`), and the response is handled as 'the raw JWT'."
+        },
+        {
+          "text": "Addresses the self-signed cert explicitly rather than silently emitting curl -k, and notes that Broadcom docs prescribe replacing certificates rather than disabling verification",
+          "passed": false,
+          "evidence": "First conjunct met - the self-signed cert is addressed head-on ('Your self-signed cert doesn't have to mean `-k`') with an openssl s_client pin plus out-of-band fingerprint check, and SDDC_INSECURE defaults to 0. Second conjunct absent: nowhere does it note that Broadcom's documentation prescribes importing/replacing certificates rather than disabling verification. The word Broadcom appears only in reference to the token endpoints and the developer reference."
+        },
+        {
+          "text": "Answer is scoped to 9.0 and does not assert 9.1 paths as verified",
+          "passed": true,
+          "evidence": "Titled 'VCF 9.0'; provenance section says the endpoints were read 'at **git tag `9.0.0.0`**'. The only 9.1 claim - 'All three are unchanged at `9.1.0.0`' - is itself spec-true (both tags carry POST /v1/tokens, PATCH /v1/tokens/access-token/refresh, DELETE /v1/tokens/refresh-token)."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 6,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 337.6,
+        "tokens": 94560,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Points to github.com/vmware/vcf-api-specs and names the version tag 9.1.0.0",
+          "passed": true,
+          "evidence": "'Broadcom publishes machine-readable specs at `https://github.com/vmware/vcf-api-specs`, and the repo carries **per-release git tags** (`9.0.0.0`, `9.1.0.0`)' with a worktree command for tag 9.1.0.0 and the warning '`main` is not a version.'"
+        },
+        {
+          "text": "Gives a concrete way to search the spec corpus (grep/script/jq over the spec files) rather than only saying 'read the docs'",
+          "passed": true,
+          "evidence": "Gives the clone/worktree commands and the actual searches run: `python3 scripts/find_operation.py --version 9.1 \"stretch\"`, `--both-versions \"stretch\"`, `--any witness`, `\"fault domain\"` - and explains you must search summaries, not paths, because the operation is PATCH /v1/clusters/{id}."
+        },
+        {
+          "text": "Mentions at least one on-appliance discovery route (e.g. the VCF Operations swagger UI or the NSX openapi spec endpoint)",
+          "passed": true,
+          "evidence": "'For VCF Operations there is an on-appliance Swagger UI at `https://<operations-fqdn>/suite-api/doc/swagger-ui.html` (singular `doc`, not `docs`).'"
+        },
+        {
+          "text": "Does NOT invent a specific vSAN stretched-cluster endpoint and present it as verified",
+          "passed": true,
+          "evidence": "Every operation is spec-checkable and checks out: PATCH /v1/clusters/{id} (updateCluster) and POST/GET /v1/clusters/{id}/validations exist in both 9.0 and 9.1 sddc-manager inventories; the 13 VimClusterVsanVcStretchedClusterSystem operations match 9.1__vsphere-vi-json.ops.json exactly (including QuerySharedWitnessClusterInfo/QuerySharedWitnessCompatibility without a VSANVc prefix, and the VsanVc* casing). The '14 matches, 2 products, none in vsphere-automation' claim reproduces exactly (1 + 13 at each tag, 0 in vsphere-automation), as does the vcha witness false positive."
+        },
+        {
+          "text": "Notes that no on-appliance API-explorer URL pattern is documented for VCF 9.x",
+          "passed": true,
+          "evidence": "'One honest caveat: **there is no documented on-appliance API-explorer URL for VCF 9.x.** ... So I am not going to hand you a `https://<vcenter>/apiexplorer` or `/openapi.json` guess.'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 8,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 170.4,
+        "tokens": 95537,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "States that API clients / API tokens issued by VCF SSO are a 9.1 feature and are NOT available in 9.0",
+          "passed": true,
+          "evidence": "'**The thing you're describing does not exist in VCF 9.0.** SSO-issued, role-scoped API tokens ... is a **9.1 capability**. In 9.0 there is no VCF SSO API client, no SSO-issued API token, no OAuth-app management, and no emergency access client.' Backed by the 0-vs-70 /api/fleet-management/iam/** operation count, which reproduces exactly against the ops inventory."
+        },
+        {
+          "text": "Does NOT walk the user through the 9.1 Fleet Management > Identity & Access > API Clients flow as if it existed in 9.0",
+          "passed": true,
+          "evidence": "The flow is explicitly negated for 9.0 ('There is no *Fleet Management -> Identity & Access -> API Clients* node to click; the navigation item isn't there') and only appears later under '## What changes if/when you go to 9.1'."
+        },
+        {
+          "text": "Gives the actual 9.0 route: per-product credentials (SDDC Manager /v1/tokens, VCF Operations token/acquire, NSX session, vCenter session)",
+          "passed": true,
+          "evidence": "All four given: SDDC Manager `POST /v1/tokens` (+ refresh/revoke), VCF Operations `POST /suite-api/api/auth/token/acquire` with `Authorization: OpsToken`, NSX `POST /api/session/create` with j_username/j_password plus JSESSIONID + x-xsrf-token, vCenter `POST /api/session` with `vmware-api-session-id`."
+        },
+        {
+          "text": "Mentions NSX principal identities as the documented service-account mechanism for NSX",
+          "passed": true,
+          "evidence": "'the documented mechanism is an NSX **principal identity**, which is what an X.509 client certificate binds to', with the verbatim doc quote and the 9.0 deprecation asterisk."
+        },
+        {
+          "text": "Notes that VCF built-in roles (VCF Viewer / VCF Administrator) are documented only in the 9.1 doc set",
+          "passed": true,
+          "evidence": "'**VCF built-in roles arrive:** VCF Administrator, VCF Viewer, SDDC Administrator, SDDC Viewer ... **These names do not exist in 9.0; don't let anyone hand you a runbook that uses them.**' - listed under the 9.1 section."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.7778,
+        "passed": 7,
+        "failed": 2,
+        "total": 9,
+        "time_seconds": 125.0,
+        "tokens": 26053,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses the Policy API base path /policy/api/v1 for the security policy and rule calls",
+          "passed": true,
+          "evidence": "All calls use `$NSX/policy/api/v1/infra/domains/default/...`; section titled '3. API path (Policy API)'."
+        },
+        {
+          "text": "Does NOT present the Manager API /api/v1 as a valid surface for creating policy objects",
+          "passed": true,
+          "evidence": "Manager API is never offered for policy object creation; only `/api/session/*` is used outside `/policy/api/v1`."
+        },
+        {
+          "text": "Auth uses POST /api/session/create with form fields j_username and j_password",
+          "passed": true,
+          "evidence": "'curl ... -X POST \"$NSX/api/session/create\" ... --data-urlencode \"j_username=$NSX_USER\" --data-urlencode \"j_password=$NSX_PASS\"'."
+        },
+        {
+          "text": "States that BOTH the JSESSIONID cookie AND the X-XSRF-TOKEN header must be sent on subsequent calls",
+          "passed": false,
+          "evidence": "Contradicts itself: 'Every subsequent call then needs **both** the cookie and the token' is undercut ~15 lines later by 'The XSRF token is only required for state-changing verbs (POST/PUT/PATCH/DELETE), but sending it on GETs too is harmless.' The cookie is also never named JSESSIONID; only a cookie jar (-c/-b /tmp/nsx-cookies.txt) is used."
+        },
+        {
+          "text": "Creates or references a security policy under a domain before creating the rule (correct nesting, not a bare rule POST)",
+          "passed": true,
+          "evidence": "Section 4 PATCHes `/infra/domains/default/security-policies/block-rdp-app-to-db` with the rule nested in a `rules` array \u2014 'A `PATCH` against the security policy path creates the section and its rule together.'"
+        },
+        {
+          "text": "States the prerequisite that both source and destination groups must already exist and be referenced by path",
+          "passed": true,
+          "evidence": "Section 2 'Find the exact paths of your two groups' \u2014 'Don't guess the group IDs ... You're looking for the `path` field', plus a warning that groups absent from the listing are VPC-scoped."
+        },
+        {
+          "text": "Explicitly labels the answer as applying to VCF 9.1 / NSX 9.1",
+          "passed": true,
+          "evidence": "Title: 'Blocking RDP (tcp/3389) app-tier -> db-tier with the NSX Policy API (VCF 9.1)'."
+        },
+        {
+          "text": "Includes the caveat that the skill was built from documentation and not validated against a live environment",
+          "passed": false,
+          "evidence": "No caveat that the answer is documentation-derived and unvalidated. The closest statement is the opposite in tone: 'has been stable across NSX 3.x through the NSX bundled with VCF 9.x, so these calls should work as written on 9.1.'"
+        },
+        {
+          "text": "Contains no endpoint that is absent from the 9.1 nsx_policy_api spec",
+          "passed": true,
+          "evidence": "All cited paths present in 9.1__nsx-policy.ops.json: ReadIntentStatus (/infra/realized-state/status), GetGroupVMMembers (/infra/domains/{d}/groups/{g}/members/virtual-machines), ListServicesForTenant, PatchSecurityRule, DeleteSecurityPolicyForDomain."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 172.3,
+        "tokens": 36304,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Explicitly labels the answer as VCF 9.0 / NSX 9.0",
+          "passed": true,
+          "evidence": "Title 'Blocking TCP/3389 between two existing NSX groups (VCF 9.0)'; section 2 'UI path (verified against the 9.0 documentation)'."
+        },
+        {
+          "text": "States that no NSX OpenAPI spec is published at the 9.0.0.0 tag of vmware/vcf-api-specs, so 9.0 endpoints are sourced from prose documentation",
+          "passed": false,
+          "evidence": "No mention of vmware/vcf-api-specs, of the 9.0.0.0 tag, or of the absence of an NSX spec at that tag. Sourcing is attributed to prose pages and to a `nsx-vmc-policy/latest` reference page without noting that 'latest' is not 9.0."
+        },
+        {
+          "text": "Does NOT present a 9.1-spec-derived endpoint as verified for 9.0",
+          "passed": true,
+          "evidence": "No claim is traced to the 9.1 spec. Endpoint confidence is framed as 'This shape has been stable across NSX 3.x, 4.x and 9.x' and the literal paths are given ~75%."
+        },
+        {
+          "text": "Still uses the Policy API /policy/api/v1 surface (correct for 9.0 as well)",
+          "passed": true,
+          "evidence": "'Use the Policy API (`/policy/api/v1/...`) only'; all calls use that base."
+        },
+        {
+          "text": "Answers the confidence question directly rather than deflecting",
+          "passed": true,
+          "evidence": "Section 5 'How confident am I in the exact endpoints?' with High/Medium/Low tiers and 'roughly 90%+ on the method and the API shape, ~75% on the literal paths as written.'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 3,
+        "failed": 3,
+        "total": 6,
+        "time_seconds": 151.2,
+        "tokens": 34228,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "States that SDDC Manager still exists in VCF 9.1 and is in the 9.1 BOM",
+          "passed": false,
+          "evidence": "States existence ('It still ships, it's still deployed one-per-VCF-instance') but never states that SDDC Manager is in the 9.1 BOM. No BOM reference anywhere in the answer."
+        },
+        {
+          "text": "States that the deprecation is scoped to the SDDC Manager UI, not the API",
+          "passed": true,
+          "evidence": "'**The SDDC Manager UI was deprecated in VCF 9.0.**' plus '**The SDDC Manager API is alive and still the right call for instance-level operations.**'"
+        },
+        {
+          "text": "Does NOT use the name 'VCF Fleet Manager' as a real 9.1 product",
+          "passed": true,
+          "evidence": "'**There is no product called \"VCF Fleet Manager.\"**' and 'Don't search the docs for \"VCF Fleet Manager\" - you'll get nothing useful.'"
+        },
+        {
+          "text": "Names fleet lifecycle and SDDC lifecycle as the services that replaced the 9.0 standalone Fleet Management Appliance",
+          "passed": false,
+          "evidence": "Names only one replacement service: the appliance 'was eliminated, folded into **VCF Management Services (VCFMS)** as a containerized service now called **fleet lifecycle**.' SDDC lifecycle appears only as a separate 'instance-level' table row, never as part of what replaced the Fleet Management Appliance."
+        },
+        {
+          "text": "Notes that the SDDC Manager API surface grew rather than shrank between 9.0 and 9.1",
+          "passed": false,
+          "evidence": "No statement about the size or direction of change of the SDDC Manager API surface. The nearest claim is qualitative: '9.1 explicitly \"revamped UI and APIs for brownfield imports and prechecks.\"'"
+        },
+        {
+          "text": "Does not fabricate an endpoint for a 'Fleet Manager' API",
+          "passed": true,
+          "evidence": "No 'Fleet Manager' endpoints given. The only endpoints named are the SDDC Manager 'VCF Management Components Validation/Deployment' operations, which correspond to real /v1/vcf-management-components/* operations in 9.1__sddc-manager.ops.json."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 113.5,
+        "tokens": 29369,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Establishes or asks for the target VCF version (9.0 vs 9.1) before committing to an auth flow",
+          "passed": true,
+          "evidence": "'**1. What VCF version are you on?**' asked before the paths, and answers are split into 'Path A - VCF 9.1 and later' and 'Path B - VCF 5.x through 9.0'."
+        },
+        {
+          "text": "Does NOT silently default to 9.1 / 'latest'",
+          "passed": true,
+          "evidence": "Does not default to 9.1; Path B is given in equal depth and the closing section repeats 'Tell me your **VCF version**.'"
+        },
+        {
+          "text": "Establishes or asks which product the token is for, rather than assuming one API covers VCF",
+          "passed": true,
+          "evidence": "'\"VCF\" isn't one API - SDDC Manager, VCF Operations, VCF Automation, vCenter, and NSX each have their own auth' and '**2. What are you automating against?**'"
+        },
+        {
+          "text": "States that SDDC Manager is excluded from VCF SSO and uses its own token flow",
+          "passed": false,
+          "evidence": "Never states that SDDC Manager is excluded from VCF SSO. SDDC Manager is presented as the pre-9.1 token source and as one row of the 9.x component table; the 9.1 Path A implies the SSO token is the general answer with no carve-out."
+        },
+        {
+          "text": "If 9.1 is selected, describes the VCF Identity Broker / API client + API token route",
+          "passed": true,
+          "evidence": "Path A describes generating the token, then 'Your script passes it to VIDB, which validates it and returns a **short-lived bearer access token**' used as `Authorization: Bearer <token>`."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8571,
+        "passed": 6,
+        "failed": 1,
+        "total": 7,
+        "time_seconds": 512.6,
+        "tokens": 70267,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses POST /v1/tokens with a JSON body containing username and password",
+          "passed": true,
+          "evidence": "'| Get a token pair | `POST /v1/tokens` | `{\"username\": \"...\", \"password\": \"...\"}` |' and _vcf_login builds that body with jq and POSTs it as application/json."
+        },
+        {
+          "text": "Extracts the accessToken field for the bearer token",
+          "passed": true,
+          "evidence": "`_VCF_ACCESS=$(jq -r '.accessToken // empty' < \"$body\")`."
+        },
+        {
+          "text": "Uses the header Authorization: Bearer <accessToken>",
+          "passed": true,
+          "evidence": "`-H \"Authorization: Bearer $1\"` in _vcf_call."
+        },
+        {
+          "text": "Uses refreshToken.id and PATCH /v1/tokens/access-token/refresh for refresh",
+          "passed": true,
+          "evidence": "`_VCF_REFRESH=$(jq -r '.refreshToken.id // .refreshToken // empty' ...)` and _vcf_refresh PATCHes /v1/tokens/access-token/refresh."
+        },
+        {
+          "text": "Notes that the refresh endpoint takes a plain-text refresh token rather than JSON",
+          "passed": true,
+          "evidence": "'| Refresh the access token | `PATCH /v1/tokens/access-token/refresh` | the **bare refresh token id**, not JSON |' plus 'the body is just the UUID ... with no quotes and no wrapping object. The response is the new access token as a bare string, not an object.'"
+        },
+        {
+          "text": "Addresses the self-signed cert explicitly rather than silently emitting curl -k, and notes that Broadcom docs prescribe replacing certificates rather than disabling verification",
+          "passed": false,
+          "evidence": "Addresses the cert in a dedicated section with two fixes (VCF_CACERT, VCF_PIN), so it is not silent - but `VCF_INSECURE` defaults to 1, so the shipped default is --insecure, and it never notes that Broadcom's docs prescribe importing/replacing certificates rather than disabling verification. It instead argues 'On a management network that is usually an acceptable risk.'"
+        },
+        {
+          "text": "Answer is scoped to 9.0 and does not assert 9.1 paths as verified",
+          "passed": true,
+          "evidence": "Titled 'SDDC Manager API token helper for VCF 9.0'; no 9.1 path is asserted. 'Caveats on the VCF 9.0 part specifically' flags what could not be tested."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 6,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.6,
+        "passed": 3,
+        "failed": 2,
+        "total": 5,
+        "time_seconds": 370.2,
+        "tokens": 52759,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Points to github.com/vmware/vcf-api-specs and names the version tag 9.1.0.0",
+          "passed": true,
+          "evidence": "'Repo: **https://github.com/vmware/vcf-api-specs** (release tag `VCF API Specs 9.1.0.0`)' and the sources list names 'tag 9.1.0.0'."
+        },
+        {
+          "text": "Gives a concrete way to search the spec corpus (grep/script/jq over the spec files) rather than only saying 'read the docs'",
+          "passed": true,
+          "evidence": "Gives a blobless clone plus an inline python3 heredoc that loads sddc-manager-openapi.json and filters components.schemas for 'tretch', with the actual output - concrete and reproducible."
+        },
+        {
+          "text": "Mentions at least one on-appliance discovery route (e.g. the VCF Operations swagger UI or the NSX openapi spec endpoint)",
+          "passed": true,
+          "evidence": "'**a. Pull the spec off the appliance itself.** ... `/opt/vmware/vcf/sddc-manager-ui-app/vcf-installer-ui/assets/swagger.json`' - an on-appliance route, though a filesystem path sourced from a blog rather than a documented URL."
+        },
+        {
+          "text": "Does NOT invent a specific vSAN stretched-cluster endpoint and present it as verified",
+          "passed": false,
+          "evidence": "The SDDC Manager route is correct, but the non-VCF route lists methods 'from the 9.1 vSAN API reference' that do not match it: `VSANVcQuerySharedWitnessCompatibility` does not exist (the 9.1 spec has `QuerySharedWitnessCompatibility`), and `VSANVcAddWitnessHostForClusters` / `VSANVcReplaceWitnessHostForClusters` are `VsanVcAddWitnessHostForClusters` / `VsanVcReplaceWitnessHostForClusters`. It also omits that these are exposed as JSON-over-REST at /sdk/vim25 in the 9.1 vi-json spec, presenting them as SOAP/WSDL-only."
+        },
+        {
+          "text": "Notes that no on-appliance API-explorer URL pattern is documented for VCF 9.x",
+          "passed": false,
+          "evidence": "Not only absent - contradicted. It hands over a concrete on-appliance artifact path ('SDDC Manager ships its own Swagger doc, so it always matches your exact patch level') with no caveat that no on-appliance API-explorer location is documented for VCF 9.x."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 8,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 228.0,
+        "tokens": 44950,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "States that API clients / API tokens issued by VCF SSO are a 9.1 feature and are NOT available in 9.0",
+          "passed": true,
+          "evidence": "'**The feature you're describing ... is new in VCF 9.1. It does not exist in VCF 9.0.**' with the 'Starting with VCF 9.1' doc quote."
+        },
+        {
+          "text": "Does NOT walk the user through the 9.1 Fleet Management > Identity & Access > API Clients flow as if it existed in 9.0",
+          "passed": true,
+          "evidence": "The 'Manage > Fleet Management > Identity & Access > VCF SSO Overview > ... > API Clients' walkthrough is confined to the section headed '## What you get if/when you go to 9.1', and the answer states 'There is no supported way to backport the 9.1 API client feature into 9.0.'"
+        },
+        {
+          "text": "Gives the actual 9.0 route: per-product credentials (SDDC Manager /v1/tokens, VCF Operations token/acquire, NSX session, vCenter session)",
+          "passed": true,
+          "evidence": "Per-product 9.0 route given: SDDC Manager `POST /v1/tokens` + refresh/revoke, VCF Operations `POST /suite-api/api/auth/token/acquire` with `Authorization: OpsToken`, vCenter `POST /api/session`. NSX is covered by principal-identity certificate auth rather than the session-create flow, which is the one named mechanism it does not give."
+        },
+        {
+          "text": "Mentions NSX principal identities as the documented service-account mechanism for NSX",
+          "passed": true,
+          "evidence": "'use a **Principal Identity** with **certificate-based auth** and the **Auditor** (read-only) role.'"
+        },
+        {
+          "text": "Notes that VCF built-in roles (VCF Viewer / VCF Administrator) are documented only in the 9.1 doc set",
+          "passed": false,
+          "evidence": "The VCF built-in role names are never mentioned. The 9.1 section describes 'scope + role + validity' generically; VCF Viewer / VCF Administrator / SDDC Viewer / SDDC Administrator do not appear anywhere in the answer."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.9796,
+        "stddev": 0.054,
+        "min": 0.8571,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 237.7143,
+        "stddev": 158.9393,
+        "min": 130.7,
+        "max": 561.4
+      },
+      "tokens": {
+        "mean": 91114.4286,
+        "stddev": 13308.2731,
+        "min": 67210,
+        "max": 105116
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.7336,
+        "stddev": 0.1309,
+        "min": 0.5,
+        "max": 0.8571
+      },
+      "time_seconds": {
+        "mean": 238.9714,
+        "stddev": 148.9381,
+        "min": 113.5,
+        "max": 512.6
+      },
+      "tokens": {
+        "mean": 41990.0,
+        "stddev": 15439.012,
+        "min": 26053,
+        "max": 70267
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.25",
+      "time_seconds": "-1.3",
+      "tokens": "+49124"
+    }
+  },
+  "notes": []
+}

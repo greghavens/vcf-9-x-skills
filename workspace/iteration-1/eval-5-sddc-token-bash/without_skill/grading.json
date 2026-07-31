@@ -1,0 +1,55 @@
+{
+ "eval_id": 5,
+ "run_id": "eval-5-sddc-token-bash-without_skill",
+ "expectations": [
+  {
+   "text": "Uses POST /v1/tokens with a JSON body containing username and password",
+   "passed": true,
+   "evidence": "'| Get a token pair | `POST /v1/tokens` | `{\"username\": \"...\", \"password\": \"...\"}` |' and _vcf_login builds that body with jq and POSTs it as application/json."
+  },
+  {
+   "text": "Extracts the accessToken field for the bearer token",
+   "passed": true,
+   "evidence": "`_VCF_ACCESS=$(jq -r '.accessToken // empty' < \"$body\")`."
+  },
+  {
+   "text": "Uses the header Authorization: Bearer <accessToken>",
+   "passed": true,
+   "evidence": "`-H \"Authorization: Bearer $1\"` in _vcf_call."
+  },
+  {
+   "text": "Uses refreshToken.id and PATCH /v1/tokens/access-token/refresh for refresh",
+   "passed": true,
+   "evidence": "`_VCF_REFRESH=$(jq -r '.refreshToken.id // .refreshToken // empty' ...)` and _vcf_refresh PATCHes /v1/tokens/access-token/refresh."
+  },
+  {
+   "text": "Notes that the refresh endpoint takes a plain-text refresh token rather than JSON",
+   "passed": true,
+   "evidence": "'| Refresh the access token | `PATCH /v1/tokens/access-token/refresh` | the **bare refresh token id**, not JSON |' plus 'the body is just the UUID ... with no quotes and no wrapping object. The response is the new access token as a bare string, not an object.'"
+  },
+  {
+   "text": "Addresses the self-signed cert explicitly rather than silently emitting curl -k, and notes that Broadcom docs prescribe replacing certificates rather than disabling verification",
+   "passed": false,
+   "evidence": "Addresses the cert in a dedicated section with two fixes (VCF_CACERT, VCF_PIN), so it is not silent - but `VCF_INSECURE` defaults to 1, so the shipped default is --insecure, and it never notes that Broadcom's docs prescribe importing/replacing certificates rather than disabling verification. It instead argues 'On a management network that is usually an acceptable risk.'"
+  },
+  {
+   "text": "Answer is scoped to 9.0 and does not assert 9.1 paths as verified",
+   "passed": true,
+   "evidence": "Titled 'SDDC Manager API token helper for VCF 9.0'; no 9.1 path is asserted. 'Caveats on the VCF 9.0 part specifically' flags what could not be tested."
+  }
+ ],
+ "passed_count": 6,
+ "total_count": 7,
+ "notes": [
+  "Both arms fail f5 on the same clause - this assertion did not discriminate.",
+  "with_skill sends the refresh body with `Content-Type: application/json` while vcf-core-9.0.md documents `text/plain` for that call; the bare-then-quoted retry mitigates the body shape but not the declared content type.",
+  "without_skill: '`POST /v1/tokens` also accepts an `apiKey` instead of username/password on 9.0' is not supported anywhere in the research corpus (foundation-auth-identity.md documents only the username/password TokenCreationSpec).",
+  "without_skill: 'I verified the three endpoints ... against Broadcom's current SDDC Manager API reference' - 'current' resolves to 9.1 ('latest'), used as verification for a 9.0-scoped answer."
+ ],
+ "summary": {
+  "passed": 6,
+  "failed": 1,
+  "total": 7,
+  "pass_rate": 0.8571
+ }
+}

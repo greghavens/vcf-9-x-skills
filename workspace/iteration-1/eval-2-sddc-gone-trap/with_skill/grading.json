@@ -1,0 +1,47 @@
+{
+ "eval_id": 2,
+ "run_id": "eval-2-sddc-gone-trap-with_skill",
+ "expectations": [
+  {
+   "text": "States that SDDC Manager still exists in VCF 9.1 and is in the 9.1 BOM",
+   "passed": true,
+   "evidence": "'SDDC Manager was not removed in 9.1' and 'It is in the 9.1 BOM, merged with VCF Installer into a single row: `VCF Installer/SDDC Manager 9.1.0.0 (25371088)`.'"
+  },
+  {
+   "text": "States that the deprecation is scoped to the SDDC Manager UI, not the API",
+   "passed": true,
+   "evidence": "'That sentence scopes the deprecation to the **UI**. No 9.1 page states the SDDC Manager **API** is deprecated' \u2014 quoting the upgrade-guide sentence verbatim."
+  },
+  {
+   "text": "Does NOT use the name 'VCF Fleet Manager' as a real 9.1 product",
+   "passed": true,
+   "evidence": "'**There is no product called \"VCF Fleet Manager.\"** It does not appear anywhere in the 9.1 documentation, and it never existed as a product name.'"
+  },
+  {
+   "text": "Names fleet lifecycle and SDDC lifecycle as the services that replaced the 9.0 standalone Fleet Management Appliance",
+   "passed": true,
+   "evidence": "'It is replaced with two new services - Fleet Lifecycle and SDDC Lifecycle - which run natively within VCF Management Services' (KB 440630 quote) and 'The 9.1 nouns you want are **fleet lifecycle** and **SDDC lifecycle**.'"
+  },
+  {
+   "text": "Notes that the SDDC Manager API surface grew rather than shrank between 9.0 and 9.1",
+   "passed": true,
+   "evidence": "Table: sddc-manager 375 -> 423 ops, 48 added, 0 removed; 'Zero operations removed. Forty-eight added.' Matches spec-inventory/SUMMARY.md exactly."
+  },
+  {
+   "text": "Does not fabricate an endpoint for a 'Fleet Manager' API",
+   "passed": true,
+   "evidence": "No 'Fleet Manager' API is offered. All quoted /fleet-lcm/v1 and /sddc-lcm/v1 operations verified present in 9.1__fleet-lcm.ops.json (51 ops) and 9.1__sddc-lcm.ops.json (26 ops), including ?action=configure/precheck/apply and the absence of an upgrade-plan resource on sddc-lcm."
+  }
+ ],
+ "passed_count": 6,
+ "total_count": 6,
+ "notes": [
+  "without_skill: 'commentary in the community reads the trend as SDDC Manager eventually being removed' is sourced to blogs, and the answer's only version-scoped deprecation claim points at 9.0 rather than restating the 9.1 upgrade-guide sentence. Correct as far as it goes (vcf-core-9.0.md S32 carries the 9.0 statement), but it never establishes the 9.1 API-vs-UI scoping from a 9.1 source."
+ ],
+ "summary": {
+  "passed": 6,
+  "failed": 0,
+  "total": 6,
+  "pass_rate": 1.0
+ }
+}

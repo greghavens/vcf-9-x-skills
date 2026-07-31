@@ -1,0 +1,45 @@
+{
+ "eval_id": 6,
+ "run_id": "eval-6-discovery-uncovered-with_skill",
+ "expectations": [
+  {
+   "text": "Points to github.com/vmware/vcf-api-specs and names the version tag 9.1.0.0",
+   "passed": true,
+   "evidence": "'Broadcom publishes machine-readable specs at `https://github.com/vmware/vcf-api-specs`, and the repo carries **per-release git tags** (`9.0.0.0`, `9.1.0.0`)' with a worktree command for tag 9.1.0.0 and the warning '`main` is not a version.'"
+  },
+  {
+   "text": "Gives a concrete way to search the spec corpus (grep/script/jq over the spec files) rather than only saying 'read the docs'",
+   "passed": true,
+   "evidence": "Gives the clone/worktree commands and the actual searches run: `python3 scripts/find_operation.py --version 9.1 \"stretch\"`, `--both-versions \"stretch\"`, `--any witness`, `\"fault domain\"` - and explains you must search summaries, not paths, because the operation is PATCH /v1/clusters/{id}."
+  },
+  {
+   "text": "Mentions at least one on-appliance discovery route (e.g. the VCF Operations swagger UI or the NSX openapi spec endpoint)",
+   "passed": true,
+   "evidence": "'For VCF Operations there is an on-appliance Swagger UI at `https://<operations-fqdn>/suite-api/doc/swagger-ui.html` (singular `doc`, not `docs`).'"
+  },
+  {
+   "text": "Does NOT invent a specific vSAN stretched-cluster endpoint and present it as verified",
+   "passed": true,
+   "evidence": "Every operation is spec-checkable and checks out: PATCH /v1/clusters/{id} (updateCluster) and POST/GET /v1/clusters/{id}/validations exist in both 9.0 and 9.1 sddc-manager inventories; the 13 VimClusterVsanVcStretchedClusterSystem operations match 9.1__vsphere-vi-json.ops.json exactly (including QuerySharedWitnessClusterInfo/QuerySharedWitnessCompatibility without a VSANVc prefix, and the VsanVc* casing). The '14 matches, 2 products, none in vsphere-automation' claim reproduces exactly (1 + 13 at each tag, 0 in vsphere-automation), as does the vcha witness false positive."
+  },
+  {
+   "text": "Notes that no on-appliance API-explorer URL pattern is documented for VCF 9.x",
+   "passed": true,
+   "evidence": "'One honest caveat: **there is no documented on-appliance API-explorer URL for VCF 9.x.** ... So I am not going to hand you a `https://<vcenter>/apiexplorer` or `/openapi.json` guess.'"
+  }
+ ],
+ "passed_count": 5,
+ "total_count": 5,
+ "notes": [
+  "without_skill: 'the string \"stretch\" appears **zero** times' in the 9.1 vcenter.yaml Automation spec is correct (0 matches in 9.1__vsphere-automation.ops.json).",
+  "without_skill: the schema list ('ClusterStretchNetworkSpec', 'ClusterStretchSpec', 'ClusterUnstretchSpec', 'NsxStretchClusterSpec', 'StretchClusterNetworkProfile') matches the schema names the with_skill arm reports from the same spec.",
+  "without_skill: the appliance path /opt/vmware/vcf/sddc-manager-ui-app/vcf-installer-ui/assets/swagger.json is sourced to a third-party blog and presented as a general discovery route; it is not in any Broadcom-documented material in the research corpus.",
+  "without_skill: `pip install vcf-sdk` / `vmware-sddc-manager==9.1.0.0` package names and the cmdlet mapping `updateCluster -> Invoke-VcfUpdateCluster` are asserted without qualification and are not verifiable from the spec corpus."
+ ],
+ "summary": {
+  "passed": 5,
+  "failed": 0,
+  "total": 5,
+  "pass_rate": 1.0
+ }
+}

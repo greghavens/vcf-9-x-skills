@@ -1,0 +1,123 @@
+[
+ {
+  "skill": "vcf-domains-clusters",
+  "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+  "line": 342,
+  "meth": "PATCH",
+  "path": "/v1/hosts",
+  "opid": "updateHosts",
+  "kind": "WRONG-VERSION",
+  "spec": [
+   "9.1/sddc-manager PATCH /v1/hosts"
+  ],
+  "ctx": "**9.1 difference:** `PATCH /v1/hosts` (`updateHosts`, body `HostsUpdateSpec`) and"
+ },
+ {
+  "skill": "vcf-domains-clusters",
+  "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+  "line": 343,
+  "meth": "GET",
+  "path": "/v1/hosts/{id}/software",
+  "opid": "getSoftwareInfoForHost",
+  "kind": "WRONG-VERSION",
+  "spec": [
+   "9.1/sddc-manager GET /v1/hosts/{id}/software"
+  ],
+  "ctx": "`GET /v1/hosts/{id}/software` (`getSoftwareInfoForHost`) are **9.1-only**. Do not call them"
+ },
+ {
+  "skill": "vcf-domains-clusters",
+  "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+  "line": 439,
+  "meth": "PATCH",
+  "path": "/v1/domains",
+  "opid": "updateDomains",
+  "kind": "WRONG-VERSION",
+  "spec": [
+   "9.1/sddc-manager PATCH /v1/domains"
+  ],
+  "ctx": "**9.1 difference:** `PATCH /v1/domains` (`updateDomains`, bulk refresh via `DomainsUpdateSpec`),"
+ },
+ {
+  "skill": "vcf-domains-clusters",
+  "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+  "line": 536,
+  "meth": "PATCH",
+  "path": "/v1/clusters",
+  "opid": "updateClusters",
+  "kind": "WRONG-VERSION",
+  "spec": [
+   "9.1/sddc-manager PATCH /v1/clusters"
+  ],
+  "ctx": "**9.1 difference:** `PATCH /v1/clusters` (`updateClusters`, bulk refresh),"
+ },
+ {
+  "skill": "vcf-domains-clusters",
+  "file": "vcf-domains-clusters/references/9.0/domains-clusters.md",
+  "line": 552,
+  "meth": "PATCH",
+  "path": "/v1/vcenters/{vcenterId}/fqdn",
+  "opid": "updateVcenterFqdn",
+  "kind": "WRONG-VERSION",
+  "spec": [
+   "9.1/sddc-manager PATCH /v1/vcenters/{vcenterId}/fqdn"
+  ],
+  "ctx": "> `PATCH /v1/vcenters/{vcenterId}/fqdn` (`updateVcenterFqdn`) is **9.1-only** \u2014 there is no way to"
+ },
+ {
+  "skill": "nsx-segments-routing",
+  "file": "nsx-segments-routing/references/9.0/networking.md",
+  "line": 107,
+  "meth": "GET",
+  "path": "/api/v1/aaa/role-bindings",
+  "opid": "GetAllRoleBindings",
+  "kind": "WRONG-VERSION",
+  "spec": [
+   "9.1/nsx-global-policy GET /aaa/role-bindings",
+   "9.1/nsx-manager GET /aaa/role-bindings",
+   "9.1/nsx-policy GET /aaa/role-bindings"
+  ],
+  "ctx": "machine-confirmed here. `GET /api/v1/aaa/role-bindings` (`GetAllRoleBindings`) is spec-confirmed for"
+ },
+ {
+  "skill": "nsx-segments-routing",
+  "file": "nsx-segments-routing/references/9.0/networking.md",
+  "line": 141,
+  "meth": "GET",
+  "path": "/policy/api/v1/infra/sites",
+  "opid": "ListSites",
+  "kind": "WRONG-VERSION",
+  "spec": [
+   "9.1/nsx-policy GET /infra/sites"
+  ],
+  "ctx": "`GET /policy/api/v1/infra/sites` (`ListSites`) and"
+ },
+ {
+  "skill": "nsx-segments-routing",
+  "file": "nsx-segments-routing/references/9.0/networking.md",
+  "line": 142,
+  "meth": "GET",
+  "path": "/policy/api/v1/infra/sites/{site-id}/enforcement-points",
+  "opid": "ListEnforcementPointForSite",
+  "kind": "WRONG-VERSION",
+  "spec": [
+   "9.1/nsx-policy GET /infra/sites/{site-id}/enforcement-points"
+  ],
+  "ctx": "`GET /policy/api/v1/infra/sites/{site-id}/enforcement-points` (`ListEnforcementPointForSite`) are"
+ },
+ {
+  "skill": "nsx-network-services",
+  "file": "nsx-network-services/references/9.0/services.md",
+  "line": 102,
+  "meth": "GET",
+  "path": "/api/v1/aaa/role-bindings",
+  "opid": "GetAllRoleBindings",
+  "kind": "WRONG-VERSION",
+  "spec": [
+   "9.1/nsx-global-policy GET /aaa/role-bindings",
+   "9.1/nsx-manager GET /aaa/role-bindings",
+   "9.1/nsx-policy GET /aaa/role-bindings"
+  ],
+  "ctx": "`GET /api/v1/aaa/role-bindings` (`GetAllRoleBindings`) is spec-confirmed for **9.1 only** \u2014"
+ }
+]

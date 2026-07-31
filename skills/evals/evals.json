@@ -1,0 +1,211 @@
+{
+  "skill_set": "vcf-9x-agent-skills",
+  "pilot_skills": [
+    "vcf-foundation",
+    "vcf-api-discovery",
+    "nsx-security-policy",
+    "vcf-lifecycle-upgrade"
+  ],
+  "note": "Acceptance criteria written BEFORE drafting the skills, per the project brief. Assertions are graded against the agent's produced answer/artifacts. Every assertion is objectively checkable against the research dossiers and the machine-extracted OpenAPI corpus in research/spec-inventory/.",
+  "evals": [
+    {
+      "id": 0,
+      "name": "nsx-dfw-rule-91",
+      "target_skill": "nsx-security-policy",
+      "prompt": "We're on VCF 9.1. I need to block RDP (tcp/3389) from our app-tier group to our db-tier group in NSX. Both groups already exist. Give me the exact API calls including how to authenticate.",
+      "expected_output": "Correct Policy API path, correct NSX session auth with both cookie and XSRF header, security-policy-then-rule ordering, prereqs stated, answer explicitly scoped to 9.1.",
+      "assertions": [
+        {"id": "a0", "text": "Uses the Policy API base path /policy/api/v1 for the security policy and rule calls"},
+        {"id": "a1", "text": "Does NOT present the Manager API /api/v1 as a valid surface for creating policy objects"},
+        {"id": "a2", "text": "Auth uses POST /api/session/create with form fields j_username and j_password"},
+        {"id": "a3", "text": "States that BOTH the JSESSIONID cookie AND the X-XSRF-TOKEN header must be sent on subsequent calls"},
+        {"id": "a4", "text": "Creates or references a security policy under a domain before creating the rule (correct nesting, not a bare rule POST)"},
+        {"id": "a5", "text": "States the prerequisite that both source and destination groups must already exist and be referenced by path"},
+        {"id": "a6", "text": "Explicitly labels the answer as applying to VCF 9.1 / NSX 9.1"},
+        {"id": "a7", "text": "Includes the caveat that the skill was built from documentation and not validated against a live environment"},
+        {"id": "a8", "text": "Contains no endpoint that is absent from the 9.1 nsx_policy_api spec"}
+      ],
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "nsx-dfw-rule-90-evidence-asymmetry",
+      "target_skill": "nsx-security-policy",
+      "prompt": "Same thing but we're still on VCF 9.0 — block tcp/3389 between two existing NSX groups. How confident are you in the exact endpoints?",
+      "expected_output": "Answers for 9.0 while being explicit that NSX 9.0 has no machine-readable OpenAPI spec in the public corpus, so endpoint verification is prose-doc based rather than spec-grade.",
+      "assertions": [
+        {"id": "b0", "text": "Explicitly labels the answer as VCF 9.0 / NSX 9.0"},
+        {"id": "b1", "text": "States that no NSX OpenAPI spec is published at the 9.0.0.0 tag of vmware/vcf-api-specs, so 9.0 endpoints are sourced from prose documentation"},
+        {"id": "b2", "text": "Does NOT present a 9.1-spec-derived endpoint as verified for 9.0"},
+        {"id": "b3", "text": "Still uses the Policy API /policy/api/v1 surface (correct for 9.0 as well)"},
+        {"id": "b4", "text": "Answers the confidence question directly rather than deflecting"}
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "sddc-manager-gone-trap",
+      "target_skill": "vcf-lifecycle-upgrade",
+      "prompt": "In VCF 9.1 SDDC Manager is gone and replaced by VCF Fleet Manager, right? What should I be calling for lifecycle management now?",
+      "expected_output": "Corrects both halves of the false premise: SDDC Manager still exists (UI deprecated only, API grew), and there is no product named VCF Fleet Manager.",
+      "assertions": [
+        {"id": "c0", "text": "States that SDDC Manager still exists in VCF 9.1 and is in the 9.1 BOM"},
+        {"id": "c1", "text": "States that the deprecation is scoped to the SDDC Manager UI, not the API"},
+        {"id": "c2", "text": "Does NOT use the name 'VCF Fleet Manager' as a real 9.1 product"},
+        {"id": "c3", "text": "Names fleet lifecycle and SDDC lifecycle as the services that replaced the 9.0 standalone Fleet Management Appliance"},
+        {"id": "c4", "text": "Notes that the SDDC Manager API surface grew rather than shrank between 9.0 and 9.1"},
+        {"id": "c5", "text": "Does not fabricate an endpoint for a 'Fleet Manager' API"}
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "upgrade-ordering-version-split",
+      "target_skill": "vcf-lifecycle-upgrade",
+      "prompt": "walk me through upgrading our management domain from 9.0 to 9.1 - what order do the components go in and what do i need to check first",
+      "expected_output": "Correct 9.0->9.1 upgrade sequence with prerequisites, distinguishing this from a 9.0.x maintenance update ordering.",
+      "assertions": [
+        {"id": "d0", "text": "Gives a component ordering rather than a vague 'follow the docs'"},
+        {"id": "d1", "text": "Distinguishes the major-version upgrade ordering from the 9.0.x maintenance-update ordering rather than conflating them"},
+        {"id": "d2", "text": "States that SDDC Manager itself drives the first half of the 9.0->9.1 upgrade"},
+        {"id": "d3", "text": "Calls out prechecks as a prerequisite step"},
+        {"id": "d4", "text": "Mentions that workload domains must be at a minimum version before the 9.1 upgrade"},
+        {"id": "d5", "text": "Warns that this is a destructive/high-impact operation to verify before execution"}
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "router-no-version-given",
+      "target_skill": "vcf-foundation",
+      "prompt": "How do I get an API token so I can start automating against our VCF environment?",
+      "expected_output": "Resolves the target version before answering rather than defaulting to latest, and distinguishes per-product auth.",
+      "assertions": [
+        {"id": "e0", "text": "Establishes or asks for the target VCF version (9.0 vs 9.1) before committing to an auth flow"},
+        {"id": "e1", "text": "Does NOT silently default to 9.1 / 'latest'"},
+        {"id": "e2", "text": "Establishes or asks which product the token is for, rather than assuming one API covers VCF"},
+        {"id": "e3", "text": "States that SDDC Manager is excluded from VCF SSO and uses its own token flow"},
+        {"id": "e4", "text": "If 9.1 is selected, describes the VCF Identity Broker / API client + API token route"}
+      ],
+      "files": []
+    },
+    {
+      "id": 5,
+      "name": "sddc-manager-token-bash",
+      "target_skill": "vcf-foundation",
+      "prompt": "write me a bash function that grabs an SDDC Manager API token on VCF 9.0 and refreshes it when it expires. our cert is self-signed for now.",
+      "expected_output": "Correct token and refresh endpoints, correct payload shapes, correct header, honest handling of the self-signed cert question.",
+      "assertions": [
+        {"id": "f0", "text": "Uses POST /v1/tokens with a JSON body containing username and password"},
+        {"id": "f1", "text": "Extracts the accessToken field for the bearer token"},
+        {"id": "f2", "text": "Uses the header Authorization: Bearer <accessToken>"},
+        {"id": "f3", "text": "Uses refreshToken.id and PATCH /v1/tokens/access-token/refresh for refresh"},
+        {"id": "f4", "text": "Notes that the refresh endpoint takes a plain-text refresh token rather than JSON"},
+        {"id": "f5", "text": "Addresses the self-signed cert explicitly rather than silently emitting curl -k, and notes that Broadcom docs prescribe replacing certificates rather than disabling verification"},
+        {"id": "f6", "text": "Answer is scoped to 9.0 and does not assert 9.1 paths as verified"}
+      ],
+      "files": []
+    },
+    {
+      "id": 6,
+      "name": "discovery-uncovered-operation",
+      "target_skill": "vcf-api-discovery",
+      "prompt": "I need to automate vSAN stretched cluster configuration on VCF 9.1 and I can't find the API anywhere in the docs. How do I find it?",
+      "expected_output": "Teaches a concrete lookup path instead of guessing an endpoint.",
+      "assertions": [
+        {"id": "g0", "text": "Points to github.com/vmware/vcf-api-specs and names the version tag 9.1.0.0"},
+        {"id": "g1", "text": "Gives a concrete way to search the spec corpus (grep/script/jq over the spec files) rather than only saying 'read the docs'"},
+        {"id": "g2", "text": "Mentions at least one on-appliance discovery route (e.g. the VCF Operations swagger UI or the NSX openapi spec endpoint)"},
+        {"id": "g3", "text": "Does NOT invent a specific vSAN stretched-cluster endpoint and present it as verified"},
+        {"id": "g4", "text": "Notes that no on-appliance API-explorer URL pattern is documented for VCF 9.x"}
+      ],
+      "files": []
+    },
+    {
+      "id": 7,
+      "name": "powercli-module-name-trap",
+      "target_skill": "vcf-foundation",
+      "prompt": "getting started with powercli against vcf 9.1 - what do i install and how do i connect to sddc manager? i'm on powershell 5.1 on a windows box",
+      "expected_output": "Correct module name, correct connect cmdlet and its cert flag, and the PowerShell 5.1 deprecation called out.",
+      "assertions": [
+        {"id": "h0", "text": "Names the module VCF.PowerCLI (not VMware.PowerCLI) as the current meta-module"},
+        {"id": "h1", "text": "Uses Connect-VcfSddcManagerServer for SDDC Manager"},
+        {"id": "h2", "text": "Uses -IgnoreInvalidCertificate for that cmdlet rather than -SkipCertificateCheck"},
+        {"id": "h3", "text": "Flags that PowerShell 5.1 is deprecated as of PowerCLI 9.0 and recommends PowerShell 7.x"},
+        {"id": "h4", "text": "Does not claim a cmdlet whose existence was not verified in the research"}
+      ],
+      "files": []
+    },
+    {
+      "id": 8,
+      "name": "prereq-api-client-90-does-not-exist",
+      "target_skill": "vcf-foundation",
+      "prompt": "I want to set up a service account with a long-lived API token scoped to read-only, so our automation isn't using my personal admin creds. We're on VCF 9.0.",
+      "expected_output": "Correctly states that SSO-issued, role-scoped API tokens are a 9.1 capability and do not exist in 9.0, then gives the 9.0 route.",
+      "assertions": [
+        {"id": "i0", "text": "States that API clients / API tokens issued by VCF SSO are a 9.1 feature and are NOT available in 9.0"},
+        {"id": "i1", "text": "Does NOT walk the user through the 9.1 Fleet Management > Identity & Access > API Clients flow as if it existed in 9.0"},
+        {"id": "i2", "text": "Gives the actual 9.0 route: per-product credentials (SDDC Manager /v1/tokens, VCF Operations token/acquire, NSX session, vCenter session)"},
+        {"id": "i3", "text": "Mentions NSX principal identities as the documented service-account mechanism for NSX"},
+        {"id": "i4", "text": "Notes that VCF built-in roles (VCF Viewer / VCF Administrator) are documented only in the 9.1 doc set"}
+      ],
+      "files": []
+    },
+    {
+      "id": 9,
+      "name": "prereq-vcenter-90-federated-login-block",
+      "target_skill": "vcf-foundation",
+      "prompt": "my script authenticates to vcenter with a username and password and creates a session. worked fine on our old 8.x setup, now it fails on the new VCF 9.0 build. what changed?",
+      "expected_output": "Identifies the 9.0 prerequisite change around non-federated username/password logins rather than generic troubleshooting.",
+      "assertions": [
+        {"id": "j0", "text": "Identifies that vCenter 9.0 blocks non-federated username/password logins as the likely cause"},
+        {"id": "j1", "text": "Describes the federated flow (external IdP token exchanged for a session) as the prerequisite that must now be satisfied"},
+        {"id": "j2", "text": "Names the vmware-api-session-id header as the session mechanism"},
+        {"id": "j3", "text": "Scopes the answer to 9.0 rather than mixing in 9.1 OAuth token support without labelling it"},
+        {"id": "j4", "text": "Does not attribute the failure to a certificate problem without evidence"}
+      ],
+      "files": []
+    },
+    {
+      "id": 10,
+      "name": "prereq-token-death-and-cert-trust",
+      "target_skill": "vcf-foundation",
+      "prompt": "our VCF 9.1 automation randomly stops working after a few weeks and we have to regenerate credentials. also we keep hitting TLS errors from the python side. what are we doing wrong?",
+      "expected_output": "Surfaces the version-specific prerequisite traps: token TTL ceilings, JIT user inactivity silently killing tokens, and VMCA-signed default certs.",
+      "assertions": [
+        {"id": "k0", "text": "Identifies API Token TTL limits (default 30 days) as a likely cause of the periodic failure"},
+        {"id": "k1", "text": "Mentions the JIT user inactivity behaviour, where an inactive user's previously issued API tokens can no longer retrieve access tokens until that user authenticates again"},
+        {"id": "k2", "text": "Identifies VMCA-signed default certificates as the cause of the TLS trust errors"},
+        {"id": "k3", "text": "Recommends trusting/replacing the CA rather than disabling verification, consistent with Broadcom guidance"},
+        {"id": "k4", "text": "Labels these as 9.1 behaviours and does not assert them for 9.0"}
+      ],
+      "files": []
+    },
+    {
+      "id": 11,
+      "name": "prereq-upgrade-gates",
+      "target_skill": "vcf-lifecycle-upgrade",
+      "prompt": "what has to be true before we can even start the 9.0 to 9.1 upgrade? trying to build a readiness checklist for change control.",
+      "expected_output": "A genuine version-specific prerequisite checklist, not generic upgrade advice.",
+      "assertions": [
+        {"id": "l0", "text": "States the minimum workload-domain version gate that must be met before the 9.1 upgrade"},
+        {"id": "l1", "text": "Includes running prechecks as an explicit gate"},
+        {"id": "l2", "text": "Mentions depot / bundle availability (online or offline depot) as a prerequisite"},
+        {"id": "l3", "text": "Mentions that OAuth clients are not migrated automatically on the vIDM to identity broker migration and must be manually regenerated"},
+        {"id": "l4", "text": "Distinguishes prerequisites that are 9.1-specific from ones that applied in 9.0"},
+        {"id": "l5", "text": "Flags items the research could not verify rather than inventing a complete-looking checklist"}
+      ],
+      "files": []
+    }
+  ],
+  "prerequisite_coverage_rule": {
+    "rationale": "Missing prerequisites is one of the four failure modes the brief names for adversarial review, and prerequisites are where 9.0 and 9.1 diverge most sharply. Treat them structurally, not incidentally.",
+    "requirements": [
+      "Every version-scoped reference file must open with a Prerequisites block before any endpoint is listed.",
+      "Each prerequisite is tagged with the version it applies to, and prerequisites that exist in only one version must say so explicitly (e.g. SSO-issued API tokens: 9.1 only).",
+      "Each prerequisite states how to verify it is satisfied, not just that it is required.",
+      "Where a prerequisite could not be verified in research (e.g. the ports matrix), the block says so rather than omitting it silently.",
+      "Adversarial review includes a dedicated pass that asks: for each worked example, what must already be true for this call to succeed, and is that stated?"
+    ]
+  }
+}

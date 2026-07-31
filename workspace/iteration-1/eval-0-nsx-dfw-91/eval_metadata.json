@@ -1,0 +1,44 @@
+{
+ "eval_id": 0,
+ "eval_name": "0-nsx-dfw-91",
+ "prompt": "We're on VCF 9.1. I need to block RDP (tcp/3389) from our app-tier group to our db-tier group in NSX. Both groups already exist. Give me the exact API calls including how to authenticate.",
+ "target_skill": "nsx-security-policy",
+ "assertions": [
+  {
+   "id": "a0",
+   "text": "Uses the Policy API base path /policy/api/v1 for the security policy and rule calls"
+  },
+  {
+   "id": "a1",
+   "text": "Does NOT present the Manager API /api/v1 as a valid surface for creating policy objects"
+  },
+  {
+   "id": "a2",
+   "text": "Auth uses POST /api/session/create with form fields j_username and j_password"
+  },
+  {
+   "id": "a3",
+   "text": "States that BOTH the JSESSIONID cookie AND the X-XSRF-TOKEN header must be sent on subsequent calls"
+  },
+  {
+   "id": "a4",
+   "text": "Creates or references a security policy under a domain before creating the rule (correct nesting, not a bare rule POST)"
+  },
+  {
+   "id": "a5",
+   "text": "States the prerequisite that both source and destination groups must already exist and be referenced by path"
+  },
+  {
+   "id": "a6",
+   "text": "Explicitly labels the answer as applying to VCF 9.1 / NSX 9.1"
+  },
+  {
+   "id": "a7",
+   "text": "Includes the caveat that the skill was built from documentation and not validated against a live environment"
+  },
+  {
+   "id": "a8",
+   "text": "Contains no endpoint that is absent from the 9.1 nsx_policy_api spec"
+  }
+ ]
+}

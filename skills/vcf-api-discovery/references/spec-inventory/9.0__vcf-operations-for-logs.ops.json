@@ -1,0 +1,1413 @@
+{
+ "meta": {
+  "present": true,
+  "spec_file": "specifications/vcf-operations/vcf-operations-for-logs-openapi.json",
+  "spec_version": "v2",
+  "title": "VCF Operations for Logs",
+  "openapi": "3.0.1",
+  "base_path": "/api/v2",
+  "operation_count": 136,
+  "security_schemes": {
+   "Bearer": {
+    "type": "http",
+    "description": "Authenticated requests must include an Authorization header with a session\nID that was retrieved from [`/api/v2/sessions`](#sessions).  The session ID\nhas a limited lifespan.  Access is allowed only to resources that the user is\nauthorized to use.\n",
+    "name": "Authorization",
+    "in": "header",
+    "scheme": "Bearer"
+   }
+  },
+  "tags": [
+   "ad",
+   "aggregated-events",
+   "appliance",
+   "auth-providers",
+   "ceip",
+   "certificate",
+   "certificates",
+   "cluster",
+   "datasets",
+   "deployment",
+   "events",
+   "fields",
+   "licenses",
+   "limits",
+   "log-forwarder",
+   "notification",
+   "roles",
+   "salt",
+   "sessions",
+   "time",
+   "trusted-certificates",
+   "ui",
+   "upgrades",
+   "user-groups",
+   "users",
+   "version",
+   "vidb",
+   "vidm",
+   "vsphere"
+  ]
+ },
+ "operations": [
+  {
+   "method": "GET",
+   "path": "/ad",
+   "operationId": "GET_ad",
+   "summary": "",
+   "tags": [
+    "ad"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/ad",
+   "operationId": "POST_ad",
+   "summary": "",
+   "tags": [
+    "ad"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/ad/test",
+   "operationId": "POST_ad-test",
+   "summary": "",
+   "tags": [
+    "ad"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/aggregated-events/{+path}",
+   "operationId": "GET_aggregated-events-+path",
+   "summary": "",
+   "tags": [
+    "aggregated-events"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/appliance/vm-support-bundles",
+   "operationId": "POST_appliance-vm-support-bundles",
+   "summary": "",
+   "tags": [
+    "appliance"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/appliance/vm-support-bundles/manifests",
+   "operationId": "GET_appliance-vm-support-bundles-manifests",
+   "summary": "",
+   "tags": [
+    "appliance"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/auth-providers",
+   "operationId": "GET_auth-providers",
+   "summary": "",
+   "tags": [
+    "auth-providers"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/ceip",
+   "operationId": "GET_ceip",
+   "summary": "",
+   "tags": [
+    "ceip"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/ceip",
+   "operationId": "PUT_ceip",
+   "summary": "",
+   "tags": [
+    "ceip"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/certificate",
+   "operationId": "GET_certificate",
+   "summary": "",
+   "tags": [
+    "certificate"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/certificate",
+   "operationId": "POST_certificate",
+   "summary": "",
+   "tags": [
+    "certificate"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/certificates",
+   "operationId": "GET_certificates",
+   "summary": "",
+   "tags": [
+    "certificates"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/certificates/{thumbprint}",
+   "operationId": "DELETE_certificates-thumbprint",
+   "summary": "",
+   "tags": [
+    "certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/certificates/{thumbprint}",
+   "operationId": "GET_certificates-thumbprint",
+   "summary": "",
+   "tags": [
+    "certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/cluster/vips",
+   "operationId": "GET_cluster-vips",
+   "summary": "",
+   "tags": [
+    "cluster"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/cluster/vips",
+   "operationId": "POST_cluster-vips",
+   "summary": "",
+   "tags": [
+    "cluster"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/cluster/vips/usage/{uuid}",
+   "operationId": "GET_cluster-vips-usage-uuid",
+   "summary": "",
+   "tags": [
+    "cluster"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/cluster/vips/{uuid}",
+   "operationId": "DELETE_cluster-vips-uuid",
+   "summary": "",
+   "tags": [
+    "cluster"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/cluster/vips/{uuid}",
+   "operationId": "GET_cluster-vips-uuid",
+   "summary": "",
+   "tags": [
+    "cluster"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/cluster/vips/{uuid}",
+   "operationId": "PUT_cluster-vips-uuid",
+   "summary": "",
+   "tags": [
+    "cluster"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/datasets",
+   "operationId": "GET_datasets",
+   "summary": "",
+   "tags": [
+    "datasets"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/datasets",
+   "operationId": "POST_datasets",
+   "summary": "",
+   "tags": [
+    "datasets"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/datasets/{datasetId}",
+   "operationId": "DELETE_datasets-datasetId",
+   "summary": "",
+   "tags": [
+    "datasets"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/datasets/{datasetId}",
+   "operationId": "GET_datasets-datasetId",
+   "summary": "",
+   "tags": [
+    "datasets"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/datasets/{datasetId}",
+   "operationId": "PATCH_datasets-datasetId",
+   "summary": "",
+   "tags": [
+    "datasets"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/deployment/approve",
+   "operationId": "POST_deployment-approve",
+   "summary": "",
+   "tags": [
+    "deployment"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/deployment/join",
+   "operationId": "POST_deployment-join",
+   "summary": "",
+   "tags": [
+    "deployment"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/deployment/new",
+   "operationId": "POST_deployment-new",
+   "summary": "",
+   "tags": [
+    "deployment"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/deployment/token",
+   "operationId": null,
+   "summary": "",
+   "tags": [
+    "deployment"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/deployment/waitUntilStarted",
+   "operationId": "POST_deployment-waitUntilStarted",
+   "summary": "",
+   "tags": [
+    "deployment"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/events",
+   "operationId": "POST_events",
+   "summary": "",
+   "tags": [
+    "events"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/events/ingest/{agentId}",
+   "operationId": "POST_events-ingest-agentId",
+   "summary": "",
+   "tags": [
+    "events"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/events/{+path}",
+   "operationId": "GET_events-+path",
+   "summary": "",
+   "tags": [
+    "events"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/fields/extractedFields",
+   "operationId": "POST_fields-extractedField",
+   "summary": "",
+   "tags": [
+    "fields"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/fields/extractedFields/{internalName}",
+   "operationId": "DELETE_fields-extractedField",
+   "summary": "",
+   "tags": [
+    "fields"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/fields/extractedFields/{internalName}",
+   "operationId": "GET_fields-extractedField",
+   "summary": "",
+   "tags": [
+    "fields"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/fields/extractedFields/{internalName}",
+   "operationId": "PATCH_fields-extractedField",
+   "summary": "",
+   "tags": [
+    "fields"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/licenses",
+   "operationId": "GET_licenses",
+   "summary": "",
+   "tags": [
+    "licenses"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/limits",
+   "operationId": "GET_limits",
+   "summary": "",
+   "tags": [
+    "limits"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/limits/{name}",
+   "operationId": "GET_limits_by_name",
+   "summary": "",
+   "tags": [
+    "limits"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/limits/{name}",
+   "operationId": "PATCH_limits_by_name",
+   "summary": "",
+   "tags": [
+    "limits"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/log-forwarder",
+   "operationId": "GET_log-forwarder",
+   "summary": "",
+   "tags": [
+    "log-forwarder"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/log-forwarder",
+   "operationId": "POST_log-forwarder",
+   "summary": "",
+   "tags": [
+    "log-forwarder"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/log-forwarder/batch",
+   "operationId": "POST_log-forwarder-batch",
+   "summary": "",
+   "tags": [
+    "log-forwarder"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/log-forwarder/testconnection",
+   "operationId": "POST_log-forwarder-testconnection",
+   "summary": "",
+   "tags": [
+    "log-forwarder"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/log-forwarder/{id}",
+   "operationId": "DELETE_log-forwarder-id",
+   "summary": "",
+   "tags": [
+    "log-forwarder"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/log-forwarder/{id}",
+   "operationId": "GET_log-forwarder-id",
+   "summary": "",
+   "tags": [
+    "log-forwarder"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/log-forwarder/{id}",
+   "operationId": "PATCH_log-forwarder-id",
+   "summary": "",
+   "tags": [
+    "log-forwarder"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/log-forwarder/{id}",
+   "operationId": "PUT_log-forwarder-id",
+   "summary": "",
+   "tags": [
+    "log-forwarder"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/notification/channels",
+   "operationId": "GET_notification-channels",
+   "summary": "",
+   "tags": [
+    "notification"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/notification/channels",
+   "operationId": "PUT_notification-channels",
+   "summary": "",
+   "tags": [
+    "notification"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/notification/config/retention-threshold",
+   "operationId": "GET_notification-config-retention-threshold",
+   "summary": "",
+   "tags": [
+    "notification"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/notification/config/retention-threshold",
+   "operationId": "PUT_notification-config-retention-threshold",
+   "summary": "",
+   "tags": [
+    "notification"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/notification/email",
+   "operationId": "GET_notification-email",
+   "summary": "",
+   "tags": [
+    "notification"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/notification/email",
+   "operationId": "PUT_notification-email",
+   "summary": "",
+   "tags": [
+    "notification"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/notification/webhook",
+   "operationId": "GET_notification-webhook",
+   "summary": "",
+   "tags": [
+    "notification"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/notification/webhook",
+   "operationId": "POST_notification-webhook",
+   "summary": "",
+   "tags": [
+    "notification"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/notification/webhook",
+   "operationId": "PUT_notification-webhook",
+   "summary": "",
+   "tags": [
+    "notification"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/notification/webhook/{webhookId}",
+   "operationId": "DELETE_notification-webhook-webhookId",
+   "summary": "",
+   "tags": [
+    "notification"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/notification/webhook/{webhookId}",
+   "operationId": "GET_notification-webhook-webhookId",
+   "summary": "",
+   "tags": [
+    "notification"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/notification/webhook/{webhookId}",
+   "operationId": "PUT_notification-webhook-webhookId",
+   "summary": "",
+   "tags": [
+    "notification"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/notification/webhook/{webhookId}/alerts",
+   "operationId": "GET_notification-webhook-webhookId-alerts",
+   "summary": "",
+   "tags": [
+    "notification"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/roles",
+   "operationId": "GET_roles",
+   "summary": "",
+   "tags": [
+    "roles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/roles",
+   "operationId": "POST_roles",
+   "summary": "",
+   "tags": [
+    "roles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/roles/{roleId}",
+   "operationId": "DELETE_roles-roleId",
+   "summary": "",
+   "tags": [
+    "roles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/roles/{roleId}",
+   "operationId": "GET_roles-roleId",
+   "summary": "",
+   "tags": [
+    "roles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/roles/{roleId}",
+   "operationId": "PATCH_roles-roleId",
+   "summary": "",
+   "tags": [
+    "roles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/roles/{roleId}/capabilities",
+   "operationId": "GET_roles-roleId-capabilities",
+   "summary": "",
+   "tags": [
+    "roles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/roles/{roleId}/capabilities",
+   "operationId": "PATCH_roles-roleId-capabilities",
+   "summary": "",
+   "tags": [
+    "roles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/roles/{roleId}/capabilities",
+   "operationId": "PUT_roles-roleId-capabilities",
+   "summary": "",
+   "tags": [
+    "roles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/roles/{roleId}/datasets",
+   "operationId": "GET_roles-roleId-datasets",
+   "summary": "",
+   "tags": [
+    "roles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/roles/{roleId}/datasets",
+   "operationId": "PATCH_roles-roleId-datasets",
+   "summary": "",
+   "tags": [
+    "roles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/roles/{roleId}/datasets",
+   "operationId": "PUT_roles-roleId-datasets",
+   "summary": "",
+   "tags": [
+    "roles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/roles/{roleId}/users",
+   "operationId": "GET_roles-roleId-users",
+   "summary": "",
+   "tags": [
+    "roles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/roles/{roleId}/users",
+   "operationId": "PATCH_roles-roleId-users",
+   "summary": "",
+   "tags": [
+    "roles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/salt",
+   "operationId": "DELETE_salt",
+   "summary": "",
+   "tags": [
+    "salt"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/salt",
+   "operationId": "GET_salt",
+   "summary": "",
+   "tags": [
+    "salt"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/salt",
+   "operationId": "POST_salt",
+   "summary": "",
+   "tags": [
+    "salt"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/sessions",
+   "operationId": "POST_sessions",
+   "summary": "",
+   "tags": [
+    "sessions"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/sessions/current",
+   "operationId": "GET_sessions-current",
+   "summary": "",
+   "tags": [
+    "sessions"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/time",
+   "operationId": "GET_time",
+   "summary": "",
+   "tags": [
+    "time"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/time/config",
+   "operationId": "GET_time-config",
+   "summary": "",
+   "tags": [
+    "time"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/time/config",
+   "operationId": "PUT_time-config",
+   "summary": "",
+   "tags": [
+    "time"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/time/test",
+   "operationId": "POST_time-test",
+   "summary": "",
+   "tags": [
+    "time"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/trusted-certificates/{thumbprint}",
+   "operationId": "DELETE_trusted-certificates-thumbprint",
+   "summary": "",
+   "tags": [
+    "trusted-certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/trusted-certificates/{thumbprint}",
+   "operationId": "GET_trusted-certificates-thumbprint",
+   "summary": "",
+   "tags": [
+    "trusted-certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/ui/browser-session",
+   "operationId": "GET_ui-browser-session",
+   "summary": "",
+   "tags": [
+    "ui"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/ui/browser-session",
+   "operationId": "PUT_ui-browser-session",
+   "summary": "",
+   "tags": [
+    "ui"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/ui/language",
+   "operationId": "GET_ui-language",
+   "summary": "",
+   "tags": [
+    "ui"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/ui/language",
+   "operationId": "PUT_ui-language",
+   "summary": "",
+   "tags": [
+    "ui"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/upgrades",
+   "operationId": "GET_upgrades",
+   "summary": "",
+   "tags": [
+    "upgrades"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/upgrades",
+   "operationId": "POST_upgrades",
+   "summary": "",
+   "tags": [
+    "upgrades"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/upgrades/local",
+   "operationId": "GET_upgrades-local",
+   "summary": "",
+   "tags": [
+    "upgrades"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/upgrades/{version}",
+   "operationId": "GET_upgrades-version",
+   "summary": "",
+   "tags": [
+    "upgrades"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/upgrades/{version}/eula",
+   "operationId": "PUT_upgrades-version-eula",
+   "summary": "",
+   "tags": [
+    "upgrades"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/user-groups",
+   "operationId": "GET_user-groups",
+   "summary": "",
+   "tags": [
+    "user-groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/user-groups",
+   "operationId": "POST_user-groups",
+   "summary": "",
+   "tags": [
+    "user-groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/user-groups/{provider}",
+   "operationId": "GET_user-groups-provider",
+   "summary": "",
+   "tags": [
+    "user-groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/user-groups/{provider}/{domain}/{name}",
+   "operationId": "DELETE_user-groups-provider-domain-name",
+   "summary": "",
+   "tags": [
+    "user-groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/user-groups/{provider}/{domain}/{name}",
+   "operationId": "GET_user-groups-provider-domain-name",
+   "summary": "",
+   "tags": [
+    "user-groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/user-groups/{provider}/{domain}/{name}",
+   "operationId": "PATCH_user-groups-provider-domain-name",
+   "summary": "",
+   "tags": [
+    "user-groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/users",
+   "operationId": "GET_users",
+   "summary": "",
+   "tags": [
+    "users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/users",
+   "operationId": "POST_users",
+   "summary": "",
+   "tags": [
+    "users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/users/self/settings",
+   "operationId": "GET_users-self-settings",
+   "summary": "",
+   "tags": [
+    "users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/users/self/settings",
+   "operationId": "PATCH_users-self-settings",
+   "summary": "",
+   "tags": [
+    "users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/users/{userId}",
+   "operationId": "DELETE_users-userId",
+   "summary": "",
+   "tags": [
+    "users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/users/{userId}",
+   "operationId": "GET_users-userId",
+   "summary": "",
+   "tags": [
+    "users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/users/{userId}",
+   "operationId": "PATCH_users-userId",
+   "summary": "",
+   "tags": [
+    "users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/users/{userId}/password",
+   "operationId": "PATCH_users-userId-password",
+   "summary": "",
+   "tags": [
+    "users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/version",
+   "operationId": "GET_version",
+   "summary": "",
+   "tags": [
+    "version"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/vidb",
+   "operationId": "GET_vidb",
+   "summary": "",
+   "tags": [
+    "vidb"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/vidb",
+   "operationId": "POST_vidb",
+   "summary": "",
+   "tags": [
+    "vidb"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/vidb/test",
+   "operationId": "POST_vidb-test",
+   "summary": "",
+   "tags": [
+    "vidb"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/vidm",
+   "operationId": "GET_vidm",
+   "summary": "",
+   "tags": [
+    "vidm"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/vidm",
+   "operationId": "POST_vidm",
+   "summary": "",
+   "tags": [
+    "vidm"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/vidm/status",
+   "operationId": "GET_vidm-status",
+   "summary": "",
+   "tags": [
+    "vidm"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/vidm/test",
+   "operationId": "POST_vidm-test",
+   "summary": "",
+   "tags": [
+    "vidm"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/vsphere",
+   "operationId": "DELETE_vsphere",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/vsphere",
+   "operationId": "GET_vsphere",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/vsphere",
+   "operationId": "POST_vsphere",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/vsphere/testconnection",
+   "operationId": "POST_vsphere-testconnection",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/vsphere/{UUID}",
+   "operationId": "DELETE_vsphere-UUID",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/vsphere/{UUID}",
+   "operationId": "GET_vsphere-UUID",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/vsphere/{UUID}",
+   "operationId": "PUT_vsphere-UUID",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/vsphere/{UUID}/hosts",
+   "operationId": "GET_vsphere-UUID-hosts",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/vsphere/{UUID}/hosts",
+   "operationId": "PUT_vsphere-UUID-hosts",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/vsphere/{UUID}/hosts/batch",
+   "operationId": "PATCH_vsphere-UUID-hosts-batch",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/vsphere/{UUID}/hosts/{esxiHost}",
+   "operationId": "GET_vsphere-UUID-hosts-esxiHost",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/vsphere/{UUID}/hosts/{esxiHost}",
+   "operationId": "PUT_vsphere-UUID-hosts-esxiHost",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/vsphere/{vcHostname}",
+   "operationId": "DELETE_vsphere-vcHostname",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/vsphere/{vcHostname}",
+   "operationId": "GET_vsphere-vcHostname",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/vsphere/{vcHostname}",
+   "operationId": "PUT_vsphere-vcHostname",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/vsphere/{vcHostname}/hosts",
+   "operationId": "GET_vsphere-vcHostname-hosts",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/vsphere/{vcHostname}/hosts",
+   "operationId": "PUT_vsphere-vcHostname-hosts",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/vsphere/{vcHostname}/hosts/{esxiHost}",
+   "operationId": "GET_vsphere-vcHostname-hosts-esxiHost",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/vsphere/{vcHostname}/hosts/{esxiHost}",
+   "operationId": "PUT_vsphere-vcHostname-hosts-esxiHost",
+   "summary": "",
+   "tags": [
+    "vsphere"
+   ],
+   "deprecated": true
+  }
+ ]
+}

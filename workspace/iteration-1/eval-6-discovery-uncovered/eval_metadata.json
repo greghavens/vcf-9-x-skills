@@ -1,0 +1,28 @@
+{
+ "eval_id": 6,
+ "eval_name": "6-discovery-uncovered",
+ "prompt": "I need to automate vSAN stretched cluster configuration on VCF 9.1 and I can't find the API anywhere in the docs. How do I find it?",
+ "target_skill": "vcf-api-discovery",
+ "assertions": [
+  {
+   "id": "g0",
+   "text": "Points to github.com/vmware/vcf-api-specs and names the version tag 9.1.0.0"
+  },
+  {
+   "id": "g1",
+   "text": "Gives a concrete way to search the spec corpus (grep/script/jq over the spec files) rather than only saying 'read the docs'"
+  },
+  {
+   "id": "g2",
+   "text": "Mentions at least one on-appliance discovery route (e.g. the VCF Operations swagger UI or the NSX openapi spec endpoint)"
+  },
+  {
+   "id": "g3",
+   "text": "Does NOT invent a specific vSAN stretched-cluster endpoint and present it as verified"
+  },
+  {
+   "id": "g4",
+   "text": "Notes that no on-appliance API-explorer URL pattern is documented for VCF 9.x"
+  }
+ ]
+}

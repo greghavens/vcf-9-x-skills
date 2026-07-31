@@ -1,0 +1,44 @@
+{
+ "eval_id": 8,
+ "run_id": "eval-8-prereq-90-api-client-with_skill",
+ "expectations": [
+  {
+   "text": "States that API clients / API tokens issued by VCF SSO are a 9.1 feature and are NOT available in 9.0",
+   "passed": true,
+   "evidence": "'**The thing you're describing does not exist in VCF 9.0.** SSO-issued, role-scoped API tokens ... is a **9.1 capability**. In 9.0 there is no VCF SSO API client, no SSO-issued API token, no OAuth-app management, and no emergency access client.' Backed by the 0-vs-70 /api/fleet-management/iam/** operation count, which reproduces exactly against the ops inventory."
+  },
+  {
+   "text": "Does NOT walk the user through the 9.1 Fleet Management > Identity & Access > API Clients flow as if it existed in 9.0",
+   "passed": true,
+   "evidence": "The flow is explicitly negated for 9.0 ('There is no *Fleet Management -> Identity & Access -> API Clients* node to click; the navigation item isn't there') and only appears later under '## What changes if/when you go to 9.1'."
+  },
+  {
+   "text": "Gives the actual 9.0 route: per-product credentials (SDDC Manager /v1/tokens, VCF Operations token/acquire, NSX session, vCenter session)",
+   "passed": true,
+   "evidence": "All four given: SDDC Manager `POST /v1/tokens` (+ refresh/revoke), VCF Operations `POST /suite-api/api/auth/token/acquire` with `Authorization: OpsToken`, NSX `POST /api/session/create` with j_username/j_password plus JSESSIONID + x-xsrf-token, vCenter `POST /api/session` with `vmware-api-session-id`."
+  },
+  {
+   "text": "Mentions NSX principal identities as the documented service-account mechanism for NSX",
+   "passed": true,
+   "evidence": "'the documented mechanism is an NSX **principal identity**, which is what an X.509 client certificate binds to', with the verbatim doc quote and the 9.0 deprecation asterisk."
+  },
+  {
+   "text": "Notes that VCF built-in roles (VCF Viewer / VCF Administrator) are documented only in the 9.1 doc set",
+   "passed": true,
+   "evidence": "'**VCF built-in roles arrive:** VCF Administrator, VCF Viewer, SDDC Administrator, SDDC Viewer ... **These names do not exist in 9.0; don't let anyone hand you a runbook that uses them.**' - listed under the 9.1 section."
+  }
+ ],
+ "passed_count": 5,
+ "total_count": 5,
+ "notes": [
+  "without_skill states 'SDDC Manager - Still present in 9.0, but **deprecated** - Broadcom has said it will be removed in a future release'. Per vcf-core-9.0.md/vcf-core-9.1-and-deltas.md, the deprecation statement is scoped to the SDDC Manager *UI*; the appliance, service and API are not deprecated, and the 9.1 API grew 375 -> 423 with zero removals. The advice that follows ('Don't build new long-term automation against it') rests on that error.",
+  "without_skill gives SDDC Manager roles as 'ADMIN / OPERATOR / VIEWER'; no source in the research corpus publishes SDDC Manager role strings (the with_skill arm explicitly refuses to name them and points at GET /v1/roles).",
+  "without_skill's VCF Automation service-account section (device_authorization flow, urn:vcloud:role: scopes, RFC 6749 rotation) is not covered by the research corpus either way - unverifiable from available sources."
+ ],
+ "summary": {
+  "passed": 5,
+  "failed": 0,
+  "total": 5,
+  "pass_rate": 1.0
+ }
+}

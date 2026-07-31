@@ -1,0 +1,28 @@
+{
+ "eval_id": 4,
+ "eval_name": "4-router-no-version",
+ "prompt": "How do I get an API token so I can start automating against our VCF environment?",
+ "target_skill": "vcf-foundation",
+ "assertions": [
+  {
+   "id": "e0",
+   "text": "Establishes or asks for the target VCF version (9.0 vs 9.1) before committing to an auth flow"
+  },
+  {
+   "id": "e1",
+   "text": "Does NOT silently default to 9.1 / 'latest'"
+  },
+  {
+   "id": "e2",
+   "text": "Establishes or asks which product the token is for, rather than assuming one API covers VCF"
+  },
+  {
+   "id": "e3",
+   "text": "States that SDDC Manager is excluded from VCF SSO and uses its own token flow"
+  },
+  {
+   "id": "e4",
+   "text": "If 9.1 is selected, describes the VCF Identity Broker / API client + API token route"
+  }
+ ]
+}
