@@ -83,9 +83,11 @@ The kubectl case is the clearest illustration of why this route matters: the VCF
 name VM Operator `v1alpha2`/`v1alpha3` while upstream shows `v1alpha5`. There is no way
 to resolve that from documents. Query the cluster.
 
-Note honestly: **no on-appliance API-explorer URL pattern is documented for VCF 9.x**
-(only for 7.0 and 8.0). This skill deliberately does not teach one rather than inventing
-a URL that looks right.
+**Tell the user this, don't just know it:** no on-appliance API-explorer URL pattern is
+documented for VCF 9.x — only for 7.0 and 8.0. Someone hunting for an endpoint will go
+looking for one, and the honest answer is that Broadcom hasn't published a 9.x pattern.
+Say so rather than inventing a URL that looks right, and point them at the routes above
+that are documented.
 
 ## Route 3 — the documentation portals
 
@@ -111,12 +113,18 @@ Three failure signatures that mislead if you don't know them:
 | Situation | Route |
 |---|---|
 | "Does this endpoint exist in 9.1?" | Spec corpus — definitive |
+| **"I can't find X anywhere" / "where do I look?"** | **Both 1 and 2 — see below** |
 | "What changed between 9.0 and 9.1?" | Spec corpus, `--both-versions` |
 | "What are the exact payload fields?" | Spec corpus — prose docs are less reliable here |
 | "Which cmdlet does X?" | Live discovery, noun-first PowerShell |
 | "What CRD version does this cluster serve?" | Live discovery — documents are known to be wrong |
 | "Why would I do this / what are the constraints?" | Doc portal |
 | Product has no spec at that version (NSX 9.0) | Doc portal, and say the evidence is prose-grade |
+
+When someone asks **where to look** rather than asking you to confirm one specific
+endpoint, the corpus alone is a half-answer. They are going to keep hunting after you
+reply, and they will hunt on their own appliance. Give them Route 1 *and* Route 2, plus
+the API-explorer gap, so they stop looking for a door that isn't there.
 
 ## Reporting what you found
 
@@ -141,6 +149,21 @@ The reference material exists so your answer is *correct*, not so your answer is
 Most of what you read should never appear in the reply. A useful test before sending:
 would a VMware engineer who knows their environment skim this and find the command, or
 would they have to hunt for it?
+
+### A discovery answer has three parts
+
+Brevity is the default everywhere else in this section, but "where do I find this" is the
+one question where a short answer is an incomplete one. Cover all three:
+
+1. **The spec corpus** — `github.com/vmware/vcf-api-specs` at the `9.0.0.0` / `9.1.0.0`
+   tag, and how to search it.
+2. **At least one on-appliance route** — the NSX OpenAPI endpoints, the VCF Operations
+   Swagger UI at `/suite-api/doc/swagger-ui.html`, `kubectl api-resources`, or noun-first
+   PowerShell, whichever fits their product.
+3. **The gap** — no documented on-appliance API-explorer URL pattern for 9.x.
+
+Dropping (2) sends the user back to the same dead end they arrived with; dropping (3)
+leaves them hunting for a page that was never published. Neither is brevity.
 
 ### Lead with the thing they asked for
 
@@ -177,7 +200,7 @@ user writing a change record needs that. A user prototyping does not need it fiv
 |---|---|
 | "the exact API calls" | The call sequence with payloads. Prereqs that would break it. Nothing else. |
 | "write me a script" | The script, runnable. A short note on what to set. |
-| "how do I find X" | The lookup route, and the answer if you found it. |
+| "how do I find X" / "I can't find X" | Both lookup routes — corpus *and* on-appliance — plus the answer if you found it. |
 | "walk me through the upgrade" | The ordered steps with gates — this one legitimately runs long. |
 | "is X true?" | Yes or no, then why. Two paragraphs, not ten. |
 | A question with a false premise | Correct the premise first, briefly, then answer what they meant. |
