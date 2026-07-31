@@ -1,0 +1,265 @@
+{
+  "eval_id": 3,
+  "with_skill": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "id": "d0",
+          "text": "Gives a component ordering rather than a vague 'follow the docs'",
+          "passed": true,
+          "evidence": "Explicit numbered order table: '| 0 | VCF Identity Broker 9.0.x ... | 1 | VCF Operations + cloud proxy ... | 6 | SDDC Manager self-upgrade to 9.1 ... | 7 | VCF Identity Broker -> 9.1 ... | 8 | VCF Automation -> 9.1 ... | 9-23 | NSX, vCenter, ESX, vSAN, VMware Tools |'"
+        },
+        {
+          "id": "d1",
+          "text": "Distinguishes the major-version upgrade ordering from the 9.0.x maintenance-update ordering rather than conflating them",
+          "passed": true,
+          "evidence": "\"Don't confuse this with the other two orderings - there are three, and they are not interchangeable: A - 5.x -> 9.0 ... B - maintenance within 9.0.x (9.0.0.0 -> 9.0.1.0 -> 9.0.2.0): management first ... then core: SDDC Manager -> NSX -> vCenter -> ESX -> vSAN. C - 9.0.x -> 9.1: the table above. This is yours.\" Also: 'do not substitute the 9.0 maintenance ordering ... into the 9-23 range - that is a different sequence for a different upgrade'"
+        },
+        {
+          "id": "d2",
+          "text": "States that SDDC Manager itself drives the first half of the 9.0->9.1 upgrade",
+          "passed": true,
+          "evidence": "\"the upgrade pivots at order 6. SDDC Manager drives everything up to and including its own self-upgrade; VCF Operations drives everything after it.\" and 'Phase 1 - SDDC Manager drives (orders 0-6)'"
+        },
+        {
+          "id": "d3",
+          "text": "Calls out prechecks as a prerequisite step",
+          "passed": true,
+          "evidence": "'### 3. Prechecks - a gate, not a formality' listed under 'What to check first - the gates', with 'POST /v1/system/check-sets ... POST /v1/upgrades/{upgradeId}/prechecks' and 'These all belong before the change window, not in it.'"
+        },
+        {
+          "id": "d4",
+          "text": "Mentions that workload domains must be at a minimum version before the 9.1 upgrade",
+          "passed": true,
+          "evidence": "\"every workload domain must be at VCF 5.2 or later. 'If any workload domain is at a version lower than 5.2, you must upgrade it to 5.2 and then upgrade to 9.1.' That is a hard gate\""
+        },
+        {
+          "id": "d5",
+          "text": "Warns that this is a destructive/high-impact operation to verify before execution",
+          "passed": true,
+          "evidence": "\"This is a high-impact, largely irreversible operation: it takes vCenter, NSX, ESX and the management appliances through service-affecting work, permanently changes the management architecture, and breaks every existing OAuth client. Verify the whole sequence against Broadcom's own 9.1 documentation ... and rehearse it in non-production, before anyone runs it.\""
+        }
+      ],
+      "passed": 6,
+      "total": 6
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "id": "d0",
+          "text": "Gives a component ordering rather than a vague 'follow the docs'",
+          "passed": true,
+          "evidence": "Ordered table under '## 1. The component order': '| 0 | VCF Identity Broker 9.0.x ... | 1 | VCF Operations + cloud proxy ... | 6 | SDDC Manager self-upgrade to 9.1 ... | 7 | VCF Identity Broker -> 9.1 ... | 8 | VCF Automation -> 9.1 ... | 9-23 | NSX, vCenter, ESX, vSAN, VMware Tools |'"
+        },
+        {
+          "id": "d1",
+          "text": "Distinguishes the major-version upgrade ordering from the 9.0.x maintenance-update ordering rather than conflating them",
+          "passed": true,
+          "evidence": "\"Do not confuse this with the other two orderings. ... 5.x -> 9.0 (major): SDDC Manager -> NSX Manager -> vCenter -> ESX. ... Within 9.0.x (maintenance, e.g. 9.0.0.0 -> 9.0.1.0): management first ... then SDDC Manager -> NSX -> vCenter -> ESX -> vSAN. ... 9.0.x -> 9.1 (this one): the order-0-to-23 table above.\" plus 'the 9.0 maintenance sequence is *not* a stand-in for orders 9-23'"
+        },
+        {
+          "id": "d2",
+          "text": "States that SDDC Manager itself drives the first half of the 9.0->9.1 upgrade",
+          "passed": true,
+          "evidence": "\"it *drives the first half of this upgrade*\" and 'the pivot is order 6. SDDC Manager drives everything up to and including its own self-upgrade; VCF Operations drives everything after it.'"
+        },
+        {
+          "id": "d3",
+          "text": "Calls out prechecks as a prerequisite step",
+          "passed": true,
+          "evidence": "'### 2.3 Prechecks - a gate, not a formality `[gate]`' under 'What to check first - the readiness gates ... All of these must pass before any change.'"
+        },
+        {
+          "id": "d4",
+          "text": "Mentions that workload domains must be at a minimum version before the 9.1 upgrade",
+          "passed": true,
+          "evidence": "\"Verbatim from the 9.1 Lifecycle Management guide: 'all workload domains must be at VMware Cloud Foundation 5.2 or later. If any workload domain is at a version lower than 5.2, you must upgrade it to 5.2 and then upgrade to 9.1.'\" under '2.1 Source version and the workload-domain floor `[hard gate]`'"
+        },
+        {
+          "id": "d5",
+          "text": "Warns that this is a destructive/high-impact operation to verify before execution",
+          "passed": true,
+          "evidence": "\"This is high-impact and largely irreversible - nothing below should be executed on the strength of this document alone. Verify every step against Broadcom's own 9.1 documentation and the Interoperability Matrix ... and rehearse in non-production first.\" plus section '4. Risk: what's irreversible, and what fails silently'"
+        }
+      ],
+      "passed": 6,
+      "total": 6
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "id": "d0",
+          "text": "Gives a component ordering rather than a vague 'follow the docs'",
+          "passed": true,
+          "evidence": "'## The component order' table: '| 0 | VCF Identity Broker 9.0.x ... | 1 | VCF Operations + cloud proxy ... | 6 | SDDC Manager self-upgrade to 9.1 ... | 7 | VCF Identity Broker -> 9.1 ... | 8 | VCF Automation -> 9.1 ... | 9-23 | NSX, vCenter, ESX, vSAN, VMware Tools'"
+        },
+        {
+          "id": "d1",
+          "text": "Distinguishes the major-version upgrade ordering from the 9.0.x maintenance-update ordering rather than conflating them",
+          "passed": true,
+          "evidence": "\"Don't substitute a different ordering. Three exist and mixing them is a known failure mode: A - major 5.x -> 9.0 ... B - maintenance *within* 9.0.x (9.0.0.0 -> 9.0.1.0 -> 9.0.2.0): management components first, then SDDC Manager -> NSX -> vCenter -> ESX -> vSAN. C - the table above. This is yours.\" and 'It is a *different sequence for a different upgrade* - do not substitute it.'"
+        },
+        {
+          "id": "d2",
+          "text": "States that SDDC Manager itself drives the first half of the 9.0->9.1 upgrade",
+          "passed": true,
+          "evidence": "\"the upgrade pivots at order 6. SDDC Manager drives everything up to and including its own self-upgrade; VCF Operations drives everything after it.\" with the table marking orders 0-6 'Driven from: SDDC Manager'"
+        },
+        {
+          "id": "d3",
+          "text": "Calls out prechecks as a prerequisite step",
+          "passed": true,
+          "evidence": "\"**3. Prechecks - a gate, not a formality.** On 9.0, before the pivot: `POST /v1/system/check-sets` -> poll ...\" listed under 'What to check first - readiness gates ... These are all before-the-window items.'"
+        },
+        {
+          "id": "d4",
+          "text": "Mentions that workload domains must be at a minimum version before the 9.1 upgrade",
+          "passed": true,
+          "evidence": "\"verbatim: *'all workload domains must be at VMware Cloud Foundation 5.2 or later. If any workload domain is at a version lower than 5.2, you must upgrade it to 5.2 and then upgrade to 9.1.'* This is a hard gate, and it applies even though you're only doing the management domain.\""
+        },
+        {
+          "id": "d5",
+          "text": "Warns that this is a destructive/high-impact operation to verify before execution",
+          "passed": true,
+          "evidence": "'## Risk, and what you can't take back' - 'VCF Management Services is mandatory and not reversible ... Deploying it permanently changes the management architecture'; '`?action=apply` is the point of no easy return'; and the closing 'Nobody re-runs a management-domain upgrade to see if the second attempt goes better - validate the whole sequence against Broadcom's docs for your exact build and rehearse it in non-production first.'"
+        }
+      ],
+      "passed": 6,
+      "total": 6
+    }
+  ],
+  "without_skill": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "id": "d0",
+          "text": "Gives a component ordering rather than a vague 'follow the docs'",
+          "passed": true,
+          "evidence": "'## 2. Component order' numbered table: '1 VCF Installer appliance | 2 VCF Operations (fleet management) | 3 VCF Operations collectors / cloud proxies | ... | 6 SDDC Manager | 7 NSX | 8 vCenter Server | 9 ESXi hosts | 10 vSAN on-disk format'"
+        },
+        {
+          "id": "d1",
+          "text": "Distinguishes the major-version upgrade ordering from the 9.0.x maintenance-update ordering rather than conflating them",
+          "passed": false,
+          "evidence": "No mention of a separate 9.0.x maintenance-update ordering anywhere. Only a single ordering is presented, and version guidance is limited to 'Confirm your current build is a 9.0.x release that has a supported direct path to the 9.1 target'. The distinction is never drawn."
+        },
+        {
+          "id": "d2",
+          "text": "States that SDDC Manager itself drives the first half of the 9.0->9.1 upgrade",
+          "passed": false,
+          "evidence": "States the opposite: 'in VCF 9.x the upgrade is no longer an SDDC-Manager-only affair. VCF Operations (fleet management) is the control point', and places SDDC Manager at position 6, after VCF Operations, VCF Automation and the Ops family. No claim that SDDC Manager drives the first half."
+        },
+        {
+          "id": "d3",
+          "text": "Calls out prechecks as a prerequisite step",
+          "passed": true,
+          "evidence": "\"**Run the prechecks.** In VCF Operations, run the update precheck against the management domain (and the general 'precheck all'). In SDDC Manager, run the Lifecycle Management precheck for the domain. Resolve *every* red item\" - under 'Before you touch anything - the pre-flight checklist'"
+        },
+        {
+          "id": "d4",
+          "text": "Mentions that workload domains must be at a minimum version before the 9.1 upgrade",
+          "passed": false,
+          "evidence": "Only says 'repeat the SDDC-Manager-and-below portion for each VI workload domain. Management domain first, always.' No minimum-version floor for workload domains is stated anywhere."
+        },
+        {
+          "id": "d5",
+          "text": "Warns that this is a destructive/high-impact operation to verify before execution",
+          "passed": false,
+          "evidence": "Has a verification note ('verify the exact component order and prerequisites against the official ... documentation') and backup/rollback advice ('Backups (do not skip)'), but never states the operation is destructive, irreversible or high-impact. Closest is 'Restore is the fallback if retry fails twice', which frames failures as recoverable rather than warning of irreversibility."
+        }
+      ],
+      "passed": 2,
+      "total": 6
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "id": "d0",
+          "text": "Gives a component ordering rather than a vague 'follow the docs'",
+          "passed": true,
+          "evidence": "'## 2. Component order' with numbered phases: '1. VCF Installer appliance ... 2. VCF Operations fleet management appliance ... 7. SDDC Manager ... 8. NSX ... 9. vCenter Server ... 10. ESXi hosts', plus a 'Quick summary' order line."
+        },
+        {
+          "id": "d1",
+          "text": "Distinguishes the major-version upgrade ordering from the 9.0.x maintenance-update ordering rather than conflating them",
+          "passed": false,
+          "evidence": "Mentions only a possible prerequisite patch - 'any \"upgrade to 9.0.x patch first\" prerequisite ... if not, apply the intermediate patch first' - but never presents or distinguishes a separate 9.0.x maintenance-update component ordering. One ordering is given for all cases."
+        },
+        {
+          "id": "d2",
+          "text": "States that SDDC Manager itself drives the first half of the 9.0->9.1 upgrade",
+          "passed": false,
+          "evidence": "Asserts the reverse: 'the VCF Operations fleet management appliance goes before SDDC Manager, and SDDC Manager goes before NSX/vCenter/ESXi' and 'the upgrade is driven from the VCF Operations UI ... though SDDC Manager is still the component that orchestrates the domain-level NSX/vCenter/ESXi work' - i.e. SDDC Manager drives the later phase, not the first half."
+        },
+        {
+          "id": "d3",
+          "text": "Calls out prechecks as a prerequisite step",
+          "passed": true,
+          "evidence": "'### Health prechecks (do these, and fix everything that is not green)' - 'Run the built-in **upgrade precheck / update assessment** in VCF Operations fleet management and in SDDC Manager for the management domain. Treat warnings as blockers until you understand them.'"
+        },
+        {
+          "id": "d4",
+          "text": "Mentions that workload domains must be at a minimum version before the 9.1 upgrade",
+          "passed": false,
+          "evidence": "Only sequencing is stated: 'Management domain first, workload domains after. ... Nothing in a VI workload domain gets upgraded until the management domain is fully on 9.1.' No minimum workload-domain version is required or mentioned."
+        },
+        {
+          "id": "d5",
+          "text": "Warns that this is a destructive/high-impact operation to verify before execution",
+          "passed": false,
+          "evidence": "Has verification advice ('Verify the exact component list and any 9.1-specific prerequisites against the official VCF 9.1 upgrade documentation before executing') and rollback planning, but the only irreversibility note is about an optional post-step ('vSAN on-disk format upgrade (optional but usually recommended ...; it is one-way)'). The upgrade itself is never characterised as destructive, irreversible or high-impact."
+        }
+      ],
+      "passed": 2,
+      "total": 6
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "id": "d0",
+          "text": "Gives a component ordering rather than a vague 'follow the docs'",
+          "passed": true,
+          "evidence": "'## Component order' with numbered phases and a 'Quick reference: order at a glance' block: 'Depot sync -> VCF Operations (fleet mgmt appliance) -> VCF Operations nodes -> collectors/proxies -> ... -> SDDC Manager -> NSX: Upgrade Coordinator -> Edges -> Hosts -> NSX Manager cluster -> vCenter Server -> ESXi hosts -> vSAN on-disk format'"
+        },
+        {
+          "id": "d1",
+          "text": "Distinguishes the major-version upgrade ordering from the 9.0.x maintenance-update ordering rather than conflating them",
+          "passed": false,
+          "evidence": "Only notes a possible prerequisite patch: 'Confirm 9.0 -> 9.1 is a supported direct path from your exact current build. If you're on an older 9.0 patch level, you may need an intermediate 9.0.x update first.' No separate 9.0.x maintenance-update component ordering is described or distinguished from the major-version one."
+        },
+        {
+          "id": "d2",
+          "text": "States that SDDC Manager itself drives the first half of the 9.0->9.1 upgrade",
+          "passed": false,
+          "evidence": "States the opposite ordering and role: 'SDDC Manager still exists in 9.x and still performs the domain-level component upgrades, but VCF Operations is the front door and the fleet-level orchestrator.' SDDC Manager appears at step 7, after the entire Operations/Automation stack."
+        },
+        {
+          "id": "d3",
+          "text": "Calls out prechecks as a prerequisite step",
+          "passed": true,
+          "evidence": "'### Prechecks in the product' - 'Run the **built-in upgrade precheck** at the management-domain level (VCF Operations / SDDC Manager). Run it early, not the night before ... Resolve every **red** finding.'"
+        },
+        {
+          "id": "d4",
+          "text": "Mentions that workload domains must be at a minimum version before the 9.1 upgrade",
+          "passed": false,
+          "evidence": "Only sequencing: 'The management domain goes first. Nothing in a VI workload domain gets upgraded until the management domain is fully on 9.1.' No minimum version floor is stated for workload domains prior to the 9.1 upgrade."
+        },
+        {
+          "id": "d5",
+          "text": "Warns that this is a destructive/high-impact operation to verify before execution",
+          "passed": true,
+          "evidence": "Explicit irreversibility warnings about steps of this operation - 'ESXi does not [have a snapshot-revert path] - a host upgrade is one-way in practice' and 'Know that once NSX Manager is upgraded you're effectively committed for that domain' - paired with the closing caveat 'verify the BOM versions, the supported upgrade path from your exact current build, and hardware compatibility against those before scheduling the window.'"
+        }
+      ],
+      "passed": 3,
+      "total": 6
+    }
+  ]
+}

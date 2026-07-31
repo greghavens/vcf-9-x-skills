@@ -1,0 +1,229 @@
+{
+  "eval_id": 9,
+  "with_skill": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "id": "j0",
+          "text": "Identifies that vCenter 9.0 blocks non-federated username/password logins as the likely cause",
+          "passed": true,
+          "evidence": "\"It is a documented *removal* in vCenter 9.0.\" ... \"Blocked non-federated username/password logins to vCenter: vCenter 9.0 blocks logins with just a user name and password, which might sometimes allow bypassing the federated provider domain.\""
+        },
+        {
+          "id": "j1",
+          "text": "Describes the federated flow (external IdP token exchanged for a session) as the prerequisite that must now be satisfied",
+          "passed": true,
+          "evidence": "\"The documented prerequisite on a federated vCenter is the three-step federated flow (vSphere 7.0+): 1. Obtain a JWT from the external IdP. 2. Exchange the JWT for a vCenter SSO SAML token. 3. Exchange the SAML token for a session identifier.\""
+        },
+        {
+          "id": "j2",
+          "text": "Names the vmware-api-session-id header as the session mechanism",
+          "passed": true,
+          "evidence": "\"Send `vmware-api-session-id: <token>` on every subsequent call.\" and \"`api_key_auth` (apiKey, header `vmware-api-session-id`, declared on essentially every other operation)\""
+        },
+        {
+          "id": "j3",
+          "text": "Scopes the answer to 9.0 rather than mixing in 9.1 OAuth token support without labeling it",
+          "passed": true,
+          "evidence": "\"**Answer applies to VCF 9.0 (vCenter 9.0.0.0).**\" and the OAuth/token-exchange endpoint is explicitly version-labeled: \"Note it was **added in vSphere API 7.0.2.0** — it is not new in 9.x, so its presence is not the change you are seeing.\" 9.1 is mentioned only as an explicitly labeled comparison (\"Neither of these changed between 9.0 and 9.1\")."
+        },
+        {
+          "id": "j4",
+          "text": "Does not attribute the failure to a certificate problem without evidence",
+          "passed": true,
+          "evidence": "\"This is almost certainly not a bad password, a locked account, or a certificate problem.\" and \"A TLS trust failure presents as a transport/verification error, not as an authentication rejection.\""
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "id": "j0",
+          "text": "Identifies that vCenter 9.0 blocks non-federated username/password logins as the likely cause",
+          "passed": true,
+          "evidence": "\"**vCenter 9.0 blocks non-federated username/password logins.** This is a documented *removal* in the VCF 9.0 vSphere product support notes, not a hardening default you can toggle off.\""
+        },
+        {
+          "id": "j1",
+          "text": "Describes the federated flow (external IdP token exchanged for a session) as the prerequisite that must now be satisfied",
+          "passed": true,
+          "evidence": "\"Broadcom's documented prerequisite for a federated deployment is the three-step federated flow (vSphere 7.0+): 1. Obtain a JWT from the external identity provider. 2. Exchange the JWT for a vCenter SSO SAML token. 3. Exchange the SAML token for a session identifier.\""
+        },
+        {
+          "id": "j2",
+          "text": "Names the vmware-api-session-id header as the session mechanism",
+          "passed": true,
+          "evidence": "\"the token comes back from `POST /api/session` as a **201** with a string body, and goes on every subsequent call as the **`vmware-api-session-id`** header.\""
+        },
+        {
+          "id": "j3",
+          "text": "Scopes the answer to 9.0 rather than mixing in 9.1 OAuth token support without labeling it",
+          "passed": true,
+          "evidence": "\"**Answer applies to VCF 9.0 / vCenter 9.0.0.0.**\"; 9.1-only capability is explicitly labeled: \"the `-VcfApiToken` and `-VcfOAuthSecurityContext` parameters were introduced in the 9.1-aligned module and do not exist in `VCF.PowerCLI 9.0.0.24798382`\" and \"(9.1 separately adds an \\\"OAuth 2.0 token support\\\" product claim for vCenter, but as noted the token endpoint itself predates 9.x.)\""
+        },
+        {
+          "id": "j4",
+          "text": "Does not attribute the failure to a certificate problem without evidence",
+          "passed": true,
+          "evidence": "\"A TLS failure presents as a transport error; it does not present as a 401. So if you are seeing 401, certificates are not the cause.\""
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "id": "j0",
+          "text": "Identifies that vCenter 9.0 blocks non-federated username/password logins as the likely cause",
+          "passed": true,
+          "evidence": "\"vCenter 9.0 ships a documented removal ... \\\"Blocked non-federated username/password logins to vCenter: vCenter 9.0 blocks logins with just a user name and password...\\\"\" and \"The session *mechanism* didn't change. The *credential* stopped being acceptable.\""
+        },
+        {
+          "id": "j1",
+          "text": "Describes the federated flow (external IdP token exchanged for a session) as the prerequisite that must now be satisfied",
+          "passed": true,
+          "evidence": "\"If it is, the documented prerequisite is the **three-step federated flow** (vSphere 7.0+): 1. Obtain a JWT from the external identity provider. 2. Exchange the JWT for a vCenter SSO SAML token. 3. Exchange the SAML token for a session identifier.\""
+        },
+        {
+          "id": "j2",
+          "text": "Names the vmware-api-session-id header as the session mechanism",
+          "passed": true,
+          "evidence": "\"Send it as `vmware-api-session-id: <token>` on every subsequent call.\""
+        },
+        {
+          "id": "j3",
+          "text": "Scopes the answer to 9.0 rather than mixing in 9.1 OAuth token support without labeling it",
+          "passed": true,
+          "evidence": "\"**Applies to VCF 9.0 / vCenter 9.0.0.0.**\" and 9.1-only token capability is explicitly labeled: \"**There are no SSO-issued, role-scoped API tokens in VCF 9.0.** ... the 9.0 spec has 0 operations under `/api/fleet-management/iam/**` (9.1 has 70). If you were planning a long-lived service-account token, that flow you may have read about is 9.1-only.\""
+        },
+        {
+          "id": "j4",
+          "text": "Does not attribute the failure to a certificate problem without evidence",
+          "passed": true,
+          "evidence": "Certificates are listed only as a distinct symptom: \"TLS/chain/hostname **transport** error before any HTTP status | Certificate trust ... A different failure — assess the login gate first, since a trust failure does not present as an auth rejection.\""
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    }
+  ],
+  "without_skill": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "id": "j0",
+          "text": "Identifies that vCenter 9.0 blocks non-federated username/password logins as the likely cause",
+          "passed": true,
+          "evidence": "\"## 2. Basic auth is no longer the intended path — tokens are ... This is the real architectural change in VCF 9.0.\" and triage row \"`401 Unauthorized` with valid credentials | Basic auth is no longer accepted for this principal — identity federation / MFA / service-account policy.\" plus \"a plain username+password POST simply cannot succeed\". Hedged and listed as one of six causes, but the username/password block in 9.0 is explicitly identified and no contradicting local-account workaround is offered."
+        },
+        {
+          "id": "j1",
+          "text": "Describes the federated flow (external IdP token exchanged for a session) as the prerequisite that must now be satisfied",
+          "passed": false,
+          "evidence": "The prescribed flow never exchanges an IdP token for a session: \"1. Create a **service account / API token (long-lived refresh token)** ... 2. Exchange that refresh token for a short-lived **bearer access token (JWT)**. 3. Send `Authorization: Bearer <access_token>` on API calls\", with the example calling \"https://<identity-endpoint>/iaas/api/login\" and then \"curl -sS -H \\\"Authorization: Bearer $ACCESS\\\" https://<vcenter>/api/vcenter/vm\" — a refresh-token login, not an external-IdP token exchanged for a vCenter session."
+        },
+        {
+          "id": "j2",
+          "text": "Names the vmware-api-session-id header as the session mechanism",
+          "passed": true,
+          "evidence": "\"headers = {\\\"vmware-api-session-id\\\": token}\" and \"Header name is `vmware-api-session-id` on `/api`\""
+        },
+        {
+          "id": "j3",
+          "text": "Scopes the answer to 9.0 rather than mixing in 9.1 OAuth token support without labeling it",
+          "passed": false,
+          "evidence": "No version scoping statement anywhere, and 9.1-only SSO/OAuth token issuance is presented as the 9.0 fix without label: \"Create a **service account / API token (long-lived refresh token)** in the VCF identity or Operations console\" and \"If 401 → assume basic auth is off the table. Create a service account + API token in the VCF identity/Operations console and switch to the refresh-token → bearer-access-token flow.\""
+        },
+        {
+          "id": "j4",
+          "text": "Does not attribute the failure to a certificate problem without evidence",
+          "passed": true,
+          "evidence": "Certificates are gated on a distinct symptom: \"If the failure happens before you ever get an HTTP status, it's transport\" and the triage row \"TLS handshake failure / `CERTIFICATE_VERIFY_FAILED` ... before any HTTP status | Cert and TLS hardening\"."
+        }
+      ],
+      "passed": 3,
+      "total": 5
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "id": "j0",
+          "text": "Identifies that vCenter 9.0 blocks non-federated username/password logins as the likely cause",
+          "passed": false,
+          "evidence": "It states the opposite of the 9.0 removal for the non-federated case: \"**Local `*.vsphere.local` SSO accounts usually still work** with Basic auth\" and recommends \"**Keep a local SSO service account** for this one script as a stopgap. Works today\". The cause it names is generic federation (\"Federated / external-IdP users generally can't do Basic auth anymore\"), not a vCenter 9.0 block on username/password logins."
+        },
+        {
+          "id": "j1",
+          "text": "Describes the federated flow (external IdP token exchanged for a session) as the prerequisite that must now be satisfied",
+          "passed": true,
+          "evidence": "\"**OAuth2 client credentials against the identity broker.** Register the script as a client, get a bearer/access token, then exchange it for a vCenter session. ... POST https://vcenter/api/session Authorization: Bearer <access_token> -> session id\""
+        },
+        {
+          "id": "j2",
+          "text": "Names the vmware-api-session-id header as the session mechanism",
+          "passed": true,
+          "evidence": "\"Header for later calls: vmware-api-session-id: <token>\" and \"s.headers[\\\"vmware-api-session-id\\\"] = token\""
+        },
+        {
+          "id": "j3",
+          "text": "Scopes the answer to 9.0 rather than mixing in 9.1 OAuth token support without labeling it",
+          "passed": false,
+          "evidence": "No version scoping, and 9.1-only token issuance is offered as the top-preference 9.0 fix without label: \"**vCenter service account + API token.** Create a dedicated service account and issue it a long-lived API token\" and \"Replace the hardcoded password with a service-account API token or an OAuth2 client-credentials flow.\""
+        },
+        {
+          "id": "j4",
+          "text": "Does not attribute the failure to a certificate problem without evidence",
+          "passed": true,
+          "evidence": "Gated on symptom: \"## Cause C — TLS and certificate hardening — If the failure is an SSL/TLS exception rather than an HTTP status\"."
+        }
+      ],
+      "passed": 3,
+      "total": 5
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "id": "j0",
+          "text": "Identifies that vCenter 9.0 blocks non-federated username/password logins as the likely cause",
+          "passed": false,
+          "evidence": "It asserts non-federated (local) username/password login still works, contradicting the 9.0 block: \"vCenter still has its local `vsphere.local` domain, and local accounts are typically *not* federated, so Basic auth to `/api/session` can still work for them\" and \"If 401 → check whether the account is federated ... or move it to a local vsphere.local automation account (fast bridge).\" The identified cause is federated-user password handling (\"vCenter does **not** hold or verify the password\"), not a vCenter 9.0 block on username/password logins."
+        },
+        {
+          "id": "j1",
+          "text": "Describes the federated flow (external IdP token exchanged for a session) as the prerequisite that must now be satisfied",
+          "passed": true,
+          "evidence": "\"get an access token from the IdP's token endpoint, then either: use vCenter's token-exchange service to trade the IdP token for a vCenter-usable token, and/or call `POST /api/session` with `Authorization: Bearer <token>` instead of Basic.\" plus the target-state diagram \"access token ──(token exchange, if required)──► vCenter-usable token → POST /api/session with Authorization: Bearer …\""
+        },
+        {
+          "id": "j2",
+          "text": "Names the vmware-api-session-id header as the session mechanism",
+          "passed": true,
+          "evidence": "\"The session header name is unchanged: `vmware-api-session-id`.\" and \"curl ... -H \\\"vmware-api-session-id: $SESSION\\\"\""
+        },
+        {
+          "id": "j3",
+          "text": "Scopes the answer to 9.0 rather than mixing in 9.1 OAuth token support without labeling it",
+          "passed": false,
+          "evidence": "No version scoping, and 9.1-only OAuth client/service-principal registration is prescribed as the 9.0 fix without label: \"Register an application/service principal in the identity broker or IdP, obtain a client ID + secret ... get an access token from the IdP's token endpoint\" and target state \"service account registered in the identity broker / IdP\"."
+        },
+        {
+          "id": "j4",
+          "text": "Does not attribute the failure to a certificate problem without evidence",
+          "passed": true,
+          "evidence": "Gated on symptom: table row \"TLS / certificate verify failure, `SSLCertVerificationError`, hostname mismatch | Cert and trust chain changed on redeploy (Cause C)\", and \"If your script used `verify=False` / `-k` and now fails anyway, the failure is *not* certificate validation\"."
+        }
+      ],
+      "passed": 3,
+      "total": 5
+    }
+  ]
+}

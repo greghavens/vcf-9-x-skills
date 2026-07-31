@@ -1,0 +1,199 @@
+{
+  "eval_id": 7,
+  "with_skill": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "text": "Names the module VCF.PowerCLI (not VMware.PowerCLI) as the current meta-module",
+          "passed": true,
+          "evidence": "\"**The module is `VCF.PowerCLI`, not `VMware.PowerCLI`.** `VMware.PowerCLI` is the pre-9.x name\" and \"`VCF.PowerCLI` is a meta-module — it exports nothing itself.\""
+        },
+        {
+          "text": "Uses Connect-VcfSddcManagerServer for SDDC Manager",
+          "passed": true,
+          "evidence": "\"Connect-VcfSddcManagerServer -Server sddc-manager.example.com `\\n  -User 'administrator@vsphere.local' -Password $secure\""
+        },
+        {
+          "text": "Uses -IgnoreInvalidCertificate for that cmdlet rather than -SkipCertificateCheck",
+          "passed": true,
+          "evidence": "\"**The certificate flag is `-IgnoreInvalidCertificate`.** Not `-SkipCertificateCheck`, and not `-Force`.\""
+        },
+        {
+          "text": "Flags that PowerShell 5.1 is deprecated as of PowerCLI 9.0 and recommends PowerShell 7.x",
+          "passed": true,
+          "evidence": "\"Windows PowerShell 5.1 is deprecated as of VCF PowerCLI 9.0.** It is not a 9.1-era change ... Install **PowerShell 7.x** and work there before you go further.\""
+        },
+        {
+          "text": "Does not claim a cmdlet whose existence was not verified in the research",
+          "passed": true,
+          "evidence": "Only sourced cmdlets appear (Connect-VcfSddcManagerServer, Get-SddcTask, Remove-Sddc*, Set-PowerCLIConfiguration, Connect-VIServer), each hedged where unverified: \"`Get-SddcTask` is documented as existing in 9.1, but **its parameters are not published**\"; offline install declined rather than guessed: \"I don't have the exact command sequence — see Broadcom's *Install VCF PowerCLI Offline* page rather than a guessed one.\""
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "text": "Names the module VCF.PowerCLI (not VMware.PowerCLI) as the current meta-module",
+          "passed": true,
+          "evidence": "\"The module is **`VCF.PowerCLI`**, not `VMware.PowerCLI`. `VMware.PowerCLI` is the pre-9.x name — VCF PowerCLI 9.0 was a rebranding of it.\""
+        },
+        {
+          "text": "Uses Connect-VcfSddcManagerServer for SDDC Manager",
+          "passed": true,
+          "evidence": "\"Connect-VcfSddcManagerServer -Server sddc-manager.example.com -Credential $cred\""
+        },
+        {
+          "text": "Uses -IgnoreInvalidCertificate for that cmdlet rather than -SkipCertificateCheck",
+          "passed": true,
+          "evidence": "\"**The certificate flag is `-IgnoreInvalidCertificate`.** Not `-SkipCertificateCheck`, and not `-Force`.\""
+        },
+        {
+          "text": "Flags that PowerShell 5.1 is deprecated as of PowerCLI 9.0 and recommends PowerShell 7.x",
+          "passed": true,
+          "evidence": "\"**Windows PowerShell 5.1 is deprecated as of VCF PowerCLI 9.0** — so it is deprecated for the 9.1 module too. ... Install PowerShell 7.x on that Windows box and do this work there.\""
+        },
+        {
+          "text": "Does not claim a cmdlet whose existence was not verified in the research",
+          "passed": true,
+          "evidence": "\"those five (with `Get-VsanEffectiveCapacity`) are the only new 9.1 cmdlets named anywhere in the documentation. Their **parameters are not published**\"; and offline install left unquoted: \"the exact command sequence for it is not something I can quote\". No invented Invoke-Vcf* surface."
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "text": "Names the module VCF.PowerCLI (not VMware.PowerCLI) as the current meta-module",
+          "passed": true,
+          "evidence": "\"The module is **`VCF.PowerCLI`**, *not* `VMware.PowerCLI` — that's the pre-9.x name.\""
+        },
+        {
+          "text": "Uses Connect-VcfSddcManagerServer for SDDC Manager",
+          "passed": true,
+          "evidence": "\"Connect-VcfSddcManagerServer -Server sddc-manager.example.com `\\n  -User 'administrator@vsphere.local' -Password $pw\""
+        },
+        {
+          "text": "Uses -IgnoreInvalidCertificate for that cmdlet rather than -SkipCertificateCheck",
+          "passed": true,
+          "evidence": "\"**The certificate flag is `-IgnoreInvalidCertificate`** — not `-SkipCertificateCheck`, and not `-Force`.\""
+        },
+        {
+          "text": "Flags that PowerShell 5.1 is deprecated as of PowerCLI 9.0 and recommends PowerShell 7.x",
+          "passed": true,
+          "evidence": "\"Windows PowerShell 5.1 has been deprecated since VCF PowerCLI **9.0** — it's not a new-in-9.1 change ... Install PowerShell 7.x on that Windows box before anything else.\""
+        },
+        {
+          "text": "Does not claim a cmdlet whose existence was not verified in the research",
+          "passed": true,
+          "evidence": "\"Those cmdlet *names* are confirmed in the 9.1 release notes; their **parameter sets are not published**\"; offline install declined: \"the exact command sequence for it isn't something I can give you accurately\". No unverified Invoke-Vcf*/Initialize-Vcf* cmdlets asserted."
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    }
+  ],
+  "without_skill": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "text": "Names the module VCF.PowerCLI (not VMware.PowerCLI) as the current meta-module",
+          "passed": false,
+          "evidence": "Recommends the legacy name as the primary path — \"**Option A — the whole suite (recommended for getting started):** `Install-Module -Name VMware.PowerCLI -Scope CurrentUser -AllowClobber`\" — and treats VCF.PowerCLI as unconfirmed: \"Install-Module -Name VCF.PowerCLI ... # verify this name exists first\"."
+        },
+        {
+          "text": "Uses Connect-VcfSddcManagerServer for SDDC Manager",
+          "passed": true,
+          "evidence": "\"Connect-VcfSddcManagerServer -Server 'sddc-manager.rainpole.io' -Credential $cred\""
+        },
+        {
+          "text": "Uses -IgnoreInvalidCertificate for that cmdlet rather than -SkipCertificateCheck",
+          "passed": false,
+          "evidence": "The flag never appears; cert handling is only \"Set-PowerCLIConfiguration -Scope User -InvalidCertificateAction Ignore -Confirm:$false\", and -SkipCertificateCheck is discussed instead (\"`-SkipCertificateCheck` does not exist in 5.1\")."
+        },
+        {
+          "text": "Flags that PowerShell 5.1 is deprecated as of PowerCLI 9.0 and recommends PowerShell 7.x",
+          "passed": false,
+          "evidence": "Only hedged and unattributed to 9.0: \"the older 13.x line supported Windows PowerShell 5.1, but the newest VCF-era releases *may* require PowerShell 7.x\"; the whole answer is titled \"from Windows PowerShell 5.1\" and Step 1 is \"Prepare Windows PowerShell 5.1\"."
+        },
+        {
+          "text": "Does not claim a cmdlet whose existence was not verified in the research",
+          "passed": false,
+          "evidence": "Asserts an unverified cmdlet surface as fact: \"Invoke-VcfGetDomains | Select-Object name, type, status\", \"Invoke-VcfGetClusters\", \"Invoke-VcfGetHosts\", \"Invoke-VcfGetReleases\", \"Invoke-VcfGetSddcManagers\", \"Invoke-VcfGetCredentials\", \"poll it with the task cmdlet (`Invoke-VcfGetTask -id <id>`)\"."
+        }
+      ],
+      "passed": 1,
+      "total": 5
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "text": "Names the module VCF.PowerCLI (not VMware.PowerCLI) as the current meta-module",
+          "passed": true,
+          "evidence": "\"`VMware.PowerCLI` is the legacy name (12.x/13.x era). For VCF 9.x the shipping meta-module on the PowerShell Gallery is **`VCF.PowerCLI`**\""
+        },
+        {
+          "text": "Uses Connect-VcfSddcManagerServer for SDDC Manager",
+          "passed": true,
+          "evidence": "\"Connect-VcfSddcManagerServer -Server 'sddcmgr.vcf.lab.local' -Credential $cred\""
+        },
+        {
+          "text": "Uses -IgnoreInvalidCertificate for that cmdlet rather than -SkipCertificateCheck",
+          "passed": false,
+          "evidence": "Recommends the wrong flag: \"If it's self-signed, either set `-SkipCertificateCheck` / the equivalent PowerCLI invalid-certificate setting\". -IgnoreInvalidCertificate never appears."
+        },
+        {
+          "text": "Flags that PowerShell 5.1 is deprecated as of PowerCLI 9.0 and recommends PowerShell 7.x",
+          "passed": true,
+          "evidence": "\"The VCF 9.x PowerCLI line is built for **PowerShell 7 (7.4 LTS or later), cross-platform .NET**. Desktop PowerShell 5.1 is no longer the supported runtime for the current release.\" — attributes the change to the 9.x PowerCLI line and directs to PS 7."
+        },
+        {
+          "text": "Does not claim a cmdlet whose existence was not verified in the research",
+          "passed": false,
+          "evidence": "Invents cmdlets and module names: \"Invoke-GetDomains                # workload domains\", \"Invoke-GetBundles\", \"Invoke-GetTasks\", \"Get-Help Invoke-GetDomains -Full\", plus \"it has its own SDK module and `Connect-Vcf...InstallerServer`-style cmdlet\" and the fabricated rename \"`VMware.Sdk.Vcf.*` → `VCF.Sdk.Vcf.*`\"."
+        }
+      ],
+      "passed": 3,
+      "total": 5
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "text": "Names the module VCF.PowerCLI (not VMware.PowerCLI) as the current meta-module",
+          "passed": false,
+          "evidence": "Directs to the legacy module throughout — \"Install PowerCLI from the PowerShell Gallery (`Install-Module VMware.PowerCLI`)\" and \"Install-Module -Name VMware.PowerCLI -Scope CurrentUser -AllowClobber -Force\". The name VCF.PowerCLI never appears; instead it invents a \"'VCF PowerCLI' 14.x line\"."
+        },
+        {
+          "text": "Uses Connect-VcfSddcManagerServer for SDDC Manager",
+          "passed": true,
+          "evidence": "\"Connect-VcfSddcManagerServer `\\n    -Server   $server `\\n    -User     $user `\\n    -Password $pass\""
+        },
+        {
+          "text": "Uses -IgnoreInvalidCertificate for that cmdlet rather than -SkipCertificateCheck",
+          "passed": false,
+          "evidence": "Explicitly uses the wrong flag: \"The VCF connect cmdlets also take a per-call switch: `-SkipCertificateCheck`\", and it is passed to the connect call: \"-Password $pass `\\n    -SkipCertificateCheck\"."
+        },
+        {
+          "text": "Flags that PowerShell 5.1 is deprecated as of PowerCLI 9.0 and recommends PowerShell 7.x",
+          "passed": false,
+          "evidence": "Recommends PS 7.x but attributes the deprecation to the wrong release: \"The PowerCLI release that ships alongside VCF 9.x (PowerCLI 13.4 / \\\"VCF PowerCLI\\\" 14.x line) ... Windows PowerShell 5.1 was deprecated in the 13.x line\"."
+        },
+        {
+          "text": "Does not claim a cmdlet whose existence was not verified in the research",
+          "passed": false,
+          "evidence": "Asserts an unverified cmdlet surface: \"Invoke-VcfGetDomains          # workload domains\", \"Invoke-VcfGetSddcManagers\", \"Invoke-VcfGetVcenters\", \"Invoke-VcfGetCredentials\", and \"a typed request body object you build with an `Initialize-Vcf*` helper\"."
+        }
+      ],
+      "passed": 1,
+      "total": 5
+    }
+  ]
+}

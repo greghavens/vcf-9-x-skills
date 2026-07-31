@@ -1,0 +1,229 @@
+{
+  "eval_id": 10,
+  "with_skill": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "id": "k0",
+          "text": "Identifies API Token TTL limits (default 30 days) as a likely cause of the periodic failure",
+          "passed": true,
+          "evidence": "\"### (a) API Token TTL expiry - default **30 days**\" ... \"In 9.1 an SSO-issued API token is created with an *API Token TTL* whose dialog default is **30 days**, bounded by a fleet-level ceiling of **180 days**\" ... \"'A few weeks' matches this almost exactly.\""
+        },
+        {
+          "id": "k1",
+          "text": "Mentions the JIT user inactivity behavior, where an inactive user's previously issued API tokens can no longer retrieve access tokens until that user authenticates again",
+          "passed": true,
+          "evidence": "\"### (b) JIT user inactivity - the silent one ... Verbatim from the docs: once a JIT user is inactive, *'previously issued API tokens cannot retrieve access tokens until the user authenticates again.'*\""
+        },
+        {
+          "id": "k2",
+          "text": "Identifies VMCA-signed default certificates as the cause of the TLS trust errors",
+          "passed": true,
+          "evidence": "\"At deployment, VCF components get certificates from the default **VMware Certificate Authority (VMCA)**. Nothing trusts VMCA out of the box, so a stock Python client fails chain/hostname validation on the first call.\""
+        },
+        {
+          "id": "k3",
+          "text": "Recommends trusting/replacing the CA rather than disabling verification, consistent with Broadcom guidance",
+          "passed": true,
+          "evidence": "\"Broadcom's documented remedy is to **replace the certificates with enterprise CA-signed ones, or trust the CA** - not to disable verification.\" and \"**Trust the chain client-side.** ... point `verify` at it rather than turning it off.\""
+        },
+        {
+          "id": "k4",
+          "text": "Labels these as 9.1 behaviors and does not assert them for 9.0",
+          "passed": true,
+          "evidence": "\"Everything below is **VCF 9.1**.\" and \"Neither of these mechanisms exists in 9.0, so 9.0-era runbooks won't mention them.\""
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "id": "k0",
+          "text": "Identifies API Token TTL limits (default 30 days) as a likely cause of the periodic failure",
+          "passed": true,
+          "evidence": "\"the 'dies after a few weeks' symptom is almost always **(i) the 30-day default API Token TTL expiring**\" and table row \"VCF SSO **API token** (the long-lived one from the UI) | **30 days** | **180 days**\""
+        },
+        {
+          "id": "k1",
+          "text": "Mentions the JIT user inactivity behavior, where an inactive user's previously issued API tokens can no longer retrieve access tokens until that user authenticates again",
+          "passed": true,
+          "evidence": "\"### Cause (ii) - the JIT inactivity trap (the silent one) Verbatim from the 9.1 docs: once a JIT user is inactive, *'previously issued API tokens cannot retrieve access tokens until the user authenticates again.'*\""
+        },
+        {
+          "id": "k2",
+          "text": "Identifies VMCA-signed default certificates as the cause of the TLS trust errors",
+          "passed": true,
+          "evidence": "\"At deployment, components get certificates from the default **VMware Certificate Authority (VMCA)**. Those are not publicly trusted, so any stock HTTP client - including Python `requests` - fails chain and hostname validation on the first call.\""
+        },
+        {
+          "id": "k3",
+          "text": "Recommends trusting/replacing the CA rather than disabling verification, consistent with Broadcom guidance",
+          "passed": true,
+          "evidence": "\"Broadcom's documented guidance is to **replace the certificates with enterprise CA-signed ones**, or trust the CA. No Broadcom page documents disabling TLS verification as a supported practice\" plus \"Point Python at a CA bundle rather than turning verification off: `s.verify = \\\"/etc/pki/vcf/vcf-ca-bundle.pem\\\"`\""
+        },
+        {
+          "id": "k4",
+          "text": "Labels these as 9.1 behaviors and does not assert them for 9.0",
+          "passed": true,
+          "evidence": "\"Everything below is VCF **9.1**. If any of this estate is actually 9.0, stop - SSO-issued, role-scoped API tokens **do not exist in 9.0**\" and \"This behaviour has no 9.0 equivalent.\""
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "id": "k0",
+          "text": "Identifies API Token TTL limits (default 30 days) as a likely cause of the periodic failure",
+          "passed": true,
+          "evidence": "\"**(a) The API token hit its TTL.** VCF SSO API tokens default to **30 days**, maximum **180 days**. ... 'A few weeks' is the 30-day default almost exactly.\""
+        },
+        {
+          "id": "k1",
+          "text": "Mentions the JIT user inactivity behavior, where an inactive user's previously issued API tokens can no longer retrieve access tokens until that user authenticates again",
+          "passed": true,
+          "evidence": "\"**(b) JIT user inactivity - the silent one.** Verbatim from the docs: once a JIT user is inactive, *'previously issued API tokens cannot retrieve access tokens until the user authenticates again.'*\""
+        },
+        {
+          "id": "k2",
+          "text": "Identifies VMCA-signed default certificates as the cause of the TLS trust errors",
+          "passed": true,
+          "evidence": "\"**Default state is VMCA-signed**, so no stock client trusts the chain.\" and header framing \"the Python TLS errors are the expected state of a fleet still on VMCA-signed certificates.\""
+        },
+        {
+          "id": "k3",
+          "text": "Recommends trusting/replacing the CA rather than disabling verification, consistent with Broadcom guidance",
+          "passed": true,
+          "evidence": "\"The documented remedy is to **replace the certificates with enterprise CA-signed ones, or trust the VMCA root** - no fetched Broadcom page documents disabling TLS verification as a supported practice ... In Python that means pointing `verify=` at your CA bundle ... rather than `verify=False`.\""
+        },
+        {
+          "id": "k4",
+          "text": "Labels these as 9.1 behaviors and does not assert them for 9.0",
+          "passed": true,
+          "evidence": "\"Answer is for **9.1** - most of what follows does not exist in 9.0.\" and \"This behaviour has no 9.0 equivalent.\""
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    }
+  ],
+  "without_skill": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "id": "k0",
+          "text": "Identifies API Token TTL limits (default 30 days) as a likely cause of the periodic failure",
+          "passed": false,
+          "evidence": "No 30-day default is given. The answer says \"API token: months, set at creation and **configurable/expirable**\" and \"refresh token ~90 days by default\"; the closest is the vague \"If someone created a VCF Operations API token and accepted a short validity window, it can be far less.\" It never states the API Token TTL default of 30 days."
+        },
+        {
+          "id": "k1",
+          "text": "Mentions the JIT user inactivity behavior, where an inactive user's previously issued API tokens can no longer retrieve access tokens until that user authenticates again",
+          "passed": false,
+          "evidence": "No mention of JIT provisioning or user inactivity anywhere in the answer (grep for \"JIT\" returns nothing). Early-invalidation causes listed are only \"Token revoked, owner's account disabled, role change, admin regenerating it\"."
+        },
+        {
+          "id": "k2",
+          "text": "Identifies VMCA-signed default certificates as the cause of the TLS trust errors",
+          "passed": true,
+          "evidence": "\"VCF appliances present certs signed by the internal VMware CA (or a self-signed cert) by default. `requests`/`httpx` validate against `certifi`, which has never heard of your VMCA.\" and \"the appliance is presenting a VMCA-signed or self-signed cert\""
+        },
+        {
+          "id": "k3",
+          "text": "Recommends trusting/replacing the CA rather than disabling verification, consistent with Broadcom guidance",
+          "passed": true,
+          "evidence": "\"**Build a proper CA bundle.** ... **Point Python at it.**\", \"**Better: replace the appliance certs with ones from your enterprise CA**\", \"**Stop using `verify=False`.**\""
+        },
+        {
+          "id": "k4",
+          "text": "Labels these as 9.1 behaviors and does not assert them for 9.0",
+          "passed": false,
+          "evidence": "Behaviors are attributed to the whole 9.x line, which includes 9.0: \"VCF 9.x has no 'forever' API credential\", \"VCF 9.x is a multi-component stack\", \"In 9.x, going through the VCF Operations identity/API layer\". No 9.1-vs-9.0 distinction is drawn anywhere."
+        }
+      ],
+      "passed": 2,
+      "total": 5
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "id": "k0",
+          "text": "Identifies API Token TTL limits (default 30 days) as a likely cause of the periodic failure",
+          "passed": false,
+          "evidence": "Only a hedged range is offered: \"It is created with an explicit TTL, and short TTLs (30/60/90 days) are common defaults or common org policy.\" The 30-day API Token TTL default is never identified as the default."
+        },
+        {
+          "id": "k1",
+          "text": "Mentions the JIT user inactivity behavior, where an inactive user's previously issued API tokens can no longer retrieve access tokens until that user authenticates again",
+          "passed": false,
+          "evidence": "No mention of JIT users or inactivity-based token behavior; the three enumerated causes are \"Clock A - API token / refresh token TTL\", \"Clock B - password / account expiry policy\", \"Clock C - SDDC Manager / VCF Operations automatic credential rotation\"."
+        },
+        {
+          "id": "k2",
+          "text": "Identifies VMCA-signed default certificates as the cause of the TLS trust errors",
+          "passed": false,
+          "evidence": "Generic attribution only: \"VCF appliances present certificates issued by an internal CA (or self-signed out of the box)\" and \"Appliance still on its factory self-signed cert\". VMCA / VMware Certificate Authority is never named (grep for \"VMCA\" returns nothing in this answer)."
+        },
+        {
+          "id": "k3",
+          "text": "Recommends trusting/replacing the CA rather than disabling verification, consistent with Broadcom guidance",
+          "passed": true,
+          "evidence": "\"**Get the full CA chain once** ... **Point Python at it explicitly.**\" and \"**Delete `verify=False` everywhere.**\"; \"**(a) `verify=False`.** If it's in your code, it is not a fix\""
+        },
+        {
+          "id": "k4",
+          "text": "Labels these as 9.1 behaviors and does not assert them for 9.0",
+          "passed": false,
+          "evidence": "Asserted across the 9.x line, i.e. including 9.0: \"VCF 9.x has *three* different clocks\", \"In VCF 9.x the identity plane is consolidated\", \"VCF 9 can **auto-rotate** them on a schedule\". No 9.1-specific scoping or 9.0 exclusion."
+        }
+      ],
+      "passed": 1,
+      "total": 5
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "id": "k0",
+          "text": "Identifies API Token TTL limits (default 30 days) as a likely cause of the periodic failure",
+          "passed": false,
+          "evidence": "Hedged range only: \"that token has its own expiry - often 30/60/90 days, and frequently *also* an inactivity expiry.\" No statement that the API Token TTL default is 30 days; the primary causes offered are 90-day password policy and SDDC Manager rotation."
+        },
+        {
+          "id": "k1",
+          "text": "Mentions the JIT user inactivity behavior, where an inactive user's previously issued API tokens can no longer retrieve access tokens until that user authenticates again",
+          "passed": false,
+          "evidence": "Nothing about JIT provisioning. The only adjacent phrase is \"frequently *also* an inactivity expiry\", which describes a token expiring, not the JIT-user behavior where a non-expired token stops retrieving access tokens until the user re-authenticates."
+        },
+        {
+          "id": "k2",
+          "text": "Identifies VMCA-signed default certificates as the cause of the TLS trust errors",
+          "passed": true,
+          "evidence": "\"Out of the box, VCF components present certificates issued by **VMCA** (the VMware Certificate Authority inside vCenter) ... Python's `requests`/`urllib3` verify against the system or `certifi` trust store, which has never heard of your VMCA root. Verification fails.\""
+        },
+        {
+          "id": "k3",
+          "text": "Recommends trusting/replacing the CA rather than disabling verification, consistent with Broadcom guidance",
+          "passed": true,
+          "evidence": "\"**Option A - Replace the certificates with ones your clients already trust (best).**\", \"**Option B - Distribute the VMCA/VCF root CA to your clients.**\", and \"### The wrong fix (which I suspect is in your code today) ... `verify=False`\""
+        },
+        {
+          "id": "k4",
+          "text": "Labels these as 9.1 behaviors and does not assert them for 9.0",
+          "passed": false,
+          "evidence": "Attributed to 9.x generally: \"VCF 9.x is built around **short-lived tokens, actively rotated credentials, and a real PKI trust chain**\", \"VCF 9.x has credential management with rotation policies\", \"VCF 9.x APIs are token-based\". Closing note likewise says the values \"reflect the general VCF 9.x design\". No 9.1/9.0 differentiation."
+        }
+      ],
+      "passed": 2,
+      "total": 5
+    }
+  ]
+}

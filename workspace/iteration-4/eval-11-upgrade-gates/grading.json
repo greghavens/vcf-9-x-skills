@@ -1,0 +1,265 @@
+{
+  "eval_id": 11,
+  "with_skill": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "id": "l0",
+          "text": "States the minimum workload-domain version gate that must be met before the 9.1 upgrade",
+          "passed": true,
+          "evidence": "\"**Every workload domain must be at VCF 5.2 or later.** Verbatim from the 9.1 Lifecycle Management guide: *\"If any workload domain is at a version lower than 5.2, you must upgrade it to 5.2 and then upgrade to 9.1.\"*\""
+        },
+        {
+          "id": "l1",
+          "text": "Includes running prechecks as an explicit gate",
+          "passed": true,
+          "evidence": "\"### 3. Prechecks run and every finding cleared `[GATE]` ... Prechecks are a gate, not a formality.\" with POST /v1/system/check-sets, POST /v1/upgrades/{upgradeId}/prechecks etc."
+        },
+        {
+          "id": "l2",
+          "text": "Mentions depot / bundle availability (online or offline depot) as a prerequisite",
+          "passed": true,
+          "evidence": "\"### 2. Depot configured and every required binary staged `[GATE]`\" ... \"Air-gapped sites stage binaries with the **VCF Download Tool**\"; \"Confirm depot mode and bundle set\""
+        },
+        {
+          "id": "l3",
+          "text": "Mentions that OAuth clients are not migrated automatically on the vIDM to identity broker migration and must be manually regenerated",
+          "passed": true,
+          "evidence": "\"**\\\"OAuth clients are not migrated automatically. You must manually regenerate the client and secret using identity broker and configure accordingly.\\\"**\" under \"The vIDM → VCF Identity Broker migration is a 9.1 workflow\""
+        },
+        {
+          "id": "l4",
+          "text": "Distinguishes prerequisites that are 9.1-specific from ones that applied in 9.0",
+          "passed": true,
+          "evidence": "\"Note this is a **9.1** gate — the 9.0 rule was looser (source VCF 5.0+, and workload-domain updates were *optional*).\" and \"A centralised **VCF License Server is a required component** in 9.1 (new BOM row, no 9.0 counterpart)\"; \"SSO-issued, role-scoped API tokens are **9.1-only**\""
+        },
+        {
+          "id": "l5",
+          "text": "Flags items the research could not verify rather than inventing a complete-looking checklist",
+          "passed": true,
+          "evidence": "\"## Sign-off summary — items that cannot be closed from documentation alone\" table of 9 open items, e.g. \"**Ports and protocols matrix** — never retrieved, either version\"; \"**Gap — do not close this on paper.**\""
+        }
+      ],
+      "passed": 6,
+      "total": 6
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "id": "l0",
+          "text": "States the minimum workload-domain version gate that must be met before the 9.1 upgrade",
+          "passed": true,
+          "evidence": "\"**Every workload domain must be at VCF 5.2 or later.** Verbatim from the 9.1 Lifecycle Management guide: *\"all workload domains must be at VMware Cloud Foundation 5.2 or later.\"*\""
+        },
+        {
+          "id": "l1",
+          "text": "Includes running prechecks as an explicit gate",
+          "passed": true,
+          "evidence": "\"### 3. Prechecks run and clean\" ... \"Prechecks are a gate, not a formality.\""
+        },
+        {
+          "id": "l2",
+          "text": "Mentions depot / bundle availability (online or offline depot) as a prerequisite",
+          "passed": true,
+          "evidence": "\"### 2. Depot configured and every binary staged\" ... \"Air-gapped sites stage binaries with the **VCF Download Tool** ... An offline depot changes the sequence, so settle it now, not during the window.\""
+        },
+        {
+          "id": "l3",
+          "text": "Mentions that OAuth clients are not migrated automatically on the vIDM to identity broker migration and must be manually regenerated",
+          "passed": true,
+          "evidence": "\"The vIDM → VCF Identity Broker migration is a 9.1 workflow, and verbatim: **\\\"OAuth clients are not migrated automatically. You must manually regenerate the client and secret using identity broker and configure accordingly.\\\"**\""
+        },
+        {
+          "id": "l4",
+          "text": "Distinguishes prerequisites that are 9.1-specific from ones that applied in 9.0",
+          "passed": true,
+          "evidence": "\"Note this is a **9.1 rule** — the 9.0 gate was looser (VCF 5.0+, and workload-domain updates were optional).\" and \"A centralised **VCF License Server is a required component** in 9.1 — new BOM row, no 9.0 counterpart\"; \"Constant across both versions: **SDDC Manager and ESX are excluded from VCF SSO.**\""
+        },
+        {
+          "id": "l5",
+          "text": "Flags items the research could not verify rather than inventing a complete-looking checklist",
+          "passed": true,
+          "evidence": "\"## Where this checklist has honest holes ... A checklist that looks complete but hides unverified items is worse than one with visible gaps\" with a table of unverified items per gate (ports matrix, precheck enumeration, token issuer, role)."
+        }
+      ],
+      "passed": 6,
+      "total": 6
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "id": "l0",
+          "text": "States the minimum workload-domain version gate that must be met before the 9.1 upgrade",
+          "passed": true,
+          "evidence": "\"**Every workload domain must be at VCF 5.2 or later.** Verbatim from the 9.1 Lifecycle Management guide: \\\"If any workload domain is at a version lower than 5.2, you must upgrade it to 5.2 and then upgrade to 9.1.\\\"\""
+        },
+        {
+          "id": "l1",
+          "text": "Includes running prechecks as an explicit gate",
+          "passed": true,
+          "evidence": "\"## G3 — Prechecks run, and every finding cleared `[hard gate]` ... Prechecks are a gate, not a formality.\""
+        },
+        {
+          "id": "l2",
+          "text": "Mentions depot / bundle availability (online or offline depot) as a prerequisite",
+          "passed": true,
+          "evidence": "\"## G2 — Depot configured and every binary staged `[hard gate]` ... Air-gapped sites stage binaries with the **VCF Download Tool** ... An offline depot changes the sequence\""
+        },
+        {
+          "id": "l3",
+          "text": "Mentions that OAuth clients are not migrated automatically on the vIDM to identity broker migration and must be manually regenerated",
+          "passed": true,
+          "evidence": "\"The vIDM → VCF Identity Broker migration is a 9.1 workflow, and, verbatim: **\\\"OAuth clients are not migrated automatically. You must manually regenerate the client and secret using identity broker and configure accordingly.\\\"**\""
+        },
+        {
+          "id": "l4",
+          "text": "Distinguishes prerequisites that are 9.1-specific from ones that applied in 9.0",
+          "passed": true,
+          "evidence": "\"Note this gate is **stricter than 9.0's**. Upgrading *to* 9.0 was supported from VCF 5.0+ and workload-domain updates were optional; for 9.1 the ≥5.2 floor is mandatory across all domains.\" and \"**VCF License Server is a required component in 9.1** — new, with no 9.0 counterpart\""
+        },
+        {
+          "id": "l5",
+          "text": "Flags items the research could not verify rather than inventing a complete-looking checklist",
+          "passed": true,
+          "evidence": "\"## Items that cannot be closed from documentation — carry as explicit actions ... A checklist that looks complete but silently omits them is worse than one that names them\" with 9 named open items (ports matrix, token issuer, role, precheck list, etc.)."
+        }
+      ],
+      "passed": 6,
+      "total": 6
+    }
+  ],
+  "without_skill": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "id": "l0",
+          "text": "States the minimum workload-domain version gate that must be met before the 9.1 upgrade",
+          "passed": false,
+          "evidence": "No workload-domain version floor is stated. The closest items are \"Current VCF version is **9.0.x**\" and \"Confirm the **minimum 9.0 patch level** required as a source for 9.1\" — a source-patch-level question, not the VCF 5.2 workload-domain gate. Workload domains are only referenced as \"registered with that fleet management instance\"."
+        },
+        {
+          "id": "l1",
+          "text": "Includes running prechecks as an explicit gate",
+          "passed": true,
+          "evidence": "\"**Upgrade precheck run from VCF Operations lifecycle management and passing** — zero errors. Warnings triaged... Re-run the precheck within 24–48 hours of the window; a stale precheck is not evidence.\""
+        },
+        {
+          "id": "l2",
+          "text": "Mentions depot / bundle availability (online or offline depot) as a prerequisite",
+          "passed": true,
+          "evidence": "\"Depot connectivity proven: either online — outbound HTTPS to the Broadcom depot endpoints... or **offline/air-gapped** — bundles pre-staged with the offline bundle transfer utility, checksums verified\""
+        },
+        {
+          "id": "l3",
+          "text": "Mentions that OAuth clients are not migrated automatically on the vIDM to identity broker migration and must be manually regenerated",
+          "passed": false,
+          "evidence": "No mention of OAuth clients, vIDM, or the identity broker migration anywhere in the answer; identity appears only as \"SSO/service accounts\" in the credential list."
+        },
+        {
+          "id": "l4",
+          "text": "Distinguishes prerequisites that are 9.1-specific from ones that applied in 9.0",
+          "passed": false,
+          "evidence": "Only 9.x-vs-older contrasts are drawn, not 9.1-vs-9.0: \"lifecycle management is orchestrated by **VCF Operations (Fleet Management)** — not by SDDC Manager acting alone as in VCF 4.x/5.x\" and \"ESX 9.x has narrowed CPU/hardware support relative to older releases\". No prerequisite is labelled as new in 9.1 versus already applying in 9.0."
+        },
+        {
+          "id": "l5",
+          "text": "Flags items the research could not verify rather than inventing a complete-looking checklist",
+          "passed": true,
+          "evidence": "\"Every version number, build number, and BOM entry below must be confirmed against the VCF 9.1 Release Notes and the 9.1 Bill of Materials for your target patch level; treat those documents as the authority and this list as the control framework.\" plus items admitting non-knowledge, e.g. \"Confirm the **minimum 9.0 patch level** required as a source for 9.1\" and \"Confirm the exact order in the 9.1 upgrade documentation — it has changed between releases.\" (Generic, but an explicit statement of what it cannot vouch for.)"
+        }
+      ],
+      "passed": 3,
+      "total": 6
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "id": "l0",
+          "text": "States the minimum workload-domain version gate that must be met before the 9.1 upgrade",
+          "passed": false,
+          "evidence": "No version floor for workload domains. Item 1.4 only says \"All workload domains are **in the same known-good state** as the management domain\", and 0.1 defers the question: \"identify the **minimum 9.0 patch level** required as a source\"."
+        },
+        {
+          "id": "l1",
+          "text": "Includes running prechecks as an explicit gate",
+          "passed": true,
+          "evidence": "\"6.4 | **Prechecks run and clean** from the lifecycle manager for every target domain — run them days ahead, not at window start, so failures have remediation time. Re-run immediately before go.\""
+        },
+        {
+          "id": "l2",
+          "text": "Mentions depot / bundle availability (online or offline depot) as a prerequisite",
+          "passed": true,
+          "evidence": "\"0.4 | Air-gapped sites: offline depot / bundle transfer tooling is staged and tested, and the offline bundles for 9.1 have been downloaded and checksum-verified.\" and \"0.3 ... **download token** configured in VCF Operations is valid\""
+        },
+        {
+          "id": "l3",
+          "text": "Mentions that OAuth clients are not migrated automatically on the vIDM to identity broker migration and must be manually regenerated",
+          "passed": false,
+          "evidence": "Identity is mentioned only generically: \"5.5 | **Identity integration** (SSO/identity broker/external IdP, AD/LDAP) supported and unchanged in behavior on 9.1\". No OAuth clients, no vIDM migration, no manual regeneration requirement — in fact it asserts behaviour is \"unchanged\"."
+        },
+        {
+          "id": "l4",
+          "text": "Distinguishes prerequisites that are 9.1-specific from ones that applied in 9.0",
+          "passed": false,
+          "evidence": "It defers the category rather than distinguishing: \"(d) any 9.1-specific new prerequisite (new required IPs, new required network access, changed identity requirements)\" is listed as something to go verify. The one near-contrast is speculative — \"assume 9.1 appliances may want more vCPU/RAM/disk than 9.0\". No prerequisite is stated as 9.1-specific versus already applying in 9.0."
+        },
+        {
+          "id": "l5",
+          "text": "Flags items the research could not verify rather than inventing a complete-looking checklist",
+          "passed": true,
+          "evidence": "\"the exact minimum patch level, appliance sizing deltas, and BOM component versions for 9.1 must be confirmed against the **VCF 9.1 Release Notes**... the version numbers are the one thing you should not take from memory\" and \"Those four items are where a checklist built from general VCF experience is most likely to be incomplete.\""
+        }
+      ],
+      "passed": 3,
+      "total": 6
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "id": "l0",
+          "text": "States the minimum workload-domain version gate that must be met before the 9.1 upgrade",
+          "passed": false,
+          "evidence": "No workload-domain version floor. Item 1.1 only requires \"a **supported 9.0.x source build**\" and 1.4 covers mixed-version intent (\"If some domains stay on 9.0 while others go to 9.1, confirm mixed-version support\") without stating any minimum domain version such as VCF 5.2."
+        },
+        {
+          "id": "l1",
+          "text": "Includes running prechecks as an explicit gate",
+          "passed": true,
+          "evidence": "\"## 3. Health and precheck gates (hard) — **Run the built-in upgrade precheck at fleet and at each workload-domain scope, and get a clean result.**\""
+        },
+        {
+          "id": "l2",
+          "text": "Mentions depot / bundle availability (online or offline depot) as a prerequisite",
+          "passed": true,
+          "evidence": "\"**Depot reachability**: either outbound connectivity to the online depot ... *or* a configured offline/local depot. **All bundles pre-downloaded and validated before the window.**\""
+        },
+        {
+          "id": "l3",
+          "text": "Mentions that OAuth clients are not migrated automatically on the vIDM to identity broker migration and must be manually regenerated",
+          "passed": false,
+          "evidence": "No mention of OAuth clients, vIDM, or the identity broker migration. Identity appears only as \"**SSO / identity source healthy**; break-glass local admin credentials tested\"."
+        },
+        {
+          "id": "l4",
+          "text": "Distinguishes prerequisites that are 9.1-specific from ones that applied in 9.0",
+          "passed": false,
+          "evidence": "Contrasts are 8.x/9.x-vs-older or speculative, not a 9.1-vs-9.0 prerequisite split: \"ESXi 8.x/9.x require a substantially larger, non-degraded boot device\" and \"an old-generation host that boots fine on 9.0 **may** be unsupported or blocked on the newer ESXi\". Nothing is stated as a prerequisite newly introduced in 9.1 versus one that already applied in 9.0."
+        },
+        {
+          "id": "l5",
+          "text": "Flags items the research could not verify rather than inventing a complete-looking checklist",
+          "passed": true,
+          "evidence": "\"Verify the exact target build numbers and any late-breaking known issues against the 9.1 release notes and the Broadcom compatibility guides before you sign the RFC — those are the two things that change most often and that I would not quote from memory.\" plus \"Confirm the exact ordering table in the 9.1 upgrade documentation — treat that table as the authoritative sequence\"."
+        }
+      ],
+      "passed": 3,
+      "total": 6
+    }
+  ]
+}
