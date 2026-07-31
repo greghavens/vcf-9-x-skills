@@ -1,0 +1,163 @@
+{
+  "eval_id": 0,
+  "condition": "with_skill",
+  "runs": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "text": "Uses the Policy API base path /policy/api/v1 for the security policy and rule calls",
+          "passed": true,
+          "evidence": "\"curl -sS -X PATCH \"${AUTH[@]}\" \"$NSX/policy/api/v1/infra/domains/$DOMAIN/security-policies/$POLICY\"\" and \"$NSX/policy/api/v1/infra/domains/$DOMAIN/security-policies/$POLICY/rules/$RULE\""
+        },
+        {
+          "text": "Does NOT present the Manager API /api/v1 as a valid surface for creating policy objects",
+          "passed": true,
+          "evidence": "\"Manager mode / `/api/v1` no longer supports policy objects, and `communication-maps` is deprecated.\" The only /api/v1 use is a read-only role check (GET /api/v1/aaa/role-bindings), not a policy-object write."
+        },
+        {
+          "text": "Auth uses POST /api/session/create with form fields j_username and j_password",
+          "passed": true,
+          "evidence": "\"--data-urlencode 'j_username=svc-nsx-automation@example.com' --data-urlencode 'j_password=<password>' \\\"$NSX/api/session/create\\\"\" with \"Content-Type: application/x-www-form-urlencoded\""
+        },
+        {
+          "text": "States that BOTH the JSESSIONID cookie AND the X-XSRF-TOKEN header must be sent on subsequent calls",
+          "passed": true,
+          "evidence": "\"The response sets `JSESSIONID` and returns `x-xsrf-token`; both must go on every subsequent call.\" plus AUTH=(-b /tmp/nsx-session.txt -H \"x-xsrf-token: $XSRF\" ...)"
+        },
+        {
+          "text": "Creates or references a security policy under a domain before creating the rule (correct nesting, not a bare rule POST)",
+          "passed": true,
+          "evidence": "Step 3 \"Create the security policy (the container)\" ... \"A rule is not a top-level object: rule -> security policy -> domain. There is no `POST ...
+/rules`.\" then Step 4 PATCHes .../security-policies/$POLICY/rules/$RULE"
+        },
+        {
+          "text": "States the prerequisite that both source and destination groups must already exist and be referenced by path",
+          "passed": true,
+          "evidence": "Step 2 \"Read both groups and capture their server-returned `path`\" with hard failure \"''|null) echo \\\"FATAL: $v unresolved in domain '$DOMAIN'\\\" >&2; exit 1\" and \"**Don't hand-assemble these path strings.** A rule referencing a path that doesn't resolve is accepted at write time and then silently never realises\"; source_groups/destination_groups use $SRC_PATH/$DST_PATH"
+        },
+        {
+          "text": "Explicitly labels the answer as applying to VCF 9.1 / NSX 9.1",
+          "passed": true,
+          "evidence": "\"**VCF 9.1 (NSX 9.1.0.0).**\" (first line)"
+        },
+        {
+          "text": "Includes the caveat that the skill was built from documentation and not validated against a live environment",
+          "passed": true,
+          "evidence": "\"*Evidence note: every endpoint above is confirmed in the NSX 9.1 OpenAPI spec (`9.1.0.0` tag). This is documentation- and spec-derived, not executed against a live system - verify against your build before running it in production.*\""
+        },
+        {
+          "text": "Contains no endpoint that is absent from the 9.1 nsx_policy_api spec",
+          "passed": true,
+          "evidence": "Checked every path against research/spec-inventory/9.1__nsx-policy.ops.json: ReadDomainForInfra, ReadGroupForDomain, PatchSecurityPolicyForDomain, PatchSecurityRule, ReadSecurityRule, GetRuleStatistics, ListServicesForTenant, CreateAuthenticatedSession (POST /api/session/create), DestroyAuthenticatedSession, PutDraft, GetPreviewOfConfigurationAfterPublishOfDraft (/infra/drafts/{draft-id}/complete), PublishDraft (?action=publish) all present; GetAllRoleBindings present in both the policy spec and the 9.1 manager spec. No invented endpoints."
+        }
+      ],
+      "passed": 9,
+      "total": 9
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "text": "Uses the Policy API base path /policy/api/v1 for the security policy and rule calls",
+          "passed": true,
+          "evidence": "\"Use the **Policy API** (`/policy/api/v1`) only\"; PATCH \"$NSX/policy/api/v1/infra/domains/$DOMAIN/security-policies/$POLICY\" and \".../security-policies/$POLICY/rules/$RULE\""
+        },
+        {
+          "text": "Does NOT present the Manager API /api/v1 as a valid surface for creating policy objects",
+          "passed": true,
+          "evidence": "\"Manager mode / `/api/v1` is no longer supported for policy objects in 9.x, and the older `communication-maps` tree is deprecated.\" /api/v1 appears only for read-only checks (aaa/role-bindings, cluster/api-service)."
+        },
+        {
+          "text": "Auth uses POST /api/session/create with form fields j_username and j_password",
+          "passed": true,
+          "evidence": "\"--data-urlencode 'j_username=...' --data-urlencode 'j_password=<password>' \\\"$NSX/api/session/create\\\"\" with x-www-form-urlencoded content type"
+        },
+        {
+          "text": "States that BOTH the JSESSIONID cookie AND the X-XSRF-TOKEN header must be sent on subsequent calls",
+          "passed": true,
+          "evidence": "\"`POST /api/session/create` returns both a `Set-Cookie: JSESSIONID=...` and an `X-XSRF-TOKEN` header. **Both must be sent on every subsequent call** - cookie alone is the single most common failure\""
+        },
+        {
+          "text": "Creates or references a security policy under a domain before creating the rule (correct nesting, not a bare rule POST)",
+          "passed": true,
+          "evidence": "\"**A rule is not a top-level object.** There is no `POST /policy/api/v1/rules`. A rule lives inside a security policy, which lives inside a domain.\" Step 3 creates the policy, Step 4 PATCHes the rule into it."
+        },
+        {
+          "text": "States the prerequisite that both source and destination groups must already exist and be referenced by path",
+          "passed": true,
+          "evidence": "\"**Groups are referenced by policy path, not name or UUID** - and you should read the path back from the API rather than hand-building it.\" Step 2 reads both groups and exits on \"FATAL: $v unresolved in domain '$DOMAIN'\"; \"Use the server-returned `path` field literally in the rule body.\""
+        },
+        {
+          "text": "Explicitly labels the answer as applying to VCF 9.1 / NSX 9.1",
+          "passed": true,
+          "evidence": "\"All paths below are NSX 9.1 (the NSX in the VCF 9.1 BOM) and are confirmed against the published 9.1 NSX Policy OpenAPI spec.\""
+        },
+        {
+          "text": "Includes the caveat that the skill was built from documentation and not validated against a live environment",
+          "passed": true,
+          "evidence": "\"**This is sourced from Broadcom documentation and the published 9.1 OpenAPI spec, not from a live run.** The endpoints and field names above are spec-confirmed for 9.1, but verify against your build before executing.\""
+        },
+        {
+          "text": "Contains no endpoint that is absent from the 9.1 nsx_policy_api spec",
+          "passed": true,
+          "evidence": "Verified against 9.1__nsx-policy.ops.json: ReadDomainForInfra, ReadGroupForDomain, PatchSecurityPolicyForDomain, PatchSecurityRule, ReadSecurityRule, GetRuleStatistics, ReviseSecurityRule (POST .../rules/{rule-id}?action=revise), ListServicesForTenant, CreateAuthenticatedSession, DestroyAuthenticatedSession, PatchDraft, GetPreviewOfConfigurationAfterPublishOfDraft, PublishDraft all present; GetAllRoleBindings and GetApiServiceConfig (/cluster/api-service) present in both policy and 9.1 manager specs. No invented endpoints."
+        }
+      ],
+      "passed": 9,
+      "total": 9
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "text": "Uses the Policy API base path /policy/api/v1 for the security policy and rule calls",
+          "passed": true,
+          "evidence": "\"All of this is on the Policy API (`/policy/api/v1`)\"; PATCH \"$NSX/policy/api/v1/infra/domains/$DOMAIN/security-policies/$POLICY\" and \".../security-policies/$POLICY/rules/$RULE\""
+        },
+        {
+          "text": "Does NOT present the Manager API /api/v1 as a valid surface for creating policy objects",
+          "passed": true,
+          "evidence": "\"the Manager API (`/api/v1`) has no supported path to a DFW rule in 9.x, so don't let an inherited script take you there.\" /api/v1 appears only for the role-binding read and token principal identity registration."
+        },
+        {
+          "text": "Auth uses POST /api/session/create with form fields j_username and j_password",
+          "passed": true,
+          "evidence": "\"--data-urlencode 'j_username=svc-nsx-automation@example.com' --data-urlencode 'j_password=<password>' \\\"$NSX/api/session/create\\\"\""
+        },
+        {
+          "text": "States that BOTH the JSESSIONID cookie AND the X-XSRF-TOKEN header must be sent on subsequent calls",
+          "passed": true,
+          "evidence": "\"**You need both the `JSESSIONID` cookie and the `X-XSRF-TOKEN` header on every subsequent call.** Cookie alone gets rejected in a way that reads like a permissions problem.\""
+        },
+        {
+          "text": "Creates or references a security policy under a domain before creating the rule (correct nesting, not a bare rule POST)",
+          "passed": true,
+          "evidence": "\"**there is no standalone \\\"create a rule\\\" endpoint.** A rule lives inside a security policy, which lives inside a domain. You create the policy, then `PATCH` the rule into it.\" Step 3 creates the policy; Step 4 PATCHes .../security-policies/$POLICY/rules/$RULE"
+        },
+        {
+          "text": "States the prerequisite that both source and destination groups must already exist and be referenced by path",
+          "passed": true,
+          "evidence": "Step 2 \"Capture the group paths from the server\" with \"FATAL: $v unresolved in domain '$DOMAIN'\" exit, \"**Read the `path` field back rather than hand-assembling `/infra/domains/default/groups/app-tier`.**\", and \"Confirm the group membership of both groups before you write\""
+        },
+        {
+          "text": "Explicitly labels the answer as applying to VCF 9.1 / NSX 9.1",
+          "passed": true,
+          "evidence": "\"**VCF 9.1 / NSX 9.1.0.0.\" (first line)"
+        },
+        {
+          "text": "Includes the caveat that the skill was built from documentation and not validated against a live environment",
+          "passed": true,
+          "evidence": "\"every endpoint and field above is confirmed in the published NSX 9.1 OpenAPI specification ... but none of it has been executed against a live system, so verify against Broadcom's docs for your specific build before running it.\""
+        },
+        {
+          "text": "Contains no endpoint that is absent from the 9.1 nsx_policy_api spec",
+          "passed": true,
+          "evidence": "Verified against 9.1__nsx-policy.ops.json: ReadDomainForInfra, ReadGroupForDomain, PatchSecurityPolicyForDomain, PatchSecurityRule, ReadSecurityRule, GetRuleStatistics, ReviseSecurityRule, DeleteSecurityPolicyForDomain, ListServicesForTenant, CreateAuthenticatedSession, DestroyAuthenticatedSession, PutDraft, GetPreviewOfConfigurationAfterPublishOfDraft, PublishDraft all present; GetAllRoleBindings and RegisterTokenBasedPrincipalIdentity (POST /trust-management/token-principal-identities) present in the 9.1 manager spec. Also correct that BasicAuth is the only declared security scheme in the policy spec meta. No invented endpoints."
+        }
+      ],
+      "passed": 9,
+      "total": 9
+    }
+  ]
+}

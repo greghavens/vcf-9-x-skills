@@ -1,0 +1,102 @@
+{
+  "eval_id": 4,
+  "condition": "without_skill",
+  "runs": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "text": "Establishes or asks for the target VCF version (9.0 vs 9.1) before committing to an auth flow",
+          "passed": true,
+          "evidence": "Section 3 gates the SDDC Manager path on version: \"Confirm against the API reference for your exact 9.0 vs 9.1 build before committing to it.\" and the answer closes by explicitly asking: \"If you tell me which VCF 9 version (9.0 vs 9.1), which component you're targeting ... I can give you the exact endpoint path ... the menu labels and a couple of the endpoint paths shifted between 9.0 and 9.1, so it's worth pinning down.\""
+        },
+        {
+          "text": "Does NOT silently default to 9.1 / 'latest'",
+          "passed": true,
+          "evidence": "No flow is presented as the 9.1 flow; version variance is flagged instead — \"(in some 9.1 builds it's under Administration → Access Control → API Tokens)\" and \"exact wording moves between 9.0 and 9.1\"."
+        },
+        {
+          "text": "Establishes or asks which product the token is for, rather than assuming one API covers VCF",
+          "passed": true,
+          "evidence": "\"there isn't one single 'VCF token.' ... which token you need depends on which API you're calling\" followed by \"Start by answering: *what am I automating?*\" and a per-component table (VCF Operations, SDDC Manager, VCF Automation, vCenter, NSX)."
+        },
+        {
+          "text": "States that SDDC Manager is excluded from VCF SSO and uses its own token flow",
+          "passed": false,
+          "evidence": "Section 3 gives SDDC Manager's own flow (\"POST .../v1/tokens\", \"Returns accessToken ... and refreshToken\") but never states it is excluded from VCF SSO / the common identity layer; on the contrary the intro claims \"in 9.x most of them are fronted by the same identity provider (VCF Identity Broker / VCF Operations identity)\" and the table lists SDDC Manager alongside VCF Operations."
+        },
+        {
+          "text": "If 9.1 is selected, describes the VCF Identity Broker / API client + API token route",
+          "passed": false,
+          "evidence": "9.1 is never selected, and no Identity Broker API client + API token route is described. Identity Broker appears only as background (\"the workload identity federation you wired into VCF Identity Broker at bring-up\"); the token route given is a VCF Operations UI token exchanged at \"/csp/gateway/am/api/auth/api-tokens/authorize\", with no API client concept."
+        }
+      ],
+      "passed": 3,
+      "total": 5
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "text": "Establishes or asks for the target VCF version (9.0 vs 9.1) before committing to an auth flow",
+          "passed": false,
+          "evidence": "The answer never asks the user which version and never establishes one; it commits to full flows for all components first and only notes in passing, after the fact, that \"The exact menu path has moved between VCF 9.0 and 9.1 point releases\" and, in the closing gotchas list, \"Version-check first. Hit the appliance's version/about endpoint at the start of your automation\". The closing section gives a recommendation (\"generate a VCF Operations API token from the UI\") without ever pinning the version."
+        },
+        {
+          "text": "Does NOT silently default to 9.1 / 'latest'",
+          "passed": true,
+          "evidence": "No flow is labeled as the 9.1 flow; version drift is explicitly flagged: \"VCF 9.0 → 9.1 moved several things, and the fastest way to debug a mystery 404 is to confirm which build you're actually talking to.\""
+        },
+        {
+          "text": "Establishes or asks which product the token is for, rather than assuming one API covers VCF",
+          "passed": true,
+          "evidence": "\"there isn't one single 'VCF token.' VCF is a fleet of components, and each one issues its own credential ... Pick the endpoint that owns the thing you want to automate\", plus \"## 1. First decide which API you're actually hitting\" with a per-component table."
+        },
+        {
+          "text": "States that SDDC Manager is excluded from VCF SSO and uses its own token flow",
+          "passed": false,
+          "evidence": "Section 4 describes SDDC Manager's own \"POST .../v1/tokens\" flow but says nothing about exclusion from VCF SSO; the service-identity section instead implies the opposite, telling the user to \"Create a dedicated account in whatever identity source VCF 9 is wired to for you — vCenter SSO, LDAP/AD, or an OIDC provider\"."
+        },
+        {
+          "text": "If 9.1 is selected, describes the VCF Identity Broker / API client + API token route",
+          "passed": false,
+          "evidence": "9.1 is never selected and VCF Identity Broker is never mentioned anywhere; the UI token section is generic — \"under the administration/access-control area there's an API token facility\" — with no API client route."
+        }
+      ],
+      "passed": 2,
+      "total": 5
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "text": "Establishes or asks for the target VCF version (9.0 vs 9.1) before committing to an auth flow",
+          "passed": false,
+          "evidence": "All five auth flows are committed to up front with no version established. The only version mention is a closing caveat telling the user to self-verify — \"verify against the API Explorer on your own appliances (and your specific 9.0 vs 9.1 build)\" — and the follow-up question asks about component only: \"If you tell me which component you're targeting and what you're trying to accomplish\"."
+        },
+        {
+          "text": "Does NOT silently default to 9.1 / 'latest'",
+          "passed": true,
+          "evidence": "No 9.1-specific flow is asserted; the answer explicitly hedges on build version: \"the paths are stable across recent versions, but verify against the API Explorer on your own appliances (and your specific 9.0 vs 9.1 build)\"."
+        },
+        {
+          "text": "Establishes or asks which product the token is for, rather than assuming one API covers VCF",
+          "passed": true,
+          "evidence": "\"there isn't one single 'VCF API token.' VCF is a stack of products, and each one issues its own token from its own endpoint. The first thing to decide is **which component you're actually automating**\", followed by a table mapping component to token endpoint and header."
+        },
+        {
+          "text": "States that SDDC Manager is excluded from VCF SSO and uses its own token flow",
+          "passed": false,
+          "evidence": "Section 1 gives SDDC Manager's own \"POST /v1/tokens\" flow but frames it merely as \"the classic 'VCF API'\"; no statement that SDDC Manager is excluded from VCF SSO. The service-account guidance instead says \"Create a service identity in your SSO/identity source\" for these flows generally."
+        },
+        {
+          "text": "If 9.1 is selected, describes the VCF Identity Broker / API client + API token route",
+          "passed": false,
+          "evidence": "9.1 is never selected and no Identity Broker API client + API token route is given. The broker is referenced only as an authSource hint for VCF Operations — \"set it to the identity source name for an SSO/LDAP/identity-broker-backed account\" — and the only UI-generated API token described belongs to VCF Automation."
+        }
+      ],
+      "passed": 2,
+      "total": 5
+    }
+  ]
+}

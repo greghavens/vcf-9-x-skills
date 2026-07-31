@@ -1,0 +1,132 @@
+{
+  "eval_id": 5,
+  "condition": "without_skill",
+  "runs": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "text": "Uses POST /v1/tokens with a JSON body containing username and password",
+          "passed": true,
+          "evidence": "\"_vcf_curl -X POST \\\"https://${VCF_SDDC_HOST}/v1/tokens\\\" -H 'Content-Type: application/json' ... jq -nc --arg u \\\"$VCF_USER\\\" --arg p \\\"$VCF_PASS\\\" '{username:$u, password:$p}'\""
+        },
+        {
+          "text": "Extracts the accessToken field for the bearer token",
+          "passed": true,
+          "evidence": "\"access=\\\"$(jq -r '.accessToken // empty'     <<<\\\"$body\\\")\\\"\""
+        },
+        {
+          "text": "Uses the header Authorization: Bearer <accessToken>",
+          "passed": true,
+          "evidence": "\"-H \\\"Authorization: Bearer ${token}\\\"\" and \"Every call after login needs `Authorization: Bearer <accessToken>`.\""
+        },
+        {
+          "text": "Uses refreshToken.id and PATCH /v1/tokens/access-token/refresh for refresh",
+          "passed": false,
+          "evidence": "Extracts refreshToken.id (\"jq -r '.refreshToken.id // .refreshToken // empty'\") but uses POST, not PATCH: \"_vcf_curl -X POST \\\"https://${VCF_SDDC_HOST}/v1/tokens/access-token/refresh\\\"\" and the table row \"| Refresh | `POST /v1/tokens/access-token/refresh` |\". The PATCH half of the assertion is not satisfied."
+        },
+        {
+          "text": "Notes that the refresh endpoint takes a plain-text refresh token rather than JSON",
+          "passed": false,
+          "evidence": "Sends a JSON object body: \"--data \\\"$(jq -nc --arg id \\\"$refresh\\\" '{id:$id}')\\\"\" with \"-H 'Content-Type: application/json'\". The only plain-text remark concerns the response, not the request: \"The refresh endpoint has historically returned the new token either as a bare string or as a JSON object\"."
+        },
+        {
+          "text": "Addresses the self-signed cert explicitly rather than silently emitting curl -k, and notes that Broadcom docs prescribe replacing certificates rather than disabling verification",
+          "passed": true,
+          "evidence": "Dedicated section \"## Notes on the self-signed cert\": \"`--insecure` disables all verification, which means anyone on-path can hand you a cert and harvest the SDDC Manager credentials you are about to POST\" ... \"Option B gives you real MITM protection with a self-signed cert and one env var, so it is usually the right stopgap until the cert is replaced with a CA-signed one.\""
+        },
+        {
+          "text": "Answer is scoped to 9.0 and does not assert 9.1 paths as verified",
+          "passed": true,
+          "evidence": "Title \"SDDC Manager API token helper for VCF 9.0 (bash)\"; no 9.1 claims. \"Since API surfaces do shift between VCF releases, it's worth confirming the refresh response shape against your actual 9.0 build\"."
+        }
+      ],
+      "passed": 5,
+      "total": 7
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "text": "Uses POST /v1/tokens with a JSON body containing username and password",
+          "passed": true,
+          "evidence": "\"# POST /v1/tokens -> {accessToken, refreshToken:{id}}\" ... \"jq -n --arg u \\\"$SDDC_USER\\\" --arg p \\\"$SDDC_PASS\\\" '{username:$u, password:$p}' | _vcf_curl -X POST \\\"https://${SDDC_MANAGER}/v1/tokens\\\"\""
+        },
+        {
+          "text": "Extracts the accessToken field for the bearer token",
+          "passed": true,
+          "evidence": "\"at=$(jq -r '.accessToken  // empty' <<<\\\"$resp\\\")\""
+        },
+        {
+          "text": "Uses the header Authorization: Bearer <accessToken>",
+          "passed": true,
+          "evidence": "\"-H \\\"Authorization: Bearer $tok\\\"\""
+        },
+        {
+          "text": "Uses refreshToken.id and PATCH /v1/tokens/access-token/refresh for refresh",
+          "passed": false,
+          "evidence": "refreshToken.id is extracted (\"rt=$(jq -r '.refreshToken.id // .refreshToken // empty' <<<\\\"$resp\\\")\") but the call is POST: \"# POST /v1/tokens/access-token/refresh -> new access token\" / \"_vcf_curl -X POST \\\"https://${SDDC_MANAGER}/v1/tokens/access-token/refresh\\\"\". No PATCH anywhere."
+        },
+        {
+          "text": "Notes that the refresh endpoint takes a plain-text refresh token rather than JSON",
+          "passed": false,
+          "evidence": "Sends a JSON string with a JSON content type: \"jq -n --arg id \\\"$rt\\\" '$id' | _vcf_curl -X POST ... -H 'Content-Type: application/json'\", and describes it as such: \"The function above sends a bare JSON string\". The only \"plain-text body\" comment applies to the response parsing, not the request."
+        },
+        {
+          "text": "Addresses the self-signed cert explicitly rather than silently emitting curl -k, and notes that Broadcom docs prescribe replacing certificates rather than disabling verification",
+          "passed": true,
+          "evidence": "\"**The `-k`.** `VCF_INSECURE=1` is what you asked for and it works, but it accepts any certificate, so anything on-path can read your credentials and tokens.\" ... \"Long term, replace the appliance cert from a CA (VCF 9.0 can do this through the certificate management workflow) and drop `-k` entirely.\""
+        },
+        {
+          "text": "Answer is scoped to 9.0 and does not assert 9.1 paths as verified",
+          "passed": true,
+          "evidence": "\"# SDDC Manager API token helper (VCF 9.0), with auto-refresh\"; no 9.1 assertions, and it flags build variance: \"Confirm the exact shape for your build in **SDDC Manager UI -> Developer Center -> API Explorer**\"."
+        }
+      ],
+      "passed": 5,
+      "total": 7
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "text": "Uses POST /v1/tokens with a JSON body containing username and password",
+          "passed": true,
+          "evidence": "\"| Login | `POST https://<sddc-manager>/v1/tokens` with `{\\\"username\\\":\\\"...\\\",\\\"password\\\":\\\"...\\\"}` |\" and \"body=$(jq -n --arg u \\\"$SDDC_USER\\\" --arg p \\\"$SDDC_PASS\\\" '{username:$u, password:$p}')\""
+        },
+        {
+          "text": "Extracts the accessToken field for the bearer token",
+          "passed": true,
+          "evidence": "\"_sddc_at=$(jq -r '.accessToken // empty'            <<<\\\"$resp\\\")\""
+        },
+        {
+          "text": "Uses the header Authorization: Bearer <accessToken>",
+          "passed": true,
+          "evidence": "\"| Use it | `Authorization: Bearer <accessToken>` on every `/v1/...` call |\" and \"-H \\\"Authorization: Bearer $tok\\\"\""
+        },
+        {
+          "text": "Uses refreshToken.id and PATCH /v1/tokens/access-token/refresh for refresh",
+          "passed": false,
+          "evidence": "refreshToken.id is used (\"_sddc_rt=$(jq -r '.refreshToken.id // .refreshToken // empty' <<<\\\"$resp\\\")\") but the method is POST: \"| Refresh | `POST https://<sddc-manager>/v1/tokens/access-token/refresh` |\" / \"_sddc_curl POST /v1/tokens/access-token/refresh \\\"$_sddc_rt\\\" text/plain\". PATCH is never mentioned."
+        },
+        {
+          "text": "Notes that the refresh endpoint takes a plain-text refresh token rather than JSON",
+          "passed": true,
+          "evidence": "\"| Refresh | ... body = the bare refresh-token id, `Accept: text/plain` -> returns the new access token |\" and \"some builds want the raw id, some tolerate a JSON string\"; the code passes the raw id as the body: \"_sddc_curl POST /v1/tokens/access-token/refresh \\\"$_sddc_rt\\\" text/plain\"."
+        },
+        {
+          "text": "Addresses the self-signed cert explicitly rather than silently emitting curl -k, and notes that Broadcom docs prescribe replacing certificates rather than disabling verification",
+          "passed": true,
+          "evidence": "\"## About that self-signed cert\" - \"`--insecure` disables verification entirely, which means anything on-path can hand you a cert and harvest your `administrator@vsphere.local` password on the very first `POST /v1/tokens`\" ... \"Longer term, VCF 9.0 lets you push a CA-signed cert onto SDDC Manager through the certificate management workflow, at which point you drop `SDDC_TLS_OPTS` entirely\"."
+        },
+        {
+          "text": "Answer is scoped to 9.0 and does not assert 9.1 paths as verified",
+          "passed": true,
+          "evidence": "\"# SDDC Manager token helper (VCF 9.0)\" and \"**VCF 9.0 caveat worth verifying on your build.**\"; no 9.1 paths claimed."
+        }
+      ],
+      "passed": 6,
+      "total": 7
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "eval_id": 8,
+  "condition": "without_skill",
+  "runs": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "text": "States that API clients / API tokens issued by VCF SSO are a 9.1 feature and are NOT available in 9.0",
+          "passed": false,
+          "evidence": "No mention of 9.1 anywhere in the answer. The closest version discussion is 'VCF 9.0 reorganized identity and access management substantially versus 8.x/5.x' and 'menu paths and role names shifted between 9.0 and 9.0.x patches' — never states that SSO-issued API clients/tokens are a 9.1-only feature."
+        },
+        {
+          "text": "Does NOT walk the user through the 9.1 Fleet Management > Identity & Access > API Clients flow as if it existed in 9.0",
+          "passed": true,
+          "evidence": "No Fleet Management / Identity & Access / API Clients navigation is described. Token guidance is per-plane: 'NSX — the gold standard', 'VCF Automation — a real API token' via 'the user's profile / My Account', and 'VCF Operations' via '/suite-api/api/auth/token/acquire'."
+        },
+        {
+          "text": "Gives the actual 9.0 route: per-product credentials (SDDC Manager /v1/tokens, VCF Operations token/acquire, NSX session, vCenter session)",
+          "passed": true,
+          "evidence": "'VCF 9.0 has no single \"create service account, get a PAT, use it everywhere\" flow. Authentication is still per–control plane.' Then: SDDC Manager — 'its `/v1/tokens` endpoint returns an access token plus a refresh token'; Ops — 'https://ops.example.com/suite-api/api/auth/token/acquire'; NSX — 'curl -k --cert pi.crt --key pi.key'; vCenter — 'https://vc.example.com/api/session' with 'vmware-api-session-id: $SID'."
+        },
+        {
+          "text": "Mentions NSX principal identities as the documented service-account mechanism for NSX",
+          "passed": true,
+          "evidence": "'NSX | **Principal Identity** with a client certificate, role **Auditor** | Yes — lifetime = certificate lifetime. This is the best pattern in the whole stack' and 'Create a Principal Identity bound to a client certificate, with role Auditor.'"
+        },
+        {
+          "text": "Notes that VCF built-in roles (VCF Viewer / VCF Administrator) are documented only in the 9.1 doc set",
+          "passed": false,
+          "evidence": "No mention of VCF Viewer / VCF Administrator built-in roles or of the 9.1 doc set. Roles named are vCenter 'Read-only', NSX 'Auditor', and an unnamed 'read-only / auditor-style role' for VCF Operations."
+        }
+      ],
+      "passed": 3,
+      "total": 5
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "text": "States that API clients / API tokens issued by VCF SSO are a 9.1 feature and are NOT available in 9.0",
+          "passed": false,
+          "evidence": "No mention of 9.1. The version caveat only says 'VCF 9.0 consolidated a lot of SDDC Manager's UI and API surface into VCF Operations, and the identity layer moved to VCF Identity Broker.' It instead asserts a long-lived API key IS available in 9.0: 'The VCF API supports a first-class **service user** type... you get an API key that does not expire on a clock'."
+        },
+        {
+          "text": "Does NOT walk the user through the 9.1 Fleet Management > Identity & Access > API Clients flow as if it existed in 9.0",
+          "passed": true,
+          "evidence": "No Fleet Management > Identity & Access > API Clients UI path appears; the service-account creation shown is the API call 'POST https://sddc-manager.example.com/v1/users' with '\"type\": \"SERVICE\"', and the Ops path given is 'Administration → Access Control → User Accounts'."
+        },
+        {
+          "text": "Gives the actual 9.0 route: per-product credentials (SDDC Manager /v1/tokens, VCF Operations token/acquire, NSX session, vCenter session)",
+          "passed": true,
+          "evidence": "'VCF 9.0 is not one API... each has its own identity store, its own role model, and its own token mechanics.' SDDC Manager — 'POST https://sddc-manager.example.com/v1/tokens'; Ops — 'https://vcf-ops.example.com/suite-api/api/auth/token/acquire'; vCenter — 'vCenter has no long-lived API token equivalent; your automation authenticates and gets a session'; NSX listed as its own plane — 'NSX | `/policy/api/v1/...` | NSX local or SSO | `Auditor`'."
+        },
+        {
+          "text": "Mentions NSX principal identities as the documented service-account mechanism for NSX",
+          "passed": false,
+          "evidence": "NSX appears only once, in the API-surface table row 'NSX | `/policy/api/v1/...` | NSX local or SSO | `Auditor`'. The words 'principal identity' never appear."
+        },
+        {
+          "text": "Notes that VCF built-in roles (VCF Viewer / VCF Administrator) are documented only in the 9.1 doc set",
+          "passed": false,
+          "evidence": "It names 'ADMIN', 'OPERATOR', and 'VIEWER' as the SDDC Manager roles and presents them as current for 9.0 — 'You should see `ADMIN`, `OPERATOR`, and `VIEWER`.' No reference to VCF Viewer / VCF Administrator built-in roles or to the 9.1 doc set."
+        }
+      ],
+      "passed": 2,
+      "total": 5
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "text": "States that API clients / API tokens issued by VCF SSO are a 9.1 feature and are NOT available in 9.0",
+          "passed": false,
+          "evidence": "No mention of 9.1. Version framing is only 'VCF 9.0 reorganised a fair amount relative to 5.x' and 'VCF 9.0 does not have a single \"generate a long-lived API token\" button that works across the stack' — no statement that SSO-issued API clients/tokens arrived in 9.1."
+        },
+        {
+          "text": "Does NOT walk the user through the 9.1 Fleet Management > Identity & Access > API Clients flow as if it existed in 9.0",
+          "passed": true,
+          "evidence": "No such navigation is given; identity creation is directed to the IdP or local accounts — 'Create a dedicated service account in your identity source — AD/LDAP, or an OIDC provider federated through the VCF Identity Broker' — and tokens come from per-component API flows."
+        },
+        {
+          "text": "Gives the actual 9.0 route: per-product credentials (SDDC Manager /v1/tokens, VCF Operations token/acquire, NSX session, vCenter session)",
+          "passed": true,
+          "evidence": "'Step 3: The token flow per component' — SDDC Manager: '`POST /v1/tokens` with `{\"username\": \"...\", \"password\": \"...\"}` returns an **access token**... and a **refresh token**'; VCF Operations: 'Acquire a token against the auth endpoint using the service account plus its auth source, then send it as a bearer token'; NSX: 'Principal Identity users authenticated with a **client certificate**'; vCenter: '`POST /api/session` returns a session token bound to an idle timeout; there is no static API key.'"
+        },
+        {
+          "text": "Mentions NSX principal identities as the documented service-account mechanism for NSX",
+          "passed": true,
+          "evidence": "'**NSX — the one genuine long-lived option.** NSX supports **Principal Identity** users authenticated with a **client certificate** instead of a password... register the PI with the Auditor role'."
+        },
+        {
+          "text": "Notes that VCF built-in roles (VCF Viewer / VCF Administrator) are documented only in the 9.1 doc set",
+          "passed": false,
+          "evidence": "It presents the legacy roles as current for 9.0 — 'SDDC Manager / VCF fleet | **VIEWER** | The three classic roles are ADMIN, OPERATOR, VIEWER.' No mention of VCF Viewer / VCF Administrator or the 9.1 doc set."
+        }
+      ],
+      "passed": 3,
+      "total": 5
+    }
+  ]
+}

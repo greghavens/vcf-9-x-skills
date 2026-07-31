@@ -1,0 +1,102 @@
+{
+  "eval_id": 1,
+  "condition": "with_skill",
+  "runs": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "text": "Explicitly labels the answer as VCF 9.0 / NSX 9.0",
+          "passed": true,
+          "evidence": "Title: \"# Block tcp/3389 between two existing groups — VCF 9.0 (NSX 9.0.0.0)\"; also \"this is written against NSX 9.0.0.0 (build 24733065) per the VCF 9.0 BOM.\""
+        },
+        {
+          "text": "States that no NSX OpenAPI spec is published at the 9.0.0.0 tag of vmware/vcf-api-specs, so 9.0 endpoints are sourced from prose documentation",
+          "passed": true,
+          "evidence": "\"There is no machine-readable NSX spec at the `9.0.0.0` tag of Broadcom's spec repo (`nsx-policy`, `nsx-manager`, `nsx-global-policy` are all absent there, present only at `9.1.0.0`), so nothing here is spec-confirmed for 9.0 — the paths rest on prose docs.\""
+        },
+        {
+          "text": "Does NOT present a 9.1-spec-derived endpoint as verified for 9.0",
+          "passed": true,
+          "evidence": "9.1-sourced items are explicitly flagged as unverified for 9.0: \"The `/policy/api/v1/infra/services` collection was never confirmed on a 9.0 page\"; \"Don't use `GET /policy/api/v1/infra/domains` ... That list endpoint is 9.1-only in the evidence\"; \"`POST ...?action=revise` | Endpoint confirmed for 9.0; its `operation`/`anchor_path` query parameters and the mandatory-body requirement are 9.1-only\"; all JSON field names marked \"**Inferred.** Read from the 9.1 spec's ... definitions.\""
+        },
+        {
+          "text": "Still uses the Policy API /policy/api/v1 surface (correct for 9.0 as well)",
+          "passed": true,
+          "evidence": "\"$NSX/policy/api/v1/infra/domains/$DOMAIN/security-policies/$POLICY/rules/$RULE\" — every object call uses the /policy/api/v1 base path."
+        },
+        {
+          "text": "Answers the confidence question directly rather than deflecting",
+          "passed": true,
+          "evidence": "\"Short version on confidence, since you asked: **the endpoint paths are solid, the request bodies are not.**\" plus a per-endpoint \"Confidence, endpoint by endpoint\" table."
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "text": "Explicitly labels the answer as VCF 9.0 / NSX 9.0",
+          "passed": true,
+          "evidence": "Title: \"# Block tcp/3389 between two existing NSX groups — VCF 9.0\"; \"Everything above is graded against **NSX 9.0.0.0 (build 24733065)**.\""
+        },
+        {
+          "text": "States that no NSX OpenAPI spec is published at the 9.0.0.0 tag of vmware/vcf-api-specs, so 9.0 endpoints are sourced from prose documentation",
+          "passed": true,
+          "evidence": "\"**The structural fact:** there is **no NSX OpenAPI specification published at the `9.0.0.0` tag** of Broadcom's spec repo. `nsx-policy`, `nsx-manager` and `nsx-global-policy` all appear only at `9.1.0.0`. So nothing in a 9.0 answer can be spec-confirmed from the public corpus — it rests on version-pinned prose documentation.\""
+        },
+        {
+          "text": "Does NOT present a 9.1-spec-derived endpoint as verified for 9.0",
+          "passed": true,
+          "evidence": "Explicit: \"a path confirmed in the 9.1 spec is **not** thereby confirmed for 9.0.\" Table rows mark \"`/infra/services` (named service objects) | **Not verified for 9.0**\", \"`GET /infra/domains` (domain list) | **Not verified for 9.0**\", \"`?action=revise` **query params** ... | **9.1-only**\"."
+        },
+        {
+          "text": "Still uses the Policy API /policy/api/v1 surface (correct for 9.0 as well)",
+          "passed": true,
+          "evidence": "\"Base path `/policy/api/v1`; Manager API `/api/v1` unsupported for policy objects | **High**\"; calls such as \"$NSX/policy/api/v1/infra/domains/$DOMAIN/security-policies/$POLICY\"."
+        },
+        {
+          "text": "Answers the confidence question directly rather than deflecting",
+          "passed": true,
+          "evidence": "\"**Confidence, in one line:** the **paths and verbs are solid** ... the **JSON body field names are not**\" plus a full \"How confident am I, exactly\" section with a graded table."
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "text": "Explicitly labels the answer as VCF 9.0 / NSX 9.0",
+          "passed": true,
+          "evidence": "\"**Applies to VCF 9.0 (NSX 9.0.0.0, build 24733065 per the 9.0 BOM).**\""
+        },
+        {
+          "text": "States that no NSX OpenAPI spec is published at the 9.0.0.0 tag of vmware/vcf-api-specs, so 9.0 endpoints are sourced from prose documentation",
+          "passed": true,
+          "evidence": "\"**There is no machine-readable NSX OpenAPI specification at the `9.0.0.0` tag of Broadcom's public spec repo.** `nsx-policy`, `nsx-manager` and `nsx-global-policy` are all recorded absent at 9.0 and appear only at 9.1.0.0. So nothing above is spec-confirmed for 9.0 — the endpoints come from 9.0.0-pinned prose documentation\""
+        },
+        {
+          "text": "Does NOT present a 9.1-spec-derived endpoint as verified for 9.0",
+          "passed": true,
+          "evidence": "\"a path being spec-confirmed for 9.1 is *not* evidence about 9.0.\" Table: \"`/infra/services` ... | **Not confirmed for 9.0** — hence inline `service_entries`\"; \"`GET /infra/domains` (domain list) and `GET /infra/domains/{d}/groups` (group list) | **Not confirmed for 9.0** — avoided above\"; \"`?action=revise` **query parameters** ... | **9.1-only.**\""
+        },
+        {
+          "text": "Still uses the Policy API /policy/api/v1 surface (correct for 9.0 as well)",
+          "passed": true,
+          "evidence": "\"Policy API only — `/api/v1` is not a supported path to a DFW object in 9.0\"; calls use \"$NSX/policy/api/v1/infra/domains/$DOMAIN/security-policies/$POLICY/rules/$RULE\"."
+        },
+        {
+          "text": "Answers the confidence question directly rather than deflecting",
+          "passed": true,
+          "evidence": "\"Short answer on confidence, up front, since you asked: **the paths and verbs I use below are solid (read from 9.0.0-pinned Broadcom pages). The JSON body field names are not — they're inferred from the 9.1 spec.**\""
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "eval_id": 0,
+  "condition": "without_skill",
+  "runs": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "text": "Uses the Policy API base path /policy/api/v1 for the security policy and rule calls",
+          "passed": true,
+          "evidence": "curl -k -X PATCH \"https://$NSX/policy/api/v1/infra/domains/default/security-policies/app-to-db-policy\""
+        },
+        {
+          "text": "Does NOT present the Manager API /api/v1 as a valid surface for creating policy objects",
+          "passed": true,
+          "evidence": "All policy/rule/service/group calls are under /policy/api/v1; the only /api/v1 reference is for auth trust-management: \"a Principal Identity with a client certificate (POST /api/v1/trust-management/principal-identities/with-certificate)\" — a real, non-deprecated Manager-API auth object in the 9.1 spec, not a policy object."
+        },
+        {
+          "text": "Auth uses POST /api/session/create with form fields j_username and j_password",
+          "passed": true,
+          "evidence": "curl -k -s -X POST \"https://$NSX/api/session/create\" -H \"Content-Type: application/x-www-form-urlencoded\" -d \"j_username=$NSXUSER\" --data-urlencode \"j_password=$NSXPASS\""
+        },
+        {
+          "text": "States that BOTH the JSESSIONID cookie AND the X-XSRF-TOKEN header must be sent on subsequent calls",
+          "passed": true,
+          "evidence": "\"Two things come back and you need **both**: `JSESSIONID` cookie ... `X-XSRF-TOKEN` response header → required on every non-GET call\" ... \"Every subsequent call then carries: -b /tmp/nsx-cookies.txt -H \\\"X-XSRF-TOKEN: $XSRF\\\"\""
+        },
+        {
+          "text": "Creates or references a security policy under a domain before creating the rule (correct nesting, not a bare rule POST)",
+          "passed": true,
+          "evidence": "\"## 4. Create the security policy + rule — One `PATCH` creates the policy and its rule together\": PATCH .../infra/domains/default/security-policies/app-to-db-policy with a nested \"rules\": [ { \"id\": \"block-rdp-app-to-db\", ... } ]"
+        },
+        {
+          "text": "States the prerequisite that both source and destination groups must already exist and be referenced by path",
+          "passed": true,
+          "evidence": "\"## 2. Confirm the exact group paths — The API takes *policy paths*, not display names. Don't guess them.\" followed by a search query returning \"app-tier /infra/domains/default/groups/app-tier\" and \"use it verbatim\"; source_groups/destination_groups are set to those paths."
+        },
+        {
+          "text": "Explicitly labels the answer as applying to VCF 9.1 / NSX 9.1",
+          "passed": true,
+          "evidence": "Title: \"# Block RDP (tcp/3389) app-tier → db-tier with the NSX Policy API (VCF 9.1)\""
+        },
+        {
+          "text": "Includes the caveat that the skill was built from documentation and not validated against a live environment",
+          "passed": false,
+          "evidence": "No such caveat anywhere. The closest text is operational advice (\"Check before you run this\" about Terraform drift, \"Gotchas worth knowing before you run this\"), which says nothing about the guidance being documentation-derived or unvalidated against a live environment."
+        },
+        {
+          "text": "Contains no endpoint that is absent from the 9.1 nsx_policy_api spec",
+          "passed": true,
+          "evidence": "Every policy path used is in 9.1__nsx-policy.ops.json: /search/query, /infra/domains/{domain-id}/groups, /infra/services/{service-id}, /infra/domains/{domain-id}/security-policies[/{id}], .../rules/{rule-id}, .../rules/{rule-id}/statistics, /infra/realized-state/status, /infra/realized-state/realized-entities. The non-policy /api/session/create|destroy and POST /api/v1/trust-management/principal-identities/with-certificate are real 9.1 appliance/Manager endpoints (RegisterPrincipalIdentityWithCertificate, deprecated=false)."
+        }
+      ],
+      "passed": 8,
+      "total": 9
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "text": "Uses the Policy API base path /policy/api/v1 for the security policy and rule calls",
+          "passed": true,
+          "evidence": "\"Everything below uses the **Policy (declarative) API** under `/policy/api/v1`\"; e.g. -X PATCH \"https://$NSX/policy/api/v1/infra/domains/default/security-policies/app-db-restrictions/rules/block-rdp-app-to-db\""
+        },
+        {
+          "text": "Does NOT present the Manager API /api/v1 as a valid surface for creating policy objects",
+          "passed": true,
+          "evidence": "\"Don't use the old Manager API (`/api/v1/firewall/...`) — in NSX 9.x it's read-only/deprecated for DFW config.\" (explicitly steers away from it; all creation is via /policy/api/v1)"
+        },
+        {
+          "text": "Auth uses POST /api/session/create with form fields j_username and j_password",
+          "passed": true,
+          "evidence": "-X POST \"https://$NSX/api/session/create\" -H 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'j_username=admin' --data-urlencode 'j_password=<PASSWORD>'"
+        },
+        {
+          "text": "States that BOTH the JSESSIONID cookie AND the X-XSRF-TOKEN header must be sent on subsequent calls",
+          "passed": true,
+          "evidence": "\"Every subsequent call then carries **both** the cookie and the XSRF header\" with \"captures JSESSIONID into cookies.txt and the XSRF token to a var\" and \"-b /tmp/nsx-cookies.txt -H \\\"X-XSRF-TOKEN: $XSRF\\\"\""
+        },
+        {
+          "text": "Creates or references a security policy under a domain before creating the rule (correct nesting, not a bare rule POST)",
+          "passed": true,
+          "evidence": "Hierarchical PATCH /policy/api/v1/infra with ChildDomain → Domain id \"default\" → ChildSecurityPolicy → ChildRule; flat variant first PATCHes .../infra/domains/default/security-policies/app-db-restrictions (\"Create the policy container\") then .../security-policies/app-db-restrictions/rules/block-rdp-app-to-db"
+        },
+        {
+          "text": "States the prerequisite that both source and destination groups must already exist and be referenced by path",
+          "passed": true,
+          "evidence": "Prereq table row: \"The two group paths | resolved in step 2 — don't guess them from display names\"; \"## 2. Resolve the exact group paths (do not skip this) — The group's *path* is built from its **id**\"; source_groups/destination_groups use /infra/domains/default/groups/app-tier and /db-tier"
+        },
+        {
+          "text": "Explicitly labels the answer as applying to VCF 9.1 / NSX 9.1",
+          "passed": true,
+          "evidence": "Title: \"# Blocking RDP (tcp/3389) app-tier → db-tier with the NSX Policy API (VCF 9.1)\""
+        },
+        {
+          "text": "Includes the caveat that the skill was built from documentation and not validated against a live environment",
+          "passed": false,
+          "evidence": "Closest text is \"the endpoint shapes ... are what I'd expect on NSX 9.x under VCF 9.1 ... so validate step 1 against your instance's own API docs before wiring it into anything automated\" — a scoped 'verify the auth section' hedge; it never states the guidance was built from documentation and not validated against a live environment."
+        },
+        {
+          "text": "Contains no endpoint that is absent from the 9.1 nsx_policy_api spec",
+          "passed": true,
+          "evidence": "All instructed policy calls exist in 9.1__nsx-policy.ops.json: PATCH /infra (PatchInfra), /infra/domains/{domain-id}, /infra/domains/{domain-id}/groups, /infra/domains/{domain-id}/groups/{group-id}/members/virtual-machines, /infra/services/{service-id}, /infra/domains/{domain-id}/security-policies[/{id}][/rules/{rule-id}], /search/query, /infra/realized-state/status. The `/api/v1/firewall/...` mention is a do-not-use pointer, not a call the answer instructs (note: it is in fact fully removed in 9.1, not merely 'read-only/deprecated')."
+        }
+      ],
+      "passed": 8,
+      "total": 9
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "text": "Uses the Policy API base path /policy/api/v1 for the security policy and rule calls",
+          "passed": true,
+          "evidence": "\"using the **Policy API** (`/policy/api/v1/...`)\"; PATCH \"$NSX/policy/api/v1/infra/domains/default/security-policies/app-to-db-restrictions/rules/block-rdp-app-to-db\""
+        },
+        {
+          "text": "Does NOT present the Manager API /api/v1 as a valid surface for creating policy objects",
+          "passed": true,
+          "evidence": "No /api/v1 configuration path appears at all; the only appliance-root calls are /api/session/create and /api/session/destroy."
+        },
+        {
+          "text": "Auth uses POST /api/session/create with form fields j_username and j_password",
+          "passed": true,
+          "evidence": "curl -k -s -X POST \"$NSX/api/session/create\" -H 'Content-Type: application/x-www-form-urlencoded' -d \"j_username=admin\" --data-urlencode \"j_password=$NSX_PASSWORD\""
+        },
+        {
+          "text": "States that BOTH the JSESSIONID cookie AND the X-XSRF-TOKEN header must be sent on subsequent calls",
+          "passed": true,
+          "evidence": "\"Two things come back and you need **both** on every subsequent write: `JSESSIONID` ... `X-XSRF-TOKEN` ...\" then \"# every later call: curl -k -s -b /tmp/nsx-cookies.txt -H \\\"X-XSRF-TOKEN: $XSRF\\\"\""
+        },
+        {
+          "text": "Creates or references a security policy under a domain before creating the rule (correct nesting, not a bare rule POST)",
+          "passed": true,
+          "evidence": "\"## Step 4 — Create the security policy (the DFW section) — Rules live inside a security policy.\" PATCH .../infra/domains/default/security-policies/app-to-db-restrictions, then Step 5 PATCHes .../security-policies/app-to-db-restrictions/rules/block-rdp-app-to-db"
+        },
+        {
+          "text": "States the prerequisite that both source and destination groups must already exist and be referenced by path",
+          "passed": true,
+          "evidence": "\"## Step 2 — Find the exact paths of your two groups — Do not guess the group IDs — the display name and the ID are usually different\"; APP=/infra/domains/default/groups/app-tier, DB=/infra/domains/default/groups/db-tier used as source_groups/destination_groups, plus a members/virtual-machines check that the existing groups resolve."
+        },
+        {
+          "text": "Explicitly labels the answer as applying to VCF 9.1 / NSX 9.1",
+          "passed": true,
+          "evidence": "Title \"...with the NSX Policy API (VCF 9.1)\" and \"In VCF 9.1 you talk to **NSX Manager** directly\""
+        },
+        {
+          "text": "Includes the caveat that the skill was built from documentation and not validated against a live environment",
+          "passed": false,
+          "evidence": "Absent. The 'Things that will bite you' section covers rule-ordering, group membership, PUT/_revision and lockout risk only; there is no statement that the guidance is documentation-derived or unvalidated against a live environment."
+        },
+        {
+          "text": "Contains no endpoint that is absent from the 9.1 nsx_policy_api spec",
+          "passed": true,
+          "evidence": "All policy paths verified present in 9.1__nsx-policy.ops.json: /search/query, /infra/domains/{domain-id}/groups[/{group-id}/members/virtual-machines], /infra/services/{service-id}, /infra/domains/{domain-id}/security-policies[/{id}][/rules/{rule-id}], /infra/realized-state/status, /infra/realized-state/realized-entities, /infra/domains/{domain-id}/gateway-policies, PATCH /infra. (Unrelated inaccuracy not covered by any assertion: it says consolidated_status should read \"REALIZED\" rather than \"SUCCESS\".)"
+        }
+      ],
+      "passed": 8,
+      "total": 9
+    }
+  ]
+}

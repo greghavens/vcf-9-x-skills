@@ -1,0 +1,102 @@
+{
+  "eval_id": 1,
+  "condition": "without_skill",
+  "runs": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "text": "Explicitly labels the answer as VCF 9.0 / NSX 9.0",
+          "passed": true,
+          "evidence": "Title: \"Blocking TCP/3389 between two existing NSX groups on VCF 9.0\"; \"NSX distributed firewall on VCF 9.0 is the NSX **Policy** (declarative) API.\""
+        },
+        {
+          "text": "States that no NSX OpenAPI spec is published at the 9.0.0.0 tag of vmware/vcf-api-specs, so 9.0 endpoints are sourced from prose documentation",
+          "passed": false,
+          "evidence": "No mention of vmware/vcf-api-specs, the 9.0.0.0 tag, or of endpoints being sourced from prose docs anywhere in the answer. The closest statement is only a generic memory disclaimer: \"Don't let a 9.1 doc page be your source for a 9.0 change.\""
+        },
+        {
+          "text": "Does NOT present a 9.1-spec-derived endpoint as verified for 9.0",
+          "passed": true,
+          "evidence": "\"That 9.0 behaves the same as 9.1 here | **Medium** | I'd expect the DFW policy API surface to be unchanged between 9.0 and 9.1 ... Don't let a 9.1 doc page be your source for a 9.0 change.\" — no endpoint is claimed as spec-verified; each is given an explicit confidence rating and a confirming GET is recommended."
+        },
+        {
+          "text": "Still uses the Policy API /policy/api/v1 surface (correct for 9.0 as well)",
+          "passed": true,
+          "evidence": "\"PATCH https://<nsx-mgr>/policy/api/v1/infra/domains/default/security-policies/$POLICY_ID/rules/block-rdp-3389\""
+        },
+        {
+          "text": "Answers the confidence question directly rather than deflecting",
+          "passed": true,
+          "evidence": "\"## 5. Confidence, honestly ... You asked directly, so here it is broken out:\" followed by a per-claim High/Medium/Low table."
+        }
+      ],
+      "passed": 4,
+      "total": 5
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "text": "Explicitly labels the answer as VCF 9.0 / NSX 9.0",
+          "passed": true,
+          "evidence": "Title: \"Blocking TCP/3389 between two existing NSX groups on VCF 9.0\"; \"**This is my single biggest caveat on 9.0.** NSX 9.0 supports Projects and VPCs\""
+        },
+        {
+          "text": "States that no NSX OpenAPI spec is published at the 9.0.0.0 tag of vmware/vcf-api-specs, so 9.0 endpoints are sourced from prose documentation",
+          "passed": false,
+          "evidence": "No reference to vmware/vcf-api-specs or the 9.0.0.0 tag. The only sourcing note points at the appliance itself: \"There's also the built-in API docs at `https://<nsx-manager-vip>/policy/api.html`\"."
+        },
+        {
+          "text": "Does NOT present a 9.1-spec-derived endpoint as verified for 9.0",
+          "passed": true,
+          "evidence": "\"I am *not* aware of a DFW schema change, but 'not aware of' is weaker than 'verified absent,'\" — endpoints are given as recall with percentage confidence, not as spec-verified; no 9.1 spec is cited as the source."
+        },
+        {
+          "text": "Still uses the Policy API /policy/api/v1 surface (correct for 9.0 as well)",
+          "passed": true,
+          "evidence": "\"BASE=https://<nsx-manager-vip>/policy/api/v1\" and \"`/policy/api/v1` as the Policy API base on NSX Manager.\""
+        },
+        {
+          "text": "Answers the confidence question directly rather than deflecting",
+          "passed": true,
+          "evidence": "\"## How confident am I in the exact endpoints? Broken out honestly ... **Very high (~95%)** ... **Medium (~70%)** ... **Low — do not build on my recollection:**\""
+        }
+      ],
+      "passed": 4,
+      "total": 5
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "text": "Explicitly labels the answer as VCF 9.0 / NSX 9.0",
+          "passed": true,
+          "evidence": "Title: \"Blocking TCP/3389 between two existing NSX groups on VCF 9.0\"; \"the NSX build shipped with VCF 9.0\""
+        },
+        {
+          "text": "States that no NSX OpenAPI spec is published at the 9.0.0.0 tag of vmware/vcf-api-specs, so 9.0 endpoints are sourced from prose documentation",
+          "passed": false,
+          "evidence": "No mention of vmware/vcf-api-specs or a 9.0.0.0 tag; it only points to the appliance: \"your own NSX Manager serves the exact API spec for the exact build you're running, at `https://<nsx-manager>/policy/api.html`\"."
+        },
+        {
+          "text": "Does NOT present a 9.1-spec-derived endpoint as verified for 9.0",
+          "passed": true,
+          "evidence": "No 9.1 specification is cited as a source anywhere; endpoints are explicitly framed as recollection — \"**Low — do not take my word:**\" and \"That beats anything I can recall, and it's authoritative for 9.0 specifically.\""
+        },
+        {
+          "text": "Still uses the Policy API /policy/api/v1 surface (correct for 9.0 as well)",
+          "passed": true,
+          "evidence": "\"-X PATCH \\\"https://$NSX/policy/api/v1/infra/domains/$DOMAIN/security-policies/$POLICY/rules/$RULE\\\"\""
+        },
+        {
+          "text": "Answers the confidence question directly rather than deflecting",
+          "passed": true,
+          "evidence": "\"## How confident am I in the exact endpoints? Honest breakdown, because the confidence is genuinely uneven: **High (~95%)** ... **Medium (~70%)** ... **Low**\""
+        }
+      ],
+      "passed": 4,
+      "total": 5
+    }
+  ]
+}

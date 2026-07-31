@@ -1,0 +1,102 @@
+{
+  "eval_id": 6,
+  "condition": "with_skill",
+  "runs": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "text": "Points to github.com/vmware/vcf-api-specs and names the version tag 9.1.0.0",
+          "passed": true,
+          "evidence": "\"Broadcom publishes machine-readable specs at `github.com/vmware/vcf-api-specs`, and the repo carries **git tags `9.0.0.0` and `9.1.0.0`**\"; \"git -C /tmp/vcf-api-specs checkout 9.1.0.0\""
+        },
+        {
+          "text": "Gives a concrete way to search the spec corpus (grep/script/jq over the spec files) rather than only saying 'read the docs'",
+          "passed": true,
+          "evidence": "\"python3 scripts/find_operation.py --version 9.1 --product sddc-manager \\\"stretch\\\"\" ... \"python3 scripts/find_operation.py --both-versions \\\"stretch\\\"\" plus \"git clone https://github.com/vmware/vcf-api-specs /tmp/vcf-api-specs\" for schema detail"
+        },
+        {
+          "text": "Mentions at least one on-appliance discovery route (e.g. the VCF Operations swagger UI or the NSX openapi spec endpoint)",
+          "passed": false,
+          "evidence": "No on-appliance discovery route appears. Discovery is limited to the GitHub spec corpus and the bundled inventory (\"the published OpenAPI spec corpus, not the prose docs\"), plus a warning about developer.broadcom.com. Grep for swagger/explorer/appliance returns only the operation name \"VSANIsWitnessVirtualAppliance\"."
+        },
+        {
+          "text": "Does NOT invent a specific vSAN stretched-cluster endpoint and present it as verified",
+          "passed": true,
+          "evidence": "Explicitly denies a stretch path — \"there is no `/stretch` endpoint\" — and attributes every named operation to the spec: \"Everything above is spec-confirmed against the `9.1.0.0` tag\"; unverified items are flagged (\"`prepareForStretch` ... No retrieved source explains when it is required versus optional — unverified\")."
+        },
+        {
+          "text": "Notes that no on-appliance API-explorer URL pattern is documented for VCF 9.x",
+          "passed": false,
+          "evidence": "No such statement. The only portal caveat is about the developer portal: \"a nonexistent developer-portal page returns the SPA navigation shell with HTTP 200\" — this is about developer.broadcom.com, not an on-appliance API explorer."
+        }
+      ],
+      "passed": 3,
+      "total": 5
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "text": "Points to github.com/vmware/vcf-api-specs and names the version tag 9.1.0.0",
+          "passed": true,
+          "evidence": "\"Broadcom publishes machine-readable OpenAPI specs at `github.com/vmware/vcf-api-specs`, and the repo carries **git tags `9.0.0.0` and `9.1.0.0`**\"; \"confirmed against the `9.1.0.0` git tag\""
+        },
+        {
+          "text": "Gives a concrete way to search the spec corpus (grep/script/jq over the spec files) rather than only saying 'read the docs'",
+          "passed": true,
+          "evidence": "\"python3 scripts/find_operation.py --version 9.1 \\\"stretch\\\"\" and variants (\"--product sddc-manager --method PATCH cluster\", \"--both-versions \\\"witness\\\"\", \"--list-products\"), plus clone + named spec files \"specifications/sddc-manager/sddc-manager-openapi.json\""
+        },
+        {
+          "text": "Mentions at least one on-appliance discovery route (e.g. the VCF Operations swagger UI or the NSX openapi spec endpoint)",
+          "passed": false,
+          "evidence": "Discovery is entirely the GitHub corpus/inventory: \"search the spec corpus, not the docs\". Trap #3 discusses only \"`developer.broadcom.com` is a single-page app\". No swagger UI or NSX openapi spec endpoint on any appliance is mentioned."
+        },
+        {
+          "text": "Does NOT invent a specific vSAN stretched-cluster endpoint and present it as verified",
+          "passed": true,
+          "evidence": "\"there is no `/stretch` endpoint\"; \"Every endpoint named is spec-confirmed at the `9.1.0.0` tag\"; guesswork is explicitly disclaimed (\"Never infer a payload field from an `operationId` or a summary line\"; \"I elided those inner NSX objects above; build them from your real NSX config\")."
+        },
+        {
+          "text": "Notes that no on-appliance API-explorer URL pattern is documented for VCF 9.x",
+          "passed": false,
+          "evidence": "Absent. The nearest statement concerns the public portal only: \"the `vmware-cloud-foundation-api` reference still serves **VCF 5.2.4 as \\\"Latest\\\"**; for 9.x SDDC Manager use the `sddc-manager-api` slug.\""
+        }
+      ],
+      "passed": 3,
+      "total": 5
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "text": "Points to github.com/vmware/vcf-api-specs and names the version tag 9.1.0.0",
+          "passed": true,
+          "evidence": "\"Broadcom publishes machine-readable OpenAPI specs at `github.com/vmware/vcf-api-specs`, and ... **the repo carries git tags `9.0.0.0` and `9.1.0.0`**\"; \"git -C /tmp/vcf-api-specs checkout 9.1.0.0\""
+        },
+        {
+          "text": "Gives a concrete way to search the spec corpus (grep/script/jq over the spec files) rather than only saying 'read the docs'",
+          "passed": true,
+          "evidence": "\"python3 scripts/find_operation.py --version 9.1 \\\"stretch\\\"\" ... \"--both-versions \\\"witness\\\"\", plus \"Searching for the *concept* (\\\"stretch\\\", \\\"witness\\\") across path, `operationId`, summary and tags\" and the tagged clone with named spec files"
+        },
+        {
+          "text": "Mentions at least one on-appliance discovery route (e.g. the VCF Operations swagger UI or the NSX openapi spec endpoint)",
+          "passed": false,
+          "evidence": "No on-appliance discovery route given; \"The lookup route\" is exclusively the GitHub spec corpus plus the bundled inventory. Grep for swagger/explorer/appliance matches only \"VSANIsWitnessVirtualAppliance\"."
+        },
+        {
+          "text": "Does NOT invent a specific vSAN stretched-cluster endpoint and present it as verified",
+          "passed": true,
+          "evidence": "\"There is **no `/stretch` endpoint**\" and \"The SDDC Manager spec contains **zero paths matching `stretch`**\"; closing line: \"Everything above is spec-confirmed against the `9.1.0.0` tag but has not been executed against a running deployment.\""
+        },
+        {
+          "text": "Notes that no on-appliance API-explorer URL pattern is documented for VCF 9.x",
+          "passed": false,
+          "evidence": "No statement about on-appliance API explorers anywhere in the answer; the only sourcing caveat is \"`main` is not a version — never answer a 9.0/9.1 question from an untagged checkout.\""
+        }
+      ],
+      "passed": 3,
+      "total": 5
+    }
+  ]
+}

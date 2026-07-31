@@ -1,0 +1,102 @@
+{
+  "eval_id": 6,
+  "condition": "without_skill",
+  "runs": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "text": "Points to github.com/vmware/vcf-api-specs and names the version tag 9.1.0.0",
+          "passed": false,
+          "evidence": "No mention of github.com/vmware/vcf-api-specs or a 9.1.0.0 tag anywhere. The closest doc pointer is 'On the developer portal's API Explorer, filter by **product and exact version** (VCF 9.1)' and 'Get the SDK for your vSAN/vCenter version from the Broadcom developer portal' - neither is the GitHub spec repo nor the 9.1.0.0 tag."
+        },
+        {
+          "text": "Gives a concrete way to search the spec corpus (grep/script/jq over the spec files) rather than only saying 'read the docs'",
+          "passed": true,
+          "evidence": "\"curl -sk https://<host>/v1/api-docs | jq -r '.paths | keys[]' | grep -i cluster\" and \"curl -sk https://<host>/v1/api-docs | jq -r '.components.schemas | keys[]' | grep -Ei 'stretch|witness|faultdomain|azover'\""
+        },
+        {
+          "text": "Mentions at least one on-appliance discovery route (e.g. the VCF Operations swagger UI or the NSX openapi spec endpoint)",
+          "passed": true,
+          "evidence": "\"### a. Ask the appliance for its own spec ... curl -sk https://<host>/v1/api-docs / curl -sk https://<host>/openapi.json\" plus \"`https://<vcenter-fqdn>/mob` lets you walk the live object model\" and vSphere Client \"API Explorer for the live vSphere Automation endpoints on that vCenter\"."
+        },
+        {
+          "text": "Does NOT invent a specific vSAN stretched-cluster endpoint and present it as verified",
+          "passed": true,
+          "evidence": "Endpoint references are explicitly historical/hedged: \"Historically (VCF 4.x/5.x) it was `PATCH /v1/clusters/{id}` with a `ClusterUpdateSpec`\" and \"In VCF 9.x the endpoint may be fronted by a different appliance than you expect\"; closes with \"pull the OpenAPI doc off your own appliance (step 2a) and grep the schema list. That answers 'does this exist on my build'\"."
+        },
+        {
+          "text": "Notes that no on-appliance API-explorer URL pattern is documented for VCF 9.x",
+          "passed": false,
+          "evidence": "No such statement. The answer instead offers speculative URLs without saying the pattern is undocumented: \"# try these against your VCF Ops / SDDC Manager / vCenter FQDNs\" - trying candidates implies uncertainty but never states that no on-appliance API-explorer URL pattern is documented for VCF 9.x."
+        }
+      ],
+      "passed": 3,
+      "total": 5
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "text": "Points to github.com/vmware/vcf-api-specs and names the version tag 9.1.0.0",
+          "passed": false,
+          "evidence": "No GitHub repo and no 9.1.0.0 tag. Doc pointers are only to the vendor site: \"published separately from the vSphere API reference on the Broadcom developer portal\" and \"Download the vSAN Management SDK\"."
+        },
+        {
+          "text": "Gives a concrete way to search the spec corpus (grep/script/jq over the spec files) rather than only saying 'read the docs'",
+          "passed": true,
+          "evidence": "\"The SDK bundle (Python, Java, .NET, others) contains the **WSDL/VMODL definitions plus working sample code** ... For Python it ships `vsanapiutils.py` / `vsanmgmtObjects.py`. Grepping the bindings for `Stretched` finds every relevant method in about ten seconds - far faster than reading the reference.\""
+        },
+        {
+          "text": "Mentions at least one on-appliance discovery route (e.g. the VCF Operations swagger UI or the NSX openapi spec endpoint)",
+          "passed": true,
+          "evidence": "\"### 3.2 API Explorer on the appliance itself, not the website ... SDDC Manager / VCF management appliance: it serves an OpenAPI/Swagger UI for the `/v1/...` API. Browse it directly rather than trusting a PDF.\" and \"vCenter: `https://<vcenter>/ui/app/developer` (Developer Center -> API Explorer)\"."
+        },
+        {
+          "text": "Does NOT invent a specific vSAN stretched-cluster endpoint and present it as verified",
+          "passed": true,
+          "evidence": "Section 4 is titled \"## 4. The calls themselves (verify against S3 - treat as a starting point)\" and the Caveats state: \"**The exact spec field names and HTTP verbs in S4 should be confirmed against your own appliance's served spec or a Code Capture recording** ... I can't verify them here. If S3.1 and S3.2 disagree with anything above, they're right and I'm wrong.\""
+        },
+        {
+          "text": "Notes that no on-appliance API-explorer URL pattern is documented for VCF 9.x",
+          "passed": false,
+          "evidence": "The opposite framing is used - the VCF appliance explorer is asserted to exist and be browsable without noting any undocumented URL: \"SDDC Manager / VCF management appliance: it serves an OpenAPI/Swagger UI for the `/v1/...` API. Browse it directly\". No statement that the URL pattern is undocumented for VCF 9.x."
+        }
+      ],
+      "passed": 3,
+      "total": 5
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "text": "Points to github.com/vmware/vcf-api-specs and names the version tag 9.1.0.0",
+          "passed": false,
+          "evidence": "No GitHub spec repo and no 9.1.0.0 tag. Only \"developer.broadcom.com publishes a **vSAN Management SDK**\" and \"the docs site is a partial view\" - neither satisfies the assertion."
+        },
+        {
+          "text": "Gives a concrete way to search the spec corpus (grep/script/jq over the spec files) rather than only saying 'read the docs'",
+          "passed": true,
+          "evidence": "\"curl -sk -u 'user:pass' https://<appliance>/v3/api-docs > spec.json\" followed by \"grep -io '.\\{80\\}stretch.\\{160\\}' spec.json | sort -u\", plus \"`grep -ri stretch` over the extracted SDK gives you every method name, parameter, and type in one shot\" and \"Grep for the *concept words*, not the feature name: `stretch`, `witness`, `faultDomain`...\"."
+        },
+        {
+          "text": "Mentions at least one on-appliance discovery route (e.g. the VCF Operations swagger UI or the NSX openapi spec endpoint)",
+          "passed": true,
+          "evidence": "\"### c. Pull the OpenAPI spec off the appliance and grep it ... **VCF fleet manager appliance:** Swagger/OpenAPI is served by the appliance itself (try `/swagger-ui.html`, `/v2/api-docs`, `/v3/api-docs`, `/openapi.json`...)\" and \"**VCF Operations:** has its own `/suite-api/` surface with its own docs endpoint on the appliance.\""
+        },
+        {
+          "text": "Does NOT invent a specific vSAN stretched-cluster endpoint and present it as verified",
+          "passed": true,
+          "evidence": "Section header \"## 3. What you'll find (verify against your build before coding)\" and \"In VCF 9.x the fleet-management surface has been reorganized under VCF Operations, so confirm the exact base path and spec shape from the appliance's own OpenAPI document (technique **c**) rather than from any older SDDC Manager example you find online.\""
+        },
+        {
+          "text": "Notes that no on-appliance API-explorer URL pattern is documented for VCF 9.x",
+          "passed": false,
+          "evidence": "The answer guesses URLs but never states the pattern is undocumented: \"try `/swagger-ui.html`, `/v2/api-docs`, `/v3/api-docs`, `/openapi.json`, and the API reference link in the appliance UI's Developer/API section\". It also asserts concrete explorer URLs for vCenter (\"`https://<vcenter>/ui/app/developer-center` (and `https://<vcenter>/apiexplorer`)\") without any note that no such documented pattern exists for VCF 9.x."
+        }
+      ],
+      "passed": 3,
+      "total": 5
+    }
+  ]
+}

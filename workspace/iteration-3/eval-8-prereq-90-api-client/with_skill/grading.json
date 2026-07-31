@@ -1,0 +1,102 @@
+{
+  "eval_id": 8,
+  "condition": "with_skill",
+  "runs": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "text": "States that API clients / API tokens issued by VCF SSO are a 9.1 feature and are NOT available in 9.0",
+          "passed": true,
+          "evidence": "\"SSO-issued, role-scoped API tokens — the *Fleet Management → Identity & Access → API Clients / API Tokens* flow you have probably read about — are a **9.1** capability. On 9.0 there is no VCF SSO API client, no SSO-issued API token, no OAuth-app management and no emergency access client.\""
+        },
+        {
+          "text": "Does NOT walk the user through the 9.1 Fleet Management > Identity & Access > API Clients flow as if it existed in 9.0",
+          "passed": true,
+          "evidence": "\"There is no `.../iam/ssorealms/{ssoRealmId}/api-tokens`, `.../api-clients`, `.../oauth-apps`, `.../emergency-clients` or `.../iam/settings` route to call on a 9.0 appliance.\" The API-client flow appears only under the clearly separated section \"If you can move to 9.1, this gets much easier\"."
+        },
+        {
+          "text": "Gives the actual 9.0 route: per-product credentials (SDDC Manager /v1/tokens, VCF Operations token/acquire, NSX session, vCenter session)",
+          "passed": true,
+          "evidence": "\"POST /v1/tokens  {\\\"username\\\":\\\"...\\\",\\\"password\\\":\\\"...\\\"} → accessToken (JWT), refreshToken.id\"; \"POST https://<host>/suite-api/api/auth/token/acquire\"; \"`POST /api/session/create`, form body `j_username=<user>&j_password=<pass>` → `JSESSIONID` cookie plus `x-xsrf-token`\"; \"POST /api/session      → session id string / vmware-api-session-id: <session-id>\""
+        },
+        {
+          "text": "Mentions NSX principal identities as the documented service-account mechanism for NSX",
+          "passed": true,
+          "evidence": "\"For non-interactive NSX access in 9.0 the documented mechanism is a **principal identity**, not a token.\" and \"**Principal identity** with an X.509 client certificate — the documented service-account mechanism\""
+        },
+        {
+          "text": "Notes that VCF built-in roles (VCF Viewer / VCF Administrator) are documented only in the 9.1 doc set",
+          "passed": true,
+          "evidence": "\"**no VCF-level built-in roles are documented for 9.0** (VCF Administrator / VCF Viewer / SDDC Administrator / SDDC Viewer are 9.1-only names — do not use them on 9.0)\""
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "text": "States that API clients / API tokens issued by VCF SSO are a 9.1 feature and are NOT available in 9.0",
+          "passed": true,
+          "evidence": "\"SSO-issued, role-scoped API tokens — the *Fleet Management → Identity & Access → API Clients / API Tokens* flow — are a **9.1** capability. On 9.0 there is no VCF SSO API client, no SSO-issued API token, no OAuth-app management and no emergency access client.\""
+        },
+        {
+          "text": "Does NOT walk the user through the 9.1 Fleet Management > Identity & Access > API Clients flow as if it existed in 9.0",
+          "passed": true,
+          "evidence": "\"The navigation node isn't there, and the API isn't either: the `vcf-operations` OpenAPI spec at tag `9.0.0.0` contains **0** operations under `/api/fleet-management/iam/**`\"; the client/token flow is confined to \"If a real long-lived scoped token is a requirement, that's the 9.1 case\"."
+        },
+        {
+          "text": "Gives the actual 9.0 route: per-product credentials (SDDC Manager /v1/tokens, VCF Operations token/acquire, NSX session, vCenter session)",
+          "passed": true,
+          "evidence": "\"Get token | `POST /v1/tokens`, JSON `{\\\"username\\\":\\\"<svc-acct>\\\",\\\"password\\\":\\\"...\\\"}`\"; \"Acquire | `POST https://<host>/suite-api/api/auth/token/acquire`\"; \"`POST /api/session/create` with form body `j_username`/`j_password` → `JSESSIONID` cookie **plus** `x-xsrf-token`\"; \"Create session | `POST /api/session` ... Use | `vmware-api-session-id: <session-id>`\""
+        },
+        {
+          "text": "Mentions NSX principal identities as the documented service-account mechanism for NSX",
+          "passed": true,
+          "evidence": "\"### NSX — this is the one real service-account mechanism in 9.0 / The documented non-interactive mechanism is a **principal identity**, with an **X.509 client certificate** bound to it\""
+        },
+        {
+          "text": "Notes that VCF built-in roles (VCF Viewer / VCF Administrator) are documented only in the 9.1 doc set",
+          "passed": true,
+          "evidence": "\"**no VCF built-in roles** — VCF Administrator / VCF Viewer / SDDC Administrator / SDDC Viewer are documented only in the 9.1 doc set\""
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "text": "States that API clients / API tokens issued by VCF SSO are a 9.1 feature and are NOT available in 9.0",
+          "passed": true,
+          "evidence": "\"There is no SSO-issued, role-scoped API token in VCF 9.0. No VCF SSO API client, no API-token management, no OAuth-app management, no emergency access client.\" and \"that navigation node does not exist on a 9.0 appliance — it's 9.1.\""
+        },
+        {
+          "text": "Does NOT walk the user through the 9.1 Fleet Management > Identity & Access > API Clients flow as if it existed in 9.0",
+          "passed": true,
+          "evidence": "\"If you've read a guide that walks through *Fleet Management → Identity & Access → API Clients*, that navigation node does not exist on a 9.0 appliance\"; the flow only appears under \"If you want the thing you actually asked for, it lands in 9.1\"."
+        },
+        {
+          "text": "Gives the actual 9.0 route: per-product credentials (SDDC Manager /v1/tokens, VCF Operations token/acquire, NSX session, vCenter session)",
+          "passed": true,
+          "evidence": "\"POST https://<sddc-manager-fqdn>/v1/tokens\"; \"POST https://<ops-host>/suite-api/api/auth/token/acquire\"; \"POST https://<nsx-manager>/api/session/create ... j_username=<svc-user>&j_password=<pass>\"; \"POST https://<vcenter-fqdn>/api/session ... send it as `vmware-api-session-id: <id>`\""
+        },
+        {
+          "text": "Mentions NSX principal identities as the documented service-account mechanism for NSX",
+          "passed": true,
+          "evidence": "\"For non-interactive NSX access, the documented service-account mechanism in 9.0 is an **NSX principal identity**, optionally with **X.509 client-certificate authentication bound to that principal identity**.\""
+        },
+        {
+          "text": "Notes that VCF built-in roles (VCF Viewer / VCF Administrator) are documented only in the 9.1 doc set",
+          "passed": true,
+          "evidence": "\"Do not reference **VCF Administrator, VCF Viewer, SDDC Administrator or SDDC Viewer**; those built-in VCF roles and their component mappings are documented only in the 9.1 doc set.\""
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    }
+  ]
+}

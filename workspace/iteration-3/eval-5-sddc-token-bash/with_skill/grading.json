@@ -1,0 +1,132 @@
+{
+  "eval_id": 5,
+  "condition": "with_skill",
+  "runs": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "text": "Uses POST /v1/tokens with a JSON body containing username and password",
+          "passed": true,
+          "evidence": "payload=$(jq -nc --arg u \"$SDDC_USER\" --arg p \"$SDDC_PASS\" '{username:$u, password:$p}') ... _sddc_http POST /v1/tokens \"$payload\" application/json"
+        },
+        {
+          "text": "Extracts the accessToken field for the bearer token",
+          "passed": true,
+          "evidence": "SDDC_ACCESS_TOKEN=$(jq -r '.accessToken'    <<<\"$_SDDC_BODY\")"
+        },
+        {
+          "text": "Uses the header Authorization: Bearer <accessToken>",
+          "passed": true,
+          "evidence": "-H \"Authorization: Bearer ${tok}\""
+        },
+        {
+          "text": "Uses refreshToken.id and PATCH /v1/tokens/access-token/refresh for refresh",
+          "passed": true,
+          "evidence": "SDDC_REFRESH_TOKEN=$(jq -r '.refreshToken.id' <<<\"$_SDDC_BODY\") ... _sddc_http PATCH /v1/tokens/access-token/refresh \"$SDDC_REFRESH_TOKEN\" text/plain"
+        },
+        {
+          "text": "Notes that the refresh endpoint takes a plain-text refresh token rather than JSON",
+          "passed": true,
+          "evidence": "\"The refresh call is not JSON. PATCH /v1/tokens/access-token/refresh takes the plain-text refresh-token UUID as the body and returns the raw JWT as the body. If you jq that response you get nothing.\""
+        },
+        {
+          "text": "Addresses the self-signed cert explicitly rather than silently emitting curl -k, and notes that Broadcom docs prescribe replacing certificates rather than disabling verification",
+          "passed": true,
+          "evidence": "Dedicated \"On the self-signed cert\" section with an openssl pin-export recipe and SDDC_CACERT; \"Broadcom's documentation prescribes replacing or trusting the certificate; it does not document disabling verification as a supported practice. The -k you'll see in VMware's own NSX curl examples is example shorthand, not guidance.\""
+        },
+        {
+          "text": "Answer is scoped to 9.0 and does not assert 9.1 paths as verified",
+          "passed": true,
+          "evidence": "Title \"SDDC Manager API token helper — VCF 9.0\" and footer \"Applies to VCF 9.0. The three token endpoints, payloads, field names and lifetimes are ... confirmed present in the 9.0.0.0 OpenAPI spec\". Verification claims are bound to the 9.0.0.0 tag; the single 9.1 aside (\"The same three paths are unchanged in 9.1 if you upgrade\") is accurate against 9.1__sddc-manager.ops.json, which lists the identical /v1/tokens, /v1/tokens/access-token/refresh, /v1/tokens/refresh-token."
+        }
+      ],
+      "passed": 7,
+      "total": 7
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "text": "Uses POST /v1/tokens with a JSON body containing username and password",
+          "passed": true,
+          "evidence": "_sddc_curl -X POST \"https://${SDDC_FQDN}/v1/tokens\" -H 'Content-Type: application/json' -d \"$(jq -nc --arg u \"$SDDC_USER\" --arg p \"$SDDC_PASS\" '{username:$u, password:$p}')\""
+        },
+        {
+          "text": "Extracts the accessToken field for the bearer token",
+          "passed": true,
+          "evidence": "_SDDC_AT=$(jq -r '.accessToken'     <<<\"$resp\")"
+        },
+        {
+          "text": "Uses the header Authorization: Bearer <accessToken>",
+          "passed": true,
+          "evidence": "-H \"Authorization: Bearer ${tok}\"; table row \"Use it | Authorization: Bearer <accessToken>\""
+        },
+        {
+          "text": "Uses refreshToken.id and PATCH /v1/tokens/access-token/refresh for refresh",
+          "passed": true,
+          "evidence": "_SDDC_RT=$(jq -r '.refreshToken.id' <<<\"$resp\") ... jwt=$(_sddc_curl -X PATCH \"https://${SDDC_FQDN}/v1/tokens/access-token/refresh\" ... --data-raw \"$_SDDC_RT\")"
+        },
+        {
+          "text": "Notes that the refresh endpoint takes a plain-text refresh token rather than JSON",
+          "passed": true,
+          "evidence": "\"body is the PLAIN-TEXT refresh UUID (not JSON); the response body IS the raw JWT\" and table: \"body is the plain-text refresh UUID, not JSON, and the response body is the raw JWT, not a JSON wrapper. That asymmetry is the #1 thing people get wrong here.\""
+        },
+        {
+          "text": "Addresses the self-signed cert explicitly rather than silently emitting curl -k, and notes that Broadcom docs prescribe replacing certificates rather than disabling verification",
+          "passed": true,
+          "evidence": "\"On the self-signed cert. Broadcom's docs don't prescribe disabling verification — they prescribe replacing or trusting the certificate.\" plus \"The function deliberately makes you pick one rather than defaulting to insecure\" — _sddc_curl errors out unless SDDC_CACERT or SDDC_INSECURE=1 is set."
+        },
+        {
+          "text": "Answer is scoped to 9.0 and does not assert 9.1 paths as verified",
+          "passed": true,
+          "evidence": "\"For **VCF 9.0**, SDDC Manager\" and \"Sourced from Broadcom documentation and the SDDC Manager OpenAPI spec at tag `9.0.0.0`; all three token operations are spec-confirmed at that tag.\" The only 9.1 references are feature-scoping (SSO exclusion applies to both; \"SSO-issued, role-scoped API tokens don't exist in 9.0 ... that capability ... arrives in 9.1\") — no 9.1 endpoint path is claimed."
+        }
+      ],
+      "passed": 7,
+      "total": 7
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "text": "Uses POST /v1/tokens with a JSON body containing username and password",
+          "passed": true,
+          "evidence": "body=$(printf '{\"username\":\"%s\",\"password\":\"%s\"}' \"$SDDC_USER\" \"$SDDC_PASS\"); resp=$(_sddc_curl -X POST \"https://${SDDC_MANAGER}/v1/tokens\" -H 'Content-Type: application/json' ... -d \"$body\")"
+        },
+        {
+          "text": "Extracts the accessToken field for the bearer token",
+          "passed": true,
+          "evidence": "SDDC_ACCESS_TOKEN=$(jq -r '.accessToken'    <<<\"$resp\")"
+        },
+        {
+          "text": "Uses the header Authorization: Bearer <accessToken>",
+          "passed": true,
+          "evidence": "-H \"Authorization: Bearer ${tok}\" -H 'Accept: application/json'"
+        },
+        {
+          "text": "Uses refreshToken.id and PATCH /v1/tokens/access-token/refresh for refresh",
+          "passed": true,
+          "evidence": "SDDC_REFRESH_ID=$(  jq -r '.refreshToken.id' <<<\"$resp\") ... jwt=$(_sddc_curl -X PATCH \"https://${SDDC_MANAGER}/v1/tokens/access-token/refresh\" ... -d \"$SDDC_REFRESH_ID\")"
+        },
+        {
+          "text": "Notes that the refresh endpoint takes a plain-text refresh token rather than JSON",
+          "passed": true,
+          "evidence": "\"The refresh call is not JSON on either side. PATCH /v1/tokens/access-token/refresh takes the plain-text refresh-token UUID as the body and returns the raw JWT — not a JSON wrapper. Piping it through jq is the usual way this breaks.\""
+        },
+        {
+          "text": "Addresses the self-signed cert explicitly rather than silently emitting curl -k, and notes that Broadcom docs prescribe replacing certificates rather than disabling verification",
+          "passed": true,
+          "evidence": "Dedicated \"On the self-signed cert\" section: \"--insecure will get you moving today ... Worth knowing what you're trading: SDDC Manager holds credentials for the whole management plane\", with an openssl pin-export fix, and \"VCF 9.0 supports self-signed as a CA type, but the documented direction is to replace the default VMCA/self-signed certs with enterprise CA-signed ones from the VCF Operations console (which also gives you auto-renewal...)\""
+        },
+        {
+          "text": "Answer is scoped to 9.0 and does not assert 9.1 paths as verified",
+          "passed": true,
+          "evidence": "Title \"SDDC Manager token helper — VCF 9.0\"; \"Sourced from Broadcom documentation and the SDDC Manager OpenAPI spec at tag `9.0.0.0` ... The three token operations and their paths are spec-confirmed\". 9.1 appears only as feature attribution (\"SSO-issued, role-scoped API tokens, API clients and OAuth apps are a 9.1 feature — the /api/fleet-management/iam/** surface has zero operations in the 9.0 spec\"); no 9.1 token path is asserted."
+        }
+      ],
+      "passed": 7,
+      "total": 7
+    }
+  ]
+}

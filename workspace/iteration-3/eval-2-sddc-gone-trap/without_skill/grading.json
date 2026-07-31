@@ -1,0 +1,117 @@
+{
+  "eval_id": 2,
+  "condition": "without_skill",
+  "runs": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "text": "States that SDDC Manager still exists in VCF 9.1 and is in the 9.1 BOM",
+          "passed": false,
+          "evidence": "Existence is asserted but hedged, and BOM membership is never stated — it is handed back to the user as homework: \"Read the VCF 9.1 Bill of Materials in the release notes. The BOM is authoritative on which components ship in the release, and it will settle the convergence question directly.\" The answer explicitly disclaims the 9.1 boundary: \"I am not confident about the precise 9.1 boundary line, and I'd rather flag that than guess. Verification steps are at the bottom; please run them before you commit to an integration design.\" No statement that SDDC Manager is in the 9.1 BOM."
+        },
+        {
+          "text": "States that the deprecation is scoped to the SDDC Manager UI, not the API",
+          "passed": true,
+          "evidence": "\"the SDDC Manager UI is largely subsumed into it ... That's a UI consolidation, not a component removal.\" and \"This is the same VCF API surface as 8.x. Existing automation against it largely survives\" and \"The thing that changed underneath you in 9.x is where administrators *click*, not where your scripts *call*.\""
+        },
+        {
+          "text": "Does NOT use the name 'VCF Fleet Manager' as a real 9.1 product",
+          "passed": true,
+          "evidence": "\"**no, SDDC Manager is not gone, and \\\"VCF Fleet Manager\\\" is not its replacement.**\" — the name is only quoted to correct it; the answer substitutes \"VCF Operations fleet management\" and never treats \"VCF Fleet Manager\" as a shipping product."
+        },
+        {
+          "text": "Names fleet lifecycle and SDDC lifecycle as the services that replaced the 9.0 standalone Fleet Management Appliance",
+          "passed": false,
+          "evidence": "Neither 'fleet lifecycle' nor 'SDDC lifecycle' nor the 9.0 standalone Fleet Management Appliance appears anywhere in the answer. The only 9.0→9.1 architecture claim is a vague \"VMware has been openly telegraphing further convergence — folding more of SDDC Manager's responsibilities into the VCF Operations plane over successive releases.\""
+        },
+        {
+          "text": "Notes that the SDDC Manager API surface grew rather than shrank between 9.0 and 9.1",
+          "passed": false,
+          "evidence": "No 9.0→9.1 API comparison is made. The closest statement points backwards, not forwards: \"This is the same VCF API surface as 8.x.\" Nothing says the surface grew."
+        },
+        {
+          "text": "Does not fabricate an endpoint for a 'Fleet Manager' API",
+          "passed": true,
+          "evidence": "No 'Fleet Manager' API is invented. Lifecycle calls are given on the real SDDC Manager surface (\"`POST /v1/tokens`\", \"`GET /v1/upgradables`\", \"`POST /v1/upgrades`\"), and the `/lcm/` paths (\"`/lcm/authzn/api/login`\", \"`/lcm/lcops/api/v2/environments`\") are attributed to the genuine vRSLCM lineage: \"VCF Operations fleet management (ex-vRSLCM) ... Same API shape as vRSLCM had — the rename didn't restructure the endpoints.\""
+        }
+      ],
+      "passed": 3,
+      "total": 6
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "text": "States that SDDC Manager still exists in VCF 9.1 and is in the 9.1 BOM",
+          "passed": false,
+          "evidence": "Existence is stated — \"SDDC Manager is **not** gone in VCF 9.1. It is still a deployed appliance\" — but the BOM is never mentioned, and the claim is then walked back: \"it is plausible that 9.1 collapsed the SDDC Manager appliance further than 9.0 did ... my confidence about its exact packaging in 9.1 is moderate.\" No assertion of 9.1 BOM membership."
+        },
+        {
+          "text": "States that the deprecation is scoped to the SDDC Manager UI, not the API",
+          "passed": true,
+          "evidence": "\"The standalone SDDC Manager UI stopped being the place you're supposed to live.\" / \"**For anything that is domain, cluster, host, bundle, or component upgrade — still the SDDC Manager API.** It did not move.\" / \"Retarget the UI habits, not the API calls.\""
+        },
+        {
+          "text": "Does NOT use the name 'VCF Fleet Manager' as a real 9.1 product",
+          "passed": true,
+          "evidence": "\"I'm not aware of a shipping product literally called \\\"VCF Fleet Manager.\\\" The real appliance name in the 9.x family is **VCF Operations Fleet Management**\""
+        },
+        {
+          "text": "Names fleet lifecycle and SDDC lifecycle as the services that replaced the 9.0 standalone Fleet Management Appliance",
+          "passed": false,
+          "evidence": "Absent. The answer treats the Fleet Management appliance as still present in 9.x (\"the *VCF Operations Fleet Management appliance* (which is Aria Suite Lifecycle)\") and never names fleet lifecycle / SDDC lifecycle services or VCF Management Services."
+        },
+        {
+          "text": "Notes that the SDDC Manager API surface grew rather than shrank between 9.0 and 9.1",
+          "passed": false,
+          "evidence": "No such statement. Only continuity is claimed: \"If you have existing PowerVCF or curl automation against `/v1/...`, it largely survives the 9.x move\" and \"**For anything that is domain, cluster, host, bundle, or component upgrade — still the SDDC Manager API.** It did not move.\" Nothing about the surface growing 9.0→9.1."
+        },
+        {
+          "text": "Does not fabricate an endpoint for a 'Fleet Manager' API",
+          "passed": true,
+          "evidence": "All endpoints listed are the real SDDC Manager surface (\"`POST https://<sddc-manager-fqdn>/v1/tokens`\", \"`GET https://<sddc-manager-fqdn>/v1/bundles`\"); the Operations side is described without inventing paths — \"that's the VCF Operations API, which carries the Aria Operations `suite-api` lineage\". No 'Fleet Manager' endpoint is invented."
+        }
+      ],
+      "passed": 3,
+      "total": 6
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "text": "States that SDDC Manager still exists in VCF 9.1 and is in the 9.1 BOM",
+          "passed": false,
+          "evidence": "The BOM is never mentioned, and continued existence is asserted only as a rebranded thing that lost its identity: \"**SDDC Manager was not deleted.** It was rebranded and absorbed ... it is now positioned as the fleet management component\" and \"*the SDDC Manager brand and its separate UI went away*\". The 9.1 caveat further hedges: \"For 9.1 in particular, treat any endpoint-level detail above as \\\"very likely still true\\\" rather than verified\"."
+        },
+        {
+          "text": "States that the deprecation is scoped to the SDDC Manager UI, not the API",
+          "passed": true,
+          "evidence": "\"So the accurate statement is: *the SDDC Manager brand and its separate UI went away; the function and the API did not.*\" and \"If you have existing scripts hitting SDDC Manager `/v1/`, the majority will keep working in 9.x\""
+        },
+        {
+          "text": "Does NOT use the name 'VCF Fleet Manager' as a real 9.1 product",
+          "passed": true,
+          "evidence": "\"There is no product called **\\\"VCF Fleet Manager.\\\"**\" and \"Don't go looking for a product named \\\"VCF Fleet Manager\\\" — you won't find one, and searching for it will send you in circles.\""
+        },
+        {
+          "text": "Names fleet lifecycle and SDDC lifecycle as the services that replaced the 9.0 standalone Fleet Management Appliance",
+          "passed": false,
+          "evidence": "Never mentioned. The 9.0 standalone Fleet Management Appliance, the fleet lifecycle and SDDC lifecycle services, and VCF Management Services are all absent; instead the answer wrongly equates fleet management with the SDDC Manager appliance itself: \"SDDC Manager (LCM engine, inventory, workload domains, bundles) | **VCF Operations fleet management** (same appliance lineage)\"."
+        },
+        {
+          "text": "Notes that the SDDC Manager API surface grew rather than shrank between 9.0 and 9.1",
+          "passed": false,
+          "evidence": "No 9.0→9.1 API delta is given. Only \"The public API is still the `/v1/...` surface you already know\" and \"the majority will keep working in 9.x\" — continuity, not growth."
+        },
+        {
+          "text": "Does not fabricate an endpoint for a 'Fleet Manager' API",
+          "passed": true,
+          "evidence": "No invented paths: the listed operations are the real SDDC Manager surface (\"`POST /v1/tokens`\", \"`GET /v1/upgradables`\", \"`POST /v1/system/check-sets`\") and the installer surface (\"**VCF Installer API** (`/v1/sddcs`...)\"). The mislabeling is in the API's *name* (\"documentation for these endpoints is now published under the **VCF Operations fleet management API** name\"), not in a fabricated endpoint."
+        }
+      ],
+      "passed": 3,
+      "total": 6
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "eval_id": 4,
+  "condition": "with_skill",
+  "runs": [
+    {
+      "run": 1,
+      "expectations": [
+        {
+          "text": "Establishes or asks for the target VCF version (9.0 vs 9.1) before committing to an auth flow",
+          "passed": true,
+          "evidence": "\"**First, the thing that decides the whole answer: is your fleet 9.0 or 9.1?**\" ... \"Confirm the version before you build anything: GET https://<sddc-manager-fqdn>/v1/system/appliance-info → ApplianceInfo.version\" ... closing: \"If you tell me which version you're on ... I can narrow this to the one flow and the right role.\""
+        },
+        {
+          "text": "Does NOT silently default to 9.1 / 'latest'",
+          "passed": true,
+          "evidence": "\"Both answers are below, labeled. Take the one that matches.\" — separate sections \"## If you are on VCF 9.1 — yes, there is a real API token\" and \"## If you are on VCF 9.0 — there is no SSO API token, and no substitute for one\"; explicitly warns \"Pointing a 9.0 admin at the 9.1 *API Clients* UI sends them to a navigation node that isn't there.\""
+        },
+        {
+          "text": "Establishes or asks which product the token is for, rather than assuming one API covers VCF",
+          "passed": true,
+          "evidence": "\"In **9.0** there is no such thing — you authenticate per product, with a different flow and a different header for each one.\" Per-product blocks for SDDC Manager, VCF Operations, NSX Manager, vCenter, vSAN; \"Plan for at least two credential paths in your automation.\" Closing asks \"what the automation needs to *do* (read-only reporting vs. writes against vCenter/NSX)\"."
+        },
+        {
+          "text": "States that SDDC Manager is excluded from VCF SSO and uses its own token flow",
+          "passed": true,
+          "evidence": "\"**SDDC Manager and ESX are excluded from VCF SSO — in 9.0 *and* 9.1.** Even on 9.1, a fleet-wide SSO token does not open SDDC Manager. It keeps its own `POST /v1/tokens` flow.\""
+        },
+        {
+          "text": "If 9.1 is selected, describes the VCF Identity Broker / API client + API token route",
+          "passed": true,
+          "evidence": "\"1. Administrator creates an **API client** in the VCF Identity Broker (VIDB). 2. Administrator generates a long-lived **API token** for that client from the VCF Operations UI. 3. Your automation exchanges the API token at the broker for a short-lived **bearer access token**.\" plus \"POST https://{api_host}/acs/t/{tenant}/token ... grant_type=refresh_token&refresh_token=<your API token>\""
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "run": 2,
+      "expectations": [
+        {
+          "text": "Establishes or asks for the target VCF version (9.0 vs 9.1) before committing to an auth flow",
+          "passed": true,
+          "evidence": "\"**First, the thing that changes the answer: is this fleet 9.0 or 9.1?** The auth surface is materially different between the two\" ... \"If you're not sure, check what SDDC Manager reports under About, or call `GET /v1/system/appliance-info`\" ... closing: \"Tell me which version you're on and what the automation needs to do\""
+        },
+        {
+          "text": "Does NOT silently default to 9.1 / 'latest'",
+          "passed": true,
+          "evidence": "\"Both versions below.\" — parallel sections \"## If you're on 9.1 — the real API token flow\" and \"## If you're on 9.0 — there is no such thing, and here's what to do instead\"; \"the popular 'create an API client, generate a long-lived API token' flow **does not exist in 9.0**\""
+        },
+        {
+          "text": "Establishes or asks which product the token is for, rather than assuming one API covers VCF",
+          "passed": true,
+          "evidence": "\"Second thing that will bite you regardless of version: **there is no single VCF token.** Each product has its own flow, its own token field, and its own header name.\" Per-product sections for SDDC Manager, vCenter, NSX, VCF Operations; closing asks \"what the automation needs to do (read-only inventory? domain provisioning? NSX changes?)\""
+        },
+        {
+          "text": "States that SDDC Manager is excluded from VCF SSO and uses its own token flow",
+          "passed": true,
+          "evidence": "\"**SDDC Manager and ESX are excluded from VCF SSO in both 9.0 and 9.1** — an SSO token does not open SDDC Manager.\" with its own flow given: \"**SDDC Manager** — this is the closest thing to 'the VCF token': POST https://<sddc-manager-fqdn>/v1/tokens\""
+        },
+        {
+          "text": "If 9.1 is selected, describes the VCF Identity Broker / API client + API token route",
+          "passed": true,
+          "evidence": "\"VCF 9.1 adds SSO-issued, role-scoped API clients and API tokens.\" ... \"**Step 2 — exchange the API token for an access token at the identity broker.** POST https://{broker_host}/acs/t/{tenant}/token\" ... \"admin creates API clients in VIDB → admin requests a long-lived API refresh token from the VCF Operations UI → script exchanges it at VIDB for a bearer access token\""
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "run": 3,
+      "expectations": [
+        {
+          "text": "Establishes or asks for the target VCF version (9.0 vs 9.1) before committing to an auth flow",
+          "passed": true,
+          "evidence": "\"**First, the question that decides everything: is this fleet 9.0 or 9.1?**\" ... \"Check with: GET https://<sddc-manager-fqdn>/v1/system/appliance-info\" ... closing: \"Tell me which version you're on and what you're automating ... and I can narrow this to the exact call sequence and the minimum role.\""
+        },
+        {
+          "text": "Does NOT silently default to 9.1 / 'latest'",
+          "passed": true,
+          "evidence": "\"Both paths are below. Use the one that matches.\" — \"## If you're on 9.1 — the SSO API token flow\" and \"## If you're on 9.0 — there is no SSO API token\"; \"If you're on 9.0 the flow you've probably read about doesn't exist on your appliance\""
+        },
+        {
+          "text": "Establishes or asks which product the token is for, rather than assuming one API covers VCF",
+          "passed": true,
+          "evidence": "\"There is no 'VCF API token' that works across the whole platform\"; 9.0 per-product table covering SDDC Manager, vCenter, NSX, VCF Operations, VCF Automation; \"If you assume one token opens every door, this is where it breaks.\" Closing asks \"what you're automating (vCenter VM lifecycle? NSX? SDDC Manager domain operations?)\""
+        },
+        {
+          "text": "States that SDDC Manager is excluded from VCF SSO and uses its own token flow",
+          "passed": true,
+          "evidence": "\"**SDDC Manager and ESX are excluded from VCF SSO — in 9.0 *and* 9.1.** Even with a fleet-wide 9.1 SSO token in hand, SDDC Manager still authenticates through its own `POST /v1/tokens` flow.\""
+        },
+        {
+          "text": "If 9.1 is selected, describes the VCF Identity Broker / API client + API token route",
+          "passed": true,
+          "evidence": "\"1. An administrator creates API clients with credentials recorded in the VCF Identity Broker (VIDB). 2. The administrator requests a long-lived **API token** (a refresh token) from the VCF Operations UI. 3. Your script exchanges that API token at VIDB for a short-lived **bearer access token**.\" plus \"POST https://{api_host}/acs/t/{tenant}/token ... grant_type=refresh_token&refresh_token=<your API token>\""
+        }
+      ],
+      "passed": 5,
+      "total": 5
+    }
+  ]
+}
