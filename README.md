@@ -125,10 +125,6 @@ clawhub sync --all --root vcf-skills-openclaw
 ls <where-you-installed> | wc -l          # 19
 ```
 
-Then ask your agent something version-specific — *"what has to be true before we can
-start the 9.0 to 9.1 upgrade?"* — and check the answer names the version it's answering
-for. If it does, the skills are loading.
-
 ---
 
 ## Using them
@@ -156,7 +152,7 @@ acting on.
 | Skill | Covers |
 |---|---|
 | `vcf-foundation` | Auth, API tokens, SSO, roles, certificates. Determines your version. Others defer here. |
-| `vcf-api-discovery` | Finds any of ~13,000 operations without guessing |
+| `vcf-api-discovery` | Finds any of ~13,000 operations without guessing. Bundles a search script. |
 | `vcf-domains-clusters` | Workload domains, clusters, hosts, network pools |
 | `vcf-lifecycle-upgrade` | Fleet upgrades, patching, prechecks, bundles, depots |
 | `vcf-installer-bringup` | Initial deployment, management-domain bring-up, convergence |
@@ -236,8 +232,8 @@ loader reads it top-level and silently falls back to `PUBLIC`.
 **ClawHub publish rejected, metadata mismatch.** A file references a binary not declared
 in `metadata.openclaw.requires`.
 
-**A skill can't find an endpoint it says it has.** `references/` didn't come across in
-the copy. Re-copy with `cp -R`.
+**`find_operation.py` exits 2.** `references/spec-inventory/` didn't come across in the
+copy. Re-copy with `cp -R`.
 
 **Answers longer than you want.** Each skill ends with a `## Shaping your answer`
 section holding a length-calibration table. Edit it.
