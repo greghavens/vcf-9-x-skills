@@ -21,11 +21,11 @@ Grab the one zip for your tool — nothing to build:
 
 | Tool | Download |
 |---|---|
-| Windsurf | [`vcf-skills-windsurf.zip`](download/vcf-skills-windsurf.zip) |
-| Claude | [`vcf-skills-claude.zip`](download/vcf-skills-claude.zip) |
-| Codex | [`vcf-skills-codex.zip`](download/vcf-skills-codex.zip) |
-| Triggerfish | [`vcf-skills-triggerfish.zip`](download/vcf-skills-triggerfish.zip) |
-| OpenClaw | [`vcf-skills-openclaw.zip`](download/vcf-skills-openclaw.zip) |
+| Windsurf | [`vcf-skills-windsurf.zip`](https://github.com/greghavens/vcf-9-x-skills/raw/main/download/vcf-skills-windsurf.zip) |
+| Claude | [`vcf-skills-claude.zip`](https://github.com/greghavens/vcf-9-x-skills/raw/main/download/vcf-skills-claude.zip) |
+| Codex | [`vcf-skills-codex.zip`](https://github.com/greghavens/vcf-9-x-skills/raw/main/download/vcf-skills-codex.zip) |
+| Triggerfish | [`vcf-skills-triggerfish.zip`](https://github.com/greghavens/vcf-9-x-skills/raw/main/download/vcf-skills-triggerfish.zip) |
+| OpenClaw | [`vcf-skills-openclaw.zip`](https://github.com/greghavens/vcf-9-x-skills/raw/main/download/vcf-skills-openclaw.zip) |
 
 Each zip contains the 19 skill folders, ready to drop into place. Or clone the repo and
 copy the matching top-level folder:
