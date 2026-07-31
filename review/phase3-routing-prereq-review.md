@@ -245,7 +245,7 @@ its prerequisites except the one noted below.
 
 `references/9.0/certs-and-credentials.md` lines 42–61 and `references/9.1/certs-and-credentials.md`
 lines 45–66 contain **zero** occurrences of *role*, *privilege*, *permission* or *RBAC*. Every
-one of the other 17 skills carries an explicit caller-authorisation prerequisite —
+one of the other 17 skills carries an explicit caller-authorization prerequisite —
 `vcf-domains-clusters` P10, `vcf-lifecycle-upgrade` P8, `vsan-storage` P6,
 `vsphere-content-tags-policies` P10, `vsphere-inventory-vm-lifecycle` P4,
 `vsphere-lifecycle-vlcm` P6, `vcf-operations-monitoring` P3, `vcf-automation-vmapps` P4 —

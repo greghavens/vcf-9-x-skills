@@ -176,7 +176,7 @@ functionality. All 14 chargeback operations and all 7 logs operations from 9.0 s
 - **Built-in role names** (Administrator, ReadOnly or otherwise) and the privilege required by
   any specific operation. No source available here enumerates them. Discover per deployment via
   `GET /api/auth/roles` and `GET /api/auth/currentuser/permissions`.
-- **Metric retention period and roll-up tiering**, and the behaviour of a `begin` that predates
+- **Metric retention period and roll-up tiering**, and the behavior of a `begin` that predates
   retention.
 - **Rate limits or throttling** on any of these operations.
 - **How a what-if scenario transitions from `SAVED` to `COMMITTED`.** The status enum exists;

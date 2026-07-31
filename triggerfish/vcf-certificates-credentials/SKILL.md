@@ -205,7 +205,7 @@ firewall or starts an upgrade, say more — that is where the warning earns its 
 Uniform hedging on everything trains the reader to skip all of it, including the one that
 mattered.
 
-### Version labelling stays, and stays short
+### Version labeling stays, and stays short
 
 Say which version the answer applies to. Once, clearly, near the top. You do not need to
 re-tag every line — the tags in the reference files are for you, not for the reply.

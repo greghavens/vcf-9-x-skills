@@ -192,5 +192,5 @@ guess it.
 - **Session idle timeout** in either version — not in either spec, not on any page retrieved.
 - **`Vcenter.Vm.Hardware.Version` enum member names** in either version — not extracted, so
   no statement about whether they changed.
-- **Behaviour when an inventory list exceeds its cap** in either version — silent truncation
+- **Behavior when an inventory list exceeds its cap** in either version — silent truncation
   versus `UnableToAllocateResource` is not pinned down, so the *delta* is also unknown.

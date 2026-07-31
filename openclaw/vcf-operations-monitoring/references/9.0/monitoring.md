@@ -495,7 +495,7 @@ GROUP_BY_CRITICALITY | GROUP_BY_TIME | GROUP_BY_SCOPE`), `compositeOperator` (`A
 That embedded `resource-query` is the useful part: "all critical alerts on VMs in this cluster
 whose CPU demand exceeded X" is one call, not two.
 
-> **Destructive.** `DELETE /api/alerts/bulk` (`deleteCanceledAlerts`) removes cancelled alert
+> **Destructive.** `DELETE /api/alerts/bulk` (`deleteCanceledAlerts`) removes canceled alert
 > records permanently. It is a housekeeping operation, not a way to dismiss active alerts.
 
 ### Alert plugins and notification rules

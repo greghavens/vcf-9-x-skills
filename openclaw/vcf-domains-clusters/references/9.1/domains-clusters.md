@@ -204,9 +204,9 @@ been licensed outside of the VMware Cloud Foundation system"*;
 
 **How to verify:** `GET /v1/license-keys` (**spec-confirmed (9.1)**) plus the license-server view.
 
-**9.0 difference:** the API fields are identical. What changed is where licences live — 9.1 moves
+**9.0 difference:** the API fields are identical. What changed is where licenses live — 9.1 moves
 them out of VCF Operations into a new **required License server** component, with automatic
-licence-file download every 24 hours and override licences for individual assets (ESX hosts, vSAN
+license-file download every 24 hours and override licenses for individual assets (ESX hosts, vSAN
 clusters) [D9.1 §3.5, §6].
 
 ### P9 — A clusterless domain cannot be patched or upgraded `[9.1]` — 9.1-only trap

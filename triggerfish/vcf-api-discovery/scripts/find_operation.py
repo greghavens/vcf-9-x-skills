@@ -24,7 +24,7 @@ and log-management have NO spec at 9.0, `vcf-operations-for-logs` exists only at
 shared product gained (and in some cases lost) operations in 9.1. Searching both versions at once
 and presenting a merged list is the fastest way to hand someone a 9.1-only endpoint as though it
 worked on 9.0. So: pass `--version 9.0` or `--version 9.1`. If you really want both, ask for it
-explicitly with `--both-versions`, and the output stays labelled per version.
+explicitly with `--both-versions`, and the output stays labeled per version.
 
 A MISS IS NOT ALWAYS EVIDENCE OF ABSENCE
 ----------------------------------------
@@ -321,7 +321,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--version", choices=VERSIONS,
                    help="VCF version to search. REQUIRED unless --both-versions is given.")
     p.add_argument("--both-versions", action="store_true",
-                   help="Explicitly search 9.0 and 9.1; results stay labelled per version.")
+                   help="Explicitly search 9.0 and 9.1; results stay labeled per version.")
     p.add_argument("--product", action="append", default=[], metavar="NAME",
                    help="Restrict to a product key (repeatable; substring or trailing '*' ok). "
                         "See --list-products.")
@@ -370,7 +370,7 @@ def main(argv: "list[str] | None" = None) -> int:
             "silently would let a 9.1-only endpoint be reported as valid on 9.0.\n"
             "\n"
             "  python3 find_operation.py --version 9.1 \"<keyword>\"\n"
-            "  python3 find_operation.py --both-versions \"<keyword>\"   # explicit, labelled output\n",
+            "  python3 find_operation.py --both-versions \"<keyword>\"   # explicit, labeled output\n",
             2,
         )
 

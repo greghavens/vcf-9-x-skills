@@ -658,7 +658,7 @@ opened under any guessed filename in this task [S55].
 
 > **Caution on "not observed" rows.** Several 9.1-only entries above were confirmed present in the
 > 9.1.0 reference but were not explicitly checked for *absence* in the 9.0.0 reference beyond the
-> pages fetched. They are labelled "not observed", not "absent".
+> pages fetched. They are labeled "not observed", not "absent".
 
 ---
 

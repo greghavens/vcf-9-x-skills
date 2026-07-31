@@ -248,7 +248,7 @@ carries four elements — if one is missing the item is incomplete:
   *silent*: a 200 with a short array, indistinguishable from a small estate. The
   `Vapi.Std.Errors.UnableToAllocateResource` error is declared on these operations for the
   over-limit case, but the spec does not commit to raising it in preference to truncating.
-  **[INFERRED — behaviour on exceeding the cap is not pinned down by the spec; treat both
+  **[INFERRED — behavior on exceeding the cap is not pinned down by the spec; treat both
   outcomes as possible.]**
 - **Verify / mitigate:** always filter. Narrow by `datacenters`, `clusters`, `folders` or
   `names` so the result cannot approach the cap, and iterate over containers rather than
@@ -285,7 +285,7 @@ carries four elements — if one is missing the item is incomplete:
 | Surface | Base | Spec / evidence | When to use it |
 |---|---|---|---|
 | **vSphere Automation (this file)** | `https://{host}/api` | `9.1__vsphere-automation.ops.json`, **1,367 ops** **[SPEC]** | Default for everything here. |
-| Legacy REST | `https://{host}/rest` | **[DOC]** — deprecated; only operations released up to **vSphere 7.0.2** | Never, for new work. Recognise it in inherited scripts. |
+| Legacy REST | `https://{host}/rest` | **[DOC]** — deprecated; only operations released up to **vSphere 7.0.2** | Never, for new work. Recognize it in inherited scripts. |
 | **VI-JSON** | `https://{host}/sdk/vim25/{release}` | `9.1__vsphere-vi-json.ops.json`, **2,243 ops**, spec `9.1.0.0`, security scheme `Session` = header `vmware-api-session-id` **[SPEC]** | Only when `/api` has no equivalent — `PropertyCollector` bulk retrieval, vApp operations, `VirtualMachine` reconfigure fields `/api/vcenter/vm/{vm}/hardware` does not expose. |
 | Appliance subset | port **5480** | **[DOC]** | vCenter appliance config/lifecycle. Not this file. |
 
@@ -577,7 +577,7 @@ storage addresses (eg. IDE, SATA, SCSI, NVMe) result in a storage address confli
 > are `UNVERIFIED` — read them from the spec's `Vcenter.Vm.Hardware.Version` schema before
 > hard-coding one.
 >
-> Two 9.1 ESX behaviours worth knowing when you provision **[DOC]**: **User-Level Monitor
+> Two 9.1 ESX behaviors worth knowing when you provision **[DOC]**: **User-Level Monitor
 > (ULM) is the default monitor for all virtual machines**, and AMD SEV-SNP / Intel TDX
 > confidential VMs move from limited availability to **general availability**. Neither
 > changes the create payload in any way this file can evidence.
@@ -713,7 +713,7 @@ to be installed in the virtual machine."* — that is a hard precondition, not V
 > Customization"* for powered-on VMs under what's-new **[DOC]**, which reads as new-in-9.1.
 > The endpoints are present at the **9.0** tag too, and the spec's own text says the
 > operation *"was added in vSphere API 9.0.0.0"* **[SPEC]**. Whatever changed at 9.1 is
-> behaviour or scope, not the API surface. Do not tell a 9.0 customer this API does not
+> behavior or scope, not the API surface. Do not tell a 9.0 customer this API does not
 > exist for them.
 
 ---
@@ -835,7 +835,7 @@ Field notes, all from the spec:
 - `cluster` + `resource_pool` together are legal only if *"resource_pool must belong to
   cluster"*. On a **non-DRS** cluster, drop `cluster` and supply `host` instead — the spec
   says `InvalidArgument` otherwise.
-- `power_on: false` is the default behaviour anyway; stating it makes the intent explicit and
+- `power_on: false` is the default behavior anyway; stating it makes the intent explicit and
   keeps the VM from booting before customization.
 - To customize the guest, add `guest_customization_spec: {name: "<spec-name>"}` — the name of
   a customization spec that must already exist in vCenter.
@@ -1029,8 +1029,8 @@ deprecated. If someone tells you a VM operation is deprecated in 9.1, that is wr
   for re-authentication on 401.
 - **Whether `/api/cis/session` also resolves.** The spec declares only `/session`. The
   portal renders the `cis` form. Only one of these is evidence; the other is prose.
-- **Behaviour when a list operation exceeds its cap** — silent truncation versus
-  `UnableToAllocateResource`. The caps are spec-stated; the over-limit behaviour is not.
+- **Behavior when a list operation exceeds its cap** — silent truncation versus
+  `UnableToAllocateResource`. The caps are spec-stated; the over-limit behavior is not.
 - **`Vcenter.Vm.Hardware.Version` enum member names** — the hardware-version identifiers for
   vmx-22 and its predecessors were not extracted. Read them from the spec before hard-coding.
 - **Whether CPU/memory `hot_add_enabled` can be changed on a powered-on VM.** Not stated on

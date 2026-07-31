@@ -161,7 +161,7 @@
         {"id": "j0", "text": "Identifies that vCenter 9.0 blocks non-federated username/password logins as the likely cause"},
         {"id": "j1", "text": "Describes the federated flow (external IdP token exchanged for a session) as the prerequisite that must now be satisfied"},
         {"id": "j2", "text": "Names the vmware-api-session-id header as the session mechanism"},
-        {"id": "j3", "text": "Scopes the answer to 9.0 rather than mixing in 9.1 OAuth token support without labelling it"},
+        {"id": "j3", "text": "Scopes the answer to 9.0 rather than mixing in 9.1 OAuth token support without labeling it"},
         {"id": "j4", "text": "Does not attribute the failure to a certificate problem without evidence"}
       ],
       "files": []
@@ -174,10 +174,10 @@
       "expected_output": "Surfaces the version-specific prerequisite traps: token TTL ceilings, JIT user inactivity silently killing tokens, and VMCA-signed default certs.",
       "assertions": [
         {"id": "k0", "text": "Identifies API Token TTL limits (default 30 days) as a likely cause of the periodic failure"},
-        {"id": "k1", "text": "Mentions the JIT user inactivity behaviour, where an inactive user's previously issued API tokens can no longer retrieve access tokens until that user authenticates again"},
+        {"id": "k1", "text": "Mentions the JIT user inactivity behavior, where an inactive user's previously issued API tokens can no longer retrieve access tokens until that user authenticates again"},
         {"id": "k2", "text": "Identifies VMCA-signed default certificates as the cause of the TLS trust errors"},
         {"id": "k3", "text": "Recommends trusting/replacing the CA rather than disabling verification, consistent with Broadcom guidance"},
-        {"id": "k4", "text": "Labels these as 9.1 behaviours and does not assert them for 9.0"}
+        {"id": "k4", "text": "Labels these as 9.1 behaviors and does not assert them for 9.0"}
       ],
       "files": []
     },

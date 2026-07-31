@@ -347,15 +347,15 @@ Operations instance that you use for license management" [D9.1 §6]. It is a **r
 for VCF and vSphere Foundation [D9.1 §5.2] and has its own BOM row
 (`License server 9.1.0.0`, build `25346031`) [D9.1 §2] with **no 9.0 counterpart**.
 
-The 9.0.x → 9.1 upgrade sequence includes an explicit **licence transfer** step, performed from
+The 9.0.x → 9.1 upgrade sequence includes an explicit **license transfer** step, performed from
 VCF Operations, at the same stage as the VCF Management Services deployment [D9.1 §5.3].
 
 **How to verify:** VCF Operations licensing view; on SDDC Manager,
 `POST /v1/resources/license-checks` → `GET /v1/resources/license-checks/{id}`
 (**spec-confirmed (9.1)**). Known 9.1 upgrade failure modes include vCenter licensing failures
-post-upgrade and licence assignment failures when the sequence is done wrong [D9.1 §5.5].
+post-upgrade and license assignment failures when the sequence is done wrong [D9.1 §5.5].
 
-**9.0 difference:** 9.0 stores licences in VCF Operations with no License server component
+**9.0 difference:** 9.0 stores licenses in VCF Operations with no License server component
 [D9.0 §5].
 
 ### P8 — Caller role and privilege for lifecycle write operations `[9.1]` — UNVERIFIED
@@ -446,7 +446,7 @@ new fleet lifecycle and SDDC lifecycle components." [D9.1 §5.3]
 **vLCM interaction, unchanged in shape:** VCF-level lifecycle drives the domain/cluster upgrade;
 vLCM applies the desired ESX image. VCF Operations "can manage ESX components and vSphere
 Lifecycle Manager images" [DVS]. 9.1 adds global remediation settings for Configuration Profile
-clusters, image integrity validation for customised ESX images, and optimised VIB transfer
+clusters, image integrity validation for customized ESX images, and optimized VIB transfer
 [D9.1 §3.1]. A dedicated 9.1 topic exists for transitioning baselines → images [DVS].
 
 ---
@@ -598,7 +598,7 @@ VCF Operations has its own: `GET /suite-api/api/tasks`, `GET /suite-api/api/task
 ## Upgrade orderings — three of them, and they are not interchangeable
 
 Conflating orderings is a named failure mode. The 9.0 file carries the first two in full; they
-are summarised here only so the third is not mistaken for them.
+are summarized here only so the third is not mistaken for them.
 
 ### Ordering A — major upgrade **5.x → 9.0** `[9.0]`
 Core, via SDDC Manager: `SDDC Manager → NSX Manager → vCenter → ESX`. Management components
@@ -621,7 +621,7 @@ This is the ordering with the explicit **vSAN** tail step.
 | 2–5 | *(collapsed into a range in the retrieved source — see UNVERIFIED below)* | **SDDC Manager** |
 | 6 | **SDDC Manager** self-upgrade to 9.1 | **SDDC Manager** |
 | 6 | **VCF Management Services & License Server** (deploy) | **VCF Operations** |
-| 6 | Licence transfer | **VCF Operations** |
+| 6 | License transfer | **VCF Operations** |
 | 7 | VCF Identity Broker → 9.1 | **VCF Operations** |
 | 8 | VCF Automation → 9.1 | **VCF Operations** |
 | 9–23 | NSX, vCenter, ESX, vSAN, VMware Tools (management-domain components) | **VCF Operations** |
@@ -642,7 +642,7 @@ This is a change in **within-domain** ordering, distinct from the cross-componen
 If you carry a 9.0-era mental model where Edge clusters are upgraded earlier in the domain
 upgrade, correct it for 9.1 [D9.1 delta #10].
 
-**Other 9.1 domain-upgrade behaviour changes** [D9.1 §3.5]: optimised NSX Manager and vCenter
+**Other 9.1 domain-upgrade behavior changes** [D9.1 §3.5]: optimized NSX Manager and vCenter
 maintenance windows and reduced-downtime update preparation; support for imported standalone
 hosts and single-host clusters; the ability to **select specific hosts** during cluster upgrades
 (skip problematic hosts); improved prechecks using native VCF component capabilities;
@@ -650,7 +650,7 @@ a Component Versions tab showing current and target versions. Scale: **5000 host
 Instance** and **256 simultaneous cluster upgrades** [D9.1 §3.5].
 
 **Known 9.1 upgrade failure modes when the sequence is done wrong** [D9.1 §5.5]: upgrade binaries
-not appearing in VCF Operations 9.0; vCenter licensing failures post-upgrade; licence assignment
+not appearing in VCF Operations 9.0; vCenter licensing failures post-upgrade; license assignment
 failures; ESXi host upgrade sync errors during the VCF Operations upgrade.
 
 **UI path to deploy VCF Management Services** [D9.1 §5.4]: VCF Operations →

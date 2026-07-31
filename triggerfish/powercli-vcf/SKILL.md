@@ -136,7 +136,7 @@ Only these two versions exist in the Gallery version history `[DOC]` `[TL-S06]`,
 carries no product-version table, deferring to the Broadcom Product Interoperability
 Matrix at `https://interopmatrix.broadcom.com/Interoperability` `[DOC]` `[TL-S17]`. A 9.1
 module can be pointed at a 9.0 estate and nothing stops you. **Ask which module version is
-installed rather than deriving it from the VCF version** — hence references organised by
+installed rather than deriving it from the VCF version** — hence references organized by
 module version.
 
 ## Reference files
@@ -205,7 +205,7 @@ firewall or starts an upgrade, say more — that is where the warning earns its 
 Uniform hedging on everything trains the reader to skip all of it, including the one that
 mattered.
 
-### Version labelling stays, and stays short
+### Version labeling stays, and stays short
 
 Say which version the answer applies to. Once, clearly, near the top. You do not need to
 re-tag every line — the tags in the reference files are for you, not for the reply.

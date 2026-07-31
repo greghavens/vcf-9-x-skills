@@ -56,7 +56,7 @@ the plural `.../datastores/validations` in both versions.
 | **Cluster config queries** | 8 `VsanVcClusterConfigSystem` operations. | **10.** Adds `VsanGetClusterRAIDInfo` (`System.Read`) and `VsanGetConfigurationLimits` ("Returns configuration limits and supported values"). | **DELTA** |
 | **Object placement query** | — | Adds `VsanObjectSystem_VsanQueryPhysicalPlacements` — "physical disk placement detail for the backing vSAN objects". | **DELTA** |
 | **Performance** | 22 `VsanPerformanceManager` operations. | **23.** Adds `VsanPerfGetSupportedHotspotEntityTypes` — "used to build hotspot performance dashboard in a data-driven and dynamic way". | **DELTA** |
-| **CNS / container volumes** | 13 `CnsVolumeManager` operations. Scale statement: up to 500 file shares per cluster (File Services). | **16.** Adds `CnsSyncVolume`, `CnsUnregisterVolume`, `CnsUpdateVolumeCrypto` ("encrypt, deep recrypt, shallow recrypt, and decrypt for the container block volumes and all the disks in the chain"). Doc-stated scale: **50,000 volumes per vCenter**; RWX file volumes and fast clone volumes for VM Service. The 50,000 figure has **no spec artefact**. | **DELTA**; DVS §7 |
+| **CNS / container volumes** | 13 `CnsVolumeManager` operations. Scale statement: up to 500 file shares per cluster (File Services). | **16.** Adds `CnsSyncVolume`, `CnsUnregisterVolume`, `CnsUpdateVolumeCrypto` ("encrypt, deep recrypt, shallow recrypt, and decrypt for the container block volumes and all the disks in the chain"). Doc-stated scale: **50,000 volumes per vCenter**; RWX file volumes and fast clone volumes for VM Service. The 50,000 figure has **no spec artifact**. | **DELTA**; DVS §7 |
 | **SDDC Manager mount-validation retrieval** | Only `POST .../datastores/validations`; no way to re-read a validation by ID. | Adds `GET /v1/clusters/{id}/datastores/validations/{validationId}` (`getDatastoreMountValidation`). | **DELTA** |
 | **SDDC Manager cluster filters** | `getClusters`: `isStretched`, `isImageBased`, `domainId`. `getHosts`: `fqdn`, `status`, `domainId`, `clusterId`, `networkpoolId`, `storageType`, `datastoreName`, deprecated `size` / `page`. | `getClusters` adds `managedObjectReferenceId`, `name`, `isDefault`, `isHciMeshEnabled`, `pageSize`, `pageNumber`, `useCache`. `getHosts` adds **`isVsanWitnessHost`**, `isStandalone`, `isLifecycleManaged`, `pageSize`, `pageNumber`. | raw specs both tags |
 | **Bulk cluster update / primary datastore** | Not available. | New: `PATCH /v1/clusters` (`updateClusters`, body `ClustersUpdateSpec` = `clusterIds[]` 1–100 + `clustersRefreshSpec.forceRefresh`); `ClusterUpdateSpec.clusterPrimaryDatastoreUpdateSpec` (change primary datastore by `datastoreId`); `markAsDefault`; `dnsNtpUpdateSpec`. | **DELTA**; raw 9.1 spec |
@@ -103,7 +103,7 @@ the plural `.../datastores/validations` in both versions.
   both tags.
 - **The `WitnessSpec.fqdn` description bug** — "Management ip of the witness host" — at both
   versions.
-- **`http://localhost:80` as the declared SDDC Manager server** — a build artefact at both
+- **`http://localhost:80` as the declared SDDC Manager server** — a build artifact at both
   tags. Substitute the real host over HTTPS.
 
 ---
@@ -116,7 +116,7 @@ the plural `.../datastores/validations` in both versions.
 - **What API delivers "stretched storage across vCenter instances."** The feature is
   documented for 9.1 [DVS §7], but every remote-datastore and stretched-cluster operation
   exists unchanged at 9.0, `RemoteVcMountPrecheck` included. Either it is delivered through
-  unchanged operations with new backend behaviour, or through a surface not in this corpus.
+  unchanged operations with new backend behavior, or through a surface not in this corpus.
   **Do not attribute it to a specific new call.**
 - **What API delivers the "cyber recovery vSAN storage cluster."** No matching operation or
   schema in any 9.1 spec here.

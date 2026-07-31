@@ -2,14 +2,14 @@
 
 Which module carries which product's cmdlets, per `VCF.PowerCLI` version.
 
-**Organised by `VCF.PowerCLI` module version (`{PCLI 9.0.0}` / `{PCLI 9.1.0}`), not by VCF release**
+**Organized by `VCF.PowerCLI` module version (`{PCLI 9.0.0}` / `{PCLI 9.1.0}`), not by VCF release**
 `[TL-preamble]`. `{both}` = holds for both module versions. The module version, not the VCF version,
 decides which cmdlets exist — see [§1](#1-versions-and-the-vcf-pairing) for the pairing and its
 evidence grade.
 
 **Evidence tags.** `[DOC]` = traced to a fetched reference page (source ref follows).
 `[UNVERIFIED]` = research could not retrieve confirmation — **never present these as established**.
-`[INFERRED]` = a defensible deduction from two `[DOC]` facts, labelled as deduction, not fact.
+`[INFERRED]` = a defensible deduction from two `[DOC]` facts, labeled as deduction, not fact.
 
 For install, `Connect-*` syntax, certificate configuration and auth flows, see
 **`vcf-foundation` → `references/powercli-session.md`**. This file does not restate them.

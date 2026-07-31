@@ -288,7 +288,7 @@ the health checks compare against is not stale.
 > `VsanClusterReconfig`, `VosSetVsanObjectPolicy`, `VSANVcConvertToStretchedCluster` at the
 > operation level, `VSANVcAddWitnessHost` — declare **no** privilege at all, and
 > `VSANVcSetPreferredFaultDomain` declares `VApp.Clone`, which is implausible for a vSAN
-> fault-domain operation and looks like a spec-generation artefact. Use the table to size a
+> fault-domain operation and looks like a spec-generation artifact. Use the table to size a
 > role request, then confirm empirically against a non-production vCenter.
 >
 > **The SDDC Manager side is `UNVERIFIED` entirely.** No retrieved source names the role
@@ -491,7 +491,7 @@ configuration."* Sending a partial spec with `modify: false` resets everything y
 `dedupPaused`). Both schemas already exist at 9.0. The 9.1 spec adds the sentence *"For vSAN
 ESA, compression is enabled by default since 9.1.0 release, disabling compression is not
 supported"* — **that sentence is absent at 9.0**, so do not carry the 9.1 compression
-behaviour backwards.
+behavior backwards.
 
 ### Stretched clusters — `VimClusterVsanVcStretchedClusterSystem` (13 ops, `[9.0+9.1]`)
 
@@ -779,7 +779,7 @@ clusters are vLCM-image-managed from 9.0 onward.
    none, and `VSANVcSetPreferredFaultDomain` declares `VApp.Clone`. The annotations are real
    spec content but are not a usable privilege model on their own.
 3. **The SDDC Manager spec's declared base is `http://localhost:80`.** That is a build
-   artefact in `SPECSDDC` at both versions. The load-bearing part is the `/v1` prefix;
+   artifact in `SPECSDDC` at both versions. The load-bearing part is the `/v1` prefix;
    substitute the real SDDC Manager host over HTTPS.
 4. **The vSAN Management API is documented as SOAP/vmodl.** The Broadcom reference describes
    it as a SOAP/vmodl web service on `/vsanHealth` (vCenter), `/vsan` (host) and `/sdk`

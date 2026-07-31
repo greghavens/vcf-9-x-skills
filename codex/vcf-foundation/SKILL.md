@@ -50,7 +50,7 @@ Resolve in this order:
    9.1 fleet? If you're not sure, what does SDDC Manager report under About?"
 
 If you genuinely cannot resolve it and the user needs an answer now, give the answer for
-**both** versions with each clearly labelled, and say why you split it. Never blend them
+**both** versions with each clearly labeled, and say why you split it. Never blend them
 into one set of instructions.
 
 ## Step 2 — check prerequisites before proposing a call
@@ -180,7 +180,7 @@ firewall or starts an upgrade, say more — that is where the warning earns its 
 Uniform hedging on everything trains the reader to skip all of it, including the one that
 mattered.
 
-### Version labelling stays, and stays short
+### Version labeling stays, and stays short
 
 Say which version the answer applies to. Once, clearly, near the top. You do not need to
 re-tag every line — the tags in the reference files are for you, not for the reply.

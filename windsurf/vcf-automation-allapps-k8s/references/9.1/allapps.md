@@ -1,4 +1,4 @@
-# VCF Automation — All Apps organisations, VCF 9.1
+# VCF Automation — All Apps organizations, VCF 9.1
 
 **Applies to:** VCF Automation as shipped in VMware Cloud Foundation **9.1**.
 **Do not apply this file to 9.0.** Use `../9.0/allapps.md`, and `../deltas.md` for the change list.
@@ -36,9 +36,9 @@ What that means in practice:
 ## Contents
 
 - [Prerequisites](#prerequisites) — **read before any CRD or call**
-  - [P1 — you are in an All Apps organisation, not a VM Apps organisation](#p1--you-are-in-an-all-apps-organisation-not-a-vm-apps-organisation)
+  - [P1 — you are in an All Apps organization, not a VM Apps organization](#p1--you-are-in-an-all-apps-organization-not-a-vm-apps-organization)
   - [P2 — the `cci` kubectl context is established](#p2--the-cci-kubectl-context-is-established)
-  - [P3 — a region is available to the organisation](#p3--a-region-is-available-to-the-organisation)
+  - [P3 — a region is available to the organization](#p3--a-region-is-available-to-the-organization)
   - [P4 — quota is allocated, including across supervisors](#p4--quota-is-allocated-including-across-supervisors)
   - [P5 — the project exists and the supervisor namespace is assigned to it](#p5--the-project-exists-and-the-supervisor-namespace-is-assigned-to-it)
   - [P6 — your role covers the verb you are about to use](#p6--your-role-covers-the-verb-you-are-about-to-use)
@@ -48,7 +48,7 @@ What that means in practice:
 - [Worked example — create a supervisor namespace, discovery-first](#worked-example--create-a-supervisor-namespace-discovery-first)
 - [Provider and All Apps REST conventions](#provider-and-all-apps-rest-conventions)
 - [Provider API categories — 13, unchanged from 9.0](#provider-api-categories--13-unchanged-from-90)
-- [What 9.1 added on the provider and organisation side](#what-91-added-on-the-provider-and-organisation-side)
+- [What 9.1 added on the provider and organization side](#what-91-added-on-the-provider-and-organization-side)
 - [Terraform](#terraform)
 - [Lookup routes](#lookup-routes)
 - [Gaps](#gaps)
@@ -60,10 +60,10 @@ What that means in practice:
 Nothing below this block should be attempted until these hold. Each states what must be true, **how
 to verify it**, and whether 9.0 differs.
 
-### P1 — you are in an All Apps organisation, not a VM Apps organisation
+### P1 — you are in an All Apps organization, not a VM Apps organization
 
-**Must be true:** the organisation you are working in is an **All Apps** organisation. Two
-organisation types exist, "with different consumption mechanisms" `[DOC-BOTH]` (DAUTO `[S06]`). All
+**Must be true:** the organization you are working in is an **All Apps** organization. Two
+organization types exist, "with different consumption mechanisms" `[DOC-BOTH]` (DAUTO `[S06]`). All
 Apps is the Kubernetes/VCD-derived surface driven by CRDs and supervisor namespaces; VM Apps is the
 Aria-Automation-derived surface of blueprints, catalog, deployments, cloud accounts and cloud zones
 `[DOC-BOTH]` (DAUTO `[S06]` `[S32]` `[S21]`).
@@ -75,7 +75,7 @@ differently at the top level: org management for All Apps is documented through 
 and Orchestrator tabs and a blueprint/catalog API family `[DOC-9.1]` (DAUTO `[S21]`).
 
 **How to verify:**
-- In the Provider Management Portal at `https://<FQDN>/provider`, inspect the organisation. The
+- In the Provider Management Portal at `https://<FQDN>/provider`, inspect the organization. The
   provider and tenant surfaces are `https://<FQDN>/provider` and `https://<FQDN>/automation` in both
   versions `[DOC-BOTH]` (DAUTO `[S07]` `[S29]`).
 - Functionally, from the CLI: if `kubectl --context cci api-resources --api-group=infrastructure.cci.vmware.com`
@@ -126,9 +126,9 @@ identically in both doc sets `[DOC-BOTH]` (DTOOL); the `--api-token`/`--tenant-n
 form is from the 9.1 doc set `[DOC-9.1]` (DAUTH `[S34]`). VCF CLI is **v9.1** in the 9.1 docs and
 **v9.0** in the 9.0 docs `[DOC-9.1]`/`[DOC-9.0]` (DAUTO `[S34]` / `[S06]`).
 
-### P3 — a region is available to the organisation
+### P3 — a region is available to the organization
 
-**Must be true:** a region exists and is consumable by your organisation. `Region` is one of the
+**Must be true:** a region exists and is consumable by your organization. `Region` is one of the
 listed API resources, **read-only to the org Admin role and not listed for DevOps** `[DOC-9.1]`
 (DAUTO `[S32]`) — meaning regions are allocated *to* you by the provider, not created by you. The
 documented `SupervisorNamespace` example carries `spec.regionName` `[DOC-9.1]` (DAUTO `[S32]`).
@@ -148,7 +148,7 @@ the 9.1 page.
 
 ### P4 — quota is allocated, including across supervisors
 
-**Must be true:** the organisation holds quota in the region you are targeting. Region quotas are a
+**Must be true:** the organization holds quota in the region you are targeting. Region quotas are a
 provider-managed resource in both versions `[DOC-BOTH]` (DAUTO `[S26]` `[S27]`), and
 `RegionStorageClassQuotas` appears in the CCI resource list `[DOC-9.1]` (DAUTO `[S32]`).
 
@@ -172,7 +172,7 @@ page. Read the live schema.
 `[DOC-9.1]` (DAUTO `[S32]`). `Project` is full CRUD for Admin and read-only for DevOps `[DOC-9.1]`
 (DAUTO `[S32]`).
 
-Note the 9.1 rewording of what organisation administrators do: they "create and assign projects and
+Note the 9.1 rewording of what organization administrators do: they "create and assign projects and
 vSphere Namespaces tailored for different application teams" — 9.0 said only that they "organize and
 govern resources allocated to them among application teams" `[DOC-9.1]` vs `[DOC-9.0]` (DAUTO
 `[S11]` / `[S10]`). The 9.1 phrasing is the accurate description of this workflow.
@@ -204,8 +204,8 @@ they flow through a different object or through a verb this table omits. `[UNVER
 assume `kubectl edit supervisornamespace` will be accepted; check with `kubectl auth can-i`.
 
 Above the org, the provider role model applies: rights are per-object-type; roles are sets of
-rights; **provider roles** are exclusive to the provider organisation; **global roles** are
-published by System Administrators and org admins cannot modify them; **organisation-specific roles**
+rights; **provider roles** are exclusive to the provider organization; **global roles** are
+published by System Administrators and org admins cannot modify them; **organization-specific roles**
 are created locally from a subset of org rights; **System Administrator** exists only in the provider
 org and holds all VCF Automation rights `[DOC-9.1]` (DAUTH `[S50]`).
 
@@ -456,7 +456,7 @@ Provisioning Service
 verified **no-change** between versions, and it is worth stating as a finding rather than omitting as
 a non-event.
 
-It is also a worked example of catching a false delta. A summarisation pass over the 9.1 page
+It is also a worked example of catching a false delta. A summarization pass over the 9.1 page
 annotated **"Custom Resource Types & Actions"** and **"Instances"** as *new in VCF 9.1*. Diffing
 against the 9.0 page showed both were already listed there. The annotation was discarded as an
 artifact (DAUTO `[S31]` vs `[S33]`). If you see that claim anywhere, it is wrong.
@@ -475,30 +475,30 @@ retrieval gap, not evidence of change.
 
 ---
 
-## What 9.1 added on the provider and organisation side
+## What 9.1 added on the provider and organization side
 
 All from the 9.1 What's New page for VCF Automation `[DOC-9.1]` (DAUTO `[S09]`).
 
 **Provider management (cloud administration)**
 
 1. **vDefend firewall delegation** — vDefend Distributed Firewall and Gateway Firewall support
-   directly within VCF Automation, allowing firewall services to be delegated to organisations with
+   directly within VCF Automation, allowing firewall services to be delegated to organizations with
    RBAC and predefined security profiles.
 2. **Default IP block configuration** — providers configure default private VPC and private Transit
-   Gateway IP blocks in the Provider Management UI, overridable per organisation.
+   Gateway IP blocks in the Provider Management UI, overridable per organization.
 3. **Self-service Avi Load Balancer** — "Full self-service support for Avi Load Balancer" with quota
-   management, for **both All Apps and VM Apps** organisations.
+   management, for **both All Apps and VM Apps** organizations.
 4. **Multiple external connections** — multiple exit points for external traffic, via centralised
    connections and distributed VLAN connections.
 5. **Shared VLAN extension subnets** — VLAN extension NSX subnets shareable across multiple
-   organisations for direct device connectivity.
+   organizations for direct device connectivity.
 6. **External IP blocks** — **"IP spaces" renamed to "external IP blocks"**, with multiple CIDRs,
    custom IP ranges, and **Infoblox External IPAM** integration. This is a rename *and* a capability
    change; if a runbook says "IP spaces", it is 9.0-era vocabulary.
 7. **Multi-supervisor region quota** — quota across multiple supervisors in a region, with capacity
    sharing options.
 
-**Organisation management**
+**Organization management**
 
 1. **Day-2 namespace allocation changes** — modify resource limits, VM classes, storage classes and
    shared subnets after creation. (See the P6 note: the documented permission matrix shows no update
@@ -524,12 +524,12 @@ The documentation treats Terraform as a first-class route and names **three** pr
 |---|---|
 | **Terraform Provider for VCF Automation** | Provider Management UI **and a subset of the Organization UI**; "greenfield" examples for fresh installations. |
 | **Terraform Provider for Kubernetes** | Organization UI resources exposed through the **VCF Automation Kubernetes API layer**, such as projects. |
-| **Terraform Provider for VMware Aria Automation** | VM Apps organisations **and All Apps resources not yet exposed through Kubernetes API layers**, including blueprints. |
+| **Terraform Provider for VMware Aria Automation** | VM Apps organizations **and All Apps resources not yet exposed through Kubernetes API layers**, including blueprints. |
 
-Resources by role `[DOC-9.1]` (DAUTO `[S27]`): provider administrators get organisations, regions,
-quotas, networking, content libraries and supervisor namespaces; All Apps organisation administrators
+Resources by role `[DOC-9.1]` (DAUTO `[S27]`): provider administrators get organizations, regions,
+quotas, networking, content libraries and supervisor namespaces; All Apps organization administrators
 get VCF services projects, content libraries, Virtual Private Clouds, subnets, blueprints and
-catalogs; organisation users provision IaaS services and deploy catalogs.
+catalogs; organization users provision IaaS services and deploy catalogs.
 
 Usage examples are documented at `https://<FQDN>/automation/api-docs/#/terraform-provider`
 `[DOC-BOTH]` (DAUTO `[S26]` `[S27]`).

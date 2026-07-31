@@ -14,7 +14,7 @@ Method
      a) PATH claims: `METHOD /path` appearing in prose/backticks/code.
      b) OPERATIONID claims: backticked CamelCase / dotted tokens that look like
         operationIds.
-3. Normalise the path by stripping every known product base-path prefix, then
+3. Normalize the path by stripping every known product base-path prefix, then
    look it up in every product inventory for the applicable version(s).
    A claim is a MISS only if it resolves in NO product at that version.
 4. Path templates are matched structurally: `{anything}` and `<anything>` and
@@ -81,14 +81,14 @@ def strip_prefixes(p):
     return res
 
 def norm_variants(p):
-    """all normalised forms of a spec path (for the index)"""
+    """all normalized forms of a spec path (for the index)"""
     out=set()
     for q in strip_prefixes(p):
         out.add(structural(q))
     return out
 
 def claim_variants(p):
-    """all normalised forms of a claimed path (for lookup)"""
+    """all normalized forms of a claimed path (for lookup)"""
     p = p.split("?")[0].split("#")[0]
     p = p.rstrip("/.,;:)`\"'")
     if not p.startswith("/"): p="/"+p

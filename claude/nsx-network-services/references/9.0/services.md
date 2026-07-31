@@ -591,7 +591,7 @@ curl -sS -X PATCH "${AUTH[@]}" \
 ```
 
 Prefer this to `DELETE`: reversible in one call, and the object survives for post-incident
-inspection. **Caveat for 9.0:** this single-field `PATCH` depends on partial-patch behaviour, whose
+inspection. **Caveat for 9.0:** this single-field `PATCH` depends on partial-patch behavior, whose
 9.0 read-back verb is unverified (P8). If it does not take effect, read the full rule, set
 `enabled: false` in the whole body, and `PATCH` that.
 

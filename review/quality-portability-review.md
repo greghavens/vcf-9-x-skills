@@ -4,7 +4,7 @@ Reviewer: independent (did not author these skills). Date: 2026-07-31.
 Target: `/home/claude/vcf-skills/skills/` — `vcf-foundation`, `vcf-api-discovery`,
 `nsx-security-policy`, `vcf-lifecycle-upgrade`.
 
-Severity scale: **BLOCKER** (ships broken) · **HIGH** (wrong behaviour likely) ·
+Severity scale: **BLOCKER** (ships broken) · **HIGH** (wrong behavior likely) ·
 **MEDIUM** (degrades quality/usability) · **LOW** (polish).
 
 ---
@@ -188,7 +188,7 @@ best-effort cap, which is acceptable since the JSON is data not prose), then **d
 candidate 3** so failures are honest rather than environment-dependent.
 
 Partial credit: the failure message is excellent — it prints the regeneration recipe and
-exits 2, not 0. That is the right behaviour for a broken dependency.
+exits 2, not 0. That is the right behavior for a broken dependency.
 
 ### 2.3 U2 — Cross-skill evidence contradiction on NSX 9.1 authentication — **HIGH**
 
@@ -241,8 +241,8 @@ vcf-lifecycle-upgrade/SKILL.md:42  Use the `vcf-foundation` skill. Then read onl
 ```
 
 `nsx-security-policy/SKILL.md` then spends a full section restating NSX session auth —
-endpoint, form field names, both required headers, the 403 behaviour, the node-binding
-behaviour — all of which `vcf-foundation` also carries
+endpoint, form field names, both required headers, the 403 behavior, the node-binding
+behavior — all of which `vcf-foundation` also carries
 (`9.0/auth-and-identity.md:219-220,369,507`; `deltas.md:94`). Duplicated auth material
 appears across the two dependent skills: 14 auth-token hits in each NSX version file, 4 in
 `nsx/deltas.md`, 5 in `nsx/lookup.md`, 2 each in all four lifecycle references.
@@ -447,7 +447,7 @@ removes the risk.
 ### 3.3 P2 — `license: MIT-0` must be REMOVED for ClawHub — **definitive, BLOCKER for ClawHub**
 
 **Yes — the field must be deleted from all four `SKILL.md` files before publishing to
-ClawHub. This is not a judgement call.** From the authoritative ClawHub skill-format spec
+ClawHub. This is not a judgment call.** From the authoritative ClawHub skill-format spec
 (`openclaw/clawhub`, `docs/skill-format.md`):
 
 > "There is **no `author`, `license`, `tags`, `category`, `icon`, or `repository` field in

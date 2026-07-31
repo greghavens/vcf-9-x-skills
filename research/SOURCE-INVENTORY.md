@@ -57,7 +57,7 @@ All accessed **2026-07-31**.
 | S41 | https://developer.broadcom.com/xapis/sddc-manager-api/latest/tokens/ | SDDC Manager API 9.1 | Three token operations by name |
 | S42 | https://developer.broadcom.com/xapis/sddc-manager-api/9.0/tokens/ | SDDC Manager API 9.0 | **`/v1/tokens` create/refresh/revoke, payloads, `accessToken`** |
 | S43 | https://developer.broadcom.com/xapis/vmware-cloud-foundation-api/latest/tokens/ | VMware Cloud Foundation API 5.2.4 | Corroborates paths + `Authorization: Bearer`. **Pre-9.x — corroboration only** |
-| S44 | https://developer.broadcom.com/xapis/vcf-operations-api/latest/ | VCF Operations API 9.1 | **`OpsToken` and `Bearer` (VCF SSO) schemes, 401 behaviour** |
+| S44 | https://developer.broadcom.com/xapis/vcf-operations-api/latest/ | VCF Operations API 9.1 | **`OpsToken` and `Bearer` (VCF SSO) schemes, 401 behavior** |
 | S45 | https://developer.broadcom.com/xapis/vcf-operations-api/latest/auth/ | VCF Operations API 9.1 | **Full `/auth/*` surface incl. token acquire/release/exchange, roles, privileges** |
 | S46 | https://developer.broadcom.com/xapis/all-apps-org-access-control/latest/ (resolves to Provider Management API) | VCF Automation 9.1 | **JWT via `Authorization`; `x-vcloud-authorization` deprecated; tenant-context headers** |
 | S47 | https://knowledge.broadcom.com/external/article/409715/how-to-authorize-vcf-operations-fleet-ma.html | Broadcom KB, VCF 9.0 | **Fleet Management API = HTTP Basic, base64 `admin@local:<pwd>`** |
@@ -199,7 +199,7 @@ All accessed **2026-07-31**.
 |---|---|---|---|
 | S1 | https://agentskills.io/home.md | 2026-07-31 | Open standard overview; origin at Anthropic; progressive disclosure; 40+ conforming clients incl. all four targets; GitHub/Discord governance |
 | S2 | https://agentskills.io/specification | 2026-07-31 | **Canonical spec**: full frontmatter table, name/description constraints, `license`/`compatibility`/`metadata`/`allowed-tools`, directory layout, progressive disclosure, file references, `skills-ref` validator |
-| S3 | https://code.claude.com/docs/en/skills | 2026-07-31 | Claude Code: install paths & precedence, nested/`--add-dir`/symlink/live-reload behaviour, **full 18-field frontmatter reference**, string substitutions, command naming, Cowork/cloud limits, share/distribution, `skillOverrides`, compaction budgets |
+| S3 | https://code.claude.com/docs/en/skills | 2026-07-31 | Claude Code: install paths & precedence, nested/`--add-dir`/symlink/live-reload behavior, **full 18-field frontmatter reference**, string substitutions, command naming, Cowork/cloud limits, share/distribution, `skillOverrides`, compaction budgets |
 | S4 | https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview | 2026-07-31 | Claude platform: required fields, name reserved words ("anthropic"/"claude"), 1024-char description, claude.ai **zip** upload via Settings > Features, `/v1/skills` API, absence of a `.skill` format |
 | S5 | https://developers.openai.com/codex/skills/ | 2026-07-31 | **Codex**: `.agents/skills` search paths & precedence, symlink following, duplicate handling, required frontmatter, `agents/openai.yaml` schema, implicit/explicit invocation |
 | S6 | https://docs.windsurf.com/windsurf/cascade/skills | 2026-07-31 | **Windsurf Skills**: `.windsurf/skills/`, `~/.codeium/windsurf/skills/`, enterprise system paths, **cross-agent paths `.agents/skills/` + `.claude/skills/`**, frontmatter, activation, open-standard conformance |
@@ -262,7 +262,7 @@ All accessed **2026-07-31**.
 | S33 | https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-consumption/latest/consumer-interfaces-in-vcf/installing-and-using-vcf-cli-v9/command-reference2.html | VCF Consumption (latest) | VCF CLI command groups and plugin list |
 | S34 | https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/administration-sdks-cli-and-tools/what-is-the-vsphere-web-services-sdk/programming-language-support-in-the-vsphere-web-services-sdk.html | VCF 9.1 | Supported languages: Java, Python, OpenAPI 3.0.1, SOAP |
 | S35 | https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/administration-sdks-cli-and-tools/what-is-the-vsphere-web-services-sdk/setup-for-development-with-openapi.html | VCF 9.0 | Spec download channels; openapi-generator; no on-appliance URLs |
-| S36 | https://developer.broadcom.com/sdks | developer portal | Full SDK catalogue incl. deprecated .NET/Perl/Ruby |
+| S36 | https://developer.broadcom.com/sdks | developer portal | Full SDK catalog incl. deprecated .NET/Perl/Ruby |
 | S37 | https://developer.broadcom.com/vcf-python-sdk | developer portal | `vcf-sdk` PyPI, v9.1, Python 3.10–3.14, GitHub, coverage |
 | S38 | https://developer.broadcom.com/vcf-java-sdk | developer portal | `com.vmware.sdk:vcf-sdk-bom`, v9.1, Java 11/17/21/25, GitHub |
 | S39 | https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/administration-sdks-cli-and-tools/about-vmware-cloud-foundation-development/getting-started-with-vsphere-apis-and-sdks/python-access-to-vsphere-apis.html | VCF 9.0 | pyVmomi install, SmartConnect, community samples |

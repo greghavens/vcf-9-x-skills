@@ -422,7 +422,7 @@ You cannot edit a committed image. You create a draft, edit it, and commit. All
 | Scan against draft | `POST .../drafts/{draft}?action=scan&vmw-task=true` | `Esx.Settings.Clusters.Software.Drafts_scan$Task` |
 | **Commit** | `POST .../drafts/{draft}?action=commit&vmw-task=true` | `Esx.Settings.Clusters.Software.Drafts_commit$Task` |
 
-**Two behaviours from the spec worth knowing before you write a loop:**
+**Two behaviors from the spec worth knowing before you write a loop:**
 
 - `Drafts_create` takes **no request body** and returns **201** with a bare JSON string —
   "Identifier of the working copy of the document", resource type
@@ -532,7 +532,7 @@ assume `commit` freezes the target.
   cluster, **or "the cluster is not managed with a single software specification"** (that is
   the baseline-managed case from P2).
 - `400 Vapi.Std.Errors.NotAllowedInCurrentState` — "If there is another operation in
-  progress." vLCM serialises per cluster.
+  progress." vLCM serializes per cluster.
 - `500 Vapi.Std.Errors.Error` — "if there is an unknown internal error **or if the EULA has
   not been accepted**." A 500 here is frequently the missing `accept_eula`.
 
@@ -789,6 +789,6 @@ All three **spec-confirmed (9.0)** and identical in 9.1. The apply description s
 directly: "The result of this operation can be queried by calling the `cis/tasks/{task-id}`
 where the task-id is the response of this operation."
 
-Cancelling an in-flight `apply` is exposed by the API. Whether it is safe mid-remediation is
-**UNVERIFIED** — no source consulted describes the state a cancelled remediation leaves a
+Canceling an in-flight `apply` is exposed by the API. Whether it is safe mid-remediation is
+**UNVERIFIED** — no source consulted describes the state a canceled remediation leaves a
 host in. Do not recommend it casually.

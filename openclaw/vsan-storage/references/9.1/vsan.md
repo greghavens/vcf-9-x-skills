@@ -288,7 +288,7 @@ unchanged between versions.
 > `VsanClusterReconfig`, `VosSetVsanObjectPolicy`, `VSANVcConvertToStretchedCluster` at the
 > operation level, `VSANVcAddWitnessHost` — declare **no** privilege at all, and
 > `VSANVcSetPreferredFaultDomain` declares `VApp.Clone`, which is implausible for a vSAN
-> fault-domain operation and looks like a spec-generation artefact. Use the table to size a
+> fault-domain operation and looks like a spec-generation artifact. Use the table to size a
 > role request, then confirm empirically against a non-production vCenter.
 >
 > **The SDDC Manager side is `UNVERIFIED` entirely.** No retrieved source names the role
@@ -901,7 +901,7 @@ for protection groups, VMs, their snapshots, and `snapshot-status-counts` aggreg
 | **Multiple retention schedules for vSAN snapshots (daily / weekly / monthly)** | **Strong.** `SPECDP` gains `Snapservice.DailyRetention`, `WeeklyRetention`, `MonthlyRetention`, `HourlyRetention`, `LongTermRetention`, `DayOfWeek`; `RetentionPolicy.long_term` is 9.1-only; the `TimeUnit` enum gains `YEAR`. |
 | **Seeding for vSAN replication; replication on any storage** | **Partial.** `Snapservice.TargetStorageSpec`, `VmTargetStorageSpec`, `TargetEntityReplicationSpec`, `ReplicationTargetConfiguration` and the per-VM `protection-configuration` family are all new in 9.1. |
 | **Ransomware recovery** (not on the what's-new list but present) | **Strong.** `startRansomwareRecovery$Task` / `endRansomwareRecovery$Task` new in 9.1. |
-| **RWX file volumes, fast clone volumes, 50,000 volumes per vCenter** | **Partial.** `CnsVolumeManager` gains `CnsSyncVolume`, `CnsUnregisterVolume`, `CnsUpdateVolumeCrypto`. The 50,000 figure is doc-sourced; no spec artefact states it. |
+| **RWX file volumes, fast clone volumes, 50,000 volumes per vCenter** | **Partial.** `CnsVolumeManager` gains `CnsSyncVolume`, `CnsUnregisterVolume`, `CnsUpdateVolumeCrypto`. The 50,000 figure is doc-sourced; no spec artifact states it. |
 | **Data protection health in vSAN health** | **Strong.** `DataProtectionHealthSystem` (4 ops, `moId` `dp-health-system`) is new in 9.1. |
 | **Dynamic protection-group membership** | **Strong.** `Snapservice.TagRule`, `LogicalOperator`, `MemberEntities`, `MembershipChangeType`, `VmMembershipInfo` are new in 9.1, alongside `ProtectionGroups_computeMembers`. |
 
@@ -918,7 +918,7 @@ vSAN deprecations or removals in 9.1. The specs agree: **zero** vSAN operations 
 1. **"Stretched storage across vCenter instances" has no new API.** It is a headline 9.1
    vSAN feature [DVS §7], but every remote-datastore and stretched-cluster operation exists
    unchanged at 9.0, `RemoteVcMountPrecheck` included. Either the capability is delivered
-   through unchanged operations with new backend behaviour, or through a surface not in this
+   through unchanged operations with new backend behavior, or through a surface not in this
    corpus. Report the feature as documented; do not attribute it to a specific new call.
 2. **Global deduplication's schema predates its announcement.** `dedupStoreUuid` and
    `dedupPaused` are present at the 9.0 tag. Treat "new in 9.1" for global dedup as a
@@ -930,7 +930,7 @@ vSAN deprecations or removals in 9.1. The specs agree: **zero** vSAN operations 
    none, and `VSANVcSetPreferredFaultDomain` declares `VApp.Clone`. The annotations are real
    spec content but are not a usable privilege model on their own.
 5. **The SDDC Manager spec's declared base is `http://localhost:80`.** That is a build
-   artefact in both `SPECSDDC` 9.0 and 9.1. The load-bearing part is the `/v1` prefix;
+   artifact in both `SPECSDDC` 9.0 and 9.1. The load-bearing part is the `/v1` prefix;
    substitute the real SDDC Manager host over HTTPS.
 6. **The vSAN Management API is documented as SOAP/vmodl.** The Broadcom reference describes
    it as a SOAP/vmodl web service on `/vsanHealth` (vCenter), `/vsan` (host) and `/sdk`

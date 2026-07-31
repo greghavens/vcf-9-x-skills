@@ -198,7 +198,7 @@ itself. All of them are resolved the same way at both tags.
   `Cardinality`, `Vapi.Std.DynamicID`** — identical property sets and required lists.
 - **All 72 of 9.0's content-library operations**, with identical schemas — `LibraryModel`,
   `StorageBacking`, `PublishInfo`, `SubscriptionInfo`, `ItemModel`, `ProbeResult.Status`,
-  `StateInfo.State`, and the optimistic-concurrency behaviour of `version` (500 `ResourceBusy`
+  `StateInfo.State`, and the optimistic-concurrency behavior of `version` (500 `ResourceBusy`
   / 409 `ConcurrentChange`).
 - **The 20 update/download-session operations**, unchanged.
 - **All 12 VM-template and 6 OVF library-item operations**, and their create/deploy specs

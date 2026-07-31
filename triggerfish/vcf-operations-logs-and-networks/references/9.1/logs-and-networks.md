@@ -256,7 +256,7 @@ the *type*. That distinction is the difference between a 200 and a 400.
 
 **How to verify:** `GET /api/v1/metadata` (`queryMetricMetadata`) returns
 `{"status": "success", "data": {...}}`. `401` means the JWT is wrong or expired; `403` means the
-user is not authorised for the resource.
+user is not authorized for the resource.
 
 **9.0 difference:** the product does not exist at 9.0 — absent from the 9.0 BOM [`DOPS`], no
 spec at tag `9.0.0.0` [`DELTA`].
@@ -514,7 +514,7 @@ Response `IngestResponse {status, message, received}`.
 > send it. The same applies to the `pageable` "query parameter" on the two list operations,
 > which is really `?page=&size=&sort=` (schema `Pageable {page ≥0, size ≥1, sort[]}`).
 
-> **9.0's unauthenticated-agent behaviour is gone.** At 9.0, `POST /events/ingest/{agentId}` was
+> **9.0's unauthenticated-agent behavior is gone.** At 9.0, `POST /events/ingest/{agentId}` was
 > explicitly *"a non-authenticated interface designed for use by collection agents"*, with
 > timestamps clamped to ±10 minutes for unauthenticated submissions. At 9.1 the spec's global
 > `security` covers every operation including ingest, and agent authentication has its own
@@ -636,7 +636,7 @@ Absent from `SPECLM9.1` entirely — do not offer these at 9.1:
 | Roles, users, user-groups, AD, vIDM, VIDB, auth-providers | 40 | **No counterpart.** Access comes from the exchanged JWT |
 | Notification channels, email, webhooks, retention threshold | 13 | **No counterpart** |
 | Limits | 3 | **No counterpart** |
-| Cluster VIPs, deployment, upgrades, NTP, UI, CEIP, certificates, support bundles, salt, licences, version | 40 | **No counterpart.** Appliance lifecycle is Fleet LCM / SDDC LCM (`vcf-lifecycle-upgrade`) |
+| Cluster VIPs, deployment, upgrades, NTP, UI, CEIP, certificates, support bundles, salt, licenses, version | 40 | **No counterpart.** Appliance lifecycle is Fleet LCM / SDDC LCM (`vcf-lifecycle-upgrade`) |
 | vSphere data-source registration and per-host log forwarding | 19 | **No counterpart** in this spec |
 | `GET /events/{+path}` and `GET /aggregated-events/{+path}` | 2 | Replaced by `POST /api/v2/logs/search` with a different language |
 

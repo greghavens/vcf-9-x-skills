@@ -69,7 +69,7 @@ Session auth is `POST /api/session/create` with `j_username` / `j_password`; bot
 `JSESSIONID` cookie **and** the `X-XSRF-TOKEN` header must be sent on every subsequent call. The
 create/destroy operations are spec-confirmed for 9.1 (`CreateAuthenticatedSession`,
 `DestroyAuthenticatedSession`); there is **no NSX spec at the 9.0.0.0 tag**, so 9.0 rests on
-documentation only. Two behaviours whose evidence differs by version — the version reference files
+documentation only. Two behaviors whose evidence differs by version — the version reference files
 carry the grading: expiry surfaces as **403, not 401** *(documented verbatim in the 9.1 docs; not
 stated on the 9.0-pinned page)*, and the cookie is bound to a single manager node and fails behind
 a VIP *(documented verbatim in the 9.0 docs; not restated for 9.1)*.
@@ -200,7 +200,7 @@ firewall or starts an upgrade, say more — that is where the warning earns its 
 Uniform hedging on everything trains the reader to skip all of it, including the one that
 mattered.
 
-### Version labelling stays, and stays short
+### Version labeling stays, and stays short
 
 Say which version the answer applies to. Once, clearly, near the top. You do not need to
 re-tag every line — the tags in the reference files are for you, not for the reply.

@@ -106,7 +106,7 @@ Source: [S3]. Precedence: **enterprise > personal > project**; any of these over
 bundled skill of the same name. Plugin skills are namespaced `plugin-name:skill-name` and
 therefore cannot conflict.
 
-Additional Claude Code loading behaviour [S3]:
+Additional Claude Code loading behavior [S3]:
 - Project skills load from `.claude/skills/` in the start directory **and every parent
   directory up to the repo root**.
 - **Nested** `.claude/skills/` below the working directory load lazily — the first time
@@ -198,7 +198,7 @@ skill's own directory and is the documented way to reference bundled scripts reg
 cwd, but it is Claude-specific and will not expand in Codex, Windsurf, or Triggerfish.
 
 Context note: auto-compaction re-attaches the most recent invocation of each skill after
-summarisation, keeping the **first 5,000 tokens** of each, within a **combined 25,000-token
+summarization, keeping the **first 5,000 tokens** of each, within a **combined 25,000-token
 budget** [S3]. Another reason to keep `SKILL.md` short and push detail to `references/`.
 
 ### Platform-level (claude.ai / API) constraints [S4]
@@ -557,7 +557,7 @@ Three consequences, all load-bearing:
 3. **`metadata:` is ignored by the loader**, so an open-spec `metadata:` block is harmless
    but carries no meaning. Do not encode anything Triggerfish needs there.
 
-Other loader behaviour [S13]: directory entries that are **symlinks are skipped**
+Other loader behavior [S13]: directory entries that are **symlinks are skipped**
 (`if (!entry.isDirectory || entry.isSymlink) continue;`) — so unlike Codex, **the
 symlink-farm install strategy will NOT work for Triggerfish; copy real directories.**
 Directory names are sanitised and path-jailed; a `SKILL.md` that fails to read causes the
@@ -626,7 +626,7 @@ installing.**
 ### Adjacent Triggerfish concepts (not skills — don't confuse)
 
 - **SPINE.md** — agent identity and mission file; the system-prompt foundation [S12].
-- **TRIGGER.md** — proactive/autonomous monitoring behaviour on configurable schedules
+- **TRIGGER.md** — proactive/autonomous monitoring behavior on configurable schedules
   [S9]. A bundled `triggers` skill teaches authoring these.
 - **Plugins** — a separate mechanism, in `~/.triggerfish/plugins/`, configured under the
   `plugins` key of `triggerfish.yaml` [S11]. Not our target.
@@ -679,7 +679,7 @@ Author **one canonical open-spec skill folder** (`name`, `description`, plus `li
 - **Windsurf** — *zero transformation, and usually zero copying.* Windsurf already reads
   `.agents/skills/`, `~/.agents/skills/`, `.claude/skills/`, `~/.claude/skills/`. Only place
   a copy in `.windsurf/skills/<name>/` or `~/.codeium/windsurf/skills/<name>/` if you want
-  Windsurf-exclusive behaviour. Do **not** downconvert to `.windsurf/rules/` or
+  Windsurf-exclusive behavior. Do **not** downconvert to `.windsurf/rules/` or
   `.windsurf/workflows/` — those cap at 12,000 chars and workflows never auto-activate.
 - **Triggerfish** — *additive frontmatter transformation + real-copy install.* Copy the
   **real directory** (not a symlink — symlinks are skipped) to
@@ -796,7 +796,7 @@ All accessed **2026-07-31**.
 |---|---|---|---|
 | S1 | https://agentskills.io/home.md | 2026-07-31 | Open standard overview; origin at Anthropic; progressive disclosure; 40+ conforming clients incl. all four targets; GitHub/Discord governance |
 | S2 | https://agentskills.io/specification | 2026-07-31 | **Canonical spec**: full frontmatter table, name/description constraints, `license`/`compatibility`/`metadata`/`allowed-tools`, directory layout, progressive disclosure, file references, `skills-ref` validator |
-| S3 | https://code.claude.com/docs/en/skills | 2026-07-31 | Claude Code: install paths & precedence, nested/`--add-dir`/symlink/live-reload behaviour, **full 18-field frontmatter reference**, string substitutions, command naming, Cowork/cloud limits, share/distribution, `skillOverrides`, compaction budgets |
+| S3 | https://code.claude.com/docs/en/skills | 2026-07-31 | Claude Code: install paths & precedence, nested/`--add-dir`/symlink/live-reload behavior, **full 18-field frontmatter reference**, string substitutions, command naming, Cowork/cloud limits, share/distribution, `skillOverrides`, compaction budgets |
 | S4 | https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview | 2026-07-31 | Claude platform: required fields, name reserved words ("anthropic"/"claude"), 1024-char description, claude.ai **zip** upload via Settings > Features, `/v1/skills` API, absence of a `.skill` format |
 | S5 | https://developers.openai.com/codex/skills/ | 2026-07-31 | **Codex**: `.agents/skills` search paths & precedence, symlink following, duplicate handling, required frontmatter, `agents/openai.yaml` schema, implicit/explicit invocation |
 | S6 | https://docs.windsurf.com/windsurf/cascade/skills | 2026-07-31 | **Windsurf Skills**: `.windsurf/skills/`, `~/.codeium/windsurf/skills/`, enterprise system paths, **cross-agent paths `.agents/skills/` + `.claude/skills/`**, frontmatter, activation, open-standard conformance |

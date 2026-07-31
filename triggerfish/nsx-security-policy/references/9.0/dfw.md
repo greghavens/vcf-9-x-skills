@@ -330,7 +330,7 @@ HTTP response"* on session expiry was read on the **9.1**-pinned admin-guide pag
 documents the timeout and the cookie mechanics but **does not** contain that sentence. So for 9.0 this is
 **[9.1-ONLY — NOT VERIFIED FOR 9.0]** as a documented statement.
 
-**Handle it anyway.** The behaviour is a property of the shared NSX reverse-proxy session layer and the
+**Handle it anyway.** The behavior is a property of the shared NSX reverse-proxy session layer and the
 underlying flow is identical in both versions. A client that only re-authenticates on 401 will spin
 forever if 9.0 behaves the same way, and treating 403 as a re-auth trigger is harmless if it does not.
 **Re-authenticate on 403, retry once; a second 403 means authorization (P3), not expiry.**

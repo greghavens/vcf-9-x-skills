@@ -321,7 +321,7 @@ incomplete:
 |---|---|---|---|
 | **vSphere Automation** | `https://{host}/api` | `9.0__vsphere-automation.ops.json`, 1,275 ops **[SPEC-A]** | `/content/*` (72), `/cis/tagging/*` (30), `/vcenter/tagging/*` (3), `/vcenter/storage/policies*` (5), `/vcenter/vm/{vm}/storage/policy*` (4), `/vcenter/vm-template/library-items/*` (12), `/vcenter/ovf/*` (6) |
 | **VI-JSON (PBM)** | `https://{vcenter-host}/sdk/vim25/{release}` | `9.0__vsphere-vi-json.ops.json`, 2,195 ops, security scheme `Session` = header `vmware-api-session-id` **[SPEC-V]** | `/pbm/*` (33, of which 5 deprecated) — the **only** place a storage policy can be created, updated or deleted |
-| Legacy REST | `https://{host}/rest` | **[DOC]** — deprecated, operations up to vSphere 7.0.2 only | Recognise it in inherited scripts; do not write new work against it |
+| Legacy REST | `https://{host}/rest` | **[DOC]** — deprecated, operations up to vSphere 7.0.2 only | Recognize it in inherited scripts; do not write new work against it |
 
 **Nothing in this scope has a `?vmw-task=true` variant.** Zero of the 72 `/content`
 operations, zero of the 30 `/cis/tagging` operations and zero of the storage-policy
@@ -991,7 +991,7 @@ stay here.
 - **Whether `Content.Library_migrate` reports progress or completion anywhere reachable.** The
   description narrates three phases and a `MAINTENANCE` transition; the operation's response
   shape and any polling route were not established.
-- **Behaviour of `Cis.Tagging.Category_delete` on a category with attached tags.** The
+- **Behavior of `Cis.Tagging.Category_delete` on a category with attached tags.** The
   operation exists and is destructive; the spec does not state whether it cascades to tags and
   associations or refuses.
 - **Any cap or pagination on the `/cis/tagging` list operations.** Unlike the inventory lists

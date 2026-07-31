@@ -401,7 +401,7 @@ the discovery route below.
    endpoint specifications, reference documentation is available at `developer.broadcom.com/xapis/`
    for each category" [DVCFA `[S31]`].
 4. **Kubernetes-native discovery** — All Apps only: `kubectl --context cci api-resources`
-   [DVCFA `[S32]`]. Listed here so you recognise it as the *other* skill's route.
+   [DVCFA `[S32]`]. Listed here so you recognize it as the *other* skill's route.
 5. **`vcf-api-discovery`** for anything outside VCF Automation.
 
 ## Terraform and IaC in 9.1

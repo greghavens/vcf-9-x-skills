@@ -196,7 +196,7 @@ component FQDNs listed above.
 **How to verify:** `GET /v1/system/appliance-info` reports the Installer's own `ntpServers` in 9.1;
 `POST /v1/sddcs/validations` covers the target estate.
 
-> **UNVERIFIED.** Required server count, skew tolerance, and behaviour when `ntpServers` is omitted
+> **UNVERIFIED.** Required server count, skew tolerance, and behavior when `ntpServers` is omitted
 > are **not documented in any retrieved source**.
 
 **9.0 difference:** same field; 9.0's `ApplianceInfo` cannot report NTP.
@@ -328,14 +328,14 @@ Download Tool remains a 9.1 BOM row [D9.1 §2].
   a search of every schema property in `RAW9.0` for `licen*` returns **zero hits**; in `RAW9.1` it
   returns exactly one, `SddcSpec.licenseServerSpec`. Schema: `hostname` **required**, plus
   `useExistingDeployment`, `version`, `sslThumbprint`.
-- Licence *assignment* is still out of band: primary licence to a **vCenter instance**, connected
+- License *assignment* is still out of band: primary license to a **vCenter instance**, connected
   assets including ESX hosts licensed automatically [D9.0 §5.3], managed through VCF Operations and
   the VCF Business Services console.
 
 **How to verify:** populate `licenseServerSpec` (or set `useExistingDeployment` with an
 `sslThumbprint` if one already exists) and let `validateSddcSpec` check it.
 
-**9.0 difference:** no licence field at all in the 9.0 `SddcSpec`; licensing is entirely post-
+**9.0 difference:** no license field at all in the 9.0 `SddcSpec`; licensing is entirely post-
 deployment. See `../9.0/bringup.md` P7.
 
 ### P8 — Convergence gates (importing existing infrastructure) `[9.1]`
@@ -644,7 +644,7 @@ check: `description`, `severity`, `resultStatus`, `acknowledge`, `errorResponse`
   releases are explicitly outside the Installer's workflows [D9.0 §4.2].
 - **vCLS management.** *"All vCLS functionalities available in SDDC Manager UI and VCF Installer UI
   are removed"* in 9.1 [D9.1 §4].
-- **Licence assignment.** You now deploy a License server (P7); assignment still happens in VCF
+- **License assignment.** You now deploy a License server (P7); assignment still happens in VCF
   Operations / VCF Business Services.
 - **Anything after the mode switch.** Once the appliance flips to SDDC Manager mode it "can no
   longer be used in installer mode" [D9.0 §3.2] — you are then on the SDDC Manager API.

@@ -269,7 +269,7 @@ correspondingly; both `integer`, both optional. Bucket granularity comes from `r
 (`HOURS | MINUTES | SECONDS | DAYS | WEEKS | MONTHS | YEARS`) and `intervalQuantifier`.
 
 > **UNVERIFIED.** Neither `SPEC9.1`, `RAW9.1` nor `DOPS` states the default retention period,
-> the roll-up tiering, or the behaviour when `begin` predates retention. Do not quote a
+> the roll-up tiering, or the behavior when `begin` predates retention. Do not quote a
 > retention figure. Check the deployment's policy settings, or start narrow and widen.
 
 One call that isolates the problem: `GET /api/resources/{id}/stats/latest` (`getLatestStats`,
@@ -487,7 +487,7 @@ The embedded `resource-query` is the useful part: "all critical alerts on VMs in
 whose CPU demand exceeded X" is one call, not two.
 
 > **Destructive.** `DELETE /api/alerts/bulk` (`deleteCanceledAlerts`) permanently removes
-> cancelled alert records. It is housekeeping, not a way to dismiss active alerts.
+> canceled alert records. It is housekeeping, not a way to dismiss active alerts.
 
 ### Alert plugins and notification rules
 
@@ -803,7 +803,7 @@ Returns **201**.
 `WhatIfScenarioDetailedServerConfigs`. Call this first: `serverDetail.serverConfig` on a scenario
 has to come from somewhere.
 
-The `SAVED` vs `COMMITTED` status distinction is why this is not purely a modelling toy — a
+The `SAVED` vs `COMMITTED` status distinction is why this is not purely a modeling toy — a
 committed scenario is a capacity decision of record. `runScenario` itself computes; the spec
 exposes no separate "commit" operation, so how a scenario becomes `COMMITTED` is
 **UNVERIFIED** here.

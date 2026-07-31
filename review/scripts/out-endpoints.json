@@ -1402,7 +1402,7 @@
    "method": "ANY",
    "path": "/rest",
    "claimed_ver": "9.0",
-   "ctx": "| Legacy REST | `https://{host}/rest` | **[DOC]** \u2014 deprecated, operations up to vSphere 7.0.2 only | Recognise it in inherited scripts; do not write new work against it |"
+   "ctx": "| Legacy REST | `https://{host}/rest` | **[DOC]** \u2014 deprecated, operations up to vSphere 7.0.2 only | Recognize it in inherited scripts; do not write new work against it |"
   },
   {
    "skill": "vsphere-content-tags-policies",
@@ -1609,7 +1609,7 @@
    "method": "ANY",
    "path": "/rest",
    "claimed_ver": "9.1",
-   "ctx": "| Legacy REST | `https://{host}/rest` | **[DOC]** \u2014 deprecated, operations up to vSphere 7.0.2 only | Recognise it in inherited scripts; do not write new work against it |"
+   "ctx": "| Legacy REST | `https://{host}/rest` | **[DOC]** \u2014 deprecated, operations up to vSphere 7.0.2 only | Recognize it in inherited scripts; do not write new work against it |"
   },
   {
    "skill": "vsphere-content-tags-policies",

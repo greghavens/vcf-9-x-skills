@@ -1,12 +1,12 @@
 # `VCF.PowerCLI` 9.0.0 → 9.1.0 — what changed
 
-Organised by **module version**, because that is the dimension that decides which cmdlets exist
+Organized by **module version**, because that is the dimension that decides which cmdlets exist
 `[TL-preamble]`. `{PCLI 9.0.0}` = `9.0.0.24798382` (2025-06-17); `{PCLI 9.1.0}` = `9.1.0.25380678`
 (2026-05-12) `[DOC]` `[TL-S05]` `[TL-S06]` `[TL-S07]`. These pair with VCF 9.0 and 9.1 respectively,
 but **the pairing is inference, not a documented binding** — see `module-map.md` §1.
 
 **Evidence tags.** `[DOC]` = traced to a fetched reference page. `[UNVERIFIED]` = not confirmed —
-never present as established. `[INFERRED]` = deduction from two `[DOC]` facts, labelled as such.
+never present as established. `[INFERRED]` = deduction from two `[DOC]` facts, labeled as such.
 
 ---
 
@@ -42,7 +42,7 @@ Get-Module -ListAvailable VMware.PowerCLI.VCenter    # present standalone, or no
 One further reason for care: **a first-pass narrative summary of the 9.1 Gallery page asserted "no
 module additions or removals"** while the page's own rendered table showed otherwise. Both deltas
 were only established by pointed yes/no interrogation `[TL-gap2]`. Treat any prose summary of a
-dependency list as unreliable, including this one — the Gallery page is the artefact.
+dependency list as unreliable, including this one — the Gallery page is the artifact.
 
 ---
 
@@ -112,7 +112,7 @@ Token acquisition itself — where the API token comes from, its lifetime, which
 ## 3. Capability areas added in `{PCLI 9.1.0}` — with no cmdlet names
 
 The 9.1 What's New page describes these areas; **no fetched source names the cmdlets** `[DOC]`
-`[TL-S08]`. This section exists so you recognise the capability and then go look up the real name —
+`[TL-S08]`. This section exists so you recognize the capability and then go look up the real name —
 **not so you can construct one.**
 
 - NVMe-over-TCP support for VMkernel adapters
@@ -146,7 +146,7 @@ Ordered by how often each actually bites.
 | 5 | Does it use Python 3.7/3.8 with `VMware.ImageBuilder`? | Deprecated in 9.1 `[DOC]` `[TL-S08]` |
 | 6 | Does it assume `Warn`/`Prompt` cert actions on Linux/macOS? | Only `Fail` and `Ignore` are supported there — **unchanged in both versions**, but a standing bug `[DOC]` `[TL-S21]` |
 | 7 | Does it use cmdlets that only exist in one version? | `Get-SddcTask`, `Remove-Sddc*`, `Get-VsanEffectiveCapacity` are 9.1-only `[DOC]` `[TL-S08]` |
-| 8 | Does it depend on a `.Core`, `.Storage`, `.Vpc` or `.ImageBuilder` cmdlet's exact behaviour? | 14 cmdlets across those modules were "updated" in 9.1, **unnamed and undescribed** `[DOC]` `[TL-S09]` — test, do not reason |
+| 8 | Does it depend on a `.Core`, `.Storage`, `.Vpc` or `.ImageBuilder` cmdlet's exact behavior? | 14 cmdlets across those modules were "updated" in 9.1, **unnamed and undescribed** `[DOC]` `[TL-S09]` — test, do not reason |
 
 Row 8 is the one with no documentary route at all. The changelog says 8 `.Core` cmdlets changed and
 names none of them `[TL-S09]`. There is no way to know which from documentation. **Test the script.**
@@ -159,7 +159,7 @@ names none of them `[TL-S09]`. There is no way to know which from documentation.
 |---|---|
 | What happened to `VMware.PowerCLI.VCenter`'s cmdlets | **Unresolved** `[TL-gap1]` — §0 |
 | Names of the 41 new counted-only cmdlets | Not published `[TL-S09]` — `Get-Command -Module` |
-| Names/behaviour of the 14 updated cmdlets | Not published `[TL-S09]` |
+| Names/behavior of the 14 updated cmdlets | Not published `[TL-S09]` |
 | Which cmdlets expose `VcfApiToken` / `VcfOAuthSecurityContext` | Sources conflict `[TL-S08]` `[FA-S48]` — §2 |
 | The single `VMware.Vcf.Sso` cmdlet's name | Not published `[TL-S09]` — `Get-Command -Module VMware.Vcf.Sso` |
 | Whether a PowerCLI 9.2 / VCF 9.2 exists | Only two versions in the Gallery history as of 2026-07-31 `[DOC]` `[TL-S06]` |

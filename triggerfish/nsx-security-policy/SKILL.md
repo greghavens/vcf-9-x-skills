@@ -70,12 +70,12 @@ in all three 9.1 NSX specs. Both the returned `JSESSIONID` cookie **and** the
 `X-XSRF-TOKEN` header must be sent on every subsequent call. Sending only the cookie is
 the most common mistake, and it fails in a way that reads like a permissions problem.
 
-Two behaviours worth knowing before you debug anything. Note their evidence differs by
+Two behaviors worth knowing before you debug anything. Note their evidence differs by
 version — the version reference files carry the grading:
 
 - **Session expiry surfaces as HTTP 403, not 401** *(documented verbatim in the 9.1 docs;
   not separately verified for 9.0)*. An expired session looks exactly like an
-  authorisation failure, so people go chase roles that were fine all along.
+  authorization failure, so people go chase roles that were fine all along.
 - **The session cookie is bound to a single manager node** *(documented verbatim in the
   9.0 docs)*. Behind a load balancer, a session that works on one call fails on the next
   with no obvious pattern.
@@ -164,7 +164,7 @@ firewall or starts an upgrade, say more — that is where the warning earns its 
 Uniform hedging on everything trains the reader to skip all of it, including the one that
 mattered.
 
-### Version labelling stays, and stays short
+### Version labeling stays, and stays short
 
 Say which version the answer applies to. Once, clearly, near the top. You do not need to
 re-tag every line — the tags in the reference files are for you, not for the reply.

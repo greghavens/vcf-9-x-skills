@@ -262,6 +262,6 @@ declares required binaries.
 
 ---
 
-## Licence
+## License
 
 MIT-0.

@@ -821,7 +821,7 @@ curl -sS -X PATCH "${AUTH[@]}" \
 `enabled` has a default of `true` and is the intended disable switch **[SPEC]**. Prefer this to
 `DELETE /…/nat-rules/{nat-rule-id}` **[SPEC — `DeletePolicyNatRule`]** during a change window:
 it is reversible in one call and leaves the object for post-incident inspection. Note that this
-relies on partial-patch behaviour (P9) — if partial patch is not enabled on the appliance, read
+relies on partial-patch behavior (P9) — if partial patch is not enabled on the appliance, read
 the rule, set `enabled: false` in the full body, and `PATCH` that.
 
 ### Failure decode for this sequence

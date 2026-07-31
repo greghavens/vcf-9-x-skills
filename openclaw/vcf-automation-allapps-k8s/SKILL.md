@@ -1,6 +1,6 @@
 ---
 name: vcf-automation-allapps-k8s
-description: Work with VCF Automation "All Apps" organisations in VCF 9.0 and 9.1 — the Kubernetes/VCD-derived consumption surface — plus provider and organisation administration. Covers CRDs under infrastructure.cci.vmware.com, the cci kubectl context, supervisor namespaces, projects, regions and quotas, and the provider REST conventions (URN ids, versioned media types, 202 plus Location). Use it when someone is creating or consuming supervisor namespaces with kubectl, asking which CCI CRD versions are served, or asking about 9.1 provider and org changes such as external IP blocks, vDefend delegation, self-service Avi, or multi-supervisor quota. Do not use it for blueprints, catalog items, deployments or cloud accounts — that is the VM Apps org type, a completely different API, covered by vcf-automation-vmapps. Do not use it for VKS cluster lifecycle, ClusterClass or Kubernetes releases — that is vks-supervisor. This product has no published OpenAPI spec, so the live cluster is the authority.
+description: Work with VCF Automation "All Apps" organizations in VCF 9.0 and 9.1 — the Kubernetes/VCD-derived consumption surface — plus provider and organization administration. Covers CRDs under infrastructure.cci.vmware.com, the cci kubectl context, supervisor namespaces, projects, regions and quotas, and the provider REST conventions (URN ids, versioned media types, 202 plus Location). Use it when someone is creating or consuming supervisor namespaces with kubectl, asking which CCI CRD versions are served, or asking about 9.1 provider and org changes such as external IP blocks, vDefend delegation, self-service Avi, or multi-supervisor quota. Do not use it for blueprints, catalog items, deployments or cloud accounts — that is the VM Apps org type, a completely different API, covered by vcf-automation-vmapps. Do not use it for VKS cluster lifecycle, ClusterClass or Kubernetes releases — that is vks-supervisor. This product has no published OpenAPI spec, so the live cluster is the authority.
 compatibility: Live discovery needs kubectl plus the VCF CLI and reachability to the VCF Automation endpoint. Reference material works offline, but is weaker evidence than the sibling skills — see below.
 metadata:
   {
@@ -34,7 +34,7 @@ metadata:
   }
 ---
 
-# VCF Automation — All Apps organisations (Kubernetes surface)
+# VCF Automation — All Apps organizations (Kubernetes surface)
 
 This is the org type that is driven by Kubernetes custom resources rather than by
 blueprints. If someone is talking about `kubectl`, supervisor namespaces, projects and
@@ -89,11 +89,11 @@ doc set and was not retrieved for 9.0. Do not fill the 9.0 gap with 9.1 content.
 Each version file opens with a prerequisite block, and here it does more work than usual
 because the failure modes are structural rather than syntactic. Four in particular:
 
-- **Which organisation type you are in.** All Apps and VM Apps are different APIs. A
+- **Which organization type you are in.** All Apps and VM Apps are different APIs. A
   request built for one returns nothing useful against the other, and the error will not
   say "wrong org type."
 - **The supervisor namespace exists and is assigned** to the project you work in.
-- **A region and a quota have been allocated** to the organisation — without them a
+- **A region and a quota have been allocated** to the organization — without them a
   namespace creation has nowhere to land.
 - **The `cci` kubectl context is established.** This is the login step, and in VCF 9.x it
   is not `kubectl vsphere login` — see the version files.
@@ -200,7 +200,7 @@ firewall or starts an upgrade, say more — that is where the warning earns its 
 Uniform hedging on everything trains the reader to skip all of it, including the one that
 mattered.
 
-### Version labelling stays, and stays short
+### Version labeling stays, and stays short
 
 Say which version the answer applies to. Once, clearly, near the top. You do not need to
 re-tag every line — the tags in the reference files are for you, not for the reply.

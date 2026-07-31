@@ -1,6 +1,6 @@
 # VCF Automation All Apps — 9.0 → 9.1 delta
 
-Scoped to the All Apps organisation type: the Kubernetes/CCI surface, and provider and organisation
+Scoped to the All Apps organization type: the Kubernetes/CCI surface, and provider and organization
 administration. For the VM Apps org type (blueprints, catalog, deployments) see
 `vcf-automation-vmapps`.
 
@@ -35,10 +35,10 @@ Two consequences worth passing to a user planning an upgrade:
 | # | Area | 9.0 | 9.1 | Type | Evidence |
 |---|---|---|---|---|---|
 | 1 | **External IP blocks** | Feature vocabulary is **"IP spaces"**. | **"IP spaces" renamed to "external IP blocks"**, with support for multiple CIDRs, custom IP ranges, and **Infoblox External IPAM** integration. | **Rename + new capability** | `[DOC-9.1]` (DAUTO `[S09]`) |
-| 2 | **vDefend firewall** | Not delegable through VCF Automation. | **vDefend Distributed Firewall and Gateway Firewall support directly within VCF Automation**, enabling delegation of firewall services to organisations with RBAC and predefined security profiles. | **New capability** | `[DOC-9.1]` (DAUTO `[S09]`) |
-| 3 | **Avi Load Balancer** | Not self-service through VCF Automation. | **"Full self-service support for Avi Load Balancer"** with quota management, for **both All Apps and VM Apps** organisations. | **New capability** | `[DOC-9.1]` (DAUTO `[S09]`) |
-| 4 | **Transit Gateways** | Single/unstated. | **Multiple NSX Transit Gateways** with NAT, IPsec VPN and vDefend Gateway Firewall support. Providers also configure **default private VPC and private Transit Gateway IP blocks**, overridable per organisation. | **New capability** | `[DOC-9.1]` (DAUTO `[S09]`) |
-| 5 | **Shared subnets** | — | **Shared NSX subnets** org-wide, shareable across multiple namespaces; **shared VLAN extension subnets** shareable across multiple organisations for direct device connectivity; **multiple external connections** (centralised + distributed VLAN) for external traffic exits. | **New capability** | `[DOC-9.1]` (DAUTO `[S09]`) |
+| 2 | **vDefend firewall** | Not delegable through VCF Automation. | **vDefend Distributed Firewall and Gateway Firewall support directly within VCF Automation**, enabling delegation of firewall services to organizations with RBAC and predefined security profiles. | **New capability** | `[DOC-9.1]` (DAUTO `[S09]`) |
+| 3 | **Avi Load Balancer** | Not self-service through VCF Automation. | **"Full self-service support for Avi Load Balancer"** with quota management, for **both All Apps and VM Apps** organizations. | **New capability** | `[DOC-9.1]` (DAUTO `[S09]`) |
+| 4 | **Transit Gateways** | Single/unstated. | **Multiple NSX Transit Gateways** with NAT, IPsec VPN and vDefend Gateway Firewall support. Providers also configure **default private VPC and private Transit Gateway IP blocks**, overridable per organization. | **New capability** | `[DOC-9.1]` (DAUTO `[S09]`) |
+| 5 | **Shared subnets** | — | **Shared NSX subnets** org-wide, shareable across multiple namespaces; **shared VLAN extension subnets** shareable across multiple organizations for direct device connectivity; **multiple external connections** (centralised + distributed VLAN) for external traffic exits. | **New capability** | `[DOC-9.1]` (DAUTO `[S09]`) |
 | 6 | **Region quota** | Region quotas exist as a provider-managed resource. | **Multi-supervisor region quota** — "Grant organizations quota across multiple supervisors in any given region," with capacity sharing options. | **New capability** | 9.0: `[DOC-9.0]` (DAUTO `[S26]`) · 9.1: `[DOC-9.1]` (DAUTO `[S09]`) |
 | 7 | **Content libraries** | Content libraries exist as provider- and Kubernetes-layer resources. | **Project content libraries** (dedicated to a project, spanning multiple projects) and **canonical content libraries** (subscribed, providing validated Ubuntu LTS images). | **New capability** | 9.0: `[DOC-9.0]` (DAUTO `[S26]`) · 9.1: `[DOC-9.1]` (DAUTO `[S09]`) |
 | 8 | **Namespace day-2** | — | **Namespace allocation changes as day-2 operations**: modify resource limits, VM classes, storage classes and shared subnets after creation. | **New capability** | `[DOC-9.1]` (DAUTO `[S09]`) |
@@ -65,13 +65,13 @@ Same list, same descriptions, both versions `[DOC-9.0]` (DAUTO `[S33]`) and `[DO
 `[S31]`). The 9.0 page additionally names the exclusions — ABX, Deployment, Deployment Metrics,
 Identity and Onboarding are VM-Apps-only.
 
-**This row exists because a false delta was caught here.** A summarisation pass over the 9.1 page
+**This row exists because a false delta was caught here.** A summarization pass over the 9.1 page
 annotated **"Custom Resource Types & Actions"** and **"Instances"** as *new in VCF 9.1*. Diffing
 against the 9.0 page showed both were already listed there, with the same descriptions, and the
 annotation was discarded as an artifact (DAUTO `[S31]` vs `[S33]`).
 
 Two things follow. First, if anyone tells you those two categories are new in 9.1, they are wrong,
-and the 9.0 page is the disproof. Second — the general lesson — **a summariser's "new in X" is a
+and the 9.0 page is the disproof. Second — the general lesson — **a summarizer's "new in X" is a
 claim about a document, not about a product**, and the only way to turn it into a claim about the
 product is to read the other version's page. A verified no-change is worth as much to someone
 planning an upgrade as a verified change, and it costs the same diff to establish.
@@ -93,7 +93,7 @@ planning an upgrade as a verified change, and it costs the same diff to establis
   wording changed (row 12).
 - **UI surfaces.** `https://<FQDN>/provider` and `https://<FQDN>/automation`, unchanged
   `[DOC-BOTH]` (DAUTO `[S07]` `[S29]`).
-- **Two organisation types**, All Apps and VM Apps, with different consumption mechanisms
+- **Two organization types**, All Apps and VM Apps, with different consumption mechanisms
   `[DOC-BOTH]` (DAUTO `[S06]`).
 - **`vcf context create` syntax** — identical text in both doc sets, and `kubectl vsphere login`
   appears in neither `[DOC-BOTH]` (DTOOL).

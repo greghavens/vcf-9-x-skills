@@ -187,8 +187,8 @@ after which management operations become restricted and **hosts disconnect from 
 `GET /v1/resources/license-checks/{id}` (**spec-confirmed (9.0)**), plus the VCF Operations
 licensing view.
 
-**9.1 difference:** licences move **out of VCF Operations into a new, required License server**
-component [D9.1 §6]. A licence-transfer step exists in the 9.0→9.1 upgrade sequence.
+**9.1 difference:** licenses move **out of VCF Operations into a new, required License server**
+component [D9.1 §6]. A license-transfer step exists in the 9.0→9.1 upgrade sequence.
 
 ### P8 — Caller role and privilege for lifecycle write operations `[9.0]` — UNVERIFIED
 

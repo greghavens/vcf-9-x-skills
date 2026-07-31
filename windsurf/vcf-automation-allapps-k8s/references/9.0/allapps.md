@@ -1,4 +1,4 @@
-# VCF Automation — All Apps organisations, VCF 9.0
+# VCF Automation — All Apps organizations, VCF 9.0
 
 **Applies to:** VCF Automation as shipped in VMware Cloud Foundation **9.0**.
 **Do not apply this file to 9.1.** Use `../9.1/allapps.md`, and `../deltas.md` for the change list.
@@ -20,7 +20,7 @@ is not one of them. Nothing in this file is spec-confirmed, because there is no 
 **2. The 9.0 documentation for the All Apps Kubernetes surface was not retrieved.** The page that
 enumerates the CCI CRDs, the `cci` kubectl context, the `SupervisorNamespace` manifest and the
 role/verb matrix is a **9.1** page (DAUTO `[S32]`). No 9.0 counterpart was fetched. What the 9.0 doc
-set *does* establish is that the All Apps organisation exists and is the Kubernetes/VCD-derived
+set *does* establish is that the All Apps organization exists and is the Kubernetes/VCD-derived
 surface driven by CRDs and supervisor namespaces `[DOC-9.0]` (DAUTO `[S06]` `[S07]`) — the org type
 is confirmed; its CRD inventory is not.
 
@@ -45,9 +45,9 @@ paths at all.
 ## Contents
 
 - [Prerequisites](#prerequisites) — **read before any CRD or call**
-  - [P1 — you are in an All Apps organisation, not a VM Apps organisation](#p1--you-are-in-an-all-apps-organisation-not-a-vm-apps-organisation)
+  - [P1 — you are in an All Apps organization, not a VM Apps organization](#p1--you-are-in-an-all-apps-organization-not-a-vm-apps-organization)
   - [P2 — a kubectl context to the All Apps surface is established](#p2--a-kubectl-context-to-the-all-apps-surface-is-established)
-  - [P3 — a region is available to the organisation](#p3--a-region-is-available-to-the-organisation)
+  - [P3 — a region is available to the organization](#p3--a-region-is-available-to-the-organization)
   - [P4 — region quota is allocated](#p4--region-quota-is-allocated)
   - [P5 — the project exists and the supervisor namespace is assigned to it](#p5--the-project-exists-and-the-supervisor-namespace-is-assigned-to-it)
   - [P6 — auth: the provider token flow, and the gap](#p6--auth-the-provider-token-flow-and-the-gap)
@@ -65,10 +65,10 @@ paths at all.
 
 Each states what must be true, **how to verify it**, and whether 9.1 differs.
 
-### P1 — you are in an All Apps organisation, not a VM Apps organisation
+### P1 — you are in an All Apps organization, not a VM Apps organization
 
-**Must be true:** the organisation is an **All Apps** organisation. VCF Automation 9.0 has two
-organisation types, "with different consumption mechanisms" `[DOC-9.0]` (DAUTO `[S06]`):
+**Must be true:** the organization is an **All Apps** organization. VCF Automation 9.0 has two
+organization types, "with different consumption mechanisms" `[DOC-9.0]` (DAUTO `[S06]`):
 
 - **All Apps** — the Kubernetes/VCD-derived surface, driven by CRDs and supervisor namespaces
   `[DOC-9.0]` (DAUTO `[S06]` `[S07]`).
@@ -142,9 +142,9 @@ cluster serves a different group. Investigate before proceeding; do not assume t
 `[S34]` / `[S06]`), and 9.1 adds the documented API-token login form. The `vcf context create`
 syntax is otherwise identical across versions `[DOC-BOTH]` (DTOOL).
 
-### P3 — a region is available to the organisation
+### P3 — a region is available to the organization
 
-**Must be true:** a region exists and the organisation can consume it. Regions are provider-managed
+**Must be true:** a region exists and the organization can consume it. Regions are provider-managed
 in 9.0: the Terraform Provider for VCF Automation manages "organizations, regions, region quotas,
 networking, content libraries, supervisor namespaces" for the Provider Management Portal
 `[DOC-9.0]` (DAUTO `[S26]`). A supervisor namespace is created against a region.
@@ -163,7 +163,7 @@ resource list; the CRD shape is not.
 
 ### P4 — region quota is allocated
 
-**Must be true:** the organisation holds quota in the target region. **Region quotas** are named as
+**Must be true:** the organization holds quota in the target region. **Region quotas** are named as
 a provider-managed Terraform resource in 9.0 `[DOC-9.0]` (DAUTO `[S26]`).
 
 **How to verify:** Provider Management Portal, or `kubectl get` against whatever quota kinds
@@ -339,7 +339,7 @@ Identity, and Onboarding (available only in VCF Automation for VM Apps)" `[DOC-9
 **The 9.1 page lists the same 13 with the same descriptions — a verified no-change** `[DOC-9.1]`
 (DAUTO `[S31]`). Two of them, "Custom Resource Types & Actions" and "Instances", were at one point
 flagged as *new in 9.1*; the 9.0 page above already lists both, and the claim was discarded as a
-summarisation artifact. If you meet that claim, correct it.
+summarization artifact. If you meet that claim, correct it.
 
 > `[UNVERIFIED]` — **count discrepancy between research dossiers.** The auth dossier's source
 > inventory describes this same 9.0 page as listing "10 All Apps API categories" (DAUTH `[S62]`),
@@ -384,7 +384,7 @@ even in this 9.0 file. Two practical consequences:
 |---|---|
 | **Terraform Provider for VCF Automation** | CRUD for Provider Management Portal and Organization Portal resources. On GitHub and the HashiCorp registry. Resources: **organizations, regions, region quotas, networking, content libraries, supervisor namespaces**. A "greenfield" folder holds provider and tenant configuration samples. |
 | **Terraform Provider for Kubernetes** | CRUD against Organization Portal resources **through the Kubernetes API**. Resources: **projects, content libraries, virtual private clouds, subnets**. |
-| **Terraform Provider for VMware Aria Automation** | VM Apps organisations and resources not exposed through the Kubernetes API. Resources: **blueprints, catalogs**. |
+| **Terraform Provider for VMware Aria Automation** | VM Apps organizations and resources not exposed through the Kubernetes API. Resources: **blueprints, catalogs**. |
 
 Usage examples: `https://<FQDN>/automation/api-docs/#/terraform-provider` `[DOC-BOTH]` (DAUTO
 `[S26]` `[S27]`).

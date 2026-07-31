@@ -572,7 +572,7 @@ From `SecurityPolicy` **[SPEC]**:
 categories for classifying a security policy. They are "Ethernet","Emergency", "Infrastructure"
 "Environment" and "Application". There is a pre-determined order in which the policy framework manages
 the priority of these security policies. Ethernet category is for supporting layer 2 firewall rules.
-The other four categories are applicable for layer 3 rules. Amongst them, the Emergency category has
+The other four categories are applicable for layer 3 rules. Among them, the Emergency category has
 the highest priority followed by Infrastructure, Environment and then Application rules. … If empty it
 will have the least precedence w.r.t the above four categories."*
 

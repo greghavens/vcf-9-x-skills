@@ -20,7 +20,7 @@ Everything below is machine-driven. Three scripts live in
 | `check_pairs.py` | every `(METHOD-list, path, operationId-list)` triple cited on one line → do the verbs and the operationIds line up with the spec, at the claimed version? |
 | `check_dep.py` | every line asserting (or denying) `deprecated` next to a known operationId → does the spec agree, at the claimed version? |
 
-### Normalisation rules (these are what stop the check from drowning in false positives)
+### Normalization rules (these are what stop the check from drowning in false positives)
 
 1. **Base-path stripping.** A claim is compared against the spec both verbatim and with any of
    `/policy/api/v1`, `/global-manager/api/v1`, `/suite-api/api`, `/suite-api`, `/api/ni`,

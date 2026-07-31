@@ -5,7 +5,7 @@
 > This runbook upgrades an entire VMware Cloud Foundation instance. It takes vCenter, NSX, ESX
 > hosts and the management appliances through service-affecting operations, permanently changes
 > the management architecture (VCF Management Services is **mandatory and not reversible by
-> simply skipping it**), moves licence storage into a new required License server, and **breaks
+> simply skipping it**), moves license storage into a new required License server, and **breaks
 > every existing OAuth client** on the vIDM → identity broker migration.
 >
 > **Nothing here may be executed on the strength of this document alone.** Every step must be
@@ -142,8 +142,8 @@ throughout Phase 1.
 
 ### 0.7 Confirm licensing readiness `[GATE]`
 
-A centralised **VCF License Server is a required component** in 9.1 [D9.1 §5.2] and licences move
-out of VCF Operations into it [D9.1 §3.5]. Plan for the licence-transfer step (2.3).
+A centralised **VCF License Server is a required component** in 9.1 [D9.1 §5.2] and licenses move
+out of VCF Operations into it [D9.1 §3.5]. Plan for the license-transfer step (2.3).
 **Verify:** `POST /v1/resources/license-checks` → `GET /v1/resources/license-checks/{id}`
 (**spec-confirmed both versions**).
 
@@ -169,7 +169,7 @@ guidance. SDDC Manager exposes `POST /v1/backups/tasks`, `POST /v1/restores/task
 Four problems are documented when incorrect upgrade paths are followed [D9.1 §5.5]:
 1. upgrade binaries not appearing in VCF Operations 9.0;
 2. vCenter licensing failures post-upgrade;
-3. licence assignment failures;
+3. license assignment failures;
 4. ESXi host upgrade sync errors during the VCF Operations upgrade.
 
 Every one of these is a symptom of sequence deviation. That is why the ordering below is not
@@ -286,10 +286,10 @@ here means the auth gap, not a failed deployment: `GET /fleet-lcm/v1/health` and
 `GET /fleet-lcm/v1/components/resource-sizes` (**spec-confirmed 9.1**), or from SDDC Manager with
 `POST /v1/vcf-management-components/resources-calculation` (**spec-confirmed 9.1**, new).
 
-### 2.2 (order 6) Transfer licences
-Performed from **VCF Operations**. Licences move out of VCF Operations into the License server
+### 2.2 (order 6) Transfer licenses
+Performed from **VCF Operations**. Licenses move out of VCF Operations into the License server
 [D9.1 §3.5, §6]. Doing this out of order is implicated in two of the four documented failure modes
-(vCenter licensing failures, licence assignment failures) [D9.1 §5.5].
+(vCenter licensing failures, license assignment failures) [D9.1 §5.5].
 **Verify:** `POST /v1/resources/license-checks` → `GET /v1/resources/license-checks/{id}`
 (**spec-confirmed 9.1**).
 
@@ -376,11 +376,11 @@ cross-component order table above.
 Note also that the entire SDDC Manager `/v1/edge-clusters` API family is **deprecated in 9.1**
 (spec-confirmed, part of the 21) — do not build new Edge automation on it.
 
-### 3.3 Cluster and host upgrade behaviour available in 9.1
+### 3.3 Cluster and host upgrade behavior available in 9.1
 
 New capabilities you can use during this phase [D9.1 §3.5]: select **specific hosts** during
 cluster upgrades (skip problematic hosts); imported standalone hosts and single-host clusters are
-supported; optimised NSX Manager and vCenter maintenance windows; reduced-downtime update
+supported; optimized NSX Manager and vCenter maintenance windows; reduced-downtime update
 preparation; **256 simultaneous cluster upgrades** at up to **5000 hosts per VCF Instance**;
 a Component Versions tab showing current and target versions for all supported components.
 

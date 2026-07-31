@@ -5,7 +5,7 @@ verified independently in both doc sets the tag `[9.0+9.1]` appears inline and s
 research could not retrieve are marked `UNVERIFIED` in place — they are not omitted and not filled in by
 inference.
 
-Two classes of evidence are used and are labelled distinctly:
+Two classes of evidence are used and are labeled distinctly:
 
 - **Prose evidence** — Broadcom TechDocs / developer-portal pages, cited `[FA-Sxx]`, `[TL-Sxx]`, `[C91-Sxx]`,
   `[VS-Sxx]` and resolved to full URLs in `## Source Index`.
@@ -127,7 +127,7 @@ P0/P7 before attempting this item.
 → **`{ssoRealmId}` comes from P7** (`GET .../iam/ssorealms`). Note that `GET|PUT .../iam/settings` is
 realm-independent and can be called before P7.
 (c) 9.1.
-(d) **No 9.0 equivalent.** There are no fleet-level token TTL controls and no JIT-inactivity behaviour in 9.0
+(d) **No 9.0 equivalent.** There are no fleet-level token TTL controls and no JIT-inactivity behavior in 9.0
 `[FA-S53]`.
 > Diagnostic: automation that "randomly stops working after a few weeks" on 9.1 is most often (i) the 30-day
 > default API Token TTL expiring, or (ii) JIT user inactivity. Check both before regenerating credentials.
@@ -248,7 +248,7 @@ domain."* `[VS-S5]`
 (b) Determine whether the vCenter is federated with an external IdP; if it is, use the documented federated
 flow (§1.3).
 (c) **This statement is a 9.0 release-note item.** Its status in 9.1 is **`UNVERIFIED`** — no 9.1 page
-re-stating, extending or relaxing it was retrieved. Do not assert it as verified 9.1 behaviour, and do not
+re-stating, extending or relaxing it was retrieved. Do not assert it as verified 9.1 behavior, and do not
 assert it was reverted.
 (d) Verified for 9.0 `[VS-S5]` — see the 9.0 file, P4.
 
@@ -373,7 +373,7 @@ instances in a vCenter group"*, activatable from the VCF Operations UI **after**
 | Subsequent headers | **Both are required**: `Cookie: JSESSIONID=<id>` **and** `x-xsrf-token: <token>` `[NSX-S12]` |
 | Logout | `POST /api/session/destroy` — **spec-confirmed** as `DestroyAuthenticatedSession` in all three 9.1 NSX specs `[SPEC-9.1]`; prose `[NSX-S12]` `[NSX-S18]` |
 | Session timeout | default **1800 seconds (30 minutes)**, configurable via `PUT /api/v1/cluster/api-service` (`session_timeout`) `[NSX-S12]` |
-| Expiry behaviour | *"NSX Manager responds with a 403 Forbidden HTTP response."* — re-authenticate on **403**, not 401 `[NSX-S12]` |
+| Expiry behavior | *"NSX Manager responds with a 403 Forbidden HTTP response."* — re-authenticate on **403**, not 401 `[NSX-S12]` |
 
 **Correction to an earlier verdict.** This flow was previously marked `UNVERIFIED` for 9.1 on the strength of
 an HTTP 429 returned by the 9.1 `advanced-network-management/authentication-and-authorization` **parent index**

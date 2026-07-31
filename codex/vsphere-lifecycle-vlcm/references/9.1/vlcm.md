@@ -26,7 +26,7 @@ quoted from `vcenter.yaml` at the `9.1.0.0` tag.
 **How much moved from 9.0.** Almost nothing at this layer. The `/esx/*` tree goes from
 **347 operations at 9.0 to 352 at 9.1 — 5 added, 0 removed, 0 deprecated.** All five
 additions are in the *configuration profile* and *VM solution transition* areas, not in the
-image, depot, HCL or remediation path. The behavioural change in 9.1 is in the **apply
+image, depot, HCL or remediation path. The behavioral change in 9.1 is in the **apply
 policy schema** (Live Patch), not in the endpoints. See `../deltas.md`.
 
 > **Documentation-derived, not live-validated** (captured 2026-07-31).
@@ -426,7 +426,7 @@ Committed images are not editable. Create a draft, edit, commit. All **spec-conf
 | Scan against draft | `POST .../drafts/{draft}?action=scan&vmw-task=true` | `Esx.Settings.Clusters.Software.Drafts_scan$Task` |
 | **Commit** | `POST .../drafts/{draft}?action=commit&vmw-task=true` | `Esx.Settings.Clusters.Software.Drafts_commit$Task` |
 
-**Two spec behaviours to code against:**
+**Two spec behaviors to code against:**
 
 - `Drafts_create` takes **no request body**, returns **201** with a bare JSON string (the
   draft id, resource type `com.vmware.esx.settings.draft`), and errors
@@ -524,7 +524,7 @@ desired state document the apply operation will use the most recent desired stat
   **or "the cluster is not managed with a single software specification"** (the
   baseline-managed case, P2).
 - `400 Vapi.Std.Errors.NotAllowedInCurrentState` — "If there is another operation in
-  progress." vLCM serialises per cluster.
+  progress." vLCM serializes per cluster.
 - `500 Vapi.Std.Errors.Error` — "unknown internal error **or if the EULA has not been
   accepted**." Frequently a missing `accept_eula`.
 
@@ -848,5 +848,5 @@ All three **spec-confirmed (9.1)** and identical to 9.0. From the apply descript
 result of this operation can be queried by calling the `cis/tasks/{task-id}` where the
 task-id is the response of this operation."
 
-Cancelling an in-flight `apply` is exposed. Whether it is safe mid-remediation is
-**UNVERIFIED** — no source describes the state a cancelled remediation leaves a host in.
+Canceling an in-flight `apply` is exposed. Whether it is safe mid-remediation is
+**UNVERIFIED** — no source describes the state a canceled remediation leaves a host in.

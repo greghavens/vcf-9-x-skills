@@ -128,7 +128,7 @@ Operations for Logs 8.18 and 9.0" — confirming the rename is a continuation, n
 
 `[9.1]` VCF Operations presents an "enhanced, intuitive experience structured around the
 functional pillars of VCF: Build, Manage, Operate, and Protect" [S1]. The 9.1 What's New is
-itself organised under those four pillars [S1].
+itself organized under those four pillars [S1].
 
 ### Deployment
 

@@ -329,7 +329,7 @@ this scope.**
 |---|---|---|---|
 | **vSphere Automation** | `https://{host}/api` | `9.1__vsphere-automation.ops.json`, 1,367 ops **[SPEC-A]** | `/content/*` (**83**), `/cis/tagging/*` (30), `/vcenter/tagging/*` (**4**), `/vcenter/storage/policies*` (5), `/vcenter/vm/{vm}/storage/policy*` (4), `/vcenter/vm-template/library-items/*` (12), `/vcenter/ovf/*` (6) |
 | **VI-JSON (PBM)** | `https://{vcenter-host}/sdk/vim25/{release}` | `9.1__vsphere-vi-json.ops.json`, 2,243 ops, security scheme `Session` = header `vmware-api-session-id` **[SPEC-V]** | `/pbm/*` (33, of which 5 deprecated) — the **only** place a storage policy can be created, updated or deleted |
-| Legacy REST | `https://{host}/rest` | **[DOC]** — deprecated, operations up to vSphere 7.0.2 only | Recognise it in inherited scripts; do not write new work against it |
+| Legacy REST | `https://{host}/rest` | **[DOC]** — deprecated, operations up to vSphere 7.0.2 only | Recognize it in inherited scripts; do not write new work against it |
 
 **Nothing in this scope has a `?vmw-task=true` variant** — zero of the 83 `/content`
 operations, zero of the 30 `/cis/tagging` operations, zero of the storage-policy operations
@@ -1070,7 +1070,7 @@ storage policies generally, stay here.
   `Usages_add` calls.** The `add`/`remove` operations exist and take a `resource_urn`; nothing in
   the spec says which subsystems register themselves. An empty `usages` list is therefore a
   strong signal, not a proof, that a library is unused.
-- **Behaviour of `Cis.Tagging.Category_delete` on a category with attached tags.** The operation
+- **Behavior of `Cis.Tagging.Category_delete` on a category with attached tags.** The operation
   exists and is destructive; the spec does not state whether it cascades.
 - **Any cap or pagination on the `/cis/tagging` list operations.** No cap is stated and no marker
   exists, unlike `/vcenter/tagging/*` and the storage-policy list.

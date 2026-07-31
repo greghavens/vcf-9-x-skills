@@ -23,7 +23,7 @@ run a command and the API server answers). Cluster-grade beats doc-grade — see
 **A tagging wrinkle worth knowing.** VKS release notes for **every** VKS version (3.3 → 3.7)
 live in the *VCF Service Administration and Development 9.1* doc set, so a fact about VKS 3.4
 carries `[DOC-9.1]` even though the VKS 3.4 era is the one that lines up with VCF 9.0. That
-is a hosting artefact, not evidence about which VCF release it applies to. VKS versions and
+is a hosting artifact, not evidence about which VCF release it applies to. VKS versions and
 VCF versions are separate axes — see prerequisite **P8** below.
 
 **Source keys.** `DTOOL` = `research/tooling-powercli-vks-sdk.md` (its own `Sxx` IDs are

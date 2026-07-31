@@ -96,7 +96,7 @@ They are not interchangeable, and the difference is not intuitive. The reference
 present them side by side precisely so they don't get merged in transit.
 
 One 9.1 change worth flagging when it comes up: **NSX Edge clusters are upgraded at the
-end** of the domain upgrade, which is a reordering from prior behaviour.
+end** of the domain upgrade, which is a reordering from prior behavior.
 
 ## Step 4 — drive it through the right surface
 
@@ -158,7 +158,7 @@ firewall or starts an upgrade, say more — that is where the warning earns its 
 Uniform hedging on everything trains the reader to skip all of it, including the one that
 mattered.
 
-### Version labelling stays, and stays short
+### Version labeling stays, and stays short
 
 Say which version the answer applies to. Once, clearly, near the top. You do not need to
 re-tag every line — the tags in the reference files are for you, not for the reply.

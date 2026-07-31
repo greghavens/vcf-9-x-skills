@@ -158,7 +158,7 @@ python3 scripts/find_operation.py --both-versions "depot"
 python3 scripts/find_operation.py --list-products          # products, counts, base paths
 ```
 
-Other flags: `--any` / `--regex` / `--case-sensitive` for match behaviour, `--no-deprecated` to hide
+Other flags: `--any` / `--regex` / `--case-sensitive` for match behavior, `--no-deprecated` to hide
 operations the spec marks deprecated (they are shown with a `[DEPRECATED]` tag by default),
 `--limit N`, `--json`, `--inventory DIR`.
 

@@ -856,7 +856,7 @@ All accessed **2026-07-31**.
 | S33 | https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-consumption/latest/consumer-interfaces-in-vcf/installing-and-using-vcf-cli-v9/command-reference2.html | VCF Consumption (latest) | VCF CLI command groups and plugin list |
 | S34 | https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/administration-sdks-cli-and-tools/what-is-the-vsphere-web-services-sdk/programming-language-support-in-the-vsphere-web-services-sdk.html | VCF 9.1 | Supported languages: Java, Python, OpenAPI 3.0.1, SOAP |
 | S35 | https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/administration-sdks-cli-and-tools/what-is-the-vsphere-web-services-sdk/setup-for-development-with-openapi.html | VCF 9.0 | Spec download channels; openapi-generator; no on-appliance URLs |
-| S36 | https://developer.broadcom.com/sdks | developer portal | Full SDK catalogue incl. deprecated .NET/Perl/Ruby |
+| S36 | https://developer.broadcom.com/sdks | developer portal | Full SDK catalog incl. deprecated .NET/Perl/Ruby |
 | S37 | https://developer.broadcom.com/vcf-python-sdk | developer portal | `vcf-sdk` PyPI, v9.1, Python 3.10–3.14, GitHub, coverage |
 | S38 | https://developer.broadcom.com/vcf-java-sdk | developer portal | `com.vmware.sdk:vcf-sdk-bom`, v9.1, Java 11/17/21/25, GitHub |
 | S39 | https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/administration-sdks-cli-and-tools/about-vmware-cloud-foundation-development/getting-started-with-vsphere-apis-and-sdks/python-access-to-vsphere-apis.html | VCF 9.0 | pyVmomi install, SmartConnect, community samples |

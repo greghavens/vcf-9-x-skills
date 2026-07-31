@@ -13,11 +13,11 @@ Upgrades and patching are **not** in scope — use the `vcf-lifecycle-upgrade` s
 `RAW9.0` = `specifications/sddc-manager/sddc-manager-openapi.json` at git tag `9.0.0.0`, used for
 request/response **schemas**. (The task brief pointed at a `/tmp/vcf-specs-90` checkout that was
 not present in this environment; the file was read directly out of the `9.0.0.0` tag instead —
-same artefact, same commit.)
+same artifact, same commit.)
 
 **Verification rule.** Every path below was checked against `SPEC9.0` and is marked
 **spec-confirmed (9.0)** with its `operationId`. Nothing is carried backwards from 9.1. Where 9.1
-has something 9.0 does not, it is labelled **9.1-only** and cross-referenced, never listed as a
+has something 9.0 does not, it is labeled **9.1-only** and cross-referenced, never listed as a
 9.0 endpoint.
 
 **Auth is out of scope here.** Obtaining and refreshing the SDDC Manager bearer token is the
@@ -192,12 +192,12 @@ has already been licensed outside of the VMware Cloud Foundation system."*
 are the explicit opt-outs.
 
 **How to verify:** `GET /v1/license-keys` (**spec-confirmed (9.0)**) and the VCF Operations
-licensing view. 9.0 replaced 25-character keys with subscription licence files managed through VCF
+licensing view. 9.0 replaced 25-character keys with subscription license files managed through VCF
 Operations and the VCF Business Services console [D9.0 §5.1]; expiry triggers a 90-day grace
 period after which **hosts disconnect from vCenter** [D9.0 §5.4].
 
-**9.1 difference:** the same spec fields exist, but licences move out of VCF Operations into a new
-required **License server** component [D9.1 §6]. The API fields are unchanged; where the licence
+**9.1 difference:** the same spec fields exist, but licenses move out of VCF Operations into a new
+required **License server** component [D9.1 §6]. The API fields are unchanged; where the license
 lives is not.
 
 ### P9 — Caller role and privilege for topology write operations `[9.0]` — UNVERIFIED
@@ -761,7 +761,7 @@ poller must also accept `QUEUED` and `TIMED_OUT` task states, and 9.1 permits `N
 
 Confirm before executing. These are not reversible by re-running them.
 
-**Cluster deletion is two-phase.** `DELETE /v1/clusters/{id}` is summarised in the spec as
+**Cluster deletion is two-phase.** `DELETE /v1/clusters/{id}` is summarized in the spec as
 *"Delete a cluster from a domain **if it has been previously initialized for deletion**."* You must
 first arm it:
 

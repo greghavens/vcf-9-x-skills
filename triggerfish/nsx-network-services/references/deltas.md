@@ -183,7 +183,7 @@ the live object if a customer is close to the boundary.
 | Out-of-band NSX edits | no reconciliation statement | **SDDC Manager network sync** reconciles *"network configuration changes done directly in vCenter or NSX Manager"* | **[DOC — 9.1]** |
 | Authoritative VCF-owned-object list | **does not exist** | **does not exist** | **[DOC — negative result in both]** |
 | FIPS | *"Components including NSX operate in FIPS-enabled mode by default and cannot be deactivated"* — relevant to VPN cipher choice | not restated | **[DOC — 9.0]** |
-| `_revision` on `/policy` PUT | 9.0 guide: `/policy` URIs *"have slightly different behavior"* | 9.1 guide, verbatim: omit on a creating PUT, supply on subsequent ones | **[DOC]** — a documentation-precision delta, not a behaviour delta |
+| `_revision` on `/policy` PUT | 9.0 guide: `/policy` URIs *"have slightly different behavior"* | 9.1 guide, verbatim: omit on a creating PUT, supply on subsequent ones | **[DOC]** — a documentation-precision delta, not a behavior delta |
 | Partial patch enablement | `PATCH /policy/api/v1/system-config/nsx-partial-patch-config` `{"enable_partial_patch":"true"}` | identical; the **`GET`** verb is spec-confirmed (`GetPartialPatchConfiguration`) | **[ASYMMETRIC]** |
 | Session auth | `POST /api/session/create` / `destroy`, `j_username`/`j_password`, `JSESSIONID` + `X-XSRF-TOKEN`, 1800 s | identical; spec-confirmed as absolute paths outside the `/api/v1` basePath | **[ASYMMETRIC]** — details belong to `vcf-foundation` |
 

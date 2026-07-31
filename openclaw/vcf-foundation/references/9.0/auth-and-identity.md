@@ -5,7 +5,7 @@ verified independently in both doc sets the tag `[9.0+9.1]` appears inline, and 
 same fact separately. Facts the research could not retrieve are marked `UNVERIFIED` in place — they are
 not omitted and not filled in by inference.
 
-Two classes of evidence are used and are labelled distinctly:
+Two classes of evidence are used and are labeled distinctly:
 
 - **Prose evidence** — Broadcom TechDocs / developer-portal pages, cited `[FA-Sxx]`, `[TL-Sxx]`, `[C90-Sxx]`,
   `[VS-Sxx]` and resolved to full URLs in `## Source Index`.
@@ -93,8 +93,8 @@ obtain a JWT from the external IdP → exchange the JWT for a vCenter SSO SAML t
 for a session identifier `[VS-S9]`. Basic authentication is documented but *"VMware discourages"* it in favour
 of token-based flows `[VS-S9]`.
 (c) 9.0 — this is a 9.0 release-note removal item.
-(d) **9.1 status: `UNVERIFIED`.** No 9.1 page re-stating or relaxing this behaviour was retrieved. Do not
-assert it as a 9.1 behaviour and do not assert it was reverted.
+(d) **9.1 status: `UNVERIFIED`.** No 9.1 page re-stating or relaxing this behavior was retrieved. Do not
+assert it as a 9.1 behavior and do not assert it was reverted.
 > Diagnostic note: a script that worked on vSphere 8.x and fails after a 9.0 upgrade at the session-create
 > step should be assessed against this removal **before** a certificate hypothesis is raised. A TLS trust
 > failure (P8) presents as a transport/verification error, not an authentication rejection.
@@ -242,7 +242,7 @@ the SSO-credential walkthrough page returned HTTP 403 on repeated attempts `[VS-
 |---|---|
 | Base path | `https://{vcenter-host}/sdk/vim25/{release}` `[SPEC-9.0]` |
 | Declared security scheme (spec) | `Session` — apiKey in header **`vmware-api-session-id`**, described as *"A session token, placed in the `vmware-api-session-id` HTTP header, returned by the `Login` operation of the `SessionManager` interface."* `[SPEC-9.0]` |
-| Session reuse | A session established on the vSphere Web Services API (`/vim25`) can be reused on the vSphere Automation API (`/api`); both recognise `vmware-api-session-id`. Source is a Broadcom/VMware blog, **not product documentation** `[FA-S58]` |
+| Session reuse | A session established on the vSphere Web Services API (`/vim25`) can be reused on the vSphere Automation API (`/api`); both recognize `vmware-api-session-id`. Source is a Broadcom/VMware blog, **not product documentation** `[FA-S58]` |
 
 ### 1.4 NSX Manager — session cookie + XSRF
 
@@ -413,7 +413,7 @@ authenticates"* `[FA-S33]`.
 | Fleet Management API | HTTP Basic (no token) | n/a | n/a — KB states lifetime is undocumented | `[FA-S47]` |
 
 **There are no fleet-level token TTL controls in 9.0.** API Token TTL, Access Token TTL, expired-token
-retention and the JIT-user inactivity behaviour are 9.1 IAM settings `[FA-S11]` `[FA-S52]`; none of them has a
+retention and the JIT-user inactivity behavior are 9.1 IAM settings `[FA-S11]` `[FA-S52]`; none of them has a
 9.0 equivalent `[FA-S53]` `[SPEC-9.0]`.
 
 ---

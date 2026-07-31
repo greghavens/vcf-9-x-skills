@@ -344,22 +344,22 @@ standalone UMDS was folded [D9.0 §6.2, §9.1].
 
 ### P7 — Licensing `[9.0]`
 
-**Must be true:** you have licences, and you know they are not applied through the Installer.
+**Must be true:** you have licenses, and you know they are not applied through the Installer.
 
-- 9.0 replaced 25-character keys with **subscription licence files**, managed through a **VCF
+- 9.0 replaced 25-character keys with **subscription license files**, managed through a **VCF
   Operations instance** and the **VCF Business Services console** (`vcf.broadcom.com`)
   [D9.0 §5.1].
-- Assignment model: assign a **primary licence to a vCenter instance**; connected assets
-  **including ESX hosts are then licensed automatically**. Add-on licences only after primary
+- Assignment model: assign a **primary license to a vCenter instance**; connected assets
+  **including ESX hosts are then licensed automatically**. Add-on licenses only after primary
   [D9.0 §5.3].
 - Evaluation mode is **90 days** [D9.0 §5.4].
-- **Spec check:** the 9.0 `SddcSpec` contains **no licence field of any kind** — searched every
+- **Spec check:** the 9.0 `SddcSpec` contains **no license field of any kind** — searched every
   schema property in `RAW9.0` for `licen*`: zero hits. Licensing is genuinely out of band for 9.0
   bring-up.
 
 **9.1 difference — material.** `SddcSpec` gains **`licenseServerSpec`** (`hostname` required, plus
 `useExistingDeployment`, `version`, `sslThumbprint`) [RAW9.1], matching the new required **License
-server** component [D9.1 §5.2, §6]. In 9.1 the licence server is part of what you deploy.
+server** component [D9.1 §5.2, §6]. In 9.1 the license server is part of what you deploy.
 
 ### P8 — Convergence-only gates (importing existing infrastructure) `[9.0]`
 
@@ -595,7 +595,7 @@ blocking; **which ones is not documented** — `UNVERIFIED`.
   Installer's `Bundles` / `Releases` / `Flexible Product Patches` operations exist to feed a
   *deployment*, and **express patch releases are explicitly out of scope** for its workflows
   [D9.0 §4.2].
-- **Licensing.** No licence field exists in the 9.0 `SddcSpec` (P7).
+- **Licensing.** No license field exists in the 9.0 `SddcSpec` (P7).
 - **Any operation after the mode switch.** Once the appliance flips to SDDC Manager mode it "can no
   longer be used in installer mode" [D9.0 §3.2] — at that point you are calling the SDDC Manager
   API, not this one.

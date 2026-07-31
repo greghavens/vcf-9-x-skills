@@ -291,7 +291,7 @@ Not a permission prerequisite; a *stop and think* prerequisite.
 - Changing a Tier-0's HA mode, transit subnets, or uplink interfaces re-plumbs north-south forwarding.
   The 9.1 spec states verbatim that switching `ha_mode` between `ACTIVE_ACTIVE` and `ACTIVE_STANDBY`
   disables/enables inter-SR iBGP and **removes previously configured preferred edge nodes**;
-  for 9.0 that side-effect text is **[9.1-ONLY — NOT VERIFIED FOR 9.0]** but the underlying behaviour
+  for 9.0 that side-effect text is **[9.1-ONLY — NOT VERIFIED FOR 9.0]** but the underlying behavior
   is a property of the same datapath and should be assumed.
 - Deleting or reconfiguring a **transport zone**, a **transport node**, or an **edge cluster** can
   black-hole traffic for every segment realized on it — including whatever segment carries your own
@@ -425,7 +425,7 @@ borrowed from the 9.1 spec.
 confirmed on a 9.0.0 page **[DOC-9.0]**, and the 9.1 spec states verbatim that this endpoint returns
 **fixed segments only** and that flexible segments connected to the Tier-1 must be found via the search
 API. That statement was read on the 9.1 page. **[9.1-ONLY — NOT VERIFIED FOR 9.0]** as a documented
-fact — but the endpoint's *shape* is identical in both, so **assume the same behaviour in 9.0** and do
+fact — but the endpoint's *shape* is identical in both, so **assume the same behavior in 9.0** and do
 not treat an empty result as "no segments attached". The 9.0 **search API path is unverified**
 (`/search/query`, `/search/dsl` are 9.1-spec only), so in 9.0 the reliable route is
 `GET /policy/api/v1/infra/segments` and filter client-side on the connectivity field — noting that the

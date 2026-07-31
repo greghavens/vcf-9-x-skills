@@ -37,7 +37,7 @@ an operation that is stated too.
 > **Documentation-derived, not live-validated.** Captured 2026-07-31. Nothing here has been
 > executed against a running appliance. Reads are cheap; the write paths — data-source
 > creation and deletion, cluster VIP changes, upgrade start, log-forwarder changes, role and
-> user mutation, licence activation — are not, and are flagged where they appear.
+> user mutation, license activation — are not, and are flagged where they appear.
 
 ---
 
@@ -138,7 +138,7 @@ also uses **`440`** as a session-expiry status on many operations [`RAWLOG9.0`].
 
 **9.1 difference:** there is no `/sessions` endpoint at 9.1 and no session ID. 9.1 uses
 `X-JWT-Token` from a token exchange performed against `/suite-api`. General auth is
-`vcf-foundation`'s subject; the three token flows are summarised in `deltas.md`.
+`vcf-foundation`'s subject; the three token flows are summarized in `deltas.md`.
 
 ### L3 — Port 9543, not 443 `[9.0]`
 
@@ -171,7 +171,7 @@ events to retrieve"* — a single greedy path parameter.
 
 **How to verify:** the query returns `{"complete": …, "duration": …, "events": [...]}`.
 
-**9.1 difference:** total, and this is the sharpest single behavioural break in the pair.
+**9.1 difference:** total, and this is the sharpest single behavioral break in the pair.
 9.1 replaces this with `POST /api/v2/logs/search` taking an Elasticsearch-style JSON query
 DSL in the body. A path-constraint URL will not work at 9.1.
 
@@ -546,7 +546,7 @@ clearest evidence that 9.0's log product is a standalone appliance:
 | Support bundles | 2 | `POST /appliance/vm-support-bundles`, `GET /appliance/vm-support-bundles/manifests` |
 | CEIP | 2 | `GET|PUT /ceip` |
 | Salt minion | 3 | `GET|POST|DELETE /salt` — *"only aware of these specific fields"*: `master`, `master_type`, `retry_dns`, `retry_dns_count` |
-| Licences | 1 | `GET /licenses` |
+| Licenses | 1 | `GET /licenses` |
 | Version | 1 | `GET /version` |
 
 **Destructive.** `POST /upgrades`, `POST /deployment/*`, `DELETE /cluster/vips/{uuid}` and
