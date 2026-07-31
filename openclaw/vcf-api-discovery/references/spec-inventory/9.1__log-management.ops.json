@@ -1,0 +1,259 @@
+{
+ "meta": {
+  "present": true,
+  "spec_file": "specifications/vcf-operations/log-management-openapi.json",
+  "spec_version": "9.1.0.0",
+  "title": "Log Management API\n",
+  "openapi": "3.0.1",
+  "base_path": "http://localhost:8787",
+  "operation_count": 23,
+  "security_schemes": {
+   "OPSTokenAuthorization": {
+    "description": "This documentation covers v2 API endpoints.\n\nAuthenticated requests must include an X-JWT-Token header with a token retrieved with the following authenticated call to VCF Operation API : \n\nPOST /suite-api/api/auth/token/exchange \n\nRequest body {\"serviceKeys\": [\"ops-li\"]}.\n\nAccess is allowed only to resources that the user is authorized to use.",
+    "in": "header",
+    "name": "X-JWT-Token",
+    "type": "apiKey"
+   }
+  },
+  "tags": [
+   "Agent Groups",
+   "Agent Secret",
+   "Extracted Fields",
+   "Ingest",
+   "Log Forwarder",
+   "Query"
+  ]
+ },
+ "operations": [
+  {
+   "method": "GET",
+   "path": "/api/v2/agent/groups",
+   "operationId": "getAllAgentGroupConfig",
+   "summary": "Get all agent group configs",
+   "tags": [
+    "Agent Groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/v2/agent/groups",
+   "operationId": "createAgentGroupConfig",
+   "summary": "Create an agent group config",
+   "tags": [
+    "Agent Groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/v2/agent/groups/{id}",
+   "operationId": "deleteAgentGroupConfig",
+   "summary": "Delete an agent group config",
+   "tags": [
+    "Agent Groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/v2/agent/groups/{id}",
+   "operationId": "getAgentGroupConfigById",
+   "summary": "Get agent group config by ID",
+   "tags": [
+    "Agent Groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/api/v2/agent/groups/{id}",
+   "operationId": "patchUpdateAgentGroupConfig",
+   "summary": "Patch (partial update) an agent group config",
+   "tags": [
+    "Agent Groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/v2/agent/groups/{id}",
+   "operationId": "updateAgentGroupConfig",
+   "summary": "Update an agent group config",
+   "tags": [
+    "Agent Groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/v2/agent/secrets",
+   "operationId": "listAgentSecrets",
+   "summary": "List Agent Secrets",
+   "tags": [
+    "Agent Secret"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/v2/agent/secrets",
+   "operationId": "createAgentSecret",
+   "summary": "Create a secret to be used by ingestion agent",
+   "tags": [
+    "Agent Secret"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/v2/agent/secrets/exchange",
+   "operationId": "createAgentSession",
+   "summary": "Create a session to be used by log ingestion agents",
+   "tags": [
+    "Agent Secret"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/v2/agent/secrets/{secretName}/revoke",
+   "operationId": "revokeAgentSecret",
+   "summary": "Revoke agent secret",
+   "tags": [
+    "Agent Secret"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/v2/events",
+   "operationId": "ingestJsonEvents",
+   "summary": "Ingest JSON events",
+   "tags": [
+    "Ingest"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/v2/events/ingest/{agentId}",
+   "operationId": "ingestEvents",
+   "summary": "Ingest events",
+   "tags": [
+    "Ingest"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/v2/fields/extractedFields",
+   "operationId": "getExtractedFields",
+   "summary": "Get all extracted fields",
+   "tags": [
+    "Extracted Fields"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/v2/fields/extractedFields",
+   "operationId": "createExtractedField",
+   "summary": "Create a new extracted field",
+   "tags": [
+    "Extracted Fields"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/v2/logs/forwarders",
+   "operationId": "getAllLogForwarders",
+   "summary": "Get all log forwarders",
+   "tags": [
+    "Log Forwarder"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/v2/logs/forwarders",
+   "operationId": "createLogForwarder",
+   "summary": "Create a log forwarder",
+   "tags": [
+    "Log Forwarder"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/v2/logs/forwarders/test",
+   "operationId": "testLogForwarderConnection",
+   "summary": "Test log forwarder connection",
+   "tags": [
+    "Log Forwarder"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/v2/logs/forwarders/{id}",
+   "operationId": "deleteLogForwarder",
+   "summary": "Delete a log forwarder",
+   "tags": [
+    "Log Forwarder"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/v2/logs/forwarders/{id}",
+   "operationId": "getLogForwarderById",
+   "summary": "Get log forwarder by ID",
+   "tags": [
+    "Log Forwarder"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/api/v2/logs/forwarders/{id}",
+   "operationId": "patchLogForwarder",
+   "summary": "Patch (partial update) a log forwarder",
+   "tags": [
+    "Log Forwarder"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/v2/logs/forwarders/{id}",
+   "operationId": "updateLogForwarder",
+   "summary": "Update a log forwarder",
+   "tags": [
+    "Log Forwarder"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/v2/logs/search",
+   "operationId": "executeLogSearchQuery_1",
+   "summary": "Execute a log search query",
+   "tags": [
+    "Query"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/v2/search",
+   "operationId": "executeLogSearchQuery",
+   "summary": "Execute a log search query",
+   "tags": [
+    "Query"
+   ],
+   "deprecated": true
+  }
+ ]
+}

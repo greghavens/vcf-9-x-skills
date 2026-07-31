@@ -1,0 +1,6410 @@
+{
+ "meta": {
+  "present": true,
+  "spec_file": "specifications/vcf-operations/vcf-operations-for-networks-openapi.yaml",
+  "spec_version": "9.1.0.0",
+  "title": "VCF Operations for networks API Reference",
+  "openapi": "3.0.1",
+  "base_path": "/api/ni",
+  "operation_count": 636,
+  "security_schemes": {
+   "ApiKeyAuth": {
+    "type": "apiKey",
+    "description": "API Key - NetworkInsight {token}",
+    "name": "Authorization",
+    "in": "header"
+   },
+   "OpsTokenAuth": {
+    "type": "http",
+    "scheme": "bearer",
+    "description": "VCF Ops JWT Token - Bearer {token}"
+   }
+  },
+  "tags": [
+   "Applications",
+   "Authentication",
+   "Config",
+   "Custom Dashboards",
+   "Customers",
+   "Data Sources",
+   "Entities",
+   "Guided Network Troubleshooting",
+   "Incomplete TCP flow Sessions",
+   "Info",
+   "Infrastructure",
+   "Intents",
+   "Inventory Tree",
+   "Logs",
+   "Metrics",
+   "Microsegmentation",
+   "Migration",
+   "Path",
+   "Pinboards",
+   "Schema",
+   "Search",
+   "Settings"
+  ]
+ },
+ "operations": [
+  {
+   "method": "POST",
+   "path": "/alert-configs/intents/",
+   "operationId": "createIntent",
+   "summary": "Intent Creation",
+   "tags": [
+    "Intents"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/alert-configs/intents/{id}",
+   "operationId": "deleteIntent",
+   "summary": "Intent Deletion",
+   "tags": [
+    "Intents"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/alert-configs/intents/{id}",
+   "operationId": "getIntent",
+   "summary": "Intent Read",
+   "tags": [
+    "Intents"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/alert-configs/intents/{id}",
+   "operationId": "updateIntent",
+   "summary": "Intent Update",
+   "tags": [
+    "Intents"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/alert-configs/intents/{id}/disable",
+   "operationId": null,
+   "summary": "Intent Disable",
+   "tags": [
+    "Intents"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/alert-configs/intents/{id}/enable",
+   "operationId": null,
+   "summary": "Intent Enable",
+   "tags": [
+    "Intents"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/auth/token",
+   "operationId": "delete",
+   "summary": "Delete an auth token.",
+   "tags": [
+    "Authentication"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/auth/token",
+   "operationId": "create",
+   "summary": "Create an auth token",
+   "tags": [
+    "Authentication"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/auth/token/vidm",
+   "operationId": "createVidmUserToken",
+   "summary": "Create an auth token for user mapped through VMware Identity Manager",
+   "tags": [
+    "Authentication"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/auth/vidm/client-id",
+   "operationId": "getVidmOauthClienId",
+   "summary": "Get the client-id for making user access-token request to VMware Identity Manager",
+   "tags": [
+    "Authentication"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/config/backup",
+   "operationId": "deleteBackupConfiguration",
+   "summary": "Delete existing Backup configuration",
+   "tags": [
+    "Config"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/config/backup",
+   "operationId": "getBackupConfiguration",
+   "summary": "Get Backup configuration",
+   "tags": [
+    "Config"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/config/backup",
+   "operationId": "addBackupConfiguration",
+   "summary": "Configure backup of configuration",
+   "tags": [
+    "Config"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/config/backup",
+   "operationId": "updateBackupConfiguration",
+   "summary": "Update Backup configuration",
+   "tags": [
+    "Config"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/config/backup/status",
+   "operationId": "getBackupStatus",
+   "summary": "Get currently running or last Backup job status",
+   "tags": [
+    "Config"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/config/restore",
+   "operationId": "deleteRestoreConfiguration",
+   "summary": "Delete existing restore configuration",
+   "tags": [
+    "Config"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/config/restore",
+   "operationId": "getRestoreConfiguration",
+   "summary": "Get Restore configuration",
+   "tags": [
+    "Config"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/config/restore",
+   "operationId": "addRestoreConfiguration",
+   "summary": "Configure restore of configuration and triggers restore operation",
+   "tags": [
+    "Config"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/config/restore/status",
+   "operationId": "getRestoreStatus",
+   "summary": "Get currently running or last Restore job status",
+   "tags": [
+    "Config"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/custom-dashboards",
+   "operationId": "getAllCustomDashboards",
+   "summary": "Get all Custom Dashboards",
+   "tags": [
+    "Custom Dashboards"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/custom-dashboards",
+   "operationId": "createCustomDashboard",
+   "summary": "Create Custom Dashboard",
+   "tags": [
+    "Custom Dashboards"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/custom-dashboards/set-preferences",
+   "operationId": "setCustomDashboardPreference",
+   "summary": "Set Top 5 Custom Dashboard Preference",
+   "tags": [
+    "Custom Dashboards"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/custom-dashboards/{id}",
+   "operationId": "deleteCustomDashboard",
+   "summary": "Delete Custom Dashboard",
+   "tags": [
+    "Custom Dashboards"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/custom-dashboards/{id}",
+   "operationId": "getCustomDashboard",
+   "summary": "Get Custom Dashboard",
+   "tags": [
+    "Custom Dashboards"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/custom-dashboards/{id}",
+   "operationId": "editCustomDashboard",
+   "summary": "Edit Custom Dashboard",
+   "tags": [
+    "Custom Dashboards"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/custom-dashboards/{id}/duplicate",
+   "operationId": "duplicateCustomDashboard",
+   "summary": "Duplicate Custom Dashboard",
+   "tags": [
+    "Custom Dashboards"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/custom-dashboards/{id}/pins",
+   "operationId": "createCustomDashboardPin",
+   "summary": "Create a pin",
+   "tags": [
+    "Custom Dashboards"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/custom-dashboards/{id}/pins/{pin-id}",
+   "operationId": "deleteCustomDashboardPin",
+   "summary": "Delete pin",
+   "tags": [
+    "Custom Dashboards"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/custom-dashboards/{id}/pins/{pin-id}",
+   "operationId": "updateCustomDashboardPin",
+   "summary": "Update pin",
+   "tags": [
+    "Custom Dashboards"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/custom-dashboards/{id}/remove-share",
+   "operationId": "removeShareCustomDashboard",
+   "summary": "Unshare Custom Dashboard",
+   "tags": [
+    "Custom Dashboards"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/custom-dashboards/{id}/share",
+   "operationId": "shareCustomDashboard",
+   "summary": "Share Custom Dashboard",
+   "tags": [
+    "Custom Dashboards"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/customers/collector/data-encryption-cert/details",
+   "operationId": "getProxyKeyDetails",
+   "summary": "Get details about collector ceritficate",
+   "tags": [
+    "Customers"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/customers/collector/data-encryption-cert/update",
+   "operationId": "rotateProxyKey",
+   "summary": "Update default lifetime of the certificate",
+   "tags": [
+    "Customers"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/customers/collector/data-encryption-cert/update/status",
+   "operationId": "getProxyKeyRotationStatus",
+   "summary": "Get status of update collector certificate request",
+   "tags": [
+    "Customers"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources",
+   "operationId": "getAll",
+   "summary": "List Data Sources added to VCF Operations for networks",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/accept-certificate/{id}",
+   "operationId": "acceptCertificate",
+   "summary": "Accept certificate and thumbprint of a data source in case of manual mode",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/arista-switches",
+   "operationId": "listAristaSwitches",
+   "summary": "List Arista switch data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/arista-switches",
+   "operationId": "addAristaSwitch",
+   "summary": "Create an Arista switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/arista-switches/{id}",
+   "operationId": "deleteAristaSwitch",
+   "summary": "Delete an Arista switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/arista-switches/{id}",
+   "operationId": "getAristaSwitch",
+   "summary": "Show Arista switch data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/arista-switches/{id}",
+   "operationId": "updateAristaSwitch",
+   "summary": "Update an Arista switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/arista-switches/{id}/collect-now",
+   "operationId": "collectConfigNowAristaSwitch",
+   "summary": "Collect config now for Arista switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/arista-switches/{id}/disable",
+   "operationId": "disableAristaSwitch",
+   "summary": "Disable an Arista switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/arista-switches/{id}/enable",
+   "operationId": "enableAristaSwitch",
+   "summary": "Enable an Arista switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/arista-switches/{id}/snmp-config",
+   "operationId": "getAristaSwitchSnmpConfig",
+   "summary": "Show SNMP config for Arista switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/arista-switches/{id}/snmp-config",
+   "operationId": "updateAristaSwitchSnmpConfig",
+   "summary": "Update SNMP config for Arista switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/aws-accounts",
+   "operationId": "listAWSDataSources",
+   "summary": "List AWS data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/aws-accounts",
+   "operationId": "addAWSDatasource",
+   "summary": "Create an AWS data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/aws-accounts/{id}",
+   "operationId": "deleteAWSDataSource",
+   "summary": "Delete an AWS data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/aws-accounts/{id}",
+   "operationId": "getAWSDataSource",
+   "summary": "Show AWS data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/aws-accounts/{id}",
+   "operationId": "updateAWSDataSource",
+   "summary": "Update an AWS data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/aws-accounts/{id}/disable",
+   "operationId": "disableAWSDataSource",
+   "summary": "Disable an AWS data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/aws-accounts/{id}/enable",
+   "operationId": "enableAWSDataSource",
+   "summary": "Enable an AWS data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/azure-subscriptions",
+   "operationId": "listAzureSubscriptions",
+   "summary": "List Azure Cloud data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/azure-subscriptions",
+   "operationId": "addAzureDatasource",
+   "summary": "Create an Azure Cloud data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/azure-subscriptions/{id}",
+   "operationId": "deleteAzureSubscription",
+   "summary": "Delete an Azure Cloud data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/azure-subscriptions/{id}",
+   "operationId": "getAzureSubscriptions",
+   "summary": "Show Azure Cloud data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/azure-subscriptions/{id}",
+   "operationId": "updateAzureSubscription",
+   "summary": "Update an Azure Cloud data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/azure-subscriptions/{id}/disable",
+   "operationId": "disableAzureSubscription",
+   "summary": "Disable an Azure Cloud data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/azure-subscriptions/{id}/enable",
+   "operationId": "enableAzureSubscription",
+   "summary": "Enable an Azure Cloud data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/brocade-switches",
+   "operationId": "listBrocadeSwitches",
+   "summary": "List Brocade switch data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/brocade-switches",
+   "operationId": "addBrocadeSwitch",
+   "summary": "Create a Brocade switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/brocade-switches/{id}",
+   "operationId": "deleteBrocadeSwitch",
+   "summary": "Delete a Brocade switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/brocade-switches/{id}",
+   "operationId": "getBrocadeSwitch",
+   "summary": "Show Brocade switch data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/brocade-switches/{id}",
+   "operationId": "updateBrocadeSwitch",
+   "summary": "Update a Brocade switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/brocade-switches/{id}/collect-now",
+   "operationId": "collectConfigNowBrocadeSwitch",
+   "summary": "Collect config now for Brocade switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/brocade-switches/{id}/disable",
+   "operationId": "disableBrocadeSwitch",
+   "summary": "Disable a Brocade switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/brocade-switches/{id}/enable",
+   "operationId": "enableBrocadeSwitch",
+   "summary": "Enable a Brocade switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/brocade-switches/{id}/snmp-config",
+   "operationId": "getBrocadeSwitchSnmpConfig",
+   "summary": "Show SNMP config for Brocade switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/brocade-switches/{id}/snmp-config",
+   "operationId": "updateBrocadeSwitchSnmpConfig",
+   "summary": "Update SNMP config for Brocade switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/bulk",
+   "operationId": "bulkDataSourceOperation",
+   "summary": "Submit request for bulk Operations",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/bulk/add",
+   "operationId": "bulkDataSourceAddOperation",
+   "summary": "Submit request to add data sources in bulk",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/bulk/view-details/{request_id}",
+   "operationId": "getBulkOperationDetails",
+   "summary": "Show Bulk Operation Details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/checkpoint-firewalls",
+   "operationId": "listCheckpointFirewalls",
+   "summary": "List Check Point firewall data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/checkpoint-firewalls",
+   "operationId": "addCheckpointFirewall",
+   "summary": "Create a Check Point firewall",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/checkpoint-firewalls/{id}",
+   "operationId": "deleteCheckpointFirewall",
+   "summary": "Delete a Check Point firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/checkpoint-firewalls/{id}",
+   "operationId": "getCheckpointFirewall",
+   "summary": "Show Check Point firewall data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/checkpoint-firewalls/{id}",
+   "operationId": "updateCheckpointFirewall",
+   "summary": "Update a Check Point firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/checkpoint-firewalls/{id}/collect-now",
+   "operationId": "collectConfigNowCheckpointFirewall",
+   "summary": "Collect config now for Check Point firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/checkpoint-firewalls/{id}/disable",
+   "operationId": "disableCheckpointFirewall",
+   "summary": "Disable a Check Point firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/checkpoint-firewalls/{id}/enable",
+   "operationId": "enableCheckpointFirewall",
+   "summary": "Enable a Check Point firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/cisco-aci",
+   "operationId": "listCiscoACI",
+   "summary": "List Cisco ACI data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/cisco-aci",
+   "operationId": "addCiscoACI",
+   "summary": "Create a Cisco ACI data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/cisco-aci/{id}",
+   "operationId": "deleteCiscoACI",
+   "summary": "Delete a Cisco ACI data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/cisco-aci/{id}",
+   "operationId": "getCiscoACI",
+   "summary": "Show Cisco ACI data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/cisco-aci/{id}",
+   "operationId": "updateCiscoACIManager",
+   "summary": "Update a Cisco ACI data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/cisco-aci/{id}/collect-now",
+   "operationId": "collectConfigNowCiscoACI",
+   "summary": "Collect config now for Cisco ACI data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/cisco-aci/{id}/disable",
+   "operationId": "disableCiscoACI",
+   "summary": "Disable a Cisco ACI data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/cisco-aci/{id}/enable",
+   "operationId": "enableCiscoACI",
+   "summary": "Enable a Cisco ACI data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/cisco-aci/{id}/snmp-config",
+   "operationId": "getCiscoACISnmpConfig",
+   "summary": "Show SNMP config for Cisco ACI",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/cisco-aci/{id}/snmp-config",
+   "operationId": "updateCiscoACISnmpConfig",
+   "summary": "Update SNMP config for Cisco ACI",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/cisco-asr-xr-switches/{id}/enable",
+   "operationId": "enableCiscoASRXRSwitch",
+   "summary": "Enable a Cisco ASR XR switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/cisco-asr-xr-switches/{id}/snmp-config",
+   "operationId": "getCiscoASRXRSwitchSnmpConfig",
+   "summary": "Show SNMP config for Cisco ASR XR switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/cisco-asr-xr-switches/{id}/snmp-config",
+   "operationId": "updateCiscoASRXRSwitchSnmpConfig",
+   "summary": "Update SNMP config for Cisco ASR XR switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/cisco-asrxr-switches",
+   "operationId": "listCiscoASRXRSwitches",
+   "summary": "List Cisco ASR XR switch data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/cisco-asrxr-switches",
+   "operationId": "addCiscoASRXRSwitch",
+   "summary": "Create a Cisco ASR XR switch as data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/cisco-asrxr-switches/{id}",
+   "operationId": "deleteCiscoASRXRSwitch",
+   "summary": "Delete a Cisco ASR XR switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/cisco-asrxr-switches/{id}",
+   "operationId": "getCiscoASRXRSwitch",
+   "summary": "Show Cisco ASR XR switch data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/cisco-asrxr-switches/{id}",
+   "operationId": "updateCiscoASRXRSwitchManager",
+   "summary": "Update a Cisco ASR XR switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/cisco-asrxr-switches/{id}/collect-now",
+   "operationId": "collectConfigNowCiscoASRSwitch",
+   "summary": "Collect Config now for a CiscoASR switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/cisco-asrxr-switches/{id}/disable",
+   "operationId": "disableCiscoASRXRSwitch",
+   "summary": "Disable a Cisco ASR XR switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/cisco-switches",
+   "operationId": "listCiscoSwitches",
+   "summary": "List Cisco switch data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/cisco-switches",
+   "operationId": "addCiscoSwitch",
+   "summary": "Create a Cisco switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/cisco-switches/{id}",
+   "operationId": "deleteCiscoSwitch",
+   "summary": "Delete a Cisco switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/cisco-switches/{id}",
+   "operationId": "getCiscoSwitch",
+   "summary": "Show Cisco switch data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/cisco-switches/{id}",
+   "operationId": "updateCiscoSwitch",
+   "summary": "Update a Cisco switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/cisco-switches/{id}/collect-now",
+   "operationId": "collectConfigNowCiscoSwitch",
+   "summary": "Collect config now for a Cisco switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/cisco-switches/{id}/disable",
+   "operationId": "disableCiscoSwitch",
+   "summary": "Disable a Cisco switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/cisco-switches/{id}/enable",
+   "operationId": "enableCiscoSwitch",
+   "summary": "Enable a Cisco switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/cisco-switches/{id}/snmp-config",
+   "operationId": "getCiscoSwitchSnmpConfig",
+   "summary": "Show SNMP config for Cisco switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/cisco-switches/{id}/snmp-config",
+   "operationId": "updateCiscoSwitchSnmpConfig",
+   "summary": "Update SNMP config for Cisco switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/cisco-switches/{id}/wan-config",
+   "operationId": "getCiscoSwitchWANConfig",
+   "summary": "Show WAN config for Cisco switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/cisco-switches/{id}/wan-config",
+   "operationId": "updateCiscoSwitchWANConfig",
+   "summary": "Update WAN config for Cisco switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/common-device",
+   "operationId": "listCommonDevice",
+   "summary": "List Common Device data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/common-device",
+   "operationId": "addCommonDevice",
+   "summary": "Add a Common Device as data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/common-device/dspack",
+   "operationId": "dsPackList",
+   "summary": "List Data source pack identifiers",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/common-device/dspack",
+   "operationId": "dsPackUpload",
+   "summary": "File Upload",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/common-device/{id}",
+   "operationId": "deleteCommonDevice",
+   "summary": "Delete a Common Device data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/common-device/{id}",
+   "operationId": "getCommonDevice",
+   "summary": "Show Common Device source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/common-device/{id}",
+   "operationId": "updateCommonDevice",
+   "summary": "Update a Common Device data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/common-device/{id}/disable",
+   "operationId": "disableCommonDevice",
+   "summary": "Disable a Common Device data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/common-device/{id}/enable",
+   "operationId": "enableCommonDevice",
+   "summary": "Enable a Common Device data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/common-device/{id}/snmp-config",
+   "operationId": "getCommonDeviceSnmpConfig",
+   "summary": "Show SNMP config for Common Device data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/common-device/{id}/snmp-config",
+   "operationId": "updateCommonDeviceSnmpConfig",
+   "summary": "Update SNMP config for a Common Device data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/dell-os10-switches",
+   "operationId": "listDellOs10Switches",
+   "summary": "List Dell os10 switch data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/dell-os10-switches",
+   "operationId": "addDellOs10Switch",
+   "summary": "Create a Dell OS10 switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/dell-os10-switches/{id}",
+   "operationId": "deleteDellOs10Switch",
+   "summary": "Delete a Dell os10 switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/dell-os10-switches/{id}",
+   "operationId": "getDellOs10Switch",
+   "summary": "Show Dell os10 switch data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/dell-os10-switches/{id}",
+   "operationId": "updateDellOs10Switch",
+   "summary": "Update a Dell os10 switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/dell-os10-switches/{id}/collect-now",
+   "operationId": "collectConfigNowDellOS10Switch",
+   "summary": "Collect config now for Dell OS 10 switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/dell-os10-switches/{id}/disable",
+   "operationId": "disableDellOs10Switch",
+   "summary": "Disable a Dell os10 switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/dell-os10-switches/{id}/enable",
+   "operationId": "enableDellOs10Switch",
+   "summary": "Enable a Dell os10 switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/dell-os10-switches/{id}/snmp-config",
+   "operationId": "getDellOs10SwitchSnmpConfig",
+   "summary": "Show SNMP config for Dell os10 switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/dell-os10-switches/{id}/snmp-config",
+   "operationId": "updateDellOs10SwitchSnmpConfig",
+   "summary": "Update SNMP config for Dell os10 switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/dell-switches",
+   "operationId": "listDellSwitches",
+   "summary": "List Dell switch data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/dell-switches",
+   "operationId": "addDellSwitch",
+   "summary": "Create a Dell switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/dell-switches/{id}",
+   "operationId": "deleteDellSwitch",
+   "summary": "Delete a Dell switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/dell-switches/{id}",
+   "operationId": "getDellSwitch",
+   "summary": "Show Dell switch data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/dell-switches/{id}",
+   "operationId": "updateDellSwitch",
+   "summary": "Update a Dell switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/dell-switches/{id}/collect-now",
+   "operationId": "collectConfigNowDellSwitch",
+   "summary": "Collect config now for a Dell switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/dell-switches/{id}/disable",
+   "operationId": "disableDellSwitch",
+   "summary": "Disable a Dell switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/dell-switches/{id}/enable",
+   "operationId": "enableDellSwitch",
+   "summary": "Enable a Dell switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/dell-switches/{id}/snmp-config",
+   "operationId": "getDellSwitchSnmpConfig",
+   "summary": "Show SNMP config for Dell switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/dell-switches/{id}/snmp-config",
+   "operationId": "updateDellSwitchSnmpConfig",
+   "summary": "Update SNMP config for Dell switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/f5-bigip",
+   "operationId": "listF5BIGIP",
+   "summary": "List F5 BIG-IP data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/f5-bigip",
+   "operationId": "addF5BIGIP",
+   "summary": "Add a F5 BIG-IP as data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/f5-bigip/{id}",
+   "operationId": "deleteF5BIGIP",
+   "summary": "Delete a F5 BIG-IP data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/f5-bigip/{id}",
+   "operationId": "getF5BIGIP",
+   "summary": "Show F5 BIG-IP data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/f5-bigip/{id}",
+   "operationId": "updateF5BIGIP",
+   "summary": "Update a F5 BIG-IP data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/f5-bigip/{id}/disable",
+   "operationId": "disableF5BIGIP",
+   "summary": "Disable a F5 BIG-IP data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/f5-bigip/{id}/enable",
+   "operationId": "enableF5BIGIP",
+   "summary": "Enable a F5 BIG-IP data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/f5-bigip/{id}/snmp-config",
+   "operationId": "getF5BIGIPSnmpConfig",
+   "summary": "Show SNMP config for F5 BIG-IP data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/f5-bigip/{id}/snmp-config",
+   "operationId": "updateF5BIGIPSnmpConfig",
+   "summary": "Update SNMP config for a F5 BIG-IP data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/fortinet-firewalls",
+   "operationId": "listFortinetFirewalls",
+   "summary": "List Fortinet firewall data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/fortinet-firewalls",
+   "operationId": "addFortinetFirewall",
+   "summary": "Add Fortinet firewall as data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/fortinet-firewalls/{id}",
+   "operationId": "deleteFortinetFirewall",
+   "summary": "Delete a Fortinet firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/fortinet-firewalls/{id}",
+   "operationId": "getFortinetFirewall",
+   "summary": "Show Fortinet firewall data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/fortinet-firewalls/{id}",
+   "operationId": "updateFortinetFirewall",
+   "summary": "Update a Fortinet firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/fortinet-firewalls/{id}/collect-now",
+   "operationId": "collectConfigNowFortinetFirewall",
+   "summary": "Collect config now for Fortinet firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/fortinet-firewalls/{id}/disable",
+   "operationId": "disableFortinetFirewall",
+   "summary": "Disable a Fortinet firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/fortinet-firewalls/{id}/enable",
+   "operationId": "enableFortinetFirewall",
+   "summary": "Enable a Fortinet firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/generic-switches",
+   "operationId": "listGenericSwitch",
+   "summary": "List generic switch data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/generic-switches",
+   "operationId": "addGenericSwitch",
+   "summary": "Create generic switch as data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/generic-switches/{id}",
+   "operationId": "deleteGenericSwitch",
+   "summary": "Delete generic switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/generic-switches/{id}",
+   "operationId": "getGenericSwitch",
+   "summary": "Show generic switch data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/generic-switches/{id}",
+   "operationId": "updateGenericSwitch",
+   "summary": "Update generic switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/generic-switches/{id}/data",
+   "operationId": "fileUpload",
+   "summary": "File Upload",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/generic-switches/{id}/disable",
+   "operationId": "disableGenericSwitch",
+   "summary": "Disable generic switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/generic-switches/{id}/enable",
+   "operationId": "enableGenericSwitch",
+   "summary": "Enable generic switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/hcx-connectors",
+   "operationId": "listHcxs",
+   "summary": "List VMware HCX data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/hcx-connectors",
+   "operationId": "addHcxDatasource",
+   "summary": "Create an VMware HCX data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/hcx-connectors/{id}",
+   "operationId": "deleteHcx",
+   "summary": "Delete an VMware HCX data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/hcx-connectors/{id}",
+   "operationId": "getHcx",
+   "summary": "Show VMware HCX data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/hcx-connectors/{id}",
+   "operationId": "updateHcx",
+   "summary": "Update an VMware HCX data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/hcx-connectors/{id}/disable",
+   "operationId": "disableHcx",
+   "summary": "Disable an VMware HCX data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/hcx-connectors/{id}/enable",
+   "operationId": "enableHcx",
+   "summary": "Enable an VMware HCX data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/health",
+   "operationId": "getDatasourceHealth",
+   "summary": "List health of Data Sources added to VCF Operations for networks",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/hpe-switches",
+   "operationId": "listHPESwitches",
+   "summary": "List HPE switch data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/hpe-switches",
+   "operationId": "addHPESwitch",
+   "summary": "Create a HPE switch as data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/hpe-switches/{id}",
+   "operationId": "deleteHPESwitch",
+   "summary": "Delete a HPE switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/hpe-switches/{id}",
+   "operationId": "getHPESwitch",
+   "summary": "Show HPE switch data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/hpe-switches/{id}",
+   "operationId": "updateHPESwitchManager",
+   "summary": "Update a HPE switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/hpe-switches/{id}/collect-now",
+   "operationId": "collectConfigNowHPESwitch",
+   "summary": "Collect Config now for a HPE switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/hpe-switches/{id}/disable",
+   "operationId": "disableHPESwitch",
+   "summary": "Disable a HPE switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/hpe-switches/{id}/enable",
+   "operationId": "enableHPESwitch",
+   "summary": "Enable a HPE switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/hpe-switches/{id}/snmp-config",
+   "operationId": "getHPESwitchSnmpConfig",
+   "summary": "Show SNMP config for HPE switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/hpe-switches/{id}/snmp-config",
+   "operationId": "updateHPESwitchSnmpConfig",
+   "summary": "Update SNMP config for HPE switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/hpov-managers",
+   "operationId": "listHpovManagers",
+   "summary": "List HP OneView manager data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/hpov-managers",
+   "operationId": "addHpovManager",
+   "summary": "Create a HP OneView manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/hpov-managers/{id}",
+   "operationId": "deleteHpovManager",
+   "summary": "Delete a HP OneView data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/hpov-managers/{id}",
+   "operationId": "getHpovManager",
+   "summary": "Show HP OneView data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/hpov-managers/{id}",
+   "operationId": "updateHpovManager",
+   "summary": "Update a HP OneView data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/hpov-managers/{id}/disable",
+   "operationId": "disableHpovManager",
+   "summary": "Disable a HP OneView data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/hpov-managers/{id}/enable",
+   "operationId": "enableHpovManager",
+   "summary": "Enable a HP OneView data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/hpvc-managers",
+   "operationId": "listHpvcManagers",
+   "summary": "List HPVC manager data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/hpvc-managers",
+   "operationId": "addHpvcManager",
+   "summary": "Create a HPVC manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/hpvc-managers/{id}",
+   "operationId": "deleteHpvcManager",
+   "summary": "Delete a HPVC manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/hpvc-managers/{id}",
+   "operationId": "getHpvcManager",
+   "summary": "Show HPVC data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/hpvc-managers/{id}",
+   "operationId": "updateHpvcManager",
+   "summary": "Update a HPVC manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/hpvc-managers/{id}/disable",
+   "operationId": "disableHpvcManager",
+   "summary": "Disable a HPVC manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/hpvc-managers/{id}/enable",
+   "operationId": "enableHpvcManager",
+   "summary": "Enable a HPVC manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/huawei",
+   "operationId": "listHuawei",
+   "summary": "List Huawei data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/huawei",
+   "operationId": "addHuawei",
+   "summary": "Add a Huawei as data source.",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/huawei/{id}",
+   "operationId": "deleteHuawei",
+   "summary": "Delete a Huawei data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/huawei/{id}",
+   "operationId": "getHuawei",
+   "summary": "Show Huawei data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/huawei/{id}",
+   "operationId": "updateHuawei",
+   "summary": "Update a Huawei data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/huawei/{id}/collect-now",
+   "operationId": "collectConfigNowHuaweiSwitch",
+   "summary": "Collect Config now for a Huawei switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/huawei/{id}/disable",
+   "operationId": "disableHuawei",
+   "summary": "Disable a Huawei data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/huawei/{id}/enable",
+   "operationId": "enableHuawei",
+   "summary": "Enable a Huawei data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/huawei/{id}/snmp-config",
+   "operationId": "getHuaweiSnmpConfig",
+   "summary": "Show SNMP config for Huawei data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/huawei/{id}/snmp-config",
+   "operationId": "updateHuaweiSnmpConfig",
+   "summary": "Update SNMP config for a Huawei data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/infoblox-managers",
+   "operationId": "listInfobloxManagers",
+   "summary": "List Infoblox DNS Manager data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/infoblox-managers",
+   "operationId": "addInfobloxManagerDatasource",
+   "summary": "Create an Infoblox DNS Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/infoblox-managers/{id}",
+   "operationId": "deleteInfobloxManager",
+   "summary": "Delete an Infoblox DNS Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/infoblox-managers/{id}",
+   "operationId": "getInfobloxManager",
+   "summary": "Show Infoblox DNS Manager data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/infoblox-managers/{id}",
+   "operationId": "updateInfobloxManager",
+   "summary": "Update an Infoblox DNS Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/infoblox-managers/{id}/disable",
+   "operationId": "disableInfobloxManager",
+   "summary": "Disable an Infoblox DNS Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/infoblox-managers/{id}/enable",
+   "operationId": "enableInfobloxManager",
+   "summary": "Enable an Infoblox DNS Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/juniper-switches",
+   "operationId": "listJuniperSwitches",
+   "summary": "List Juniper switch data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/juniper-switches",
+   "operationId": "addJuniperSwitch",
+   "summary": "Add a Juniper switch as data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/juniper-switches/{id}",
+   "operationId": "deleteJuniperSwitch",
+   "summary": "Delete a Juniper switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/juniper-switches/{id}",
+   "operationId": "getJuniperSwitch",
+   "summary": "Show Juniper switch data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/juniper-switches/{id}",
+   "operationId": "updateJuniperSwitch",
+   "summary": "Update a Juniper switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/juniper-switches/{id}/collect-now",
+   "operationId": "collectConfigNowJuniperSwitch",
+   "summary": "Collect config now for Juniper switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/juniper-switches/{id}/disable",
+   "operationId": "disableJuniperSwitch",
+   "summary": "Disable a Juniper switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/juniper-switches/{id}/enable",
+   "operationId": "enableJuniperSwitch",
+   "summary": "Enable a Juniper switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/juniper-switches/{id}/snmp-config",
+   "operationId": "getJuniperSwitchSnmpConfig",
+   "summary": "Show SNMP config for Juniper switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/juniper-switches/{id}/snmp-config",
+   "operationId": "updateJuniperSwitchSnmpConfig",
+   "summary": "Update SNMP config for a Juniper switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/kubernetes-clusters",
+   "operationId": "listKubernetesClusters",
+   "summary": "List Kubernetes cluster data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/kubernetes-clusters",
+   "operationId": "addKubernetesDatasource",
+   "summary": "Create an Kubernetes cluster data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/kubernetes-clusters/{id}",
+   "operationId": "deleteKubernetesCluster",
+   "summary": "Delete an Kubernetes cluster data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/kubernetes-clusters/{id}",
+   "operationId": "getKubernetesCluster",
+   "summary": "Show Kubernetes cluster data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/kubernetes-clusters/{id}",
+   "operationId": "updateKubernetesCluster",
+   "summary": "Update an Kubernetes cluster data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/kubernetes-clusters/{id}/disable",
+   "operationId": "disableKubernetesCluster",
+   "summary": "Disable an Kubernetes cluster data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/kubernetes-clusters/{id}/enable",
+   "operationId": "enableKubernetesCluster",
+   "summary": "Enable an Kubernetes cluster data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/loginsight",
+   "operationId": "listLogInsightDataSource",
+   "summary": "List Operations for Logs data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/loginsight",
+   "operationId": "addLogInsightDataSource",
+   "summary": "Create a Operations for Logs data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/loginsight/{id}",
+   "operationId": "deleteLogInsightDataSource",
+   "summary": "Delete a Operations for Logs data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/loginsight/{id}",
+   "operationId": "getLogInsightDataSource",
+   "summary": "Show Operations for Logs data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/loginsight/{id}",
+   "operationId": "updateLogInsightDataSource",
+   "summary": "Update a Operations for Logs data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/loginsight/{id}/disable",
+   "operationId": "disableLogInsightDataSource",
+   "summary": "Disable a Operations for Logs data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/loginsight/{id}/enable",
+   "operationId": "enableLogInsightDataSource",
+   "summary": "Enable a Operations for Logs data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/mellanox-switches",
+   "operationId": "listMellanoxSwitches",
+   "summary": "List Mellanox switch data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/mellanox-switches",
+   "operationId": "addMellanoxSwitch",
+   "summary": "Create a Mellanox switch as data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/mellanox-switches/{id}",
+   "operationId": "deleteMellanoxSwitch",
+   "summary": "Delete a Mellanox switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/mellanox-switches/{id}",
+   "operationId": "getMellanoxSwitch",
+   "summary": "Show Mellanox switch data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/mellanox-switches/{id}",
+   "operationId": "updateMellanoxSwitchManager",
+   "summary": "Update a Mellanox switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/mellanox-switches/{id}/collect-now",
+   "operationId": "collectConfigNowMellanoxSwitch",
+   "summary": "Collect Config now for a Mellanox switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/mellanox-switches/{id}/disable",
+   "operationId": "disableMellanoxSwitch",
+   "summary": "Disable a Mellanox switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/mellanox-switches/{id}/enable",
+   "operationId": "enableMellanoxSwitch",
+   "summary": "Enable a Mellanox switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/mellanox-switches/{id}/snmp-config",
+   "operationId": "getMellanoxSwitchSnmpConfig",
+   "summary": "Show SNMP config for Mellanox switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/mellanox-switches/{id}/snmp-config",
+   "operationId": "updateMellanoxSwitchSnmpConfig",
+   "summary": "Update SNMP config for Mellanox switch data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/migrate/cancel/{request_id}",
+   "operationId": "cancelBulkOperation",
+   "summary": "Cancel migration of collector's data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/migrate/collector",
+   "operationId": "migrateCollectorDataSources",
+   "summary": "Migrate all Data Sources present on a collector to a new collector",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/migrate/status/{request_id}",
+   "operationId": "getMigrationStatus",
+   "summary": "Get status of migration of all Data Sources present on a collector to a new collector",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/nsxalb",
+   "operationId": "listNSXALB",
+   "summary": "List NSX Advanced Load Balancer data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/nsxalb",
+   "operationId": "addNSXALBDatasource",
+   "summary": "Create an NSX Advanced Load Balancer data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/nsxalb/{id}",
+   "operationId": "deleteNSXALB",
+   "summary": "Delete an NSX Advanced Load Balancer data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/nsxalb/{id}",
+   "operationId": "getNSXALB",
+   "summary": "Show NSX Advanced Load Balancer data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/nsxalb/{id}",
+   "operationId": "updateNSXALB",
+   "summary": "Update an NSX Advanced Load Balancer data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/nsxalb/{id}/disable",
+   "operationId": "disableNSXALB",
+   "summary": "Disable an NSX Advanced Load Balancer data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/nsxalb/{id}/enable",
+   "operationId": "enableNSXALB",
+   "summary": "Enable an NSX Advanced Load Balancer data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/nsxt-managers",
+   "operationId": "listNsxtManagers",
+   "summary": "List NSX-T Manager data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/nsxt-managers",
+   "operationId": "addNsxtManagerDatasource",
+   "summary": "Create an NSX-T Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/nsxt-managers/{id}",
+   "operationId": "deleteNsxtManager",
+   "summary": "Delete an NSX-T Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/nsxt-managers/{id}",
+   "operationId": "getNsxtManager",
+   "summary": "Show NSX-T Manager data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/nsxt-managers/{id}",
+   "operationId": "updateNsxtManager",
+   "summary": "Update an NSX-T Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/nsxt-managers/{id}/disable",
+   "operationId": "disableNsxtManager",
+   "summary": "Disable an NSX-T Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/nsxt-managers/{id}/enable",
+   "operationId": "enableNsxtManager",
+   "summary": "Enable an NSX-T Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/nsxv-managers",
+   "operationId": "listNsxvManagers",
+   "summary": "List NSX-v Manager data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/nsxv-managers",
+   "operationId": "addNsxvManagerDatasource",
+   "summary": "Create an NSX-v Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/nsxv-managers/{id}",
+   "operationId": "deleteNsxvManager",
+   "summary": "Delete an NSX-v Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/nsxv-managers/{id}",
+   "operationId": "getNsxvManager",
+   "summary": "Show NSX-v Manager data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/nsxv-managers/{id}",
+   "operationId": "updateNsxvManager",
+   "summary": "Update an NSX-v Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/nsxv-managers/{id}/controller-cluster",
+   "operationId": "getNsxvControllerCluster",
+   "summary": "Show NSX-v Controller Cluster details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/nsxv-managers/{id}/controller-cluster",
+   "operationId": "updateNsxvControllerCluster",
+   "summary": "Update NSX-v Controller Cluster details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/nsxv-managers/{id}/disable",
+   "operationId": "disableNsxvManager",
+   "summary": "Disable an NSX-v Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/nsxv-managers/{id}/enable",
+   "operationId": "enableNsxvManager",
+   "summary": "Enable an NSX-v Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/openshift-clusters",
+   "operationId": "listOpenshiftClusters",
+   "summary": "List OpenShift data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/openshift-clusters",
+   "operationId": "addOpenshiftDatasource",
+   "summary": "Create an OpenShift data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/openshift-clusters/{id}",
+   "operationId": "deleteOpenshiftCluster",
+   "summary": "Delete an OpenShift data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/openshift-clusters/{id}",
+   "operationId": "getOpenshiftCluster",
+   "summary": "Show OpenShift cluster data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/openshift-clusters/{id}",
+   "operationId": "updateOpenshiftCluster",
+   "summary": "Update an OpenShift data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/openshift-clusters/{id}/disable",
+   "operationId": "disableOpenshiftCluster",
+   "summary": "Disable an OpenShift data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/openshift-clusters/{id}/enable",
+   "operationId": "enableOpenshiftCluster",
+   "summary": "Enable an OpenShift data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/panorama-firewalls",
+   "operationId": "listPanoramaFirewalls",
+   "summary": "List Palo Alto Networks Panorama firewall data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/panorama-firewalls",
+   "operationId": "addPanoramaFirewall",
+   "summary": "Create Palo Alto Networks Panorama firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/panorama-firewalls/{id}",
+   "operationId": "deletePanoramaFirewall",
+   "summary": "Delete a Palo Alto Networks Panorama firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/panorama-firewalls/{id}",
+   "operationId": "getPanoramaFirewall",
+   "summary": "Show Palo Alto Networks Panorama firewall data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/panorama-firewalls/{id}",
+   "operationId": "updatePanoramaFirewall",
+   "summary": "Update a Palo Alto Networks Panorama firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/panorama-firewalls/{id}/collect-now",
+   "operationId": "collectConfigNowPanoramaFirewall",
+   "summary": "Collect config now for Palo Alto Networks Panorama firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/panorama-firewalls/{id}/disable",
+   "operationId": "disablePanoramaFirewall",
+   "summary": "Disable a Palo Alto Networks Panorama firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/panorama-firewalls/{id}/enable",
+   "operationId": "enablePanoramaFirewall",
+   "summary": "Enable a Palo Alto Networks Panorama firewall data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/pks",
+   "operationId": "listPKS",
+   "summary": "List VMware Tanzu Kubernetes Grid Integrated data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/pks",
+   "operationId": "addPKSDatasource",
+   "summary": "Create an VMware Tanzu Kubernetes Grid Integrated data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/pks/{id}",
+   "operationId": "deletePKS",
+   "summary": "Delete an VMware Tanzu Kubernetes Grid Integrated data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/pks/{id}",
+   "operationId": "getPKS",
+   "summary": "Show VMware Tanzu Kubernetes Grid Integrated data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/pks/{id}",
+   "operationId": "updatePKS",
+   "summary": "Update an VMware Tanzu Kubernetes Grid Integrated data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/pks/{id}/disable",
+   "operationId": "disablePKS",
+   "summary": "Disable an VMware Tanzu Kubernetes Grid Integrated data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/pks/{id}/enable",
+   "operationId": "enablePKS",
+   "summary": "Enable an VMware Tanzu Kubernetes Grid Integrated data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/servicenow-instances",
+   "operationId": "listServiceNowInstances",
+   "summary": "List ServiceNow instance data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/servicenow-instances",
+   "operationId": "addServiceNowDatasource",
+   "summary": "Create an ServiceNow instance data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/servicenow-instances/{id}",
+   "operationId": "deleteServiceNowInstance",
+   "summary": "Delete an ServiceNow instance data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/servicenow-instances/{id}",
+   "operationId": "getServiceNowInstance",
+   "summary": "Show ServiceNow instance data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/servicenow-instances/{id}",
+   "operationId": "updateServiceNowInstance",
+   "summary": "Update an ServiceNow instance data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/servicenow-instances/{id}/disable",
+   "operationId": "disableServiceNowInstance",
+   "summary": "Disable an ServiceNow instance data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/servicenow-instances/{id}/enable",
+   "operationId": "enableServiceNowInstance",
+   "summary": "Enable an ServiceNow instance data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/ucs-managers",
+   "operationId": "listUcsManagers",
+   "summary": "List Cisco UCS Manager data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/ucs-managers",
+   "operationId": "addUcsManager",
+   "summary": "Create a Cisco UCS Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/ucs-managers/{id}",
+   "operationId": "deleteUcsManager",
+   "summary": "Delete a Cisco UCS Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/ucs-managers/{id}",
+   "operationId": "getUcsManager",
+   "summary": "Show Cisco UCS Manager data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/ucs-managers/{id}",
+   "operationId": "updateUcsManager",
+   "summary": "Update a Cisco UCS Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/ucs-managers/{id}/disable",
+   "operationId": "disableUcsManager",
+   "summary": "Disable a Cisco UCS Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/ucs-managers/{id}/enable",
+   "operationId": "enableUcsManager",
+   "summary": "Enable a Cisco UCS Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/ucs-managers/{id}/snmp-config",
+   "operationId": "getUcsSnmpConfig",
+   "summary": "Show SNMP config for Cisco UCS Manager",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/ucs-managers/{id}/snmp-config",
+   "operationId": "updateUcsSnmpConfig",
+   "summary": "Update SNMP config for Cisco UCS Manager",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/vcenters",
+   "operationId": "listVcenters",
+   "summary": "List vCenter data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/vcenters",
+   "operationId": "addVcenterDatasource",
+   "summary": "Create a vCenter data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/vcenters/validate",
+   "operationId": "validateVCenter",
+   "summary": "Validate a vCenter data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/vcenters/{id}",
+   "operationId": "deleteVcenter",
+   "summary": "Delete a vCenter data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/vcenters/{id}",
+   "operationId": "getVcenter",
+   "summary": "Show vCenter data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/vcenters/{id}",
+   "operationId": "updateVcenter",
+   "summary": "Update a vCenter data source.",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/vcenters/{id}/disable",
+   "operationId": "disableVcenter",
+   "summary": "Disable a vCenter data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/vcenters/{id}/enable",
+   "operationId": "enableVcenter",
+   "summary": "Enable a vCenter data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/velocloud",
+   "operationId": "listVeloCloud",
+   "summary": "List VMware SD-WAN by VeloCloud data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/velocloud",
+   "operationId": "addVeloCloudDatasource",
+   "summary": "Create a VMware SD-WAN by VeloCloud data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/velocloud/{id}",
+   "operationId": "deleteVeloCloud",
+   "summary": "Delete a VMware SD-WAN by VeloCloud data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/velocloud/{id}",
+   "operationId": "getVeloCloud",
+   "summary": "Show VMware SD-WAN by VeloCloud data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/velocloud/{id}",
+   "operationId": "updateVeloCloud",
+   "summary": "Update a VMware SD-WAN by VeloCloud data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/velocloud/{id}/disable",
+   "operationId": "disableVeloCloud",
+   "summary": "Disable a VMware SD-WAN by VeloCloud data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/velocloud/{id}/enable",
+   "operationId": "enableVeloCloud",
+   "summary": "Enable a VMware SD-WAN by VeloCloud data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/vmc-nsxmanagers",
+   "operationId": "listPolicyManagers",
+   "summary": "List VMC NSX Manager data sources",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/vmc-nsxmanagers",
+   "operationId": "addPolicyManagerDatasource",
+   "summary": "Create a VMC NSX Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/data-sources/vmc-nsxmanagers/{id}",
+   "operationId": "deletePolicyManager",
+   "summary": "Delete a VMC NSX Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/data-sources/vmc-nsxmanagers/{id}",
+   "operationId": "getPolicyManager",
+   "summary": "Show VMC Manager data source details",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/data-sources/vmc-nsxmanagers/{id}",
+   "operationId": "updatePolicyManager",
+   "summary": "Update a VMC NSX Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/vmc-nsxmanagers/{id}/disable",
+   "operationId": "disablePolicyManager",
+   "summary": "Disable a VMC NSX Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/data-sources/vmc-nsxmanagers/{id}/enable",
+   "operationId": "enablePolicyManager",
+   "summary": "Enable a VMC NSX Manager data source",
+   "tags": [
+    "Data Sources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/aws-account-managers",
+   "operationId": "listAWSAccountManagers",
+   "summary": "List AWS Account managers",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/aws-account-managers/{id}",
+   "operationId": "getAWSAccountManager",
+   "summary": "Show AWS Account manager details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/azure-subscriptions",
+   "operationId": "listAzureSubscription",
+   "summary": "List Microsoft Azure Subscriptions",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/azure-subscriptions/{id}",
+   "operationId": "getAzureSubscription",
+   "summary": "Show Microsoft Azure Subscription details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/clusters",
+   "operationId": "listClusters",
+   "summary": "List clusters",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/clusters/{id}",
+   "operationId": "getCluster",
+   "summary": "Show cluster details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/datastores",
+   "operationId": "listDatastores",
+   "summary": "List datastores",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/datastores/{id}",
+   "operationId": "getDatastore",
+   "summary": "Show datastore details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/direct-connect",
+   "operationId": "getVmcAWSDxConnections",
+   "summary": "List VMC AWS Direct Connect",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/direct-connect/{id}",
+   "operationId": "getVmcAWSDxConnection",
+   "summary": "Show VMC AWS Direct Connect details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/distributed-virtual-portgroups",
+   "operationId": "listDistributedVirtualPortgroups",
+   "summary": "List distributed virtual portgroups",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/distributed-virtual-portgroups/{id}",
+   "operationId": "getDistributedVirtualPortgroup",
+   "summary": "Show distributed virtual portgroup details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/distributed-virtual-switches",
+   "operationId": "listDistributedVirtualSwitches",
+   "summary": "List distributed virtual switches",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/distributed-virtual-switches/{id}",
+   "operationId": "getDistributedVirtualSwitch",
+   "summary": "Show distributed virtual switch details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/dx-tunnels",
+   "operationId": "getDirectConnectInterfaces",
+   "summary": "List Direct Connect Interfaces",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/dx-tunnels/{id}",
+   "operationId": "getDirectConnectInterface",
+   "summary": "Show Direct Connect Interface details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/entities/fetch",
+   "operationId": null,
+   "summary": "Get details of entities",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/firewall-managers",
+   "operationId": "listFirewallManagers",
+   "summary": "List firewall managers",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/firewall-managers/{id}",
+   "operationId": "getFirewallManager",
+   "summary": "Show firewall manager details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/firewall-rules",
+   "operationId": "listFirewallRules",
+   "summary": "List firewall rules",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/firewall-rules/{id}",
+   "operationId": "getFirewallRule",
+   "summary": "Show firewall rule details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/firewalls",
+   "operationId": "listFirewalls",
+   "summary": "List firewalls",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/firewalls/{id}",
+   "operationId": "getFirewall",
+   "summary": "Show firewall details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/flows",
+   "operationId": "getFlows",
+   "summary": "List flows",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/flows/{id}",
+   "operationId": "getFlow",
+   "summary": "Show flow details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/folders",
+   "operationId": "listFolders",
+   "summary": "List folders",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/folders/{id}",
+   "operationId": "getFolder",
+   "summary": "Show folder details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-appliances",
+   "operationId": "getHCXAppliances",
+   "summary": "List HCX Appliances",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-appliances/{id}",
+   "operationId": "getHCXAppliance",
+   "summary": "Show HCX Appliance details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-compute-profiles",
+   "operationId": "getHCXComputeProfiles",
+   "summary": "List HCX Compute Profiles",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-compute-profiles/{id}",
+   "operationId": "getHCXComputeProfile",
+   "summary": "Show HCX Compute Profile details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-l2extensions",
+   "operationId": "getHCXL2Extensions",
+   "summary": "List HCX L2 Extensions",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-l2extensions/{id}",
+   "operationId": "getHCXL2Extension",
+   "summary": "Show HCX L2 Extension details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-managers",
+   "operationId": "getHCXManagers",
+   "summary": "List HCX Managers",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-managers/{id}",
+   "operationId": "getHCXManager",
+   "summary": "Show HCX Manager details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-network-profiles",
+   "operationId": "getHCXNetworkProfiles",
+   "summary": "List HCX Network Profiles",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-network-profiles/{id}",
+   "operationId": "getHCXNetworkProfile",
+   "summary": "Show HCX Network Profile details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-service-meshes",
+   "operationId": "getHCXServiceMeshes",
+   "summary": "List HCX Service Meshes",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-service-meshes/{id}",
+   "operationId": "getHCXServiceMesh",
+   "summary": "Show HCX Service Mesh details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-services",
+   "operationId": "getHCXServices",
+   "summary": "List HCX Services",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-services/{id}",
+   "operationId": "getHCXService",
+   "summary": "Show HCX Services details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-sites",
+   "operationId": "getHCXSites",
+   "summary": "List HCX Sites",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-sites/{id}",
+   "operationId": "getHCXSite",
+   "summary": "Show HCX Site details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-tunnels",
+   "operationId": "getHCXTunnels",
+   "summary": "List HCX Tunnels",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hcx-tunnels/{id}",
+   "operationId": "getHCXTunnel",
+   "summary": "Show HCX Tunnels details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hosts",
+   "operationId": "listHosts",
+   "summary": "List hosts",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/hosts/{id}",
+   "operationId": "getHost",
+   "summary": "Show host details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/ip-sets",
+   "operationId": "listIPSets",
+   "summary": "List NSX IP Sets",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/ip-sets/{id}",
+   "operationId": "getIPSet",
+   "summary": "Show NSX IP Set details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/ipsec-vpn-sessions",
+   "operationId": "getIPSecVPNSessions",
+   "summary": "List IPSec VPN Sessions",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/ipsec-vpn-sessions/{id}",
+   "operationId": "getIPSecVPNSession",
+   "summary": "Show IPSec VPN Session details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/kubernetes-clusters",
+   "operationId": "getKubernetesClusterEntities",
+   "summary": "List Kubernetes Clusters",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/kubernetes-clusters/{id}",
+   "operationId": "getKubernetesClusterEntity",
+   "summary": "Show Kubernetes Cluster details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/kubernetes-namespaces",
+   "operationId": "listKubernetesNamespaces",
+   "summary": "List Kubernetes Namespaces",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/kubernetes-namespaces/{id}",
+   "operationId": "getKubernetesNamespace",
+   "summary": "Show Kubernetes Namespace details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/kubernetes-nodes",
+   "operationId": "listKubernetesNodes",
+   "summary": "List Kubernetes Nodes",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/kubernetes-nodes/{id}",
+   "operationId": "getKubernetesNode",
+   "summary": "Show Kubernetes Node details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/kubernetes-pods",
+   "operationId": "listKubernetesPods",
+   "summary": "List Kubernetes Pods",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/kubernetes-pods/{id}",
+   "operationId": "getKubernetesPod",
+   "summary": "Show Kubernetes Pod details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/kubernetes-services",
+   "operationId": "listKubernetesServices",
+   "summary": "List Kubernetes Services",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/kubernetes-services/{id}",
+   "operationId": "getKubernetesService",
+   "summary": "Show Kubernetes Service details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/layer2-networks",
+   "operationId": "listLayer2Networks",
+   "summary": "List layer2 networks",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/layer2-networks/{id}",
+   "operationId": "getLayer2Network",
+   "summary": "Show layer2 network details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/logical-routers",
+   "operationId": "getLogicalRouters",
+   "summary": "List Logical Routers",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/logical-routers/{id}",
+   "operationId": "getLogicalRouter",
+   "summary": "Show Logical Router details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/entities/names",
+   "operationId": "getNames",
+   "summary": "Get names for entities",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/names/{id}",
+   "operationId": "getName",
+   "summary": "Get name of an entity",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/nsx-managers",
+   "operationId": "listNSXManagers",
+   "summary": "List NSX managers",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/nsx-managers/{id}",
+   "operationId": "getNSXManager",
+   "summary": "Show NSX manager details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/nsxt-controllers",
+   "operationId": "listNSXTControllers",
+   "summary": "List of NSXT Controllers",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/nsxt-controllers/{id}",
+   "operationId": "getNSXTController",
+   "summary": "Show NSXT Controller details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/nsxt-edge-clusters",
+   "operationId": "listNSXTEdgeClusters",
+   "summary": "List of NSXT Edge Clusters",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/nsxt-edge-clusters/{id}",
+   "operationId": "getNSXTEdgeCluster",
+   "summary": "Show NSXT Edge Cluster details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/nsxt-edge-node-cpu-cores",
+   "operationId": "getNSXTEdgeNodeCPUCores",
+   "summary": "List of NSXT Transport Node CPU Cores",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/nsxt-edge-node-cpu-cores/{id}",
+   "operationId": "getNSXTEdgeNodeCPUCoreById",
+   "summary": "Show NSXT Transport Node CPU Core details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/nsxt-mp-nodes",
+   "operationId": "listNSXTManagementNodes",
+   "summary": "List of NSXT Management Nodes",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/nsxt-mp-nodes/{id}",
+   "operationId": "getNSXTManagementNode",
+   "summary": "Show NSXT Management Node details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/nsxt-transport-nodes",
+   "operationId": "listNSXTTransportNodes",
+   "summary": "List of NSXT Transport Nodes",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/nsxt-transport-nodes/{id}",
+   "operationId": "getNSXTTransportNode",
+   "summary": "Show NSXT Transport Node details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/problemDetails",
+   "operationId": null,
+   "summary": "List problems",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/problems",
+   "operationId": "listProblemEvents",
+   "summary": "List problems",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/entities/problems/fetch",
+   "operationId": "bulkFetchProblemEvents",
+   "summary": "Get details of problem events",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/problems/{id}",
+   "operationId": "getProblemEvent",
+   "summary": "Show problem details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/routerinterfaces",
+   "operationId": "listRouterinterfaces",
+   "summary": "List Router Interfaces",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/routerinterfaces/{id}",
+   "operationId": "getRouterInterface",
+   "summary": "Show RouterInterface details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/sddc-groups",
+   "operationId": "getSddcGroups",
+   "summary": "List VMC SDDC Groups",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/sddc-groups/{id}",
+   "operationId": "getSddcGroup",
+   "summary": "Show VMC SDDC Group details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/security-groups",
+   "operationId": "listSecurityGroups",
+   "summary": "List security groups",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/security-groups/{id}",
+   "operationId": "getSecurityGroup",
+   "summary": "Show security group details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/security-tags",
+   "operationId": "listSecurityTags",
+   "summary": "List security tags",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/security-tags/{id}",
+   "operationId": "getSecurityTag",
+   "summary": "Show security tag details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/service-groups",
+   "operationId": "listServiceGroups",
+   "summary": "List service groups",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/service-groups/{id}",
+   "operationId": "getServiceGroup",
+   "summary": "Show service group details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/services",
+   "operationId": "listServices",
+   "summary": "List services",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/services/{id}",
+   "operationId": "getService",
+   "summary": "Show service details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/switchports",
+   "operationId": "listSwitchports",
+   "summary": "List Switch Ports",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/switchports/{id}",
+   "operationId": "getSwitchPort",
+   "summary": "Show SwitchPort details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/vc-datacenters",
+   "operationId": "listDatacenters",
+   "summary": "List vCenter datacenters",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/vc-datacenters/{id}",
+   "operationId": "getDatacenter",
+   "summary": "Show vCenter datacenter details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/vcenter-managers",
+   "operationId": "listVcenterManagers",
+   "summary": "List vCenter managers",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/vcenter-managers/{id}",
+   "operationId": "getVcenterManager",
+   "summary": "Show vCenter manager details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/entities/vendor-infos/fetch",
+   "operationId": "bulkFetchVendorInfo",
+   "summary": "Get Vendor Information of entities",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/virtual-disk",
+   "operationId": "getVirtualDisks",
+   "summary": "List of Virtual Disks",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/virtual-disk/{id}",
+   "operationId": "getVirtualDisk",
+   "summary": "Show Virtual Disk details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/vmc-sddc",
+   "operationId": "getVMCSDDCs",
+   "summary": "List VMC SDDCs",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/vmc-sddc/{id}",
+   "operationId": "getVMCSDDC",
+   "summary": "Show VMC SDDC details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/vmknics",
+   "operationId": "listVmknics",
+   "summary": "List vmknics",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/vmknics/{id}",
+   "operationId": "getVmknic",
+   "summary": "Show vmknic details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/vms",
+   "operationId": "listVms",
+   "summary": "List vms",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/vms/{id}",
+   "operationId": "getVm",
+   "summary": "Show VM details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/vmware-transit-gateways",
+   "operationId": "getVMWareTransitGateways",
+   "summary": "List VMware Transit Gateways",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/vmware-transit-gateways/{id}",
+   "operationId": "getVMWareTransitGateway",
+   "summary": "Show VMware Transit Gateway details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/vnics",
+   "operationId": "listVnics",
+   "summary": "List vnics",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/entities/vnics/{id}",
+   "operationId": "getVnic",
+   "summary": "Show vNIC details",
+   "tags": [
+    "Entities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/flows/tcp-incomplete/csv-export",
+   "operationId": "csvExportIncompleteSessions",
+   "summary": "Export Incomplete TCP flow Sessions in csv file",
+   "tags": [
+    "Incomplete TCP flow Sessions"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/flows/tcp-incomplete/list",
+   "operationId": "listIncompleteSessions",
+   "summary": "Get drill down of the incomplete tcp sessions for a specific destination virtual machine.",
+   "tags": [
+    "Incomplete TCP flow Sessions"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/gnt/troubleshoot/incidents",
+   "operationId": "listTroubleshootingIncidents",
+   "summary": "Shows Guided Network Troubleshooting incidents",
+   "tags": [
+    "Guided Network Troubleshooting"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/gnt/troubleshoot/incidents",
+   "operationId": "createTroubleshootingIncident",
+   "summary": "Creates Guided Network Troubleshooting incident",
+   "tags": [
+    "Guided Network Troubleshooting"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/gnt/troubleshoot/incidents/{id}",
+   "operationId": "deleteTroubleshootingIncident",
+   "summary": "Removes Guided Network Troubleshooting incident",
+   "tags": [
+    "Guided Network Troubleshooting"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/gnt/troubleshoot/incidents/{id}",
+   "operationId": "getTroubleshootingIncident",
+   "summary": "Shows Guided Network Troubleshooting incident",
+   "tags": [
+    "Guided Network Troubleshooting"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/gnt/troubleshoot/incidents/{id}",
+   "operationId": "updateTroubleshootingIncident",
+   "summary": "Updates Guided Network Troubleshooting incident",
+   "tags": [
+    "Guided Network Troubleshooting"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/applications",
+   "operationId": "listApplications",
+   "summary": "List applications",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/groups/applications",
+   "operationId": "addApplication",
+   "summary": "Create an application",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/applications/fetch",
+   "operationId": "getSavedApplicationsSummaries",
+   "summary": "Get saved application summaries in bulk",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/groups/applications/full/",
+   "operationId": "addApplicationWithTiers",
+   "summary": "Create application along with it's tiers",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/groups/applications/members",
+   "operationId": "getApplicationsMembers",
+   "summary": "Get member details of applications",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/groups/applications/{id}",
+   "operationId": "deleteApplication",
+   "summary": "Delete an application",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/applications/{id}",
+   "operationId": "getApplicationById",
+   "summary": "Get application summary",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/applications/{id}/flow-metrics",
+   "operationId": "getAppFlowMetrics",
+   "summary": "Get application flow metrics",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/applications/{id}/flow-props",
+   "operationId": "getAppFlowProperties",
+   "summary": "Get application flow properties",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/applications/{id}/flow-summary",
+   "operationId": "getApplicationFlowSummary",
+   "summary": "Show application flow summary",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/applications/{id}/members/vms",
+   "operationId": "getApplicationVms",
+   "summary": "Show application members",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/applications/{id}/problems",
+   "operationId": "getAppProblems",
+   "summary": "List Application problems",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/applications/{id}/tiers",
+   "operationId": "listApplicationTiers",
+   "summary": "List tiers of an application",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/groups/applications/{id}/tiers",
+   "operationId": "addTier",
+   "summary": "Create tier in application",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/groups/applications/{id}/tiers/{tier-id}",
+   "operationId": "deleteTier",
+   "summary": "Delete application tier",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/applications/{id}/tiers/{tier-id}",
+   "operationId": "getApplicationTier",
+   "summary": "Show application tier details",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/groups/applications/{id}/tiers/{tier-id}",
+   "operationId": "editApplicationTier",
+   "summary": "Edit tier in application",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/applications/{id}/top-talking-member",
+   "operationId": "getAppTopTalkingMembers",
+   "summary": "List Application top talking members",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/applications/{id}/top-talking-pair",
+   "operationId": "getAppTopTalkingPairs",
+   "summary": "List Application top talking pairs",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/applications/{id}/updates",
+   "operationId": "getApplicationUpdates",
+   "summary": "Get application update details",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/discovered-applications",
+   "operationId": "getDiscoveredApplications",
+   "summary": "Get discovered application IDs",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/discovered-applications/custom-config/fbad",
+   "operationId": "getFBADConfigIds",
+   "summary": "Get all the flow based application discovery configuration ids",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/groups/discovered-applications/custom-config/fbad",
+   "operationId": "createFBADConfig",
+   "summary": "Create flow based application discovery configuration",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/groups/discovered-applications/custom-config/fbad/file/upload",
+   "operationId": "uploadFBADCSV",
+   "summary": "Upload CSV file to be used for flow based application discovery",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/discovered-applications/custom-config/fbad/fileErrors/csv",
+   "operationId": "exportFBADCSVErrors",
+   "summary": "Export errors in CSV being used for Flow Based Application Discovery",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/discovered-applications/custom-config/fbad/progress/{id}",
+   "operationId": "getFBADProgress",
+   "summary": "Get progress of flow based application discovery of configuration id",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/groups/discovered-applications/custom-config/fbad/{id}",
+   "operationId": "deleteFBADConfig",
+   "summary": "Delete flow based application discovery configuration",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/discovered-applications/custom-config/fbad/{id}",
+   "operationId": "getFBADConfig",
+   "summary": "Get flow based application discovery configuration",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/groups/discovered-applications/custom-config/fbad/{id}",
+   "operationId": "updateFBADConfig",
+   "summary": "Update flow based application discovery configuration",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/discovered-applications/custom-config/fbad/{id}/file/download",
+   "operationId": "getCSVUsedForFBAD",
+   "summary": "Get CSV being used for flow based application discovery",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/discovered-applications/fetch",
+   "operationId": "getDiscoveredApplicationSummaries",
+   "summary": "Get discovered application summaries in bulk",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/groups/discovered-applications/save",
+   "operationId": "saveDiscoveredApplications",
+   "summary": "Bulk save discovered applciations",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/task/progress/{requestId}",
+   "operationId": "getBulkApplicationTaskProgress",
+   "summary": "GET progress of bulk application creation request",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/groups/tiers/members",
+   "operationId": "getTiersMembers",
+   "summary": "Get member details of tiers",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/groups/tiers/{tier-id}",
+   "operationId": "getTier",
+   "summary": "Show application tier details",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/info/version",
+   "operationId": "getVersion",
+   "summary": "Show version info",
+   "tags": [
+    "Info"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/infra/expanded-nodes",
+   "operationId": "listExpandedNodes",
+   "summary": "List nodes",
+   "tags": [
+    "Infrastructure"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/infra/nodes",
+   "operationId": "listNodes",
+   "summary": "List nodes",
+   "tags": [
+    "Infrastructure"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/infra/nodes/{id}",
+   "operationId": "deleteNode",
+   "summary": "Delete proxy node",
+   "tags": [
+    "Infrastructure"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/infra/nodes/{id}",
+   "operationId": "getNode",
+   "summary": "Show node details",
+   "tags": [
+    "Infrastructure"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/infra/watermark",
+   "operationId": "deleteVCFWatermark",
+   "summary": "Delete VMware Cloud Foundation (VCF) watermark",
+   "tags": [
+    "Infrastructure"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/infra/watermark",
+   "operationId": "getVCFWatermark",
+   "summary": "Get VCF Watermark details",
+   "tags": [
+    "Infrastructure"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/infra/watermark",
+   "operationId": "saveVCFWatermark",
+   "summary": "Configure VMware Cloud Foundation (VCF) watermark",
+   "tags": [
+    "Infrastructure"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/infra/watermark",
+   "operationId": "updateVCFWatermark",
+   "summary": "Update VMware Cloud Foundation (VCF) watermark",
+   "tags": [
+    "Infrastructure"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/inventory-trees",
+   "operationId": "getInventoryTrees",
+   "summary": "List Available Views",
+   "tags": [
+    "Inventory Tree"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/inventory-trees/{tree-type}/{node-id}/children",
+   "operationId": "getChildren",
+   "summary": "Get children of node",
+   "tags": [
+    "Inventory Tree"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/logs/audit",
+   "operationId": "getAuditLogs",
+   "summary": "Get Audit logs",
+   "tags": [
+    "Logs"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/metrics",
+   "operationId": "getMetrics",
+   "summary": "Get metric points for an entity",
+   "tags": [
+    "Metrics"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/metrics/fetch",
+   "operationId": "fetchBulkMetrics",
+   "summary": "Get metric points for an array of entities in bulk",
+   "tags": [
+    "Metrics"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/metrics/fetch/v2",
+   "operationId": "fetchBulkMetricsV2",
+   "summary": "Get metric points for an array of entities in bulk",
+   "tags": [
+    "Metrics"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/metrics/v2",
+   "operationId": "getMetricsV2",
+   "summary": "Get metric points for an entity",
+   "tags": [
+    "Metrics"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/micro-seg/entity/single",
+   "operationId": "getEntityCommunicationSummary",
+   "summary": "Get communication summary for requested entity",
+   "tags": [
+    "Microsegmentation"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/micro-seg/graph",
+   "operationId": "getConnectionGraph",
+   "summary": "Get communication graph for requested entity type",
+   "tags": [
+    "Microsegmentation"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/micro-seg/recommended-rules",
+   "operationId": "listRecommendedRules",
+   "summary": "Get logical recommended firewall rules",
+   "tags": [
+    "Microsegmentation"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/micro-seg/recommended-rules/nsx",
+   "operationId": "exportNsxRecommendedRules",
+   "summary": "Export recommended firewall rules for NSX-v",
+   "tags": [
+    "Microsegmentation"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/migration/disable",
+   "operationId": "disableMigrationWave",
+   "summary": "Disable migration wave computation.",
+   "tags": [
+    "Migration"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/migration/enable",
+   "operationId": "enableMigrationWave",
+   "summary": "Enable migration wave computation.",
+   "tags": [
+    "Migration"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/migration/wave/{groupType}",
+   "operationId": "getMigrationWave",
+   "summary": "Get migration waves.",
+   "tags": [
+    "Migration"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/path/firewall-rules",
+   "operationId": "pathFirewallRules",
+   "summary": "Get firewall rules for specified client server ips and port/protocol",
+   "tags": [
+    "Path"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/pinboards",
+   "operationId": "getAllPinboards",
+   "summary": "Get all pinboards",
+   "tags": [
+    "Pinboards"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/pinboards",
+   "operationId": "createPinboard",
+   "summary": "Create Pinboard",
+   "tags": [
+    "Pinboards"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/pinboards/{id}",
+   "operationId": "deletePinboard",
+   "summary": "Delete Pinboard",
+   "tags": [
+    "Pinboards"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/pinboards/{id}",
+   "operationId": "getPinboard",
+   "summary": "Get pinboard",
+   "tags": [
+    "Pinboards"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/pinboards/{id}",
+   "operationId": "editPinboard",
+   "summary": "Edit the pinboard",
+   "tags": [
+    "Pinboards"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/pinboards/{id}/duplicate",
+   "operationId": "duplicatePinboard",
+   "summary": "Duplicate pinboard",
+   "tags": [
+    "Pinboards"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/pinboards/{id}/pins",
+   "operationId": "createPin",
+   "summary": "Create a pin",
+   "tags": [
+    "Pinboards"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/pinboards/{id}/pins/{pin-id}",
+   "operationId": "deletePin",
+   "summary": "Delete pin",
+   "tags": [
+    "Pinboards"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/pinboards/{id}/pins/{pin-id}",
+   "operationId": "updatePin",
+   "summary": "Update pin",
+   "tags": [
+    "Pinboards"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/pinboards/{id}/remove-share",
+   "operationId": "removeSharePinboard",
+   "summary": "Unshare Pinboard",
+   "tags": [
+    "Pinboards"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/pinboards/{id}/set-homepage",
+   "operationId": "setPinboardAsHomepage",
+   "summary": "Set pinboard as homepage",
+   "tags": [
+    "Pinboards"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/pinboards/{id}/share",
+   "operationId": "sharePinboard",
+   "summary": "Share Pinboard",
+   "tags": [
+    "Pinboards"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/schema/problems",
+   "operationId": "bulkFetchEventMetaInfo",
+   "summary": "Get Event meta Information",
+   "tags": [
+    "Schema"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/schema/{entity-type}/metrics",
+   "operationId": "getMetricsSchema",
+   "summary": "Get metrics schema for an entity type",
+   "tags": [
+    "Schema"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/search",
+   "operationId": "searchEntities",
+   "summary": "Search entities",
+   "tags": [
+    "Search"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/search/aggregation",
+   "operationId": "aggregateSearchResults",
+   "summary": "Search Aggregation API",
+   "tags": [
+    "Search"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/search/groupby",
+   "operationId": "groupSearchResults",
+   "summary": "Search Group By API",
+   "tags": [
+    "Search"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/search/ql",
+   "operationId": "search",
+   "summary": "Search",
+   "tags": [
+    "Search"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/alerts/search-based-alerts",
+   "operationId": "getAllSearchBasedAlertConfigs",
+   "summary": "List all Search Based Alert Configurations.",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/alerts/search-based-alerts",
+   "operationId": "addSearchBasedAlertConfig",
+   "summary": "Add a new Search Based Alert Configuration",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/settings/alerts/search-based-alerts/{id}",
+   "operationId": "deleteSearchBasedAlertConfig",
+   "summary": "Delete an existing Search Based Alert Configuration.",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/alerts/search-based-alerts/{id}",
+   "operationId": "getSearchBasedAlertConfig",
+   "summary": "Get details of an existing Search Based Alert Configuration.",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/settings/alerts/search-based-alerts/{id}",
+   "operationId": "updateSearchBasedAlertConfig",
+   "summary": "Update an existing Search Based Alert Configuration.",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/alerts/search-based-alerts/{id}/disable",
+   "operationId": "disableSearchBasedAlertConfig",
+   "summary": "Disable an existing Search Based Alert Configuration.",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/alerts/search-based-alerts/{id}/enable",
+   "operationId": "enableSearchBasedAlertConfig",
+   "summary": "Enable an existing Search Based Alert Configuration",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/settings/backup",
+   "operationId": "deleteBackupConfig",
+   "summary": "Delete existing Backup configuration",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/backup",
+   "operationId": "getBackupConfig",
+   "summary": "Get Backup configuration",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/backup",
+   "operationId": "addBackupConfig",
+   "summary": "Configure backup of configuration",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/settings/backup",
+   "operationId": "updateBackupConfig",
+   "summary": "Update Backup configuration",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/backup/status",
+   "operationId": "getBackupStatusReport",
+   "summary": "Get currently running or last Backup job status",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/certificates",
+   "operationId": "getCertificatesDetails",
+   "summary": "Get all certificates",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/certificates/status/{id}",
+   "operationId": "fetchCertificateUpdateStatusForUpdateId",
+   "summary": "Get certificate update status for update id",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/settings/certificates/{id}",
+   "operationId": "updateCertificate",
+   "summary": "Update a certificate",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/certificates/{id}/status",
+   "operationId": "fetchCertificatesUpdateStatus",
+   "summary": "Get certificate update status",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/databus/subscribers",
+   "operationId": "getAllSubscriber",
+   "summary": "Get the list of 'Databus' subscriptions",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/databus/subscribers",
+   "operationId": "createSubscriber",
+   "summary": "Add 'Databus' subsciption",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/settings/databus/subscribers/{subscriptionId}",
+   "operationId": "deleteSubscriber",
+   "summary": "Delete a 'Databus' subscription",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/databus/subscribers/{subscriptionId}",
+   "operationId": "getSubscriber",
+   "summary": "Retrieve a 'Databus' subscriptions",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/settings/databus/subscribers/{subscriptionId}",
+   "operationId": "updateSubscriber",
+   "summary": "Update 'Databus' subsciption",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/events/user-defined-events",
+   "operationId": "getAllUserDefinedEvents",
+   "summary": "List the created User Defined Event defintions.",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/settings/events/user-defined-events",
+   "operationId": "createUserDefinedEvent",
+   "summary": "Add new User-Defined event",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/settings/events/user-defined-events/{id}",
+   "operationId": "deleteUserDefinedEvent",
+   "summary": "Delete an existing User-Defined event",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/settings/events/user-defined-events/{id}",
+   "operationId": "getUserDefinedEvent",
+   "summary": "Get details of an existing User-Defined event.",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/settings/events/user-defined-events/{id}",
+   "operationId": "updateUserDefinedEvent",
+   "summary": "Update an existing User-Defined event.",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/settings/events/user-defined-events/{id}/disable",
+   "operationId": "disableUserDefinedEvent",
+   "summary": "Disable an existing User-Defined event",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/settings/events/user-defined-events/{id}/enable",
+   "operationId": "enableUserDefinedEvent",
+   "summary": "Enable an existing User-Defined event",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/settings/fips/modules",
+   "operationId": "getFipsModulesDetails",
+   "summary": "Get details of fips modules",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/ip-tags/tag-ids",
+   "operationId": "getIpTagIds",
+   "summary": "Show IP tag IDs",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/settings/ip-tags/v2/tag-ids",
+   "operationId": "getTagIdsV2",
+   "summary": "Show IP tag IDs",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/ip-tags/v2/{tag-id}",
+   "operationId": "getIpTagV2",
+   "summary": "Show IP tag details",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/ip-tags/v2/{tag-id}/add",
+   "operationId": "addTagV2",
+   "summary": "Tag IP addresses with tag-id",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/ip-tags/v2/{tag-id}/remove",
+   "operationId": "removeTagV2",
+   "summary": "Remove tag from IP addresses",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/ip-tags/{tag-id}",
+   "operationId": "getIpTag",
+   "summary": "Show IP tag details",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/settings/ip-tags/{tag-id}/add",
+   "operationId": "addIpTag",
+   "summary": "Tag IP addresses with tag-id",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/settings/ip-tags/{tag-id}/remove",
+   "operationId": "removeIpTag",
+   "summary": "Remove tag from IP addresses",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/settings/licensing/",
+   "operationId": "getLicenses",
+   "summary": "Get current licensing and license usage information",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/settings/licensing/activate",
+   "operationId": "activateSerialNumber",
+   "summary": "Activates a valid license key. This API is not applicable for on-boarding.",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/settings/licensing/deactivate",
+   "operationId": "deactivateSerialNumber",
+   "summary": "Deactivates an existing license key",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/settings/licensing/v2",
+   "operationId": "getLicensesV2",
+   "summary": "Get current licensing information",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/licensing/validate",
+   "operationId": "validateSerialNumber",
+   "summary": "Validates license key",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/settings/loginBanner",
+   "operationId": "deleteLoginBanner",
+   "summary": "Delete login banner from the system",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/loginBanner",
+   "operationId": "getLoginBanner",
+   "summary": "Get Login banner",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/loginBanner",
+   "operationId": "addLoginBanner",
+   "summary": "Add new Login Banner in the system",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/settings/loginBanner",
+   "operationId": "updateLoginBanner",
+   "summary": "Edit login banner details in the system",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/proxy-servers",
+   "operationId": "getWebProxies",
+   "summary": "List of configured web proxy servers",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/proxy-servers",
+   "operationId": "addWebProxy",
+   "summary": "Add new Web Proxy in the system",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/proxy-servers/infra",
+   "operationId": "getInfraNodesWebProxy",
+   "summary": "Get details of web proxy config associated with infra nodes",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/proxy-servers/validate-migration",
+   "operationId": "validateWebProxyMigration",
+   "summary": "Validate the connections when migrating from one web proxy to another",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/settings/proxy-servers/{id}",
+   "operationId": "deleteWebProxy",
+   "summary": "Delete an existing Web Proxy server",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/proxy-servers/{id}",
+   "operationId": "getWebProxy",
+   "summary": "Get details of an existing Web Proxy Server",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/settings/proxy-servers/{id}",
+   "operationId": "updateWebProxy",
+   "summary": "Update the existing web proxy server",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/proxy-servers/{id}/connected-clients",
+   "operationId": "getConnectedClientsToWebProxy",
+   "summary": "Get details of connected clients to Web Proxy Server",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/proxy-servers/{id}/validate-entities",
+   "operationId": "validateConnectionsViaWebProxy",
+   "summary": "Validate the connections via web proxy",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/settings/restore",
+   "operationId": "deleteRestoreConfig",
+   "summary": "Delete existing restore configuration",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/restore",
+   "operationId": "getRestoreConfig",
+   "summary": "Get Restore configuration",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/restore",
+   "operationId": "addRestoreConfig",
+   "summary": "Configure restore of configuration and triggers restore operation",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/restore/status",
+   "operationId": "getRestoreStatusReport",
+   "summary": "Get currently running or last Restore job status",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/snmp/engine-id",
+   "operationId": "getSNMPEngineId",
+   "summary": "Output SNMP Engine ID for v3 traps",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/settings/snmp/engine-id",
+   "operationId": "updateSNMPEngineId",
+   "summary": "Update existing SNMP engine ID",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/snmp/profiles",
+   "operationId": null,
+   "summary": "List the configured SNMP Trap destination profiles",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/snmp/profiles",
+   "operationId": null,
+   "summary": "Add new SNMP Trap destination profile",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/snmp/profiles/send-test-trap",
+   "operationId": null,
+   "summary": "Send Test trap to SNMP destination profile",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/settings/snmp/profiles/{id}",
+   "operationId": null,
+   "summary": "Delete an existing SNMP Trap destination profile",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/snmp/profiles/{id}",
+   "operationId": null,
+   "summary": "Get details of an existing SNMP destination profile",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/settings/snmp/profiles/{id}",
+   "operationId": null,
+   "summary": "Update an existing SNMP destination profile",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/snmp/profiles/{id}/migrate-events",
+   "operationId": null,
+   "summary": "Migrate event subscriptions to other SNMP Trap destination profiles",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/subnet-mappings",
+   "operationId": "getSubnetMappings",
+   "summary": "Get all subnet mappings",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/subnet-mappings",
+   "operationId": "createSubnetMapping",
+   "summary": "Create subnet mapping",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/settings/subnet-mappings/{id}",
+   "operationId": "deleteSubnetMapping",
+   "summary": "Delete subnet mapping",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/settings/subnet-mappings/{id}",
+   "operationId": "updateSubnetMapping",
+   "summary": "Update subnet mapping",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/syslog",
+   "operationId": "getSyslogTargetList",
+   "summary": "Get syslog server info",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/syslog",
+   "operationId": "addSyslogTarget",
+   "summary": "Add syslog server",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/syslog/mapping",
+   "operationId": "getSyslogMapping",
+   "summary": "Get syslog mappings.",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/syslog/mapping",
+   "operationId": "updateSyslogMapping",
+   "summary": "Map and Unmap platform, proxy(or collector) and Ni Alert to a syslog server.",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/syslog/send-test-log",
+   "operationId": "sendSyslogTestMessage",
+   "summary": "Send test log to syslog server",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/syslog/status",
+   "operationId": "getSyslogStatus",
+   "summary": "Get status of the syslog.",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/settings/syslog/status",
+   "operationId": "updateSyslogStatus",
+   "summary": "Enable/Disable syslog functionality.",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/settings/syslog/{ip-or-fqdn}",
+   "operationId": "deleteSyslogTarget",
+   "summary": "Delete syslog server",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/settings/syslog/{ip-or-fqdn}",
+   "operationId": "updateSyslogTarget",
+   "summary": "Update syslog server",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/user-groups",
+   "operationId": "getUserGroups",
+   "summary": "List user-groups",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/user-groups/vidm",
+   "operationId": "addVidmUserGroup",
+   "summary": "Add a VMware Identity Manager user-group to VCF Operations for networks",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/settings/user-groups/vidm",
+   "operationId": "updateVidmUserGroupRole",
+   "summary": "Update role for user-group mapped through VMware Identity Manager",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/settings/user-groups/{id}",
+   "operationId": "deleteUserGroup",
+   "summary": "Delete an existing user-group",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/user-groups/{id}",
+   "operationId": "getUserGroup",
+   "summary": "Get details of a user-group",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/users",
+   "operationId": "getUsers",
+   "summary": "List the users",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/users/all",
+   "operationId": "getAllUsers",
+   "summary": "List all the users",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/settings/users/password",
+   "operationId": null,
+   "summary": "Update user password",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/users/vidm",
+   "operationId": "addVidmUser",
+   "summary": "Add a VMware Identity manager user to VCF Operations for networks",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/settings/users/vidm",
+   "operationId": "updateVidmUserRole",
+   "summary": "Update role for user mapped through VMware Identity Manager",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/settings/users/{id}",
+   "operationId": "deleteUser",
+   "summary": "Delete an existing user.",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/users/{id}",
+   "operationId": "getUser",
+   "summary": "Get details of a user",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/settings/vidm",
+   "operationId": "deleteVidmConfiguration",
+   "summary": "Delete VMware Identity Manager configuration",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/vidm",
+   "operationId": "getVidmConfiguration",
+   "summary": "Get configuration details of VMware Identity Manager",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/vidm",
+   "operationId": "saveVidmConfiguration",
+   "summary": "Configure VMware Identity Manager",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/settings/vidm",
+   "operationId": "updateVidmConfiguration",
+   "summary": "Update VMware Identity Manager configuration",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/settings/vidm/certificate",
+   "operationId": "getCertificate",
+   "summary": "Get certificate for given url",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/vidm/disable",
+   "operationId": "disableVidm",
+   "summary": "Disable VMware Identity Manager integration",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/settings/vidm/enable",
+   "operationId": "enableVidm",
+   "summary": "Enable VMware Identity Manager integration",
+   "tags": [
+    "Settings"
+   ],
+   "deprecated": false
+  }
+ ]
+}

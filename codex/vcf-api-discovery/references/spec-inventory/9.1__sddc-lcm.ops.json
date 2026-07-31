@@ -1,0 +1,289 @@
+{
+ "meta": {
+  "present": true,
+  "spec_file": "specifications/sddc-lcm/sddc-lcm-openapi.yaml",
+  "spec_version": "9.1.0.0",
+  "title": "VCF SDDC LCM Service APIs",
+  "openapi": "3.0.4",
+  "base_path": "https://vcf.broadcom.com/sddc-lcm",
+  "operation_count": 26,
+  "security_schemes": {
+   "bearerToken": {
+    "description": "Bearer token using a JWT",
+    "scheme": "Bearer",
+    "type": "http"
+   }
+  },
+  "tags": [
+   "Components",
+   "Config",
+   "Depot",
+   "Health",
+   "Nodes",
+   "SupportBundles",
+   "Task"
+  ]
+ },
+ "operations": [
+  {
+   "method": "GET",
+   "path": "/v1/components",
+   "operationId": "getComponents",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/components",
+   "operationId": "createComponents",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/components/backups",
+   "operationId": "getComponentsBackups",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/components/backups",
+   "operationId": "backupRestoreComponentsAction",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/components/status",
+   "operationId": "fetchComponentStatuses",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/components/{componentId}",
+   "operationId": "getComponent",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/components/{componentId}",
+   "operationId": "updateComponent",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/components/{componentId}",
+   "operationId": "performComponentAction",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/components/{componentId}/config",
+   "operationId": "getComponentConfig",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/components/{componentId}/config",
+   "operationId": "updateComponentConfig",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/components/{componentId}/nodes",
+   "operationId": "getComponentNodes",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/components/{componentId}/status",
+   "operationId": "getComponentStatus",
+   "summary": "",
+   "tags": [
+    "Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/components/{componentId}/support-bundles",
+   "operationId": "getComponentSupportBundles",
+   "summary": "",
+   "tags": [
+    "SupportBundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/components/{componentId}/support-bundles",
+   "operationId": "generateComponentSupportBundle",
+   "summary": "",
+   "tags": [
+    "SupportBundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/components/{componentId}/support-bundles/{supportBundleId}",
+   "operationId": "deleteComponentSupportBundle",
+   "summary": "",
+   "tags": [
+    "SupportBundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/config",
+   "operationId": "getConfig",
+   "summary": "",
+   "tags": [
+    "Config"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/config",
+   "operationId": "setConfig",
+   "summary": "",
+   "tags": [
+    "Config"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/depot",
+   "operationId": "setDepot",
+   "summary": "",
+   "tags": [
+    "Depot"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/depot/components",
+   "operationId": "resolveDepotComponents",
+   "summary": "",
+   "tags": [
+    "Depot"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/health",
+   "operationId": "getHealth",
+   "summary": "",
+   "tags": [
+    "Health"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/nodes",
+   "operationId": "createNode",
+   "summary": "",
+   "tags": [
+    "Nodes"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/nodes/{nodeId}/config",
+   "operationId": "updateNodeConfig",
+   "summary": "",
+   "tags": [
+    "Nodes"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/tasks",
+   "operationId": "getTasks",
+   "summary": "Get all tasks",
+   "tags": [
+    "Task"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/tasks/{taskId}",
+   "operationId": "getTask",
+   "summary": "Get a task",
+   "tags": [
+    "Task"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/tasks/{taskId}?action=cancel",
+   "operationId": "cancelTask",
+   "summary": "Cancel a task",
+   "tags": [
+    "Task"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/tasks/{taskId}?action=retry",
+   "operationId": "retryTask",
+   "summary": "Retry a failed task",
+   "tags": [
+    "Task"
+   ],
+   "deprecated": false
+  }
+ ]
+}

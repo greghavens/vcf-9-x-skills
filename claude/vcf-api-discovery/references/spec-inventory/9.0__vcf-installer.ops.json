@@ -1,0 +1,548 @@
+{
+ "meta": {
+  "present": true,
+  "spec_file": "specifications/vcf-installer/vcf-installer-openapi.json",
+  "spec_version": "9.0.0.0",
+  "title": "VMware Cloud Foundation Installer API Reference Guide",
+  "openapi": "3.0.1",
+  "base_path": "http://localhost:80",
+  "operation_count": 52,
+  "security_schemes": {},
+  "tags": [
+   "Bundles",
+   "CEIP",
+   "DepotSettings",
+   "Flexible Product Patches",
+   "ProxyConfiguration",
+   "Releases",
+   "System",
+   "Tasks",
+   "Tokens",
+   "Trusted Certificates",
+   "VCF Installer",
+   "VcfServices"
+  ]
+ },
+ "operations": [
+  {
+   "method": "GET",
+   "path": "/v1/bundles",
+   "operationId": "getBundles",
+   "summary": "Retrieve a list of bundles",
+   "tags": [
+    "Bundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/bundles",
+   "operationId": "uploadBundle",
+   "summary": "[Unsupported] Upload a bundle to SDDC Manager or VCF Installer",
+   "tags": [
+    "Bundles"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/bundles/domains/{id}",
+   "operationId": "getBundlesForSkipUpgrade",
+   "summary": "Retrieve a list of bundles to skip upgrade a domain",
+   "tags": [
+    "Bundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/bundles/download-status",
+   "operationId": "getBundleDownloadStatus",
+   "summary": "Retrieve a the download status for bundles",
+   "tags": [
+    "Bundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/bundles/{id}",
+   "operationId": "deleteBundle",
+   "summary": "Delete a bundle by bundle ID",
+   "tags": [
+    "Bundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/bundles/{id}",
+   "operationId": "getBundle",
+   "summary": "Retrieve a bundle by its ID",
+   "tags": [
+    "Bundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/bundles/{id}",
+   "operationId": "startBundleDownloadByID",
+   "summary": "Start immediate, schedule or cancel download of a bundle by ID",
+   "tags": [
+    "Bundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/releases",
+   "operationId": "getReleases",
+   "summary": "Retrieve a list of releases including current and target versions",
+   "tags": [
+    "Releases"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/releases/custom-patches",
+   "operationId": "getCustomPatchesBySku",
+   "summary": "Retrieve the list of custom patches for BOM products associated with or applicable to SKU",
+   "tags": [
+    "Flexible Product Patches"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/releases/domains/{domainId}/custom-patches",
+   "operationId": "getCustomPatches",
+   "summary": "Retrieve the list of custom patches for BOM products associated with or applicable on a VCF domain",
+   "tags": [
+    "Flexible Product Patches"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/releases/domains/{domainId}/future-releases",
+   "operationId": "getFutureReleases",
+   "summary": "Retrieve a list of future releases by domain ID",
+   "tags": [
+    "Releases"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/releases/system",
+   "operationId": "getSystemRelease",
+   "summary": "Retrieve the lowest deployed release of VMware Cloud Foundation",
+   "tags": [
+    "Releases"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/releases/{sku}/release-components",
+   "operationId": "getReleaseComponentsBySku",
+   "summary": "Retrieves the list of components that are part of a VCF or VVF release.",
+   "tags": [
+    "Flexible Product Patches"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddc-manager/trusted-certificates",
+   "operationId": "getTrustedCertificates",
+   "summary": "Retrieve all trusted certificates from the appliance",
+   "tags": [
+    "Trusted Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/sddc-manager/trusted-certificates",
+   "operationId": "addTrustedCertificate",
+   "summary": "Add a trusted certificate to the appliance's trust store",
+   "tags": [
+    "Trusted Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/sddc-manager/trusted-certificates/{alias}",
+   "operationId": "deleteTrustedCertificate",
+   "summary": "Delete a trusted certificate from the appliance's trust store",
+   "tags": [
+    "Trusted Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddcs",
+   "operationId": "getSddcTasks",
+   "summary": "Retrieve all VCF (or VVF) installation tasks",
+   "tags": [
+    "VCF Installer"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/sddcs",
+   "operationId": "deploySddc",
+   "summary": "Start VCF (or VVF) installation",
+   "tags": [
+    "VCF Installer"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/sddcs/installer-mode",
+   "operationId": "getInstallerType",
+   "summary": "Get VCF Installer Appliance Mode",
+   "tags": [
+    "VCF Installer"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddcs/latest",
+   "operationId": "getLatestSddcTask",
+   "summary": "Retrieve latest VCF (or VVF) installation task",
+   "tags": [
+    "VCF Installer"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/sddcs/network-config-profiles",
+   "operationId": "getNetworkConfigProfiles",
+   "summary": "Get Network Profiles",
+   "tags": [
+    "VCF Installer"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddcs/validations",
+   "operationId": "getSddcSpecValidations",
+   "summary": "Retrieve a list of VCF (or VVF) installation validations",
+   "tags": [
+    "VCF Installer"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/sddcs/validations",
+   "operationId": "validateSddcSpec",
+   "summary": "Perform validation of the VCF Installer specification",
+   "tags": [
+    "VCF Installer"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddcs/validations/latest",
+   "operationId": "getLatestSddcSpecValidation",
+   "summary": "Retrieve the results of latest VCF (or VVF) installation validation",
+   "tags": [
+    "VCF Installer"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddcs/validations/{id}",
+   "operationId": "getSddcSpecValidation",
+   "summary": "Retrieve the results of VCF (or VVF) installation validation by its ID",
+   "tags": [
+    "VCF Installer"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/sddcs/vcenter-discovery",
+   "operationId": "discoverVcenter",
+   "summary": "Discover vCenter topology",
+   "tags": [
+    "VCF Installer"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/sddcs/vcfops-discovery",
+   "operationId": "discoverVcfOps",
+   "summary": "Discover VCF Operations topology",
+   "tags": [
+    "VCF Installer"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddcs/{id}",
+   "operationId": "getSddcTaskByID",
+   "summary": "Retrieve a VCF (or VVF) installation task by its ID",
+   "tags": [
+    "VCF Installer"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/sddcs/{id}",
+   "operationId": "retrySddc",
+   "summary": "Retry a failed VCF (or VVF) installation.",
+   "tags": [
+    "VCF Installer"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddcs/{id}/spec",
+   "operationId": "getSddcSpecByID",
+   "summary": "Retrieve a VCF (or VVF) input specification for an already started installation by its task ID",
+   "tags": [
+    "VCF Installer"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system",
+   "operationId": "getSystemConfiguration",
+   "summary": "Retrieve the system configuration",
+   "tags": [
+    "System"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/system",
+   "operationId": "updateSystemConfiguration",
+   "summary": "Updates paramters of the system configuration",
+   "tags": [
+    "System"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/appliance-info",
+   "operationId": "getApplianceInfo",
+   "summary": "Get appliance information",
+   "tags": [
+    "System"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/ceip",
+   "operationId": "getCeipStatus",
+   "summary": "Retrieve the CEIP status",
+   "tags": [
+    "CEIP"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/system/ceip",
+   "operationId": "setCeipStatus",
+   "summary": "Configure CEIP to Opt-In or Opt-Out",
+   "tags": [
+    "CEIP"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/proxy-configuration",
+   "operationId": "getProxyConfiguration",
+   "summary": "Get the current Proxy configuration",
+   "tags": [
+    "ProxyConfiguration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/system/proxy-configuration",
+   "operationId": "updateProxyConfiguration",
+   "summary": "Update Proxy configuration",
+   "tags": [
+    "ProxyConfiguration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/system/settings/depot",
+   "operationId": "deleteDepotSettings",
+   "summary": "Delete the depot configuration",
+   "tags": [
+    "DepotSettings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/settings/depot",
+   "operationId": "getDepotSettings",
+   "summary": "Retrieve the depot configuration",
+   "tags": [
+    "DepotSettings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/system/settings/depot",
+   "operationId": "updateDepotSettings",
+   "summary": "Configure the depot credentials",
+   "tags": [
+    "DepotSettings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/settings/depot/depot-sync-info",
+   "operationId": "getDepotSyncInfo",
+   "summary": "Retrieve the depot sync information",
+   "tags": [
+    "DepotSettings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/system/settings/depot/depot-sync-info",
+   "operationId": "syncDepotMetadata",
+   "summary": "Sync depot metadata",
+   "tags": [
+    "DepotSettings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/vcf-management-components",
+   "operationId": "getSystemVcfManagementComponents",
+   "summary": "Get VCF Management Components",
+   "tags": [
+    "System"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/tasks",
+   "operationId": "getTasks",
+   "summary": "Retrieve a list of all tasks",
+   "tags": [
+    "Tasks"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/tasks/{id}",
+   "operationId": "cancelTask",
+   "summary": "Cancel a Task",
+   "tags": [
+    "Tasks"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/tasks/{id}",
+   "operationId": "getTask",
+   "summary": "Retrieve a task by its ID",
+   "tags": [
+    "Tasks"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/tasks/{id}",
+   "operationId": "retryTask",
+   "summary": "Retry a Task",
+   "tags": [
+    "Tasks"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/tokens",
+   "operationId": "createToken",
+   "summary": "Create Token Pair",
+   "tags": [
+    "Tokens"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/tokens/access-token/refresh",
+   "operationId": "refreshAccessToken",
+   "summary": "Refresh Access Token",
+   "tags": [
+    "Tokens"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/tokens/refresh-token",
+   "operationId": "invalidateRefreshToken",
+   "summary": "Invalidate Refresh Token",
+   "tags": [
+    "Tokens"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vcf-services",
+   "operationId": "getVcfServices",
+   "summary": "Retrieve a list of SDDC Manager services",
+   "tags": [
+    "VcfServices"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vcf-services/{id}",
+   "operationId": "getVcfService",
+   "summary": "Retrieve an SDDC Manager service by its ID",
+   "tags": [
+    "VcfServices"
+   ],
+   "deprecated": false
+  }
+ ]
+}

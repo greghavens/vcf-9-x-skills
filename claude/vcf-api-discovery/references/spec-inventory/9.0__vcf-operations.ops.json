@@ -1,0 +1,3758 @@
+{
+ "meta": {
+  "present": true,
+  "spec_file": "specifications/vcf-operations/vcf-operations-openapi.json",
+  "spec_version": "",
+  "title": "VMware Cloud Foundation Operations API",
+  "openapi": "3.0.1",
+  "base_path": "/suite-api",
+  "operation_count": 370,
+  "security_schemes": {
+   "Token-based-authorization": {
+    "type": "apiKey",
+    "description": "Token based authorization",
+    "name": "Authorization",
+    "in": "header"
+   }
+  },
+  "tags": [
+   "Actions",
+   "Adapter Kinds",
+   "Adapters",
+   "Alert Plugins",
+   "Alerts",
+   "Applications",
+   "Audit",
+   "Auth",
+   "Certificate",
+   "Chargeback Billing",
+   "Chargeback Reports",
+   "Collector Groups",
+   "Collectors",
+   "Configuration Management",
+   "Content Management",
+   "Cost Configuration",
+   "Credentials",
+   "Deployment",
+   "Events",
+   "Integrations",
+   "Log Management",
+   "Maintenance Schedules",
+   "Notifications",
+   "Optimization",
+   "Policies",
+   "Product Licensing",
+   "Recommendations",
+   "Reports",
+   "Resource",
+   "Resources",
+   "Solutions",
+   "Super Metrics",
+   "Symptoms",
+   "Tasks",
+   "Versions Info"
+  ]
+ },
+ "operations": [
+  {
+   "method": "GET",
+   "path": "/api/actiondefinitions",
+   "operationId": "getAllActions",
+   "summary": "Look up Action Definitions in the system",
+   "tags": [
+    "Actions"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/actions/{id}",
+   "operationId": "performAction",
+   "summary": "Perform an Action on one or more resources",
+   "tags": [
+    "Actions"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/actions/{id}/query",
+   "operationId": "populateAction",
+   "summary": "Populate the information needed to run an action",
+   "tags": [
+    "Actions"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/actions/{taskId}/status",
+   "operationId": "getActionStatus",
+   "summary": "Get action status by the given task Id",
+   "tags": [
+    "Actions"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/adapterkinds",
+   "operationId": "getAdapterTypes",
+   "summary": "Get Adapter Types",
+   "tags": [
+    "Adapter Kinds"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/adapterkinds/{adapterKindKey}/resourcekinds/{resourceKindKey}",
+   "operationId": "getResourceTypeForAdapterType",
+   "summary": "Get a specific Resource Kind supported by a specific Adapter Kind",
+   "tags": [
+    "Adapter Kinds"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/adapterkinds/{adapterKindKey}/resourcekinds/{resourceKindKey}/properties",
+   "operationId": "getResourceTypePropertiesForAdapterType",
+   "summary": "Get the meta-data for properties for a specific Resource Kind supported by a specific Adapter Kind",
+   "tags": [
+    "Adapter Kinds"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/adapterkinds/{adapterKindKey}/resourcekinds/{resourceKindKey}/resources",
+   "operationId": "getResourcesWithAdapterAndResourceKind",
+   "summary": "Query for Resources within a particular Adapter Kind and Resource Kind",
+   "tags": [
+    "Adapter Kinds"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/adapterkinds/{adapterKindKey}/resourcekinds/{resourceKindKey}/statkeys",
+   "operationId": "getResourceTypeAttributesForAdapterType",
+   "summary": "Get the meta-data for attributes (excluding properties) for a specific Resource Kind supported by a specific Adapter Kind",
+   "tags": [
+    "Adapter Kinds"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/adapterkinds/{adapterKindKey}/resources",
+   "operationId": "getResourcesWithAdapterKind",
+   "summary": "Query for Resources of a particular Adapter Kind",
+   "tags": [
+    "Adapter Kinds"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/adapterkinds/{id}",
+   "operationId": "getAdapterType",
+   "summary": "Get an Adapter Kind using the specified identifier",
+   "tags": [
+    "Adapter Kinds"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/adapterkinds/{key}/resourcekinds",
+   "operationId": "getResourceTypesForAdapterType",
+   "summary": "Get all the Resource Kinds supported by a specific Adapter Kind",
+   "tags": [
+    "Adapter Kinds"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/adapters",
+   "operationId": "enumerateAdapterInstances",
+   "summary": "Get all the adapter instance resources in the system",
+   "tags": [
+    "Adapters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/api/adapters",
+   "operationId": "patchAdapterInstance",
+   "summary": "Patch an Adapter Instance",
+   "tags": [
+    "Adapters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/adapters",
+   "operationId": "createAdapterInstance",
+   "summary": "Create an Adapter Instance",
+   "tags": [
+    "Adapters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/adapters",
+   "operationId": "updateAdapterInstance",
+   "summary": "Update an Adapter Instance",
+   "tags": [
+    "Adapters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/api/adapters/testConnection",
+   "operationId": "patchTestConnection",
+   "summary": "Patch an Adapter Instance Connection",
+   "tags": [
+    "Adapters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/adapters/testConnection",
+   "operationId": "testConnection",
+   "summary": "Test Adapter Instance connection",
+   "tags": [
+    "Adapters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/adapters/{adapterId}",
+   "operationId": "deleteAdapterInstance",
+   "summary": "Delete an Adapter Instance",
+   "tags": [
+    "Adapters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/adapters/{adapterId}",
+   "operationId": "getAdapterInstance",
+   "summary": "Look up a single adapter instance using an identifier",
+   "tags": [
+    "Adapters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/adapters/{adapterId}/maintained",
+   "operationId": "unmarkAdapterInstanceAsBeingMaintained",
+   "summary": "Mark the adapter instance as being STARTED",
+   "tags": [
+    "Adapters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/adapters/{adapterId}/maintained",
+   "operationId": "markAdapterInstanceAsBeingMaintained",
+   "summary": "Mark the adapter instance as being MAINTAINED for the given duration",
+   "tags": [
+    "Adapters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/adapters/{adapterId}/monitoringstate/start",
+   "operationId": "startMonitoringResourcesOfAdapterInstance",
+   "summary": "Start the adapter instance from monitoring its resources",
+   "tags": [
+    "Adapters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/adapters/{adapterId}/monitoringstate/stop",
+   "operationId": "stopMonitoringResourcesOfAdapterInstance",
+   "summary": "Stop the adapter instance from monitoring its resources",
+   "tags": [
+    "Adapters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/adapters/{adapterId}/resources",
+   "operationId": "getResourcesOfAdapterInstance",
+   "summary": "Enumerate all resources managed by an adapter instance",
+   "tags": [
+    "Adapters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/alertdefinitions",
+   "operationId": "getAlertDefinitions",
+   "summary": "Get collection of Alert Definitions matching the search criteria specified",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/alertdefinitions",
+   "operationId": "createAlertDefinition",
+   "summary": "Create an Alert Definition",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/alertdefinitions",
+   "operationId": "updateAlertDefinition",
+   "summary": "Update an existing Alert Definition",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/alertdefinitions/query",
+   "operationId": "queryAlertDefinitions",
+   "summary": "Query collection of alert definitions matching the search criteria specified",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/alertdefinitions/{id}",
+   "operationId": "deleteAlertDefinition",
+   "summary": "Delete an Alert Definition",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/alertdefinitions/{id}",
+   "operationId": "getAlertDefinitionById",
+   "summary": "Get the Alert Definition using the identifier specified",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/alertdefinitions/{id}/disable",
+   "operationId": "disableAlertDefinitionInPolicies",
+   "summary": "Disable alert definition in policies",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/alertdefinitions/{id}/enable",
+   "operationId": "enableAlertDefinitionInPolicies",
+   "summary": "Enable alert definition in policies",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/alertplugins",
+   "operationId": "getAlertPluginsOfType",
+   "summary": "Get Notification Plugins, optionally filtered for a specific type",
+   "tags": [
+    "Alert Plugins"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/api/alertplugins",
+   "operationId": "patchAlertPlugin",
+   "summary": "Patch a new Notification Plugin Instance",
+   "tags": [
+    "Alert Plugins"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/alertplugins",
+   "operationId": "createAlertPlugin",
+   "summary": "Create a new Notification Plugin Instance",
+   "tags": [
+    "Alert Plugins"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/alertplugins",
+   "operationId": "updateAlertPlugin",
+   "summary": "Update an existing Notification Plugin Instance",
+   "tags": [
+    "Alert Plugins"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/alertplugins/types",
+   "operationId": "getAlertPluginTypes",
+   "summary": "Get the available Notification Plugin Types",
+   "tags": [
+    "Alert Plugins"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/alertplugins/types/{pluginTypeId}",
+   "operationId": "getAlertPluginTypeWithId",
+   "summary": "Get the Notification Plugin Type Metadata",
+   "tags": [
+    "Alert Plugins"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/alertplugins/{pluginId}",
+   "operationId": "deleteAlertPlugin",
+   "summary": "Delete an existing Notification Plugin Instance",
+   "tags": [
+    "Alert Plugins"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/alertplugins/{pluginId}",
+   "operationId": "getAlertPluginInstance",
+   "summary": "Get Notification Plugin specified by plugin id",
+   "tags": [
+    "Alert Plugins"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/alertplugins/{pluginId}/enable/{enabled}",
+   "operationId": "modifyAlertPluginState",
+   "summary": "Start or stop an existing Notification Plugin Instance",
+   "tags": [
+    "Alert Plugins"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/alertplugins/{pluginId}/rules",
+   "operationId": "getRulesOfPlugin",
+   "summary": "Retrieve all the notification rules of the plugin instance",
+   "tags": [
+    "Alert Plugins"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/alertplugins/{pluginId}/test",
+   "operationId": "testAlertPlugin",
+   "summary": "Test existing Notification Plugin Instance connectivity",
+   "tags": [
+    "Alert Plugins"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/alerts",
+   "operationId": "getAlerts",
+   "summary": "Look up Alerts by their identifiers or using the identifiers of the Resources they are associated with",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/alerts",
+   "operationId": "modifyAlerts",
+   "summary": "Perform operations on one or more Alerts",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/alerts/bulk",
+   "operationId": "deleteCanceledAlerts",
+   "summary": "Delete canceled alerts using one or more criteria specified in the Query Spec",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/alerts/contributingsymptoms",
+   "operationId": "getAlertContributingSymptoms",
+   "summary": "Get the list of triggered symptoms for the requested alerts",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/alerts/group/{groupingCondition}/query",
+   "operationId": "queryAlertGroups",
+   "summary": "Query for Alert groups using one or more criteria specified in the Query Spec",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/alerts/notes/query",
+   "operationId": "queryAlertNotes",
+   "summary": "Query for Alert Notes based on specified criteria",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/alerts/query",
+   "operationId": "queryAlert",
+   "summary": "Query for Alerts using one or more criteria specified in the Query Spec",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/alerts/types",
+   "operationId": "getAlertTypes",
+   "summary": "Get all the Alert Types and Subtypes defined in the system.",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/alerts/{id}",
+   "operationId": "getAlert",
+   "summary": "Look up an Alert by its identifier",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/alerts/{id}/notes",
+   "operationId": "getAlertNotes",
+   "summary": "Get all the Alert Notes associated with an Alert",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/alerts/{id}/notes",
+   "operationId": "addAlertNote",
+   "summary": "Add a Note to an Alert",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/alerts/{id}/notes/{noteId}",
+   "operationId": "deleteAlertNote",
+   "summary": "Delete a specific Alert Note for a specific Alert",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/alerts/{id}/notes/{noteId}",
+   "operationId": "getAlertNote",
+   "summary": "Get the requested Alert Note associated with an Alert",
+   "tags": [
+    "Alerts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/applications",
+   "operationId": "getConfigurationDetails",
+   "summary": "Get all the created application monitoring configurations",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/applications/agents",
+   "operationId": "uninstallAgent",
+   "summary": "Uninstall agent from the resource",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/applications/agents",
+   "operationId": "installAgent",
+   "summary": "Install agent on resource",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/applications/agents/services",
+   "operationId": "activateServices",
+   "summary": "Save application service configuration on multiple resources.",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/applications/agents/services/{taskId}/status",
+   "operationId": "getServiceOperationStatus",
+   "summary": "Get application configuration status by the given taskId",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/applications/agents/start",
+   "operationId": "startAgent",
+   "summary": "Start agent on the specified resources",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/applications/agents/stop",
+   "operationId": "stopAgent",
+   "summary": "Stop agent on the specified resources",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/applications/agents/upgrade",
+   "operationId": "upgradeAgent",
+   "summary": "Upgrade agent on the specified resources",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/applications/agents/{id}/services",
+   "operationId": "removeServicesConfigurations",
+   "summary": "Remove application service configuration from the specified resource",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/applications/agents/{id}/services",
+   "operationId": "getServicesConfigurations",
+   "summary": "Get applications service configurations on the resource",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/applications/agents/{id}/services",
+   "operationId": "saveServicesConfigurations",
+   "summary": "Save application service configuration on the specified resource",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/applications/agents/{id}/services",
+   "operationId": "updateServicesConfigurations",
+   "summary": "Update application service configuration on the specified resource",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/applications/agents/{id}/services/{name}",
+   "operationId": "getServiceConfigurations",
+   "summary": "Get application service configuration by service name on the resource",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/applications/agents/{taskId}/status",
+   "operationId": "getAgentOperationStatus",
+   "summary": "Get bootstrap action status by the given taskId",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/applications/clientCertificate/{collectorId}",
+   "operationId": "signClientCertificate",
+   "summary": "Query to sign the Arc Client certificate",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/applications/clientCertificate/{collectorIpOrGroupName}",
+   "operationId": "downloadClientCertificate",
+   "summary": "Download Client Certificates",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/applications/resources",
+   "operationId": "getApplicationResources",
+   "summary": "Get all available resources for application monitoring",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/applications/services/{name}",
+   "operationId": "getServiceConfigurationTemplate",
+   "summary": "Get template of application configuration",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/applications/subscribe",
+   "operationId": "subscribe",
+   "summary": "Subscribe to Application Monitoring by downloading bootstrap bundle containing all required scripts for bootstraping ARC Agent from Endpoints",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/applications/unsubscribe",
+   "operationId": "unsubscribe",
+   "summary": "UnSubscribe to Application Monitoring by downloading bootstrap bundle containing all required scripts for Unbootstraping ARC Agent from Endpoints.",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/applications/vccpmappings",
+   "operationId": "deleteVCenterMapping",
+   "summary": "Delete vCenters mapping info",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/applications/vccpmappings",
+   "operationId": "createVCenterMapping",
+   "summary": "Create vCenter mappings",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/applications/vccpmappings/query",
+   "operationId": "queryVCenterMappingsInfo",
+   "summary": "Get vCenter mappings info",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/applications/vcenter/add",
+   "operationId": "addVcenterToConfiguration",
+   "summary": "Add a vCenter to be monitored by the specified application monitoring configuration",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/api/applications/vcenter/remove",
+   "operationId": "removeVcenterFromConfiguration",
+   "summary": "Remove a vCenter from Application Monitoring Configuration",
+   "tags": [
+    "Applications"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/api/audit/system",
+   "operationId": "getSystemAudit",
+   "summary": "Get system audit report",
+   "tags": [
+    "Audit"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/currentuser",
+   "operationId": "getCurrentUser",
+   "summary": "Look up for an initiator of this API method",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/currentuser/permissions",
+   "operationId": "getAssignedRolePermissionsForCurrentUser",
+   "summary": "Get assigned role permissions for an initiator of this API method",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/currentuser/roles/{roleName}/privileges",
+   "operationId": "getCurrentUserRolePrivileges",
+   "summary": "Get privileges of a role for an initiator of this API method",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/privilegegroups",
+   "operationId": "getAvailablePrivilegeGroups",
+   "summary": "Get the available privilege groups",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/privileges",
+   "operationId": "getAvailablePrivileges",
+   "summary": "Get the available privileges",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/roles",
+   "operationId": "getRoles",
+   "summary": "Find list of application roles using the role names",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/auth/roles",
+   "operationId": "createUserRole",
+   "summary": "Create a user role",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/auth/roles",
+   "operationId": "updateUserRole",
+   "summary": "Update a user role",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/auth/roles/{roleName}",
+   "operationId": "deleteUserRole",
+   "summary": "Remove role with given role name",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/roles/{roleName}",
+   "operationId": "getRoleByName",
+   "summary": "Look up a role with the given name",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/auth/roles/{roleName}/privileges",
+   "operationId": "removeRolePrivileges",
+   "summary": "Remove specified privileges from the user role",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/roles/{roleName}/privileges",
+   "operationId": "getRolePrivileges",
+   "summary": "Get the privileges for a user role",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/auth/roles/{roleName}/privileges",
+   "operationId": "addRolePrivileges",
+   "summary": "Add the privileges to a user role",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/auth/roles/{roleName}/privileges",
+   "operationId": "setRolePrivileges",
+   "summary": "Set the privileges for a user role",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/auth/scopes",
+   "operationId": "deleteScopes",
+   "summary": "Delete scopes",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/scopes",
+   "operationId": "getAllObjectScopes",
+   "summary": "Get all scopes",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/auth/scopes",
+   "operationId": "createScope",
+   "summary": "Create a new Scope",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/auth/scopes",
+   "operationId": "modifyScope",
+   "summary": "Modify a Scope",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/scopes/{scopeId}",
+   "operationId": "getScope",
+   "summary": "Get the scope",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/sources",
+   "operationId": "getAuthSources",
+   "summary": "Get all the available authentication sources in the system",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/api/auth/sources",
+   "operationId": "patchAuthSourceWithCertificateDetails",
+   "summary": "Patch an already added authentication source with the certificate data",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/auth/sources",
+   "operationId": "addAuthSource",
+   "summary": "Add a new authentication source in the system",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/auth/sources",
+   "operationId": "updateAuthSource",
+   "summary": "Update an authentication source in the system",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/api/auth/sources/test",
+   "operationId": "patchTestAuthSource",
+   "summary": "Patch an already tested authentication source with the certificate data",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/auth/sources/test",
+   "operationId": "testAuthSource",
+   "summary": "Test a new or an existing authentication source in the system",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/auth/sources/{id}/usergroups/search",
+   "operationId": "searchUserGroupsForAuthSource",
+   "summary": "Search user-groups for an auth source",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/auth/sources/{id}/usergroups/synchronize",
+   "operationId": "synchronizeUserGroups",
+   "summary": "Synchronize user groups",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/auth/sources/{id}/users",
+   "operationId": "importUsers",
+   "summary": "Import users from the auth source",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/auth/sources/{id}/users/search",
+   "operationId": "searchUsersForAuthSource",
+   "summary": "Search users for an auth source",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/auth/sources/{sourceId}",
+   "operationId": "deleteAuthSource",
+   "summary": "Delete an authentication source",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/sources/{sourceId}",
+   "operationId": "getAuthSource",
+   "summary": "Retrieve detailed information about a particular authentication source",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/sourcetypes",
+   "operationId": "getAuthSourceTypes",
+   "summary": "Get all the available authentication source types",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/sourcetypes/{sourceId}",
+   "operationId": "getAuthSourceType",
+   "summary": "Retrieve information about a particular authentication source type",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/auth/token/acquire",
+   "operationId": "acquireToken",
+   "summary": "Acquire a token to perform REST API calls",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/auth/token/release",
+   "operationId": "releaseToken",
+   "summary": "Terminate the current sessionId",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/traversalspecs",
+   "operationId": "getTraversalSpecs",
+   "summary": "Get/Query the list of all traversal specification templates in the system",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/auth/usergroups",
+   "operationId": "deleteUserGroups",
+   "summary": "Delete a list of user groups using their identifiers",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/usergroups",
+   "operationId": "getUserGroups",
+   "summary": "Retrieve a list of local user groups using identifiers or/and names",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/auth/usergroups",
+   "operationId": "createUserGroup",
+   "summary": "Create a new local user group or import SSO/VIDM/LDAP/AD/VIDB user groups",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/auth/usergroups",
+   "operationId": "modifyUserGroup",
+   "summary": "Modify a local user group",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/usergroups/{groupId}/permissions",
+   "operationId": "getAssignedRolePermissionsForUserGroup",
+   "summary": "Get assigned role permissions for the user group",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/auth/usergroups/{groupId}/permissions",
+   "operationId": "assignRolePermissionToUserGroup",
+   "summary": "Assign a role permission to a particular user group",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/auth/usergroups/{groupId}/permissions/{roleName}",
+   "operationId": "unassignedRolePermissionFromUserGroup",
+   "summary": "Unassign role permission from a user group",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/auth/usergroups/{groupId}/traversalspecs",
+   "operationId": "assignTraversalSpecToUserGroup",
+   "summary": "(Deprecated) Assign a traversal specification to a particular user",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/auth/usergroups/{id}",
+   "operationId": "deleteUserGroup",
+   "summary": "Delete a local user group",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/usergroups/{id}",
+   "operationId": "getUserGroup",
+   "summary": "Look up a local user group using its identifier",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/auth/users",
+   "operationId": "deleteUsers",
+   "summary": "Delete a collection of users with the given identifiers",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/users",
+   "operationId": "getUsers",
+   "summary": "Look up a list of users using the user identifiers or their role names",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/auth/users",
+   "operationId": "createUser",
+   "summary": "Create a new user",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/auth/users",
+   "operationId": "modifyUser",
+   "summary": "Modify the details of a particular user",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/auth/users/passwordchange",
+   "operationId": "changePassword",
+   "summary": "Change the password of the active user",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/auth/users/{id}",
+   "operationId": "deleteUser",
+   "summary": "Delete a user",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/users/{id}",
+   "operationId": "getUser",
+   "summary": "Look up a particular user using its identifier",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/auth/users/{userId}/permissions",
+   "operationId": "getAssignedRolePermissionsForUser",
+   "summary": "Get assigned role permissions for a user",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/auth/users/{userId}/permissions",
+   "operationId": "assignRolePermissionToUser",
+   "summary": "Assign a role permission to a particular user",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/auth/users/{userId}/permissions/{roleName}",
+   "operationId": "unassignedRolePermissionFromUser",
+   "summary": "Unassign role permission from a user",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/auth/users/{userId}/traversalspecs",
+   "operationId": "assignTraversalSpecToUser",
+   "summary": "(Deprecated) Assign a traversal specification to a particular user.",
+   "tags": [
+    "Auth"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/certificate",
+   "operationId": "deleteCertificate",
+   "summary": "Delete a certificate",
+   "tags": [
+    "Certificate"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/certificate",
+   "operationId": "getAllCertificates",
+   "summary": "Get all certificates",
+   "tags": [
+    "Certificate"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/certificate",
+   "operationId": "importCertificate",
+   "summary": "Import certificate file",
+   "tags": [
+    "Certificate"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/chargeback/bills",
+   "operationId": "generateBills",
+   "summary": "Create and save the Bills based on the Bill Generate Request",
+   "tags": [
+    "Chargeback Billing"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/chargeback/bills/query",
+   "operationId": "getBillSummary",
+   "summary": "Get metering Bills summary based on the Request",
+   "tags": [
+    "Chargeback Billing"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/chargeback/bills/{id}",
+   "operationId": "deleteBill",
+   "summary": "Delete generated bill for the specified bill identifier",
+   "tags": [
+    "Chargeback Billing"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/chargeback/bills/{id}",
+   "operationId": "getBill",
+   "summary": "Get bill for the specified bill identifier",
+   "tags": [
+    "Chargeback Billing"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/chargeback/reportdefinitions/{id}/schedules",
+   "operationId": "getReportSchedulesById",
+   "summary": "Get all the Chargeback Report Schedules associated with a Report Definition",
+   "tags": [
+    "Chargeback Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/chargeback/reportdefinitions/{id}/schedules",
+   "operationId": "createReportScheduleById",
+   "summary": "Create a Chargeback Report Schedule to generate a Report for the specified Report Definition and Resource(s)",
+   "tags": [
+    "Chargeback Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/chargeback/reportdefinitions/{id}/schedules",
+   "operationId": "updateReportScheduleById",
+   "summary": "Update Chargeback Report Schedule associated with the specific Report Definition and for the specified Schedule identifier",
+   "tags": [
+    "Chargeback Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/chargeback/reportdefinitions/{id}/schedules/{scheduleId}",
+   "operationId": "deleteScheduleById",
+   "summary": "Delete Chargeback Report Schedule associated with the specific Report Definition and for the specified Schedule identifier",
+   "tags": [
+    "Chargeback Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/chargeback/reportdefinitions/{id}/schedules/{scheduleId}",
+   "operationId": "getReportScheduleById",
+   "summary": "Get a specific Chargeback Report Schedule for the specified Report Definition and Schedule identifier",
+   "tags": [
+    "Chargeback Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/chargeback/reports",
+   "operationId": "getChargeBackReports",
+   "summary": "Get the Chargeback Reports based on the Report Query Spec provided",
+   "tags": [
+    "Chargeback Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/chargeback/reports",
+   "operationId": "createChargeBackReport",
+   "summary": "Generate (create) a Chargeback Report using the specified Report Definition and for the specified Resource",
+   "tags": [
+    "Chargeback Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/chargeback/reports/{id}",
+   "operationId": "deleteChargeBackReport",
+   "summary": "Delete a chargeback report by its identifier",
+   "tags": [
+    "Chargeback Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/chargeback/reports/{id}",
+   "operationId": "getChargeBackReport",
+   "summary": "Get the detail of a Chargeback Report given its identifier",
+   "tags": [
+    "Chargeback Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/chargeback/reports/{id}/download",
+   "operationId": "downloadChargeBackReport",
+   "summary": "Download the Chargeback Report given its identifier",
+   "tags": [
+    "Chargeback Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/collectorgroups",
+   "operationId": "getCollectorGroups",
+   "summary": "Enumerate all the Collector Groups defined in the system",
+   "tags": [
+    "Collector Groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/collectorgroups",
+   "operationId": "createCollectorGroup",
+   "summary": "Create a new Collector Group in the system",
+   "tags": [
+    "Collector Groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/collectorgroups",
+   "operationId": "updateCollectorGroup",
+   "summary": "Update a Collector Group in the system",
+   "tags": [
+    "Collector Groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/collectorgroups/{id}",
+   "operationId": "deleteCollectorGroup",
+   "summary": "Delete a Collector Group from the system using its identifier",
+   "tags": [
+    "Collector Groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/collectorgroups/{id}",
+   "operationId": "getCollectorGroup",
+   "summary": "Get details of a particular Collector Group in the system",
+   "tags": [
+    "Collector Groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/collectorgroups/{id}/collector/{collectorId}",
+   "operationId": "removeCollectorFromCollectorGroup",
+   "summary": "Remove a Collector from a Collector Group",
+   "tags": [
+    "Collector Groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/collectorgroups/{id}/collector/{collectorId}",
+   "operationId": "addCollectorToCollectorGroup",
+   "summary": "Add a Collector to Collector Group",
+   "tags": [
+    "Collector Groups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/collectors",
+   "operationId": "getCollectors",
+   "summary": "Get all the Collectors registered with the VMware Cloud Foundation Operations system",
+   "tags": [
+    "Collectors"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/collectors/{id}/adapters",
+   "operationId": "getAdaptersOnCollector",
+   "summary": "Get all the Collectors registered with the VMware Cloud Foundation Operations system",
+   "tags": [
+    "Collectors"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/collectors/{id}/datapersistence/disable",
+   "operationId": "disableDataPersistence",
+   "summary": "Disable data persistence on cloud proxy",
+   "tags": [
+    "Collectors"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/collectors/{id}/datapersistence/enable",
+   "operationId": "enableDataPersistence",
+   "summary": "Enable data persistence on cloud proxy",
+   "tags": [
+    "Collectors"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/configurations/files",
+   "operationId": "get",
+   "summary": "Get details of the specified configuration file.",
+   "tags": [
+    "Configuration Management"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/content/backup",
+   "operationId": "backupContent",
+   "summary": "(Deprecated) Backup content for current user",
+   "tags": [
+    "Content Management"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/api/content/backup/result",
+   "operationId": "downloadBackupContentData",
+   "summary": "(Deprecated) Download backup for current user",
+   "tags": [
+    "Content Management"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/api/content/operations/export",
+   "operationId": "getLastExportOperation",
+   "summary": "Get the last export operation details",
+   "tags": [
+    "Content Management"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/content/operations/export",
+   "operationId": "exportContent",
+   "summary": "Export content for current user",
+   "tags": [
+    "Content Management"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/content/operations/export/zip",
+   "operationId": "download",
+   "summary": "Download the latest export",
+   "tags": [
+    "Content Management"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/content/operations/import",
+   "operationId": "getLastImportOperation",
+   "summary": "Get the last import operation details",
+   "tags": [
+    "Content Management"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/content/operations/import",
+   "operationId": "importContent",
+   "summary": "Import content for current user from uploaded file",
+   "tags": [
+    "Content Management"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/content/progress",
+   "operationId": "getContentProgress",
+   "summary": "(Deprecated) Get content progress",
+   "tags": [
+    "Content Management"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/api/content/restore",
+   "operationId": "restoreContent",
+   "summary": "(Deprecated) Restore content for current user from uploaded file",
+   "tags": [
+    "Content Management"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/api/content/restore/result",
+   "operationId": "getRestoreContentData",
+   "summary": "(Deprecated) Get restore data report for current user",
+   "tags": [
+    "Content Management"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/api/costconfig/currency",
+   "operationId": "getCurrency",
+   "summary": "Get details of currently selected currency such as display name, code, etc.",
+   "tags": [
+    "Cost Configuration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/costconfig/currency",
+   "operationId": "setCurrency",
+   "summary": "Set currency",
+   "tags": [
+    "Cost Configuration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/credentialkinds",
+   "operationId": "getCredentialKinds",
+   "summary": "Get all Credential Kinds defined in the system",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/credentials",
+   "operationId": "getCredentials",
+   "summary": "Get all Credential Instances in the system",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/api/credentials",
+   "operationId": "partialUpdateCredential",
+   "summary": "Partial update an existing Credential Instance",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/credentials",
+   "operationId": "createCredential",
+   "summary": "Create a new Credential Instance",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/credentials",
+   "operationId": "updateCredential",
+   "summary": "Update an existing Credential Instance",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/credentials/{id}",
+   "operationId": "deleteCredential",
+   "summary": "Delete a Credential Instance",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/credentials/{id}",
+   "operationId": "getCredential",
+   "summary": "Get a Credential Instance",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/credentials/{id}/adapters",
+   "operationId": "getAdapterInstancesUsingCredential",
+   "summary": "Get all Adapter Instances using the Credential Instance",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/credentials/{id}/resources",
+   "operationId": "getResourcesUsingCredential",
+   "summary": "Get the Objects using the Credential Instance",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/deployment/cluster/dt",
+   "operationId": "manageDT",
+   "summary": "Manages a specific run of Dynamic Threshold (DT) Computation in a VMware Cloud Foundation Operations Cluster",
+   "tags": [
+    "Deployment"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/deployment/config/globalsettings",
+   "operationId": "getGlobalSettings",
+   "summary": "Get all global setting values",
+   "tags": [
+    "Deployment"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/deployment/config/globalsettings/metadata",
+   "operationId": "getGlobalSettingMetadata",
+   "summary": "Get global settings metadata",
+   "tags": [
+    "Deployment"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/deployment/config/globalsettings/{key}",
+   "operationId": "getGlobalSettingValue",
+   "summary": "Get global setting value for the requested key",
+   "tags": [
+    "Deployment"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/deployment/config/globalsettings/{key}/{value}",
+   "operationId": "updateGlobalSettingValue",
+   "summary": "Update global setting value for specified key",
+   "tags": [
+    "Deployment"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/deployment/node/services/info",
+   "operationId": "getServicesInfo",
+   "summary": "Get the health of all Services",
+   "tags": [
+    "Deployment"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/deployment/node/services/{name}/info",
+   "operationId": "getServiceInfo",
+   "summary": "Get information about a specific Service that is part of the VMware Cloud Foundation Operations stack",
+   "tags": [
+    "Deployment"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/deployment/node/status",
+   "operationId": "getNodeStatus",
+   "summary": "Get the status of the node",
+   "tags": [
+    "Deployment"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/events",
+   "operationId": "pushEvent",
+   "summary": "Push a single Event into the system",
+   "tags": [
+    "Events"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/events/adapterkinds/{adapterKind}",
+   "operationId": "pushEventByAdapterKindKey",
+   "summary": "Push a single Event into the system with associating an adapter kind as the event source",
+   "tags": [
+    "Events"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/events/bulk",
+   "operationId": "pushEvents",
+   "summary": "Push one or more Events into the system",
+   "tags": [
+    "Events"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/events/bulk/adapterkinds/{adapterKind}",
+   "operationId": "pushEventsByAdapterKindKey",
+   "summary": "Push one or more Events into the system with associating an adapter kind as the event source",
+   "tags": [
+    "Events"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/integrations/vcenters",
+   "operationId": "createVcenterIntegration",
+   "summary": "Create a vCenter integration, with vSAN and Service Discovery configs",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/integrations/vcenters",
+   "operationId": "updateVcenterIntegration",
+   "summary": "Update existing vCenter integration, with vSAN and Service Discovery configs",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/integrations/vcenters/testConnection",
+   "operationId": "testVcenterIntegration",
+   "summary": "Test provided vCenter integration",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/integrations/vcenters/{integrationId}",
+   "operationId": "deleteVcenterIntegration",
+   "summary": "Delete vcenter integration by provided id",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/integrations/vcenters/{integrationId}",
+   "operationId": "getVcenterIntegrationById",
+   "summary": "Get vCenter integration, with vSAN and Service Discovery configs",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/integrations/vcenters/{integrationId}/register",
+   "operationId": "registerVC",
+   "summary": "Register vc with provided credentials, and id",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/integrations/vcenters/{integrationId}/unregister",
+   "operationId": "unregisterVC",
+   "summary": "Unregister vc with provided credentials, and id",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/integrations/vcf",
+   "operationId": "createVCFIntegration",
+   "summary": "Create VCF integration with provided parameters. vCenter,vSAN and NSXT adapters for domains, will be created and configured automatically",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/integrations/vcf",
+   "operationId": "updateVCFIntegration",
+   "summary": "Update existing VCF integration with provided parameters",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/integrations/vcf/testConnection",
+   "operationId": "testVCFIntegration",
+   "summary": "Test provided VCF integration",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/integrations/vcf/{integrationId}",
+   "operationId": "deleteVcfIntegration",
+   "summary": "Delete integration by provided id",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/integrations/vcf/{integrationId}",
+   "operationId": "getVCFIntegrationById",
+   "summary": "Get VCF integration, by specified id",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/integrations/vcf/{integrationId}/domains",
+   "operationId": "getDomainSummary",
+   "summary": "Get all VCF domains summary for VCF by provided id",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/integrations/vcf/{integrationId}/domains/{domainId}",
+   "operationId": "deleteVcfDomain",
+   "summary": "Delete domain by provided id",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/integrations/vcf/{integrationId}/domains/{domainId}",
+   "operationId": "getDomainDetailsById",
+   "summary": "Get VCF domain by provided VCF and domain ids",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/integrations/vcf/{integrationId}/domains/{domainId}",
+   "operationId": "updateDomainDetails",
+   "summary": "Update VCF domain, by provided domain model, and VCF id",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/integrations/vcf/{integrationId}/domains/{domainId}/testConnection",
+   "operationId": "testDomain",
+   "summary": "Test VCF domain, by provided domain update model, VCF id and domain id",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/integrations/vcf/{integrationId}/register",
+   "operationId": "registerVCF",
+   "summary": "Register vcf with provided id",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/integrations/vcf/{integrationId}/unregister",
+   "operationId": "unregisterVCF",
+   "summary": "Unregister vcf with provided id",
+   "tags": [
+    "Integrations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/logs/configuration/{logtype}",
+   "operationId": "getLogConfigurationsByType",
+   "summary": "Get logs configurations of certain type",
+   "tags": [
+    "Log Management"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/logs/configuration/{logtype}",
+   "operationId": "createOrUpdateLogConfigurations",
+   "summary": "Change level of the logs",
+   "tags": [
+    "Log Management"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/logs/configuration/{logtype}/settings",
+   "operationId": "deleteLogConfigurationSettings",
+   "summary": "Remove the log classes from the log type",
+   "tags": [
+    "Log Management"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/logs/forwarding",
+   "operationId": "getLogForwardingConfiguration",
+   "summary": "Get log forwarding configuration",
+   "tags": [
+    "Log Management"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/logs/forwarding",
+   "operationId": "updateLogForwardingConfiguration",
+   "summary": "Create a new or update an existing log forwarding configuration",
+   "tags": [
+    "Log Management"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/logs/forwarding/disable",
+   "operationId": "disableLogForwarding",
+   "summary": "Disable log forwarding",
+   "tags": [
+    "Log Management"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/logs/forwarding/enable",
+   "operationId": "enableLogForwarding",
+   "summary": "Enable log forwarding",
+   "tags": [
+    "Log Management"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/maintenanceschedules",
+   "operationId": "deleteMaintenanceSchedules",
+   "summary": "Delete maintenance schedules with the given identifiers.",
+   "tags": [
+    "Maintenance Schedules"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/maintenanceschedules",
+   "operationId": "getMaintenanceSchedules",
+   "summary": "Query for all maintenance schedules based on schedule id, schedule name and resource id",
+   "tags": [
+    "Maintenance Schedules"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/maintenanceschedules",
+   "operationId": "createMaintenanceSchedules",
+   "summary": "Create a maintenance schedule",
+   "tags": [
+    "Maintenance Schedules"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/maintenanceschedules",
+   "operationId": "updateMaintenanceSchedules",
+   "summary": "Update an existing maintenance schedules",
+   "tags": [
+    "Maintenance Schedules"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/notifications/rules",
+   "operationId": "getAllNotificationRules",
+   "summary": "Get all the Notification Rules defined in the system",
+   "tags": [
+    "Notifications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/notifications/rules",
+   "operationId": "createNotificationPluginRule",
+   "summary": "Create a new Notification Rule for a Notification Plugin Instance",
+   "tags": [
+    "Notifications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/notifications/rules",
+   "operationId": "updateNotificationPluginRule",
+   "summary": "Update a specific Notification Rule for a Notification Plugin Instance",
+   "tags": [
+    "Notifications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/notifications/rules/{id}",
+   "operationId": "deleteNotificationPluginRules",
+   "summary": "Delete a specific existing Notification Rule associated with a Notification Plugin Instance",
+   "tags": [
+    "Notifications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/notifications/rules/{id}",
+   "operationId": "getNotificationRule",
+   "summary": "Get the Notification Rule for the specified identifier",
+   "tags": [
+    "Notifications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/notifications/templates",
+   "operationId": "getNotificationTemplates",
+   "summary": "Get notification templates matching the search criteria specified",
+   "tags": [
+    "Notifications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/notifications/templates",
+   "operationId": "createNotificationTemplate",
+   "summary": "Create a new notification template",
+   "tags": [
+    "Notifications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/notifications/templates",
+   "operationId": "updateNotificationTemplate",
+   "summary": "Update an existing notification template",
+   "tags": [
+    "Notifications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/notifications/templates/{id}",
+   "operationId": "deleteNotificationTemplate",
+   "summary": "Delete notification template",
+   "tags": [
+    "Notifications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/notifications/templates/{id}",
+   "operationId": "getNotificationTemplate",
+   "summary": "Get notification template",
+   "tags": [
+    "Notifications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/optimization/workloadplacement/history/query",
+   "operationId": "getWlpHistory",
+   "summary": "Get WLP History.",
+   "tags": [
+    "Optimization"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/optimization/workloadplacement/{dataCenterId}/automation/disable",
+   "operationId": "disableAutomation",
+   "summary": "Turning off automation",
+   "tags": [
+    "Optimization"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/optimization/workloadplacement/{dataCenterId}/automation/enable",
+   "operationId": "enableAutomation",
+   "summary": "Turning on automation",
+   "tags": [
+    "Optimization"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/optimization/workloadplacement/{dataCenterId}/automation/status",
+   "operationId": "getAutomationStatus",
+   "summary": "Get optimization automation status",
+   "tags": [
+    "Optimization"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/optimization/workloadplacement/{dataCenterId}/crossdcmove/disable",
+   "operationId": "disableCrossDCMove",
+   "summary": "Disable cluster-level optimization across datacenter boundaries in a vCenter",
+   "tags": [
+    "Optimization"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/optimization/workloadplacement/{dataCenterId}/crossdcmove/enable",
+   "operationId": "enableCrossDCMove",
+   "summary": "Enable cluster-level optimization across datacenter boundaries in a vCenter",
+   "tags": [
+    "Optimization"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/optimization/workloadplacement/{dataCenterId}/crossdcmove/status",
+   "operationId": "getCrossDCMoveStatus",
+   "summary": "Get cross datacenter move allowed status",
+   "tags": [
+    "Optimization"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/optimization/workloadplacement/{dataCenterId}/settings",
+   "operationId": "deletePlacementConfiguration",
+   "summary": "Turn off placement settings on datacenter",
+   "tags": [
+    "Optimization"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/optimization/workloadplacement/{dataCenterId}/settings",
+   "operationId": "getPlacementSettings",
+   "summary": "Get placement settings",
+   "tags": [
+    "Optimization"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/optimization/workloadplacement/{dataCenterId}/settings",
+   "operationId": "setPlacementSettings",
+   "summary": "Set up your business intent to place VMs based on criteria",
+   "tags": [
+    "Optimization"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/policies",
+   "operationId": "getPolicies",
+   "summary": "Get all available policies.",
+   "tags": [
+    "Policies"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/policies",
+   "operationId": "createPolicy",
+   "summary": "Create a new policy.",
+   "tags": [
+    "Policies"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/policies/apply",
+   "operationId": "applyPolicy",
+   "summary": "Apply policy to the given groups",
+   "tags": [
+    "Policies"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/policies/default",
+   "operationId": "setDefaultPolicy",
+   "summary": "Set given policy as default policy.",
+   "tags": [
+    "Policies"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/policies/export",
+   "operationId": "exportPolicies",
+   "summary": "Export the content of policies into ZIP archive.",
+   "tags": [
+    "Policies"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/policies/import",
+   "operationId": "importPolicies",
+   "summary": "Import policy content from an archive of ZIP format",
+   "tags": [
+    "Policies"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/policies/priorities",
+   "operationId": "updatePriorities",
+   "summary": "Update priority order of provided policies",
+   "tags": [
+    "Policies"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/policies/{id}",
+   "operationId": "deletePolicy",
+   "summary": "Delete policy for the specified identifier included descendants if requested.",
+   "tags": [
+    "Policies"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/policies/{id}/assign",
+   "operationId": "assignPolicy",
+   "summary": "Assign policy to the given groups, and objects",
+   "tags": [
+    "Policies"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/policies/{id}/settings",
+   "operationId": "deletePolicySettings",
+   "summary": "Make provided settings in the policy inherited from parent policy.",
+   "tags": [
+    "Policies"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/policies/{id}/settings",
+   "operationId": "getPolicySettings",
+   "summary": "Get policy settings for the specified identifier.",
+   "tags": [
+    "Policies"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/api/policies/{id}/settings",
+   "operationId": "patchPolicySettings",
+   "summary": "Update only provided settings in the policy.",
+   "tags": [
+    "Policies"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/policies/{id}/unassign",
+   "operationId": "unassignPolicy",
+   "summary": "Unassign policy from given groups, and objects",
+   "tags": [
+    "Policies"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/product/licensing/edition",
+   "operationId": "getProductEdition",
+   "summary": "Get edition of product licensing",
+   "tags": [
+    "Product Licensing"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/product/licensing/info",
+   "operationId": "getLicenseInfo",
+   "summary": "Get the license info for VMware Cloud Foundation Operations instance",
+   "tags": [
+    "Product Licensing"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/product/licensing/npc/status",
+   "operationId": "getNPCStatus",
+   "summary": "Get native public cloud licensing status",
+   "tags": [
+    "Product Licensing"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/recommendations",
+   "operationId": "getRecommendations",
+   "summary": "Get recommendations",
+   "tags": [
+    "Recommendations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/recommendations",
+   "operationId": "createRecommendation",
+   "summary": "Create a recommendation",
+   "tags": [
+    "Recommendations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/recommendations",
+   "operationId": "updateRecommendation",
+   "summary": "Update an existing recommendation",
+   "tags": [
+    "Recommendations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/recommendations/{id}",
+   "operationId": "deleteRecommendation",
+   "summary": "Delete a recommendation",
+   "tags": [
+    "Recommendations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/recommendations/{id}",
+   "operationId": "getRecommendationById",
+   "summary": "Get the recommendation specified by the given identifier",
+   "tags": [
+    "Recommendations"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/reportdefinitions",
+   "operationId": "getReportDefinitions",
+   "summary": "Get the Report Definitions based on the query specification specified",
+   "tags": [
+    "Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/reportdefinitions/{id}",
+   "operationId": "getReportDefinition",
+   "summary": "Get a Report Definition",
+   "tags": [
+    "Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/reportdefinitions/{id}/schedules",
+   "operationId": "getReportSchedules",
+   "summary": "Get all the Report Schedules associated with a Report Definition",
+   "tags": [
+    "Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/reportdefinitions/{id}/schedules",
+   "operationId": "createReportSchedule",
+   "summary": "Create a Report Schedule to generate a Report for the specified Report Definition and Resource(s)",
+   "tags": [
+    "Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/reportdefinitions/{id}/schedules",
+   "operationId": "updateReportSchedule",
+   "summary": "Update Report Schedule associated with the specific Report Definition and for the specified Schedule identifier",
+   "tags": [
+    "Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/reportdefinitions/{id}/schedules/{scheduleId}",
+   "operationId": "deleteSchedule",
+   "summary": "Delete Report Schedule associated with the specific Report Definition and for the specified Schedule identifier",
+   "tags": [
+    "Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/reportdefinitions/{id}/schedules/{scheduleId}",
+   "operationId": "getReportSchedule",
+   "summary": "Get a specific Report Schedule for the specified Report Definition and Schedule identifier",
+   "tags": [
+    "Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/reports",
+   "operationId": "getReports",
+   "summary": "Get the Reports based on the Report Query Spec provided",
+   "tags": [
+    "Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/reports",
+   "operationId": "createReport",
+   "summary": "Generate (create) a Report using the specified Report Definition and for the specified Resource",
+   "tags": [
+    "Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/reports/{id}",
+   "operationId": "deleteReport",
+   "summary": "Delete a report by its identifier",
+   "tags": [
+    "Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/reports/{id}",
+   "operationId": "getReport",
+   "summary": "Get the detail of a Report given its identifier",
+   "tags": [
+    "Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/reports/{id}/download",
+   "operationId": "downloadReport",
+   "summary": "Download the Report given its identifier",
+   "tags": [
+    "Reports"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources",
+   "operationId": "getResources",
+   "summary": "Get a listing of resources based on the query spec specified",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/resources",
+   "operationId": "updateResource",
+   "summary": "Update a Resource in the system",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/adapterkinds/{adapterKindKey}",
+   "operationId": "createResourceUsingAdapterKind",
+   "summary": "Create a new Resource in the system associated with the specified adapter kind",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/adapters/{adapterInstanceId}",
+   "operationId": "createResourceUsingAdapterInstance",
+   "summary": "Create a new Resource in the system associated with an existing adapter instance",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/resources/bulk",
+   "operationId": "deleteResources",
+   "summary": "Delete multiple Resources",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/bulk/relationships",
+   "operationId": "getResourcesRelationships",
+   "summary": "Get resources that satisfy filtering criteria and are related to specified list of resources with the given relationship type",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/resources/customdatacenters",
+   "operationId": "deleteCustomDatacenters",
+   "summary": "Delete custom datacenters",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/customdatacenters",
+   "operationId": "getCustomDatacenters",
+   "summary": "Get custom datacenters",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/customdatacenters",
+   "operationId": "createCustomDatacenter",
+   "summary": "Create a custom datacenter",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/resources/customdatacenters",
+   "operationId": "updateCustomDatacenter",
+   "summary": "Update a custom datacenter",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/customdatacenters/{id}",
+   "operationId": "getCustomDatacenter",
+   "summary": "Get custom datacenter by id",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/groups",
+   "operationId": "getCustomGroups",
+   "summary": "Get all custom groups",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/groups",
+   "operationId": "createCustomGroup",
+   "summary": "Create a new custom group definition",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/resources/groups",
+   "operationId": "modifyCustomGroup",
+   "summary": "Modify an existing custom group definition",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/groups/types",
+   "operationId": "getGroupTypes",
+   "summary": "Get group types",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/groups/types",
+   "operationId": "addGroupType",
+   "summary": "Add a new group type",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/resources/groups/types/{key}",
+   "operationId": "deleteGroupType",
+   "summary": "Delete the group type",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/resources/groups/{groupId}",
+   "operationId": "deleteCustomGroup",
+   "summary": "Delete a custom group",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/groups/{groupId}",
+   "operationId": "getCustomGroup",
+   "summary": "Get custom group",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/groups/{groupId}/members",
+   "operationId": "getCustomGroupMembers",
+   "summary": "Get members of the group",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/resources/maintained",
+   "operationId": "unmarkResourcesAsBeingMaintained",
+   "summary": "Bring the specified set of Resources out of Maintenance manually",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/resources/maintained",
+   "operationId": "markResourcesAsBeingMaintained",
+   "summary": "Put all the specified Resource in Maintenance",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/resources/monitoringstate/start",
+   "operationId": "startMonitoringResources",
+   "summary": "Inform one or more or all Adapters to start monitoring a Collection of Resources. Note: Start isn't supported on per resource bases any more.",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/api/resources/monitoringstate/stop",
+   "operationId": "stopMonitoringResources",
+   "summary": "Inform one or more or all Adapters to stop monitoring a Collection of Resources. Note: Stop isn't supported on per resource bases any more.",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/profiles",
+   "operationId": "getCustomProfiles",
+   "summary": "Get all custom profiles",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/profiles",
+   "operationId": "createCustomProfile",
+   "summary": "Create a new custom profile definition",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/resources/profiles",
+   "operationId": "modifyCustomProfile",
+   "summary": "Modify an existing custom profile definition",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/resources/profiles/{profileId}",
+   "operationId": "deleteCustomProfile",
+   "summary": "Delete a custom profile",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/profiles/{profileId}",
+   "operationId": "getCustomProfile",
+   "summary": "Get custom profile",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/properties",
+   "operationId": "getResourcePropertiesList",
+   "summary": "Get all the Properties and their current (latest) values for the specified Resources",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/properties",
+   "operationId": "addResourcesProperties",
+   "summary": "Add Properties to Resources",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/properties/adapterkinds/{adapterKind}",
+   "operationId": "addResourcesPropertiesUsingAdapterKind",
+   "summary": "Add Properties to Resources Using Adapter Kind",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/properties/latest/query",
+   "operationId": "queryLatestPropertiesOfResources",
+   "summary": "Get current (latest) values of requested properties for the specified resources",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/query",
+   "operationId": "getMatchingResources",
+   "summary": "Gets a listing of resources based on the query spec specified",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/statkeys",
+   "operationId": "getStatKeysOfResources",
+   "summary": "Get all the available stat keys and their details for the specified resource",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/stats",
+   "operationId": "getStatsOfResources",
+   "summary": "Get stats for one or more Resources using the specific query spec",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/stats",
+   "operationId": "addStatsForResources",
+   "summary": "Add Stats to a Collection of Resources",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/stats/adapterkinds/{adapterKind}",
+   "operationId": "addStatsForResourcesUsingPushAdapterKind",
+   "summary": "Adds Stats to a Collection of Resources along with associating an adapter instance of the specified adapter kind as the source of data",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/stats/dt/query",
+   "operationId": "getStatsAndDTForResources",
+   "summary": "Get Stats and Dynamic Threshold values for one or more StatKeys and for a Collection of Resources",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/stats/latest",
+   "operationId": "getLatestStatsOfResources",
+   "summary": "Get Latest stats of one or more Resources using the query spec that is specified",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/stats/latest/query",
+   "operationId": "queryLatestStatsOfResources",
+   "summary": "Get the last \"maxSamples\" stats values for specified one or more Resources",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/stats/query",
+   "operationId": "getStatsForResources",
+   "summary": "Get stats for one or more Resources using the specific query spec",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/stats/topn",
+   "operationId": "getTopNStatsOfResources",
+   "summary": "Get the Top-N stats data for one or more Resources and a set of StatKeys",
+   "tags": [
+    "Resources"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/resources/{id}",
+   "operationId": "deleteResource",
+   "summary": "Delete a Resource with the given identifier",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/{id}",
+   "operationId": "getResource",
+   "summary": "Get the Resource for the specified identifier",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/resources/{id}/geolocation",
+   "operationId": "updateGeoLocationOfResource",
+   "summary": "Update the geographical location of the Resource",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/resources/{id}/maintained",
+   "operationId": "unmarkResourceAsBeingMaintained",
+   "summary": "Bring the Resource out of Maintenance manually",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/resources/{id}/maintained",
+   "operationId": "markResourceAsBeingMaintained",
+   "summary": "Put the specific Resource in Maintenance",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/resources/{id}/monitoringstate/start",
+   "operationId": "startMonitoringResource",
+   "summary": "Inform one or more or all Adapters to start monitoring this Resource. Note: Start isn't supported on per resource bases any more.",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/api/resources/{id}/monitoringstate/stop",
+   "operationId": "stopMonitoringResource",
+   "summary": "Inform one or more or all Adapters to stop monitoring this Resource. Note: Stop isn't supported on per resource bases any more.",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/{id}/properties",
+   "operationId": "getResourceProperties",
+   "summary": "Get all the properties for the specified Resource",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/{id}/properties",
+   "operationId": "addProperties",
+   "summary": "Add Properties to a Resource",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/{id}/properties/adapterkinds/{adapterKind}",
+   "operationId": "addPropertiesUsingPushAdapterKind",
+   "summary": "Add Properties to a Resource along with associating an adapter instance of the specified adapter kind as the source of data",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/{id}/relationships",
+   "operationId": "getRelationships",
+   "summary": "Get ALL the related resources of a particular Relationship Type for a Resource",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/{id}/relationships/{relationshipType}",
+   "operationId": "getRelationship",
+   "summary": "Get the related resources of a particular Relationship Type for a Resource",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/{id}/relationships/{relationshipType}",
+   "operationId": "addRelationship",
+   "summary": "Add relationships of given type to the resource with specified resourceId",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/resources/{id}/relationships/{relationshipType}",
+   "operationId": "setRelationship",
+   "summary": "Set (Replace) Resource as RelationshipType of a specific Resource",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/resources/{id}/relationships/{relationshipType}/{relatedId}",
+   "operationId": "deleteRelationship",
+   "summary": "Delete (remove) a Resource as RelationshipType of a specific Resource",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/{id}/statkeys",
+   "operationId": "getStatKeys",
+   "summary": "Get all the stat keys for the specified Resource",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/{id}/stats",
+   "operationId": "getStatsOfResource",
+   "summary": "Look up stats of a group of objects with the resource ids",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/{id}/stats",
+   "operationId": "addStats",
+   "summary": "Add Stats to a Resource",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/{id}/stats/adapterkinds/{adapterKind}",
+   "operationId": "addStatsUsingPushAdapterKind",
+   "summary": "Add Stats to a Resource along with associating an adapter instance of the specified adapter kind as the source of data",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/{id}/stats/dt",
+   "operationId": "getDTStatsOfResource",
+   "summary": "Get Stats and Dynamic Threshold values for one or more StatKeys and for a Collection of Resources",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/{id}/stats/latest",
+   "operationId": "getLatestStats",
+   "summary": "Get the latest stat for a given Resource and given a set of attributes",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/resources/{id}/stats/query",
+   "operationId": "getStatsForResource",
+   "summary": "Look up stats of a group of objects with the resource ids",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/resources/{id}/stats/topn",
+   "operationId": "getTopNStatsOfResource",
+   "summary": "Get the TopN stats for a given Resource and given a set of attributes",
+   "tags": [
+    "Resource"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/solutions",
+   "operationId": "getSolutions",
+   "summary": "Get all solutions installed in the product",
+   "tags": [
+    "Solutions"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/solutions/{solutionId}",
+   "operationId": "getSolution",
+   "summary": "Get solution data for the specified id",
+   "tags": [
+    "Solutions"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/solutions/{solutionId}/adapterkinds",
+   "operationId": "getAdapterKindsForSolution",
+   "summary": "Get Adapter Kind details for the specified solution id",
+   "tags": [
+    "Solutions"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/supermetrics",
+   "operationId": "getSuperMetrics",
+   "summary": "Get a collection of SuperMetrics based on search parameters",
+   "tags": [
+    "Super Metrics"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/supermetrics",
+   "operationId": "createSuperMetric",
+   "summary": "Create a SuperMetric with the given name, formula and description",
+   "tags": [
+    "Super Metrics"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/supermetrics",
+   "operationId": "updateSuperMetric",
+   "summary": "Update a SuperMetric with the given name, formula and description",
+   "tags": [
+    "Super Metrics"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/supermetrics/{id}",
+   "operationId": "deleteSuperMetric",
+   "summary": "Delete a SuperMetric",
+   "tags": [
+    "Super Metrics"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/supermetrics/{id}",
+   "operationId": "getSuperMetric",
+   "summary": "Get a SuperMetric with the given id",
+   "tags": [
+    "Super Metrics"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/symptomdefinitions",
+   "operationId": "getSymptomDefinitions",
+   "summary": "Get Symptom Definitions",
+   "tags": [
+    "Symptoms"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/symptomdefinitions",
+   "operationId": "createSymptomDefinition",
+   "summary": "Create the Symptom Definition",
+   "tags": [
+    "Symptoms"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/symptomdefinitions",
+   "operationId": "updateSymptomDefinition",
+   "summary": "Update an existing Symptom Definition",
+   "tags": [
+    "Symptoms"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/symptomdefinitions/{id}",
+   "operationId": "deleteSymptomDefinition",
+   "summary": "Delete a Symptom Definition",
+   "tags": [
+    "Symptoms"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/symptomdefinitions/{id}",
+   "operationId": "getSymptomDefinitionByKey",
+   "summary": "Get Symptom Definition specified by id",
+   "tags": [
+    "Symptoms"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/symptoms",
+   "operationId": "getSymptoms",
+   "summary": "Look up all Symptoms in the system",
+   "tags": [
+    "Symptoms"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/api/symptoms/query",
+   "operationId": "querySymptoms",
+   "summary": "Look up a set of Symptoms using a query object",
+   "tags": [
+    "Symptoms"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/tasks",
+   "operationId": "getTasksStatus",
+   "summary": "Look up a list of task objects' statuses",
+   "tags": [
+    "Tasks"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/tasks/{id}",
+   "operationId": "getTaskStatus",
+   "summary": "Look up a task status with the given identifier",
+   "tags": [
+    "Tasks"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/versions",
+   "operationId": "getSupportedApplicationVersions",
+   "summary": "Get all supported versions by the service",
+   "tags": [
+    "Versions Info"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/versions/current",
+   "operationId": "getCurrentVersionOfServer",
+   "summary": "Get the current version of the service",
+   "tags": [
+    "Versions Info"
+   ],
+   "deprecated": false
+  }
+ ]
+}

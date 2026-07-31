@@ -1,0 +1,64 @@
+{
+ "meta": {
+  "present": true,
+  "spec_file": "specifications/vcf-operations/realtime-metrics/realtime-metrics-openapi.yaml",
+  "spec_version": "9.1.0.0",
+  "title": "Realtime Metrics APIs",
+  "openapi": "3.0.2",
+  "base_path": "http://localhost:8080/",
+  "operation_count": 4,
+  "security_schemes": {
+   "bearerAuth": {
+    "type": "http",
+    "scheme": "bearer"
+   }
+  },
+  "tags": [
+   "metadata",
+   "prometheus-expression",
+   "vcMetricsConfig"
+  ]
+ },
+ "operations": [
+  {
+   "method": "GET",
+   "path": "/api/v1/metadata",
+   "operationId": "queryMetricMetadata",
+   "summary": "",
+   "tags": [
+    "metadata"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/query",
+   "operationId": "query",
+   "summary": "",
+   "tags": [
+    "prometheus-expression"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/query_range",
+   "operationId": "queryRange",
+   "summary": "",
+   "tags": [
+    "prometheus-expression"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/api/v1/vcenters/{vcId}/metrics_config",
+   "operationId": "updateVcMetricsConfig",
+   "summary": "",
+   "tags": [
+    "vcMetricsConfig"
+   ],
+   "deprecated": false
+  }
+ ]
+}

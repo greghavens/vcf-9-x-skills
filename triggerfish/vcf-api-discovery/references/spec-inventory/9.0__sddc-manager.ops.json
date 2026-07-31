@@ -1,0 +1,3821 @@
+{
+ "meta": {
+  "present": true,
+  "spec_file": "specifications/sddc-manager/sddc-manager-openapi.json",
+  "spec_version": "9.0.0.0",
+  "title": "VMware Cloud Foundation API Reference Guide",
+  "openapi": "3.0.1",
+  "base_path": "http://localhost:80",
+  "operation_count": 375,
+  "security_schemes": {},
+  "tags": [
+   "ALBClusters",
+   "BackupRestore",
+   "BrownfieldImport",
+   "Bundles",
+   "CEIP",
+   "Certificates",
+   "CheckSets",
+   "Clusters",
+   "CompatibilityMatrix",
+   "Compliance",
+   "ConfigReconciler",
+   "Credentials",
+   "DepotSettings",
+   "Domains",
+   "FIPS mode details",
+   "Flexible Product Patches",
+   "Hosts",
+   "Identity Provider Precheck",
+   "Identity Providers",
+   "License Keys",
+   "Manifests",
+   "NSX-T Clusters",
+   "Network Pools",
+   "Notifications",
+   "NsxTEdgeClusters",
+   "PSCs",
+   "Personalities",
+   "Product Version Catalog",
+   "ProductBinaries",
+   "ProductVersionCatalogs",
+   "ProxyConfiguration",
+   "Releases",
+   "RepositoryImages",
+   "Resource Functionalities",
+   "Resource Warnings",
+   "SOS",
+   "SddcManagerUpgradable",
+   "SddcManagers",
+   "System",
+   "System Configuration",
+   "TargetUpgradeVersion",
+   "Tasks",
+   "Tokens",
+   "Trusted Certificates",
+   "UMDS",
+   "Upgradables",
+   "Upgrades",
+   "Users",
+   "VCF Management Components",
+   "VasaProviders",
+   "VcfServices",
+   "VersionAliasesForBundleComponentType",
+   "vCenters",
+   "vSANHealthCheck",
+   "vSanHcl"
+  ]
+ },
+ "operations": [
+  {
+   "method": "GET",
+   "path": "/v1/alb-clusters",
+   "operationId": "getAviLBClusters",
+   "summary": "Retrieve a list of ALB Clusters",
+   "tags": [
+    "ALBClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/alb-clusters",
+   "operationId": "deployALBCluster",
+   "summary": "Deploy an ALB cluster",
+   "tags": [
+    "ALBClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/alb-clusters/cluster-capacity",
+   "operationId": "getClusterCapacityForALBDeployment",
+   "summary": "Get cluster capacity of domain for ALB deployment",
+   "tags": [
+    "ALBClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/alb-clusters/compatibility/validations",
+   "operationId": "validateALBCompatibility",
+   "summary": "Validate ALB compatibility version",
+   "tags": [
+    "ALBClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/alb-clusters/form-factors",
+   "operationId": "getALBClustersFormFactors_1",
+   "summary": "Retrieve a list of ALB Clusters Form Factors",
+   "tags": [
+    "ALBClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/alb-clusters/validations",
+   "operationId": "validateALBControllerClusterCreationSpec",
+   "summary": "Perform validiation of the AlbControllerClusterSpec specification",
+   "tags": [
+    "ALBClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/alb-clusters/{id}",
+   "operationId": "undeployALBCluster",
+   "summary": "Deletes an ALB Cluster by its ID",
+   "tags": [
+    "ALBClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/alb-clusters/{id}",
+   "operationId": "getAviLBCluster",
+   "summary": "Retrieve an ALB Cluster by its ID",
+   "tags": [
+    "ALBClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/backups/tasks",
+   "operationId": "startBackup",
+   "summary": "Start a backup operation",
+   "tags": [
+    "BackupRestore"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/bundles",
+   "operationId": "getBundles",
+   "summary": "Retrieve a list of bundles",
+   "tags": [
+    "Bundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/bundles",
+   "operationId": "uploadBundle",
+   "summary": "[Unsupported] Upload a bundle to SDDC Manager or VCF Installer",
+   "tags": [
+    "Bundles"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/bundles/domains/{id}",
+   "operationId": "getBundlesForSkipUpgrade",
+   "summary": "Retrieve a list of bundles to skip upgrade a domain",
+   "tags": [
+    "Bundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/bundles/download-status",
+   "operationId": "getBundleDownloadStatus",
+   "summary": "Retrieve a the download status for bundles",
+   "tags": [
+    "Bundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/bundles/{id}",
+   "operationId": "deleteBundle",
+   "summary": "Delete a bundle by bundle ID",
+   "tags": [
+    "Bundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/bundles/{id}",
+   "operationId": "getBundle",
+   "summary": "Retrieve a bundle by its ID",
+   "tags": [
+    "Bundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/bundles/{id}",
+   "operationId": "startBundleDownloadByID",
+   "summary": "Start immediate, schedule or cancel download of a bundle by ID",
+   "tags": [
+    "Bundles"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/certificate-authorities",
+   "operationId": "getCertificateAuthorities",
+   "summary": "Retrieve a list of Certificate Authorities",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/certificate-authorities",
+   "operationId": "configureCertificateAuthority",
+   "summary": "Update the configuration of a Certificate Authority",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/certificate-authorities",
+   "operationId": "createCertificateAuthority",
+   "summary": "Configure integration with a Certificate Authority",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/certificate-authorities/{id}",
+   "operationId": "removeCertificateAuthority",
+   "summary": "Remove the configuration of a Certificate Authority",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/certificate-authorities/{id}",
+   "operationId": "getCertificateAuthorityById",
+   "summary": "Retrieve the details of a Certificate Authority by ID",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters",
+   "operationId": "getClusters",
+   "summary": "Retrieve a list of clusters",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/clusters",
+   "operationId": "createCluster",
+   "summary": "Create a cluster and add to an existing domain",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/tags",
+   "operationId": "getTagsAssignedToClusters",
+   "summary": "Get tags assigned to clusters",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/clusters/validations",
+   "operationId": "validateClusterCreationSpec",
+   "summary": "Perform validation of the ClusterCreationSpec specification",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/validations/{id}",
+   "operationId": "getClusterCreateValidation",
+   "summary": "Get the status of the validations for cluster deployment",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{clusterId}/datastores/queries/{queryId}",
+   "operationId": "getDatastoreQueryResponse_1",
+   "summary": "Get Datastore query response",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/clusters/{clusterId}/datastores/validation",
+   "operationId": "validateVsanRemoteDatastoreSpec",
+   "summary": "Perform validation of the DatastoreMountSpec specification",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/v1/clusters/{clusterId}/datastores/validations",
+   "operationId": "validateVsanRemoteDatastoreMountSpec",
+   "summary": "Perform validation of the DatastoreMountSpec specification",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{clusterId}/hosts/queries/{queryId}",
+   "operationId": "getHostQueryResponse_1",
+   "summary": "Get query response",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{clusterId}/vdses",
+   "operationId": "getVdses",
+   "summary": "Get the list of VDSes of a cluster.",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/clusters/{clusterId}/vdses",
+   "operationId": "importVdsToInventory",
+   "summary": "Import Vds to inventory for the given cluster",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/clusters/{id}",
+   "operationId": "deleteCluster",
+   "summary": "Delete a cluster from a domain if it has been previously initialized for deletion",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{id}",
+   "operationId": "getCluster",
+   "summary": "Get a cluster by its ID",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/clusters/{id}",
+   "operationId": "updateCluster",
+   "summary": "Update a Cluster by adding or removing Hosts, Stretching a standard vSAN cluster, Unstretching a stretched cluster or by marking for deletion",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{id}/datastores",
+   "operationId": "getClusterDatastores",
+   "summary": "Get the list of all datastores associated with the cluster.",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/clusters/{id}/datastores",
+   "operationId": "addDatastoreToCluster",
+   "summary": "Mount a datastore to a cluster",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{id}/datastores/criteria",
+   "operationId": "getDatastoresCriteria_1",
+   "summary": "Get all datastore criteria",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{id}/datastores/criteria/{name}",
+   "operationId": "getDatastoreCriterion_1",
+   "summary": "Get a criterion to query for datastore",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/clusters/{id}/datastores/queries",
+   "operationId": "postDatastoreQuery_1",
+   "summary": "Post a datastore query",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/clusters/{id}/datastores/{datastoreId}",
+   "operationId": "removeDatastoreFromCluster",
+   "summary": "Unmount a datastore from a cluster",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{id}/hosts/criteria",
+   "operationId": "getHostCriteria",
+   "summary": "Get all host criteria",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{id}/hosts/criteria/{name}",
+   "operationId": "getHostCriterion",
+   "summary": "Get a criterion to query for host",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/v1/clusters/{id}/hosts/queries",
+   "operationId": "postHostQuery",
+   "summary": "Post a host query",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{id}/image-compliance",
+   "operationId": "getClusterImageCompliance",
+   "summary": "Get image compliance for a Cluster",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{id}/network/criteria",
+   "operationId": "getClusterNetworkConfigurationCriteria",
+   "summary": "Get cluster network configuration criteria",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/clusters/{id}/network/queries",
+   "operationId": "getClusterNetworkConfiguration",
+   "summary": "Get cluster network configuration",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{id}/network/queries/{queryId}",
+   "operationId": "getClusterNetworkConfigurationQueryResponse",
+   "summary": "Get cluster network configuration query response",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/clusters/{id}/tags",
+   "operationId": "removeTagsFromCluster",
+   "summary": "Remove tags from a cluster",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{id}/tags",
+   "operationId": "getTagsAssignedToCluster",
+   "summary": "Get tags assigned to a cluster by its ID",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/clusters/{id}/tags",
+   "operationId": "assignTagsToCluster",
+   "summary": "Assign Tags to Cluster",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{id}/tags/assignable-tags",
+   "operationId": "getTagAssignableForCluster",
+   "summary": "Get tags assignable to a cluster",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{id}/tags/tag-manager",
+   "operationId": "getClusterTagManagerUrl",
+   "summary": "Get Cluster Tag Manager Url",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/clusters/{id}/validations",
+   "operationId": "validateClusterUpdateSpec",
+   "summary": "Perform validation of the ClusterUpdateSpec specification",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/clusters/{id}/validations/{validationId}",
+   "operationId": "getClusterUpdateValidation",
+   "summary": "Get the status of the validations for cluster updates",
+   "tags": [
+    "Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/compatibility-matrices",
+   "operationId": "getCompatibilityMatrices",
+   "summary": "Get Compatibility Matrices",
+   "tags": [
+    "CompatibilityMatrix"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/compatibility-matrices",
+   "operationId": "updateCompatibilityMatrix",
+   "summary": "Update compatibility matrix",
+   "tags": [
+    "CompatibilityMatrix"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/compatibility-matrices/{compatibilityMatrixSource}",
+   "operationId": "getCompatibilityMatrix",
+   "summary": "Get Compatibility Matrix",
+   "tags": [
+    "CompatibilityMatrix"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/compatibility-matrices/{compatibilityMatrixSource}/content",
+   "operationId": "getCompatibilityMatrixContent",
+   "summary": "Get Compatibility Matrix content",
+   "tags": [
+    "CompatibilityMatrix"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/compatibility-matrices/{compatibilityMatrixSource}/metadata",
+   "operationId": "getCompatibilityMatrixMetadata",
+   "summary": "Get Compatibility Matrix Metadata",
+   "tags": [
+    "CompatibilityMatrix"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/compliance-audits",
+   "operationId": "getComplianceAuditHistory",
+   "summary": "Get compliance audit history",
+   "tags": [
+    "Compliance"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/compliance-audits/{complianceAuditId}",
+   "operationId": "getComplianceAudit",
+   "summary": "Get compliance audit",
+   "tags": [
+    "Compliance"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/compliance-audits/{complianceAuditId}/compliance-audit-items",
+   "operationId": "getComplianceAuditItems",
+   "summary": "Get compliance audit items",
+   "tags": [
+    "Compliance"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/compliance-configurations",
+   "operationId": "getComplianceConfigurations",
+   "summary": "Get all compliance configurations",
+   "tags": [
+    "Compliance"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/compliance-standards",
+   "operationId": "getComplianceStandards",
+   "summary": "Get all compliance standards",
+   "tags": [
+    "Compliance"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/config-drift-reconciliations",
+   "operationId": "reconcileConfigs",
+   "summary": "Reconcile configs",
+   "tags": [
+    "ConfigReconciler"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/config-drift-reconciliations/{taskId}",
+   "operationId": "getReconciliationTask",
+   "summary": "Get config reconciliation task associated with the given task Id",
+   "tags": [
+    "ConfigReconciler"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/config-drifts",
+   "operationId": "getConfigs",
+   "summary": "Get configs associated with the given criteria",
+   "tags": [
+    "ConfigReconciler"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/credentials",
+   "operationId": "getCredentials",
+   "summary": "Retrieve a list of credentials",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/credentials",
+   "operationId": "updateOrRotatePasswords",
+   "summary": "Update or rotate passwords for a list of resources",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/credentials/expirations",
+   "operationId": "getPasswordExpiration",
+   "summary": "Fetch expiration details of passwords for a list of credentials",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/credentials/expirations/{id}",
+   "operationId": "getPasswordExpirationByTaskID",
+   "summary": "Retrive a password expiration task by ID",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/credentials/tasks",
+   "operationId": "getCredentialsTasks",
+   "summary": "Retrieve a list of credential tasks",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/credentials/tasks/{id}",
+   "operationId": "cancelCredentialsTask",
+   "summary": "Cancel a failed credential task by its ID",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/credentials/tasks/{id}",
+   "operationId": "getCredentialsTask",
+   "summary": "Retrieve a credential task by ID",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/credentials/tasks/{id}",
+   "operationId": "retryCredentialsTask",
+   "summary": "Retry a failed credentials task for a given ID",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/credentials/tasks/{id}/resource-credentials",
+   "operationId": "getCredentialTaskByResourceID",
+   "summary": "Retriece a credential taks by resource ID",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/credentials/tasks/{id}/subtasks/{subtaskId}",
+   "operationId": "getCredentialsSubTask",
+   "summary": "Retrieve a credential sub task by its ID",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/credentials/{id}",
+   "operationId": "getCredential",
+   "summary": "Retrieve a credential by its ID",
+   "tags": [
+    "Credentials"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains",
+   "operationId": "getDomains",
+   "summary": "Retrieve a list of domains",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/domains",
+   "operationId": "createDomain",
+   "summary": "Create a domain",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/capabilities",
+   "operationId": "getDomainCapabilities",
+   "summary": "Get the capabilities of all domains",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/domains/resource-certificates",
+   "operationId": "setAutoRenewConfiguration",
+   "summary": "Set certificate auto-renewal configuration for all domains at once",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/tags",
+   "operationId": "getTagsAssignedToDomains",
+   "summary": "Get tags assigned to all domains",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/domains/validations",
+   "operationId": "validateDomainCreationSpec",
+   "summary": "Perform validation of the DomainCreationSpec specification",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/validations/{id}",
+   "operationId": "domainCreateValidation",
+   "summary": "Get the status of the validations for domain related operations",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{domainId}/clusters/criteria",
+   "operationId": "getClusterCriteria",
+   "summary": "Get all cluster criteria",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{domainId}/clusters/criteria/{name}",
+   "operationId": "getClusterCriterion",
+   "summary": "Get a criterion to query for cluster",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/domains/{domainId}/clusters/queries",
+   "operationId": "postClustersQuery",
+   "summary": "Post clusters query",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{domainId}/clusters/queries/{queryId}",
+   "operationId": "getClustersQueryResponse",
+   "summary": "Get clusters query response",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/domains/{domainId}/clusters/{clusterName}/queries",
+   "operationId": "postClusterQuery",
+   "summary": "Post a cluster query",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{domainId}/clusters/{clusterName}/queries/{queryId}",
+   "operationId": "getClusterQueryResponse",
+   "summary": "Get cluster query response",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{domainId}/datastores/criteria",
+   "operationId": "getDatastoresCriteria",
+   "summary": "Get all datastore criteria",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{domainId}/datastores/criteria/{name}",
+   "operationId": "getDatastoreCriterion",
+   "summary": "Get a criterion to query for datastore",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/domains/{domainId}/datastores/queries",
+   "operationId": "postDatastoreQuery",
+   "summary": "Post a datastore query",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{domainId}/datastores/queries/{queryId}",
+   "operationId": "getDatastoreQueryResponse",
+   "summary": "Get Datastore query response",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{domainId}/health-checks",
+   "operationId": "getVsanHealthCheckByDomain",
+   "summary": "Retrieve vSAN Health Check status for a domain by its ID",
+   "tags": [
+    "vSANHealthCheck"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/domains/{domainId}/health-checks",
+   "operationId": "updateVsanHealthCheckByDomain",
+   "summary": "Update the vSAN Health Check status for a domain",
+   "tags": [
+    "vSANHealthCheck"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{domainId}/health-checks/queries/{queryId}",
+   "operationId": "getVsanHealthCheckByQueryID",
+   "summary": "Retrieve vSAN Health Check status for a domain and query ID",
+   "tags": [
+    "vSANHealthCheck"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{domainId}/health-checks/tasks/{taskId}",
+   "operationId": "getVsanHealthCheckByTaskID",
+   "summary": "Retrieve a vSAN Health Check by task ID",
+   "tags": [
+    "vSANHealthCheck"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/domains/{domainId}/isolation-prechecks",
+   "operationId": "performDomainIsolationPrecheck",
+   "summary": "Perform Domain Isolation Prechecks",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{domainId}/isolation-prechecks/{precheckId}",
+   "operationId": "getDomainIsolationPrecheckStatus",
+   "summary": "Get the status of the Domain Isolation Precheck",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/domains/{domainId}/synchronizations",
+   "operationId": "synchronization",
+   "summary": "",
+   "tags": [
+    "BrownfieldImport"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{domainId}/synchronizations/{taskId}",
+   "operationId": "getBrownfieldSyncTaskById",
+   "summary": "",
+   "tags": [
+    "BrownfieldImport"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/domains/{id}",
+   "operationId": "deleteDomain",
+   "summary": "Remove a domain if it has been previously initialized for deletion",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}",
+   "operationId": "getDomain",
+   "summary": "Get a domain by its ID",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/domains/{id}",
+   "operationId": "updateDomain",
+   "summary": "Update a Domain",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/capabilities",
+   "operationId": "getDomainCapabilitiesByDomainId",
+   "summary": "Get the capabilities of a domain",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/certificates",
+   "operationId": "getDomainCertificates",
+   "summary": "Retrieve the latest generated certificates for a domain by its ID",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/domains/{id}/certificates",
+   "operationId": "replaceCertificates",
+   "summary": "Replace certificate(s) for the selected resource(s) in a domain",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/domains/{id}/certificates",
+   "operationId": "generateCertificates",
+   "summary": "Request the creation of signed certificate for resources of a domain",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/compliance-audits",
+   "operationId": "getComplianceAuditHistoryForADomain",
+   "summary": "Get compliance audit history for a domain",
+   "tags": [
+    "Compliance"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/domains/{id}/compliance-audits",
+   "operationId": "complianceAudit",
+   "summary": "Compliance audit of resource",
+   "tags": [
+    "Compliance"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/compliance-audits/tasks/{taskId}",
+   "operationId": "getComplianceAuditTask",
+   "summary": "Get compliance audit task",
+   "tags": [
+    "Compliance"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/domains/{id}/compliance-audits/tasks/{taskId}",
+   "operationId": "retryComplianceAuditTask",
+   "summary": "Retry compliance audit task",
+   "tags": [
+    "Compliance"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/compliance-audits/{complianceAuditId}",
+   "operationId": "getComplianceAuditForADomain",
+   "summary": "Get compliance audit for a domain",
+   "tags": [
+    "Compliance"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/compliance-audits/{complianceAuditId}/compliance-audit-items",
+   "operationId": "getComplianceAuditItemsForADomain",
+   "summary": "Get compliance audit items for a domain",
+   "tags": [
+    "Compliance"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/csrs",
+   "operationId": "getCSRs",
+   "summary": "Request available CSR(s) in JSON format for a domain",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/domains/{id}/csrs",
+   "operationId": "generatesCSRs",
+   "summary": "Request the creation of certificate signing request (CSR) files for resources of a domain",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/csrs/downloads",
+   "operationId": "downloadCSR",
+   "summary": "Request the download of CSR(s) for a domain in tar.gz format",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/datacenters",
+   "operationId": "getDomainDatacenters",
+   "summary": "Get Datacenters in domain by its ID",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/endpoints",
+   "operationId": "getDomainEndpoints",
+   "summary": "Retrieve a list of endpoints or URLs for a domain by its ID",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/domains/{id}/overlay",
+   "operationId": "enableOverlayOverManagementNetwork",
+   "summary": "Enable Overlay over Management Network for NSX VLAN Backed Domain",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/resource-certificates",
+   "operationId": "getCertificatesByDomain",
+   "summary": "Retrieve the certificate details for all resources in a domain",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/domains/{id}/resource-certificates",
+   "operationId": "setAutoRenewConfigurationForDomain",
+   "summary": "Set certificate auto-renewal configuration for a domain",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/domains/{id}/resource-certificates",
+   "operationId": "replaceResourceCertificates",
+   "summary": "Replace the certificate(s) for selected resources of a domain",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/domains/{id}/resource-certificates/validations",
+   "operationId": "validateResourceCertificates",
+   "summary": "Perform validation of the ResourceCertificateSpec specification",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/resource-certificates/validations/{validationId}",
+   "operationId": "getResourceCertificatesValidationByID",
+   "summary": "Retrieve the results of a certificate validation by its ID",
+   "tags": [
+    "Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/domains/{id}/tags",
+   "operationId": "removeTagsFromDomain",
+   "summary": "remove Tags From Domain",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/tags",
+   "operationId": "getTagsAssignedToDomain",
+   "summary": "Get tags assigned to a domain",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/domains/{id}/tags",
+   "operationId": "assignTagsToDomain",
+   "summary": "Assign tags to a domain",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/tags/assignable-tags",
+   "operationId": "getAssignableTagsForDomain",
+   "summary": "Get tags assignable to a domain",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/tags/tag-manager",
+   "operationId": "getDomainTagManagerUrl",
+   "summary": "Get Domain Tag Manager Url",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/domains/{id}/validations",
+   "operationId": "validateDomainUpdateSpec",
+   "summary": "Perform validation of the DomainUpdateSpec specification",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/domains/{id}/validations/{validationId}",
+   "operationId": "getDomainUpdateValidation",
+   "summary": "Get the status of the validations for domain related operations",
+   "tags": [
+    "Domains"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/edge-clusters",
+   "operationId": "getEdgeClusters",
+   "summary": "Retrieve a list of NSX Edge Clusters",
+   "tags": [
+    "NsxTEdgeClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/edge-clusters",
+   "operationId": "createEdgeCluster",
+   "summary": "Create an NSX Edge Cluster",
+   "tags": [
+    "NsxTEdgeClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/edge-clusters/validations",
+   "operationId": "validateEdgeClusterCreationSpec",
+   "summary": "Perform validiation of the EdgeClusterCreationSpec specification",
+   "tags": [
+    "NsxTEdgeClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/edge-clusters/validations/{id}",
+   "operationId": "getEdgeClusterValidationByID",
+   "summary": "Retrieve the results of a NSX Edge Cluster validation by its ID",
+   "tags": [
+    "NsxTEdgeClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/edge-clusters/{edgeClusterId}/criteria",
+   "operationId": "getEdgeClusterQueryCriteria",
+   "summary": "Get the Edge Cluster criterion list for the NSX query",
+   "tags": [
+    "NsxTEdgeClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/edge-clusters/{id}",
+   "operationId": "getEdgeCluster",
+   "summary": "Retrieve an NSX Edge Cluster by its ID",
+   "tags": [
+    "NsxTEdgeClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/edge-clusters/{id}",
+   "operationId": "updateEdgeCluster",
+   "summary": "Expand or shrink an NSX Edge Cluster",
+   "tags": [
+    "NsxTEdgeClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/edge-clusters/{id}/validations",
+   "operationId": "validateEdgeClusterUpdateSpec",
+   "summary": "Perform validation of the EdgeClusterUpdateSpec specification",
+   "tags": [
+    "NsxTEdgeClusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/hosts",
+   "operationId": "decommissionHosts",
+   "summary": "Decommission the Hosts",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/hosts",
+   "operationId": "getHosts",
+   "summary": "Get all hosts",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/hosts",
+   "operationId": "commissionHosts",
+   "summary": "Commission the Hosts",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/hosts/criteria",
+   "operationId": "getCriteria",
+   "summary": "",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/hosts/criteria/{name}",
+   "operationId": "getCriterion",
+   "summary": "",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/hosts/prechecks",
+   "operationId": "postHostsPrechecks_1",
+   "summary": "",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/hosts/prechecks/{id}",
+   "operationId": "getHostsPrechecksResponse",
+   "summary": "",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/hosts/queries",
+   "operationId": "postQuery",
+   "summary": "",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/hosts/queries/{id}",
+   "operationId": "getHostQueryResponse",
+   "summary": "",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/hosts/tags",
+   "operationId": "getTagsAssignedToHosts",
+   "summary": "",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/hosts/validations",
+   "operationId": "validateHostCommissionSpec",
+   "summary": "Perform validation of the  HostCommissionSpec specification",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/hosts/validations/commissions",
+   "operationId": "validateCommissionHosts",
+   "summary": "Validate the input specification to commission the Hosts",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/hosts/validations/{id}",
+   "operationId": "getHostCommissionValidationByID",
+   "summary": "Retrieve the results of a host commission validation by its ID",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/hosts/{id}",
+   "operationId": "getHost",
+   "summary": "Get a host by its ID",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/hosts/{id}/tags",
+   "operationId": "removeTagsFromHost",
+   "summary": "",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/hosts/{id}/tags",
+   "operationId": "getTagsAssignedToHost",
+   "summary": "",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/hosts/{id}/tags",
+   "operationId": "assignTagsToHost",
+   "summary": "",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/hosts/{id}/tags/assignable-tags",
+   "operationId": "getAssignableTagForHost",
+   "summary": "",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/hosts/{id}/tags/tag-manager",
+   "operationId": "getHostTagManagerUrl",
+   "summary": "",
+   "tags": [
+    "Hosts"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/identity-broker/prechecks",
+   "operationId": "getIdentityPrecheckResult",
+   "summary": "Get Identity Provider Federation Precheck Result",
+   "tags": [
+    "Identity Provider Precheck"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/identity-broker/sddc-manager-oidc",
+   "operationId": "getSddcWs1bOidcInfo",
+   "summary": "Get the SDDC Manager WS1B OIDC Information",
+   "tags": [
+    "Identity Providers"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/identity-providers",
+   "operationId": "getIdentityProviders",
+   "summary": "Get all identity providers",
+   "tags": [
+    "Identity Providers"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/v1/identity-providers",
+   "operationId": "addExternalIdentityProvider",
+   "summary": "Add a new external identity provider",
+   "tags": [
+    "Identity Providers"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/identity-providers/{id}",
+   "operationId": "deleteExternalIdentityProvider",
+   "summary": "Remove an identity provider",
+   "tags": [
+    "Identity Providers"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/identity-providers/{id}",
+   "operationId": "getIdentityProviderById",
+   "summary": "Get an identity provider by its id",
+   "tags": [
+    "Identity Providers"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/identity-providers/{id}",
+   "operationId": "updateExternalIdentityProvider",
+   "summary": "Update an identity provider",
+   "tags": [
+    "Identity Providers"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/v1/identity-providers/{id}/identity-sources",
+   "operationId": "addEmbeddedIdentitySource",
+   "summary": "Add a new identity source to the embedded identity provider",
+   "tags": [
+    "Identity Providers"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/identity-providers/{id}/identity-sources/{domainName}",
+   "operationId": "deleteIdentitySource",
+   "summary": "Delete an Identity Source",
+   "tags": [
+    "Identity Providers"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/identity-providers/{id}/identity-sources/{domainName}",
+   "operationId": "updateEmbeddedIdentitySource",
+   "summary": "Update an identity source",
+   "tags": [
+    "Identity Providers"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/v1/identity-providers/{id}/sync-client",
+   "operationId": "generateSyncClientToken",
+   "summary": "Generate new sync client token",
+   "tags": [
+    "Identity Providers"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/license-keys",
+   "operationId": "getLicenseKeys",
+   "summary": "Retrieve a list of license keys",
+   "tags": [
+    "License Keys"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/license-keys",
+   "operationId": "addLicenseKey",
+   "summary": "Add a a new license key",
+   "tags": [
+    "License Keys"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/license-keys/product-types",
+   "operationId": "getLicenseProductTypes",
+   "summary": "Get product types",
+   "tags": [
+    "License Keys"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/license-keys/{key}",
+   "operationId": "removeLicenseKey",
+   "summary": "Remove a license key",
+   "tags": [
+    "License Keys"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/license-keys/{key}",
+   "operationId": "getLicenseKey",
+   "summary": "Retrieve a license key",
+   "tags": [
+    "License Keys"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/license-keys/{licenseKeyOrId}",
+   "operationId": "updateLicenseKey",
+   "summary": "Update the license key",
+   "tags": [
+    "License Keys"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/licensing-info",
+   "operationId": "getLicenseInformation",
+   "summary": "Retrieve licensing information",
+   "tags": [
+    "License Keys"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/licensing-info/domains/{id}",
+   "operationId": "getDomainLicensingInfo",
+   "summary": "Get the Licensing information of a domain",
+   "tags": [
+    "License Keys"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/licensing-info/system",
+   "operationId": "getSystemLicensingInfo",
+   "summary": "Get the Licensing information of system",
+   "tags": [
+    "License Keys"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/manifests",
+   "operationId": "getManifest",
+   "summary": "Get manifest",
+   "tags": [
+    "Manifests"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/manifests",
+   "operationId": "saveManifest",
+   "summary": "Save/Load manifest",
+   "tags": [
+    "Manifests"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/network-pools",
+   "operationId": "getNetworkPool",
+   "summary": "Get the list of all Network Pools",
+   "tags": [
+    "Network Pools"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/network-pools",
+   "operationId": "createNetworkPool",
+   "summary": "Create a Network Pool",
+   "tags": [
+    "Network Pools"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/network-pools/{id}",
+   "operationId": "deleteNetworkPool",
+   "summary": "Delete a Network Pool",
+   "tags": [
+    "Network Pools"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/network-pools/{id}",
+   "operationId": "getNetworkPoolByID",
+   "summary": "Get a Network Pool",
+   "tags": [
+    "Network Pools"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/network-pools/{id}",
+   "operationId": "updateNetworkPool",
+   "summary": "Update Network Pool",
+   "tags": [
+    "Network Pools"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/network-pools/{id}/networks",
+   "operationId": "getNetworksOfNetworkPool",
+   "summary": "Get the Networks of a Network Pool",
+   "tags": [
+    "Network Pools"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/network-pools/{id}/networks/{networkId}",
+   "operationId": "getNetworkOfNetworkPool",
+   "summary": "Get a Network of a Network Pool",
+   "tags": [
+    "Network Pools"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/network-pools/{id}/networks/{networkId}/ip-pools",
+   "operationId": "deleteIpPoolFromNetworkOfNetworkPool",
+   "summary": "Delete an IP Pool from a Network of a Network Pool",
+   "tags": [
+    "Network Pools"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/network-pools/{id}/networks/{networkId}/ip-pools",
+   "operationId": "addIpPoolToNetworkOfNetworkPool",
+   "summary": "Add an IP Pool to a Network of a Network Pool",
+   "tags": [
+    "Network Pools"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/notifications",
+   "operationId": "getNotifications",
+   "summary": "Get all Notifications",
+   "tags": [
+    "Notifications"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/nsx-alb-clusters",
+   "operationId": "getALBClusters",
+   "summary": "Retrieve a list of NSX ALB Clusters",
+   "tags": [
+    "ALBClusters"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/v1/nsx-alb-clusters",
+   "operationId": "createALBCluster",
+   "summary": "Create NSX ALB cluster",
+   "tags": [
+    "ALBClusters"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/nsx-alb-clusters/form-factors",
+   "operationId": "getALBClustersFormFactors",
+   "summary": "Retrieve a list of NSX ALB Clusters Form Factors",
+   "tags": [
+    "ALBClusters"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/v1/nsx-alb-clusters/validations",
+   "operationId": "validateALBClusterCreationSpec",
+   "summary": "Perform validiation of the NsxAlbControllerClusterSpec specification",
+   "tags": [
+    "ALBClusters"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/v1/nsx-alb-clusters/validations/version",
+   "operationId": "validateNsxALBCompatibility",
+   "summary": "Validate NSX ALB compatibility version",
+   "tags": [
+    "ALBClusters"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/nsx-alb-clusters/{id}",
+   "operationId": "deleteALBCluster",
+   "summary": "Deletes an NSX ALB Cluster by its ID",
+   "tags": [
+    "ALBClusters"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/nsx-alb-clusters/{id}",
+   "operationId": "getALBCluster",
+   "summary": "Retrieve an NSX ALB Cluster by its ID",
+   "tags": [
+    "ALBClusters"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/nsxt-clusters",
+   "operationId": "getNsxClusters",
+   "summary": "Retrieve a list of NSX clusters",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/nsxt-clusters/criteria",
+   "operationId": "getNsxCriteria",
+   "summary": "Get all NSX criteria",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/nsxt-clusters/criteria/{name}",
+   "operationId": "getNsxCriterion",
+   "summary": "Get a NSX criterion",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/nsxt-clusters/ip-address-pools/validations",
+   "operationId": "validateIpPool",
+   "summary": "",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/nsxt-clusters/ip-address-pools/validations/{id}",
+   "operationId": "getValidationResult",
+   "summary": "",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/nsxt-clusters/oidcs",
+   "operationId": "connectOpenId",
+   "summary": "",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/nsxt-clusters/queries",
+   "operationId": "startNsxCriteriaQuery",
+   "summary": "Start a query with NSX Criteria",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/nsxt-clusters/queries/{id}",
+   "operationId": "getNsxClusterQueryResponse",
+   "summary": "Get NSX cluster query response",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/nsxt-clusters/{id}",
+   "operationId": "getNsxCluster",
+   "summary": "Retrieve the details of an NSX cluster by its ID",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/nsxt-clusters/{nsxt-cluster-id}/ip-address-pools",
+   "operationId": "getNsxIpAddressPools",
+   "summary": "Retrive a list of NSX IP Address Pools by the NSX cluster ID",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/nsxt-clusters/{nsxt-cluster-id}/ip-address-pools/{name}",
+   "operationId": "getNsxIpAddressPool",
+   "summary": "Retrieve an NSX IP Address Pool by its name",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/nsxt-clusters/{nsxt-cluster-id}/scale-out",
+   "operationId": "scaleOutNsx",
+   "summary": "Scale out NSX cluster from 1 node to 3 nodes i.e. scale-out",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/nsxt-clusters/{nsxt-cluster-id}/transport-zones",
+   "operationId": "getNsxTransportZones",
+   "summary": "Retrieve list of all NSX transport zones",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/nsxt-clusters/{nsxt-cluster-id}/vpc-configuration",
+   "operationId": "getVpcConfiguration",
+   "summary": "",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/nsxt-clusters/{nsxtClusterId}/projects",
+   "operationId": "getProjects",
+   "summary": "",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/nsxt-clusters/{nsxtClusterId}/projects/{projectId}/vpc-connectivity-profiles",
+   "operationId": "getVpcConnectivityProfiles",
+   "summary": "",
+   "tags": [
+    "NSX-T Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/personalities",
+   "operationId": "deletePersonality",
+   "summary": "Delete the personality based on either name or id",
+   "tags": [
+    "Personalities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/personalities",
+   "operationId": "getPersonalities",
+   "summary": "Get the Personalities",
+   "tags": [
+    "Personalities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/personalities",
+   "operationId": "uploadPersonality",
+   "summary": "Upload a Personality",
+   "tags": [
+    "Personalities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/personalities/files",
+   "operationId": "uploadPersonalityFiles",
+   "summary": "Upload personality files to SDDC Manager",
+   "tags": [
+    "Personalities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/personalities/{personalityId}",
+   "operationId": "getPersonality",
+   "summary": "Get a Personality by its id",
+   "tags": [
+    "Personalities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/product-binaries",
+   "operationId": "uploadProductBinary",
+   "summary": "Upload product binaries to SDDC Manager",
+   "tags": [
+    "ProductBinaries"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/product-version-catalog",
+   "operationId": "getProductVersionCatalog",
+   "summary": "Get product version catalog",
+   "tags": [
+    "Product Version Catalog"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "POST",
+   "path": "/v1/product-version-catalog",
+   "operationId": "uploadProductVersionCatalog",
+   "summary": "[Unsupported] Upload product version catalog",
+   "tags": [
+    "Product Version Catalog"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/product-version-catalogs",
+   "operationId": "getProductVersionCatalogContent",
+   "summary": "Get product version catalog content",
+   "tags": [
+    "ProductVersionCatalogs"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/product-version-catalogs",
+   "operationId": "updateProductVersionCatalogPatches",
+   "summary": "Update product version catalog patches with signature",
+   "tags": [
+    "ProductVersionCatalogs"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/product-version-catalogs",
+   "operationId": "uploadProductVersionCatalogWithSignature",
+   "summary": "Upload product version catalog with signature",
+   "tags": [
+    "ProductVersionCatalogs"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/product-version-catalogs/upload-tasks/{taskId}",
+   "operationId": "getProductVersionCatalogUploadTask",
+   "summary": "Retrieve the status of an existing product version catalog upload tasks",
+   "tags": [
+    "ProductVersionCatalogs"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/pscs",
+   "operationId": "getPscs",
+   "summary": "Retrieve a list of Platform Service Controller (PSC)",
+   "tags": [
+    "PSCs"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/pscs/{id}",
+   "operationId": "getPsc",
+   "summary": "Retrieve details of a Platform Service Controller (PSC)",
+   "tags": [
+    "PSCs"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/releases",
+   "operationId": "getReleases",
+   "summary": "Retrieve a list of releases including current and target versions",
+   "tags": [
+    "Releases"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/releases/custom-patches",
+   "operationId": "getCustomPatchesBySku",
+   "summary": "Retrieve the list of custom patches for BOM products associated with or applicable to SKU",
+   "tags": [
+    "Flexible Product Patches"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/releases/domains",
+   "operationId": "getReleaseByDomains",
+   "summary": "Retrieve target release view for all domains",
+   "tags": [
+    "TargetUpgradeVersion"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/releases/domains/validations/{validationId}",
+   "operationId": "getDomainReleaseViewValidation",
+   "summary": "Retrieve a domain target state validation by it's Validation ID",
+   "tags": [
+    "TargetUpgradeVersion"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/releases/domains/{domainId}",
+   "operationId": "deleteReleaseByDomainID",
+   "summary": "Delete target release for the specified domain",
+   "tags": [
+    "TargetUpgradeVersion"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/releases/domains/{domainId}",
+   "operationId": "getReleaseByDomain",
+   "summary": "Retrieve target release view for the specified domain",
+   "tags": [
+    "TargetUpgradeVersion"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/releases/domains/{domainId}",
+   "operationId": "updateReleaseByDomainID",
+   "summary": "Modify the target upgrade release for the specified domain",
+   "tags": [
+    "TargetUpgradeVersion"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/releases/domains/{domainId}/custom-patches",
+   "operationId": "getCustomPatches",
+   "summary": "Retrieve the list of custom patches for BOM products associated with or applicable on a VCF domain",
+   "tags": [
+    "Flexible Product Patches"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/releases/domains/{domainId}/future-releases",
+   "operationId": "getFutureReleases",
+   "summary": "Retrieve a list of future releases by domain ID",
+   "tags": [
+    "Releases"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/releases/domains/{domainId}/validations",
+   "operationId": "validateReleaseByDomainID",
+   "summary": "Validate the selected upgrade version for the domain",
+   "tags": [
+    "TargetUpgradeVersion"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/releases/system",
+   "operationId": "getSystemRelease",
+   "summary": "Retrieve the lowest deployed release of VMware Cloud Foundation",
+   "tags": [
+    "Releases"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/releases/{sku}/release-components",
+   "operationId": "getReleaseComponentsBySku",
+   "summary": "Retrieves the list of components that are part of a VCF or VVF release.",
+   "tags": [
+    "Flexible Product Patches"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/resource-functionalities",
+   "operationId": "getResourceFunctionalities",
+   "summary": "Get Resource Functionalities",
+   "tags": [
+    "Resource Functionalities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/resource-functionalities",
+   "operationId": "updateResourcesFunctionalities",
+   "summary": "Update Resources Functionalities",
+   "tags": [
+    "Resource Functionalities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/resource-functionalities/global",
+   "operationId": "getResourcesFunctionalitiesAllowedGlobal",
+   "summary": "Get Resource Functionalities Allowed Global Configuration",
+   "tags": [
+    "Resource Functionalities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/resource-functionalities/global",
+   "operationId": "updateResourcesFunctionalities_1",
+   "summary": "Update Resources Functionalities Is Allowed Global Configuration",
+   "tags": [
+    "Resource Functionalities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/resource-warnings",
+   "operationId": "getResourceWarnings",
+   "summary": "Get Resource Warnings",
+   "tags": [
+    "Resource Warnings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/resource-warnings",
+   "operationId": "createResourceWarning",
+   "summary": "Create a new Resource Warning",
+   "tags": [
+    "Resource Warnings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/resource-warnings/{id}",
+   "operationId": "getResourceWarning",
+   "summary": "Get a Resource Warning by ID",
+   "tags": [
+    "Resource Warnings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/resources/license-checks",
+   "operationId": "startLicenseCheckByResource",
+   "summary": "Start a license check for a resource",
+   "tags": [
+    "License Keys"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/resources/license-checks/{id}",
+   "operationId": "getLicenseCheckResultByID",
+   "summary": "Retrieve the results of a license check by its ID",
+   "tags": [
+    "License Keys"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/resources/licensing-infos",
+   "operationId": "setLicenseKeyForResource",
+   "summary": "Update a license key for a resource",
+   "tags": [
+    "License Keys"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/restores/tasks",
+   "operationId": "startRestore",
+   "summary": "Start a restore operation",
+   "tags": [
+    "BackupRestore"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/restores/tasks/{id}",
+   "operationId": "getRestoreTask",
+   "summary": "Retrieve the restore task",
+   "tags": [
+    "BackupRestore"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/roles",
+   "operationId": "getRoles",
+   "summary": "Retrieve a list of roles from SDDC Manager",
+   "tags": [
+    "Users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddc-manager/local-os-user-accounts",
+   "operationId": "getLocalOsUserAccounts",
+   "summary": "Get local OS user accounts from the SDDC Manager appliance",
+   "tags": [
+    "SddcManagers"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddc-manager/trusted-certificates",
+   "operationId": "getTrustedCertificates",
+   "summary": "Retrieve all trusted certificates from the appliance",
+   "tags": [
+    "Trusted Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/sddc-manager/trusted-certificates",
+   "operationId": "addTrustedCertificate",
+   "summary": "Add a trusted certificate to the appliance's trust store",
+   "tags": [
+    "Trusted Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/sddc-manager/trusted-certificates/{alias}",
+   "operationId": "deleteTrustedCertificate",
+   "summary": "Delete a trusted certificate from the appliance's trust store",
+   "tags": [
+    "Trusted Certificates"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddc-manager/upgradables",
+   "operationId": "getSddcManagerUpgradables",
+   "summary": "Fetch all SDDC Manager Upgradables",
+   "tags": [
+    "SddcManagerUpgradable"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddc-managers",
+   "operationId": "getSddcManagers",
+   "summary": "Retrieve a list of SDDC Managers",
+   "tags": [
+    "SddcManagers"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddc-managers/{id}",
+   "operationId": "getSddcManager",
+   "summary": "Retrieve the details of an SDDC Manager by its id",
+   "tags": [
+    "SddcManagers"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddc-managers/{id}/history",
+   "operationId": "getSddcManagerHistory",
+   "summary": "Retrieve the history of SDDC Manager by its id",
+   "tags": [
+    "SddcManagers"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/sddcs/imports",
+   "operationId": "import",
+   "summary": "",
+   "tags": [
+    "BrownfieldImport"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/sddcs/imports/validations",
+   "operationId": "validation",
+   "summary": "",
+   "tags": [
+    "BrownfieldImport"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddcs/imports/validations/{taskId}",
+   "operationId": "getBrownfieldCheckTaskById",
+   "summary": "",
+   "tags": [
+    "BrownfieldImport"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sddcs/imports/{taskId}",
+   "operationId": "getBrownfieldImportTaskById",
+   "summary": "",
+   "tags": [
+    "BrownfieldImport"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sso-domains",
+   "operationId": "getSSODomains",
+   "summary": "Retrieive a list of domains from  vCenter Single Sign-On",
+   "tags": [
+    "Users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/sso-domains/{sso-domain}/entities",
+   "operationId": "getSSODomainEntities",
+   "summary": "Retrieve a list of users and groups from a domain in vCenter Single Sign-On",
+   "tags": [
+    "Users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system",
+   "operationId": "getSystemConfiguration",
+   "summary": "Retrieve the system configuration",
+   "tags": [
+    "System"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/system",
+   "operationId": "updateSystemConfiguration",
+   "summary": "Updates paramters of the system configuration",
+   "tags": [
+    "System"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/appliance-info",
+   "operationId": "getApplianceInfo",
+   "summary": "Get appliance information",
+   "tags": [
+    "System"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/backup-configuration",
+   "operationId": "getBackupConfiguration",
+   "summary": "Retrieve the backup configuration for SDDC Manager and NSX Manager",
+   "tags": [
+    "BackupRestore"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/system/backup-configuration",
+   "operationId": "updateBackupConfiguration",
+   "summary": "Update the backup configuration for SDDC Manager and NSX Manager",
+   "tags": [
+    "BackupRestore"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/system/backup-configuration",
+   "operationId": "setBackupConfiguration",
+   "summary": "Configure the backup configuration for SDDC Manager and NSX Manager",
+   "tags": [
+    "BackupRestore"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/backup-configuration/backup-locations",
+   "operationId": "getBackupLocation",
+   "summary": "Retrieve the backup location details",
+   "tags": [
+    "BackupRestore"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/system/backup-configuration/validations",
+   "operationId": "validateBackupConfigurationsOperations",
+   "summary": "Validation API for backup configuration for SDDC Manager and NSX Manager",
+   "tags": [
+    "BackupRestore"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/ceip",
+   "operationId": "getCeipStatus",
+   "summary": "Retrieve the CEIP status",
+   "tags": [
+    "CEIP"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/system/ceip",
+   "operationId": "setCeipStatus",
+   "summary": "Configure CEIP to Opt-In or Opt-Out",
+   "tags": [
+    "CEIP"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/check-sets",
+   "operationId": "getLastAssessmentRunInfo",
+   "summary": "Get information about the last assessment run",
+   "tags": [
+    "CheckSets"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/system/check-sets",
+   "operationId": "triggerCheckRun",
+   "summary": "Trigger a run of the selected checks",
+   "tags": [
+    "CheckSets"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/system/check-sets/queries",
+   "operationId": "queryCheckSets",
+   "summary": "Query for check-sets for the given resources",
+   "tags": [
+    "CheckSets"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/check-sets/{runId}",
+   "operationId": "getResult",
+   "summary": "Get the result for a given check run",
+   "tags": [
+    "CheckSets"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/system/check-sets/{runId}",
+   "operationId": "triggerPartialRetryOfCheckRun",
+   "summary": "Trigger partial retry of a completed check run",
+   "tags": [
+    "CheckSets"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/dns-configuration",
+   "operationId": "getDnsConfiguration",
+   "summary": "Retrieve the DNS configuration",
+   "tags": [
+    "System Configuration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/system/dns-configuration",
+   "operationId": "configureDns",
+   "summary": "Update the DNS configuration",
+   "tags": [
+    "System Configuration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/dns-configuration/validations",
+   "operationId": "getValidationsOfDNSConfiguration",
+   "summary": "Retrieve a list of DNS configuation validations",
+   "tags": [
+    "System Configuration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/system/dns-configuration/validations",
+   "operationId": "validateDnsConfiguration",
+   "summary": "Perform validation of the DnsConfiguration specification",
+   "tags": [
+    "System Configuration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/dns-configuration/validations/{id}",
+   "operationId": "getValidationOfDnsConfiguration",
+   "summary": "Retrieve the results of a DNS configuration validation by its ID",
+   "tags": [
+    "System Configuration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/health-summary",
+   "operationId": "getHealthCheckTask",
+   "summary": "Retieve a list of Health Check tasks",
+   "tags": [
+    "SOS"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/system/health-summary",
+   "operationId": "startHealthCheck",
+   "summary": "Start a Health Check operation using SoS",
+   "tags": [
+    "SOS"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/health-summary/{id}",
+   "operationId": "getHealthCheckStatus",
+   "summary": "Retrieve the status of the Health Check operations",
+   "tags": [
+    "SOS"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/health-summary/{id}/data",
+   "operationId": "exportHealthCheckByID",
+   "summary": "Download a Health Check tar.gz by its ID",
+   "tags": [
+    "SOS"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/system/host-bundle-depot",
+   "operationId": "syncUMDS",
+   "summary": "Sync UMDS",
+   "tags": [
+    "UMDS"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/ntp-configuration",
+   "operationId": "getNtpConfiguration",
+   "summary": "Retrieve the NTP configuration",
+   "tags": [
+    "System Configuration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/system/ntp-configuration",
+   "operationId": "configureNtp",
+   "summary": "Update the NTP configuration",
+   "tags": [
+    "System Configuration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/ntp-configuration/validations",
+   "operationId": "getValidationsOfNtpConfiguration",
+   "summary": "Retrieve a list of NTP configuation validations",
+   "tags": [
+    "System Configuration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/system/ntp-configuration/validations",
+   "operationId": "validateNtpConfiguration",
+   "summary": "Perform validation of the NtpConfiguration specification",
+   "tags": [
+    "System Configuration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/ntp-configuration/validations/{id}",
+   "operationId": "getValidationOfNtpConfiguration",
+   "summary": "Retrieve the results of a NTP configuration  validation by its ID",
+   "tags": [
+    "System Configuration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/proxy-configuration",
+   "operationId": "getProxyConfiguration",
+   "summary": "Get the current Proxy configuration",
+   "tags": [
+    "ProxyConfiguration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/system/proxy-configuration",
+   "operationId": "updateProxyConfiguration",
+   "summary": "Update Proxy configuration",
+   "tags": [
+    "ProxyConfiguration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/security/fips",
+   "operationId": "getFIPSConfiguration",
+   "summary": "Retrieve the FIPS configration mode",
+   "tags": [
+    "FIPS mode details"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/system/settings/depot",
+   "operationId": "deleteDepotSettings",
+   "summary": "Delete the depot configuration",
+   "tags": [
+    "DepotSettings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/settings/depot",
+   "operationId": "getDepotSettings",
+   "summary": "Retrieve the depot configuration",
+   "tags": [
+    "DepotSettings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/system/settings/depot",
+   "operationId": "updateDepotSettings",
+   "summary": "Configure the depot credentials",
+   "tags": [
+    "DepotSettings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/settings/depot/depot-sync-info",
+   "operationId": "getDepotSyncInfo",
+   "summary": "Retrieve the depot sync information",
+   "tags": [
+    "DepotSettings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/system/settings/depot/depot-sync-info",
+   "operationId": "syncDepotMetadata",
+   "summary": "Sync depot metadata",
+   "tags": [
+    "DepotSettings"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/settings/version-aliases",
+   "operationId": "getVersionAliasConfiguration",
+   "summary": "Retrieve Version Alias Configuration",
+   "tags": [
+    "VersionAliasesForBundleComponentType"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/system/settings/version-aliases",
+   "operationId": "updateVersionAliasConfigurations",
+   "summary": "Update Version Alias Configurations",
+   "tags": [
+    "VersionAliasesForBundleComponentType"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/system/settings/version-aliases/{bundleComponentType}",
+   "operationId": "deleteVersionAliasBySoftwareType",
+   "summary": "Removes Version Alias Configuration by component type",
+   "tags": [
+    "VersionAliasesForBundleComponentType"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/system/settings/version-aliases/{bundleComponentType}/{version}",
+   "operationId": "deleteAliasVersionsBySoftwareTypeAndBaseVersion",
+   "summary": "Removes Version Alias Configuration by component type and version",
+   "tags": [
+    "VersionAliasesForBundleComponentType"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "PUT",
+   "path": "/v1/system/settings/version-aliases/{bundleComponentType}/{version}",
+   "operationId": "updateVersionAliasConfiguration",
+   "summary": "Update the Version Alias Configuration by component type",
+   "tags": [
+    "VersionAliasesForBundleComponentType"
+   ],
+   "deprecated": true
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/support-bundles",
+   "operationId": "getSupportBundleTask",
+   "summary": "Retrieve a list of Support Bundle tasks",
+   "tags": [
+    "SOS"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/system/support-bundles",
+   "operationId": "startSupportBundle",
+   "summary": "Start a Support Bundle operation using SoS",
+   "tags": [
+    "SOS"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/support-bundles/{id}",
+   "operationId": "getSupportBundleStatus",
+   "summary": "Retrive the status of the Support Bundle operation",
+   "tags": [
+    "SOS"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/support-bundles/{id}/data",
+   "operationId": "exportSupportBundleByID",
+   "summary": "Download a Support Bundle tar.gz by ID",
+   "tags": [
+    "SOS"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/upgradables",
+   "operationId": "getUpgradables",
+   "summary": "Retrieve a list of all upgradable resources",
+   "tags": [
+    "Upgradables"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/system/vcf-management-components",
+   "operationId": "getSystemVcfManagementComponents",
+   "summary": "Get VCF Management Components",
+   "tags": [
+    "System"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/tasks",
+   "operationId": "getTasks",
+   "summary": "Retrieve a list of all tasks",
+   "tags": [
+    "Tasks"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/tasks/{id}",
+   "operationId": "cancelTask",
+   "summary": "Cancel a Task",
+   "tags": [
+    "Tasks"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/tasks/{id}",
+   "operationId": "getTask",
+   "summary": "Retrieve a task by its ID",
+   "tags": [
+    "Tasks"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/tasks/{id}",
+   "operationId": "retryTask",
+   "summary": "Retry a Task",
+   "tags": [
+    "Tasks"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/tokens",
+   "operationId": "createToken",
+   "summary": "Create Token Pair",
+   "tags": [
+    "Tokens"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/tokens/access-token/refresh",
+   "operationId": "refreshAccessToken",
+   "summary": "Refresh Access Token",
+   "tags": [
+    "Tokens"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/tokens/refresh-token",
+   "operationId": "invalidateRefreshToken",
+   "summary": "Invalidate Refresh Token",
+   "tags": [
+    "Tokens"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/upgradables/domains/{domainId}",
+   "operationId": "getUpgradablesByDomain",
+   "summary": "Retrieve a list of all upgradable resources for a domain by its ID",
+   "tags": [
+    "Upgradables"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/upgradables/domains/{domainId}/clusters",
+   "operationId": "getUpgradablesClusters",
+   "summary": "Retrieve a list of upgradable packages details from HSM for a domain by its ID",
+   "tags": [
+    "Upgradables"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/upgradables/domains/{domainId}/nsxt",
+   "operationId": "getNsxUpgradeResources",
+   "summary": "Retrieve a list of all upgradable NSX resources for a domain by its ID",
+   "tags": [
+    "Upgradables"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/upgrades",
+   "operationId": "getUpgrades",
+   "summary": "Retrieve a list of upgrades",
+   "tags": [
+    "Upgrades"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/upgrades",
+   "operationId": "performUpgrade",
+   "summary": "Start an upgrade operation",
+   "tags": [
+    "Upgrades"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/upgrades/preview",
+   "operationId": "getUpgradePreview",
+   "summary": "Preview upgrade for a given domain against a bundle",
+   "tags": [
+    "Upgrades"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/upgrades/{upgradeId}",
+   "operationId": "getUpgradeById",
+   "summary": "Retrieve an upgrade by ID",
+   "tags": [
+    "Upgrades"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/upgrades/{upgradeId}",
+   "operationId": "updateUpgradeSchedule",
+   "summary": "Change a DRAFT upgrade to a SCHEDULED state",
+   "tags": [
+    "Upgrades"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/upgrades/{upgradeId}/prechecks",
+   "operationId": "startUpgradePrecheck",
+   "summary": "Start an upgrade precheck operation",
+   "tags": [
+    "Upgrades"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/upgrades/{upgradeId}/prechecks/{precheckId}",
+   "operationId": "getUpgradePrecheckByID",
+   "summary": "Retrieve an upgrade precheck task by ID",
+   "tags": [
+    "Upgrades"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/users",
+   "operationId": "getUsers",
+   "summary": "Retrieve a list of users from SDDC Manager",
+   "tags": [
+    "Users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/users",
+   "operationId": "addUsers",
+   "summary": "Assign access to users in SDDC Manager",
+   "tags": [
+    "Users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/users/local/admin",
+   "operationId": "disableLocalAccount",
+   "summary": "Disable local account",
+   "tags": [
+    "Users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/users/local/admin",
+   "operationId": "getLocalAccount",
+   "summary": "Get local account details",
+   "tags": [
+    "Users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/users/local/admin",
+   "operationId": "updateLocalUserPassword",
+   "summary": "Update password for local account",
+   "tags": [
+    "Users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/users/ui",
+   "operationId": "getUiUsers",
+   "summary": "Retrieve a list of users assigned access via SDDC Manager",
+   "tags": [
+    "Users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/users/{id}",
+   "operationId": "removeUser",
+   "summary": "Remove access for a user in SDDC Manager",
+   "tags": [
+    "Users"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vasa-providers",
+   "operationId": "getVasaProviders",
+   "summary": "Get the VASA Providers",
+   "tags": [
+    "VasaProviders"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/vasa-providers",
+   "operationId": "addVasaProvider",
+   "summary": "Add a VASA Provider",
+   "tags": [
+    "VasaProviders"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/vasa-providers/validations",
+   "operationId": "validateVasaProviderSpec",
+   "summary": "Validate VasaProvider input specification",
+   "tags": [
+    "VasaProviders"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vasa-providers/validations/{id}",
+   "operationId": "getVasaProviderValidation",
+   "summary": "Get the status of the validation of the VASA Provider",
+   "tags": [
+    "VasaProviders"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/vasa-providers/{id}",
+   "operationId": "removeVasaProvider",
+   "summary": "Delete a VASA Provider",
+   "tags": [
+    "VasaProviders"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vasa-providers/{id}",
+   "operationId": "getVasaProvider",
+   "summary": "Get a VASA Provider",
+   "tags": [
+    "VasaProviders"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/vasa-providers/{id}",
+   "operationId": "updateVasaProvider",
+   "summary": "Update a VASA Provider",
+   "tags": [
+    "VasaProviders"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vasa-providers/{id}/storage-containers",
+   "operationId": "getVasaProviderStorageContainers",
+   "summary": "Get the storage containers of a VASA Provider",
+   "tags": [
+    "VasaProviders"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/vasa-providers/{id}/storage-containers",
+   "operationId": "addVasaProviderStorageContainer",
+   "summary": "Add the storage containers to a VASA Provider",
+   "tags": [
+    "VasaProviders"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/v1/vasa-providers/{id}/storage-containers/{storageContainerId}",
+   "operationId": "removeVasaProviderStorageContainer",
+   "summary": "Delete a storage container of a VASA Provider",
+   "tags": [
+    "VasaProviders"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/vasa-providers/{id}/storage-containers/{storageContainerId}",
+   "operationId": "updateVasaProviderStorageContainer",
+   "summary": "Update the storage container of a VASA Provider",
+   "tags": [
+    "VasaProviders"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vasa-providers/{id}/users",
+   "operationId": "getVasaProviderUser",
+   "summary": "Get the users of a VASA Provider",
+   "tags": [
+    "VasaProviders"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/vasa-providers/{id}/users",
+   "operationId": "addVasaProviderUser",
+   "summary": "Add the users to a VASA Provider",
+   "tags": [
+    "VasaProviders"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/vasa-providers/{id}/users/{userId}",
+   "operationId": "updateVasaProviderUser",
+   "summary": "Update the user of a VASA Provider",
+   "tags": [
+    "VasaProviders"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vcenters",
+   "operationId": "getVcenters",
+   "summary": "Retrieve a list of vCenter Servers",
+   "tags": [
+    "vCenters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/vcenters/repository-images/queries",
+   "operationId": "initiateRepositoryImagesQuery",
+   "summary": "Post repository images query",
+   "tags": [
+    "RepositoryImages"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vcenters/repository-images/queries/{queryId}",
+   "operationId": "getRepositoryImagesQueryResponse",
+   "summary": "Get repository images query response",
+   "tags": [
+    "RepositoryImages"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vcenters/{id}",
+   "operationId": "getVcenter",
+   "summary": "Retrieve a vCenter Server by its ID",
+   "tags": [
+    "vCenters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vcf-management-components",
+   "operationId": "getVcfManagementComponents",
+   "summary": "Get VCF Management Components",
+   "tags": [
+    "VCF Management Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/vcf-management-components",
+   "operationId": "deployVcfManagementComponents",
+   "summary": "Triggers VCF Management Components deployment workflow",
+   "tags": [
+    "VCF Management Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vcf-management-components/tasks",
+   "operationId": "getVcfManagementComponentsTasks",
+   "summary": "Gets all VCF Management Components tasks",
+   "tags": [
+    "VCF Management Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vcf-management-components/tasks/latest",
+   "operationId": "getVcfManagementComponentsLatestTask",
+   "summary": "Gets VCF Management Components latest task",
+   "tags": [
+    "VCF Management Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vcf-management-components/tasks/{taskId}",
+   "operationId": "getVcfManagementComponentsTaskByID",
+   "summary": "Gets VCF Management Components task by its ID",
+   "tags": [
+    "VCF Management Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vcf-management-components/tasks/{taskId}/spec",
+   "operationId": "getVcfManagementComponentsTaskSpec",
+   "summary": "Gets VCF Management Components task spec  by its task ID",
+   "tags": [
+    "VCF Management Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/v1/vcf-management-components/validations",
+   "operationId": "validateVcfManagementComponents",
+   "summary": "Perform validation of the VCF Management Components Deployment specification",
+   "tags": [
+    "VCF Management Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vcf-management-components/validations/{validationId}",
+   "operationId": "getVcfManagementComponentsValidationsById",
+   "summary": "Retrieve the results of VCF Management Components validation by its ID",
+   "tags": [
+    "VCF Management Components"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vcf-services",
+   "operationId": "getVcfServices",
+   "summary": "Retrieve a list of SDDC Manager services",
+   "tags": [
+    "VcfServices"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vcf-services/{id}",
+   "operationId": "getVcfService",
+   "summary": "Retrieve an SDDC Manager service by its ID",
+   "tags": [
+    "VcfServices"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/vsan-hcl",
+   "operationId": "downloadVsanHcl",
+   "summary": "Download vSAN HCL",
+   "tags": [
+    "vSanHcl"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vsan-hcl/attributes",
+   "operationId": "getVsanHclAttributes",
+   "summary": "Get vSAN HCL attributes",
+   "tags": [
+    "vSanHcl"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/v1/vsan-hcl/configuration",
+   "operationId": "getVsanHclConfiguration",
+   "summary": "Get vSAN HCL configuration",
+   "tags": [
+    "vSanHcl"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/v1/vsan-hcl/configuration",
+   "operationId": "updateVsanHclConfiguration",
+   "summary": "Update vSAN HCL configuration",
+   "tags": [
+    "vSanHcl"
+   ],
+   "deprecated": false
+  }
+ ]
+}

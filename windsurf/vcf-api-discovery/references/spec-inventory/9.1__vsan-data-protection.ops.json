@@ -1,0 +1,704 @@
+{
+ "meta": {
+  "present": true,
+  "spec_file": "specifications/vsan-data-protection/vsan-data-protection-openapi.yaml",
+  "spec_version": "9.1.0.0",
+  "title": "Snapshot Appliance API",
+  "openapi": "3.0.3",
+  "base_path": "https://{host}/api",
+  "operation_count": 65,
+  "security_schemes": {
+   "basic_auth": {
+    "type": "http",
+    "scheme": "basic"
+   },
+   "api_key_auth": {
+    "type": "apiKey",
+    "name": "vmware-api-session-id",
+    "in": "header"
+   },
+   "federated_identity_auth": {
+    "type": "http",
+    "description": "If your vCenter Server is federated with an external identity provider, please see: [VMware Identity Broker - vCenter Server Workflows](https://techdocs.broadcom.com/bin/gethidpage?ux-context-string=api-sdk_1&appid=vcf-9-0&language=&format=rendered).",
+    "scheme": "bearer"
+   }
+  },
+  "tags": [
+   "Snapservice.ClusterPairs",
+   "Snapservice.Clusters.ProtectionGroups",
+   "Snapservice.Clusters.ProtectionGroups.Snapshots",
+   "Snapservice.Clusters.VirtualMachines",
+   "Snapservice.Clusters.VirtualMachines.Snapshots",
+   "Snapservice.Info.About",
+   "Snapservice.ProtectionGroups",
+   "Snapservice.ProtectionGroups.Capabilities",
+   "Snapservice.Reports.Clusters.ProtectionGroups",
+   "Snapservice.Reports.Clusters.ProtectionGroups.Snapshots",
+   "Snapservice.Reports.Clusters.VirtualMachines",
+   "Snapservice.Reports.Clusters.VirtualMachines.Snapshots",
+   "Snapservice.Sessions",
+   "Snapservice.Sites",
+   "Snapservice.Sites.Capabilities",
+   "Snapservice.Sites.Clusters",
+   "Snapservice.Sites.Clusters.Capabilities",
+   "Snapservice.Sites.Datastores",
+   "Snapservice.Sites.Datastores.Capabilities",
+   "Snapservice.Sites.Licenses",
+   "Snapservice.Tasks",
+   "Snapservice.VirtualMachines.ProtectionConfiguration",
+   "Snapservice.VirtualMachines.Snapshots"
+  ]
+ },
+ "operations": [
+  {
+   "method": "GET",
+   "path": "/snapservice/cluster-pairs",
+   "operationId": "Snapservice.ClusterPairs_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.ClusterPairs"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/cluster-pairs/{cp}",
+   "operationId": "Snapservice.ClusterPairs_get",
+   "summary": "",
+   "tags": [
+    "Snapservice.ClusterPairs"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/snapservice/cluster-pairs/{cp}?vmw-task=true",
+   "operationId": "Snapservice.ClusterPairs_delete$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.ClusterPairs"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/cluster-pairs?action=create-precheck",
+   "operationId": "Snapservice.ClusterPairs_createPrecheck",
+   "summary": "",
+   "tags": [
+    "Snapservice.ClusterPairs"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/cluster-pairs?action=create-precheck&vmw-task=true",
+   "operationId": "Snapservice.ClusterPairs_createPrecheck$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.ClusterPairs"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/cluster-pairs?vmw-task=true",
+   "operationId": "Snapservice.ClusterPairs_create$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.ClusterPairs"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/clusters/{cluster}/protection-groups",
+   "operationId": "Snapservice.Clusters.ProtectionGroups_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.ProtectionGroups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/clusters/{cluster}/protection-groups/{pg}",
+   "operationId": "Snapservice.Clusters.ProtectionGroups_get",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.ProtectionGroups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/clusters/{cluster}/protection-groups/{pg}/snapshots",
+   "operationId": "Snapservice.Clusters.ProtectionGroups.Snapshots_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.ProtectionGroups.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/snapservice/clusters/{cluster}/protection-groups/{pg}/snapshots/{snapshot}",
+   "operationId": "Snapservice.Clusters.ProtectionGroups.Snapshots_delete",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.ProtectionGroups.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/clusters/{cluster}/protection-groups/{pg}/snapshots/{snapshot}",
+   "operationId": "Snapservice.Clusters.ProtectionGroups.Snapshots_get",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.ProtectionGroups.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/clusters/{cluster}/protection-groups/{pg}/snapshots?vmw-task=true",
+   "operationId": "Snapservice.Clusters.ProtectionGroups.Snapshots_create$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.ProtectionGroups.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/clusters/{cluster}/protection-groups/{pg}?action=activate&vmw-task=true",
+   "operationId": "Snapservice.Clusters.ProtectionGroups_activate$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.ProtectionGroups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/clusters/{cluster}/protection-groups/{pg}?action=demote&vmw-task=true",
+   "operationId": "Snapservice.Clusters.ProtectionGroups_demote$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.ProtectionGroups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/clusters/{cluster}/protection-groups/{pg}?action=pause&vmw-task=true",
+   "operationId": "Snapservice.Clusters.ProtectionGroups_pause$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.ProtectionGroups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/clusters/{cluster}/protection-groups/{pg}?action=promote&vmw-task=true",
+   "operationId": "Snapservice.Clusters.ProtectionGroups_promote$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.ProtectionGroups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/clusters/{cluster}/protection-groups/{pg}?action=resume&vmw-task=true",
+   "operationId": "Snapservice.Clusters.ProtectionGroups_resume$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.ProtectionGroups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/snapservice/clusters/{cluster}/protection-groups/{pg}?vmw-task=true",
+   "operationId": "Snapservice.Clusters.ProtectionGroups_delete$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.ProtectionGroups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/snapservice/clusters/{cluster}/protection-groups/{pg}?vmw-task=true",
+   "operationId": "Snapservice.Clusters.ProtectionGroups_update$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.ProtectionGroups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/clusters/{cluster}/protection-groups?vmw-task=true",
+   "operationId": "Snapservice.Clusters.ProtectionGroups_create$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.ProtectionGroups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/clusters/{cluster}/virtual-machines",
+   "operationId": "Snapservice.Clusters.VirtualMachines_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.VirtualMachines"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/clusters/{cluster}/virtual-machines/{vm}/snapshots",
+   "operationId": "Snapservice.Clusters.VirtualMachines.Snapshots_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.VirtualMachines.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/clusters/{cluster}/virtual-machines/{vm}/snapshots/{snapshot}",
+   "operationId": "Snapservice.Clusters.VirtualMachines.Snapshots_get",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.VirtualMachines.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/clusters/{cluster}/virtual-machines/{vm}?action=linked-clone&vmw-task=true",
+   "operationId": "Snapservice.Clusters.VirtualMachines_linkedClone$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.VirtualMachines"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/clusters/{cluster}/virtual-machines/{vm}?action=restore&vmw-task=true",
+   "operationId": "Snapservice.Clusters.VirtualMachines_restore$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.VirtualMachines"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/clusters/{cluster}/virtual-machines/{vm}?action=revert&vmw-task=true",
+   "operationId": "Snapservice.Clusters.VirtualMachines_revert$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.Clusters.VirtualMachines"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/info/about",
+   "operationId": "Snapservice.Info.About_get",
+   "summary": "",
+   "tags": [
+    "Snapservice.Info.About"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/protection-groups/{pg}/capabilities",
+   "operationId": "Snapservice.ProtectionGroups.Capabilities_get",
+   "summary": "",
+   "tags": [
+    "Snapservice.ProtectionGroups.Capabilities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/protection-groups/{pg}?action=end-ransomware-recovery&vmw-task=true",
+   "operationId": "Snapservice.ProtectionGroups_endRansomwareRecovery$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.ProtectionGroups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/protection-groups/{pg}?action=start-ransomware-recovery&vmw-task=true",
+   "operationId": "Snapservice.ProtectionGroups_startRansomwareRecovery$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.ProtectionGroups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/protection-groups?action=compute-members",
+   "operationId": "Snapservice.ProtectionGroups_computeMembers",
+   "summary": "",
+   "tags": [
+    "Snapservice.ProtectionGroups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/reports/clusters/{cluster}/protection-groups",
+   "operationId": "Snapservice.Reports.Clusters.ProtectionGroups_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.Reports.Clusters.ProtectionGroups"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/reports/clusters/{cluster}/protection-groups/snapshot-status-counts?aggregateBy=protection-group",
+   "operationId": "Snapservice.Reports.Clusters.ProtectionGroups.Snapshots_listStatusAggregatedByProtectionGroup",
+   "summary": "",
+   "tags": [
+    "Snapservice.Reports.Clusters.ProtectionGroups.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/reports/clusters/{cluster}/protection-groups/snapshot-status-counts?aggregateBy=time-slice",
+   "operationId": "Snapservice.Reports.Clusters.ProtectionGroups.Snapshots_listStatusAggregatedByTimeSlice",
+   "summary": "",
+   "tags": [
+    "Snapservice.Reports.Clusters.ProtectionGroups.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/reports/clusters/{cluster}/protection-groups/snapshots",
+   "operationId": "Snapservice.Reports.Clusters.ProtectionGroups.Snapshots_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.Reports.Clusters.ProtectionGroups.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/reports/clusters/{cluster}/virtual-machines",
+   "operationId": "Snapservice.Reports.Clusters.VirtualMachines_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.Reports.Clusters.VirtualMachines"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/reports/clusters/{cluster}/virtual-machines/snapshot-status-counts?aggregateBy=time-slice",
+   "operationId": "Snapservice.Reports.Clusters.VirtualMachines.Snapshots_listStatusAggregatedByTimeSlice",
+   "summary": "",
+   "tags": [
+    "Snapservice.Reports.Clusters.VirtualMachines.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/reports/clusters/{cluster}/virtual-machines/snapshot-status-counts?aggregateBy=virtual-machine",
+   "operationId": "Snapservice.Reports.Clusters.VirtualMachines.Snapshots_listStatusAggregatedByVirtualMachine",
+   "summary": "",
+   "tags": [
+    "Snapservice.Reports.Clusters.VirtualMachines.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/reports/clusters/{cluster}/virtual-machines/snapshots",
+   "operationId": "Snapservice.Reports.Clusters.VirtualMachines.Snapshots_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.Reports.Clusters.VirtualMachines.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/snapservice/sessions",
+   "operationId": "Snapservice.Sessions_delete",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sessions"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/sessions",
+   "operationId": "Snapservice.Sessions_get",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sessions"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/sessions",
+   "operationId": "Snapservice.Sessions_create",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sessions"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/sites",
+   "operationId": "Snapservice.Sites_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sites"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/sites/{site}",
+   "operationId": "Snapservice.Sites_get",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sites"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/sites/{site}/capabilities",
+   "operationId": "Snapservice.Sites.Capabilities_get",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sites.Capabilities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/sites/{site}/clusters",
+   "operationId": "Snapservice.Sites.Clusters_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sites.Clusters"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/sites/{site}/clusters/{cluster}/capabilities",
+   "operationId": "Snapservice.Sites.Clusters.Capabilities_get",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sites.Clusters.Capabilities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/sites/{site}/datastores",
+   "operationId": "Snapservice.Sites.Datastores_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sites.Datastores"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/sites/{site}/datastores/capabilities",
+   "operationId": "Snapservice.Sites.Datastores.Capabilities_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sites.Datastores.Capabilities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/sites/{site}/datastores/{datastore}/capabilities",
+   "operationId": "Snapservice.Sites.Datastores.Capabilities_get",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sites.Datastores.Capabilities"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/sites/{site}/licenses",
+   "operationId": "Snapservice.Sites.Licenses_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sites.Licenses"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/snapservice/sites/{site}?vmw-task=true",
+   "operationId": "Snapservice.Sites_delete$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sites"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/snapservice/sites/{site}?vmw-task=true",
+   "operationId": "Snapservice.Sites_update$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sites"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/sites?action=add&vmw-task=true",
+   "operationId": "Snapservice.Sites_add$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sites"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "POST",
+   "path": "/snapservice/sites?action=probe",
+   "operationId": "Snapservice.Sites_probe",
+   "summary": "",
+   "tags": [
+    "Snapservice.Sites"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/tasks",
+   "operationId": "Snapservice.Tasks_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.Tasks"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/tasks/{task}",
+   "operationId": "Snapservice.Tasks_get",
+   "summary": "",
+   "tags": [
+    "Snapservice.Tasks"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/virtual-machines/snapshots",
+   "operationId": "Snapservice.VirtualMachines.Snapshots_list",
+   "summary": "",
+   "tags": [
+    "Snapservice.VirtualMachines.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/snapservice/virtual-machines/snapshots/{snapshot}?action=add-label&vmw-task=true",
+   "operationId": "Snapservice.VirtualMachines.Snapshots_addLabel$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.VirtualMachines.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/snapservice/virtual-machines/snapshots/{snapshot}?action=delete-label&vmw-task=true",
+   "operationId": "Snapservice.VirtualMachines.Snapshots_deleteLabel$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.VirtualMachines.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PUT",
+   "path": "/snapservice/virtual-machines/snapshots/{snapshot}?action=set-labels&vmw-task=true",
+   "operationId": "Snapservice.VirtualMachines.Snapshots_setLabels$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.VirtualMachines.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "DELETE",
+   "path": "/snapservice/virtual-machines/snapshots/{snapshot}?vmw-task=true",
+   "operationId": "Snapservice.VirtualMachines.Snapshots_delete$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.VirtualMachines.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/snapservice/virtual-machines/snapshots/{snapshot}?vmw-task=true",
+   "operationId": "Snapservice.VirtualMachines.Snapshots_update$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.VirtualMachines.Snapshots"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "GET",
+   "path": "/snapservice/virtual-machines/{vm}/protection-configuration",
+   "operationId": "Snapservice.VirtualMachines.ProtectionConfiguration_get",
+   "summary": "",
+   "tags": [
+    "Snapservice.VirtualMachines.ProtectionConfiguration"
+   ],
+   "deprecated": false
+  },
+  {
+   "method": "PATCH",
+   "path": "/snapservice/virtual-machines/{vm}/protection-configuration?vmw-task=true",
+   "operationId": "Snapservice.VirtualMachines.ProtectionConfiguration_update$Task",
+   "summary": "",
+   "tags": [
+    "Snapservice.VirtualMachines.ProtectionConfiguration"
+   ],
+   "deprecated": false
+  }
+ ]
+}
