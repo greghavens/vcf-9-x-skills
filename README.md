@@ -206,13 +206,51 @@ No live VCF environment was available, so verification is documentary and advers
 
 - **301 documentation URLs** in `research/SOURCE-INVENTORY.md`, plus the machine-readable
   spec corpus. No endpoint, cmdlet or parameter written without a citation.
-- **12 evals, 69 assertions**, written before the skills were drafted.
-  **98% with skills vs 73% baseline.** Results in `workspace/`.
+- **12 evals, 69 assertions**, written before the skills were drafted. Every eval has now
+  been run in both configurations — see [Evaluated skill effectiveness](#evaluated-skill-effectiveness)
+  below. Results in `workspace/`.
 - **Independent adversarial review** hunting hallucinated endpoints, wrong API versions,
   9.0/9.1 bleed and missing prerequisites — ~7,000 machine checks. Reports in `review/`.
 - **Honest gaps.** Unverifiable items are marked UNVERIFIED in place rather than filled
   in. The ports/protocols matrix, VCF Automation leaf endpoints and VCF Installer auth
   are the notable ones.
+
+---
+
+## Evaluated skill effectiveness
+
+**100% of assertions passed with the skills loaded, against 46% for the same model
+answering from its own knowledge.** Most recent verification run: 36 runs, 96 graded
+assertions.
+
+The acceptance criteria were written *before* the skills were drafted, so they are not
+reverse-engineered from what the skills happen to say. Each eval is a realistic question
+a VCF engineer would actually ask — block RDP between two NSX groups, get an API token,
+write a token-refresh function, walk through a 9.0 to 9.1 upgrade, build a readiness
+checklist. Several are deliberate traps built on false premises, such as "SDDC Manager is
+gone in 9.1, replaced by VCF Fleet Manager, right?" — where the product named does not
+exist and the thing declared removed was not removed.
+
+Every eval runs in two configurations. **With skills**, the agent loads the skill files
+and answers from them. **Baseline**, the same model answers the identical prompt with no
+access to this repository. An independent grader scores both against the same assertions
+and must quote its evidence for each one.
+
+**What the gap actually measures.** Roughly a quarter of the assertions pass in both
+configurations — a capable model already knows the Policy API base path and the NSX
+session form. Those are regression guards. The difference shows up on facts a model
+cannot know from training: that NSX has no published spec at the 9.0 tag, that API tokens
+are 9.1-only, that the PowerCLI package is `VCF.PowerCLI` rather than the pre-9.x
+`VMware.PowerCLI`. The sharpest case is the discovery eval — asked where to find an
+undocumented API, every baseline run invents an API-explorer URL such as
+`https://<vcenter>/apiexplorer` and presents it as real. The skills state that no such
+9.x pattern is documented, on every run. That is the failure mode this whole set exists
+to prevent.
+
+**Caveats.** Graded by an LLM against written assertions, not executed against a live VCF
+deployment. Three runs per configuration is enough to catch a consistent failure, not
+enough for tight confidence intervals. Full results and transcripts are in
+`workspace/iteration-3/` and `workspace/iteration-4/`.
 
 ---
 
